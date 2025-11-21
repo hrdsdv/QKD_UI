@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QKD User Panel</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .sidebar {
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+    }
+    .sidebar.open {
+      transform: translateX(0);
+    }
+    .active-step {
+      color: #10b981;
+      font-weight: bold;
+    }
+    .file-item {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.25rem;
+      margin-top: 0.5rem;
+      background-color: #f9fafb;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal.open {
+      display: flex;
+    }
+    .modal-content {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      max-width: 500px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    .incoming-item {
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      background-color: #f9fafb;
+    }
+    .decrypted-content {
+      background-color: #f0f9ff;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin-top: 1rem;
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <div class="flex flex-col h-screen">
+    <!-- Верхняя панель -->
+    <header class="bg-white shadow p-4 flex justify-between items-center">
+      <div>
+        <h1 class="text-2xl font-bold">QKD User Panel</h1>
+      </div>
+      <div class="flex items-center">
+        <div class="mr-4">
+          <span class="font-bold">QBER:</span>
+          <span id="qber-value" class="ml-2 text-2xl {% if qber_value %} {% if qber_value <= 4 %}text-green-500 {% elif qber_value <= 10 %}text-yellow-500 {% else %}text-red-500 {% endif %} {% else %}text-gray-500 {% endif %}">
+            {% if qber_value %}{{ qber_value }}%{% else %}—{% endif %}
+          </span>
+        </div>
+        <button id="log-toggle" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Журнал
+        </button>
+      </div>
+    </header>
+
+    <!-- Основной контент -->
+    <div class="flex flex-1 overflow-hidden">
+      <!-- Основная область -->
+      <main class="flex-1 p-4 overflow-y-auto">
+        <!-- Вкладки -->
+        <div class="tabs">
+          <div class="tabs-header mb-4 border-b border-gray-200">
+            <button class="tab-button active" data-tab="main">Главная</button>
+          </div>
+
+          <!-- Вкладка "Главная" -->
+          <div id="main" class="tab-content active">
+            <div class="flex flex-col items-center h-full">
+              <div class="w-full max-w-2xl mb-8">
+                <div class="flex items-center mb-4">
+                  <button id="select-key-button" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded mr-4">
+                    Выбрать ключ
+                  </button>
+                  <span id="selected-key" class="text-gray-700">Ключ не выбран</span>
+                </div>
+                <textarea id="message-input" class="w-full p-2 border border-gray-300 rounded mb-4" rows="6" placeholder="Введите текст для шифрования..."></textarea>
+                <div class="mb-4">
+                  <label class="block text-sm font-medium text-gray-700 mb-2">Прикрепить файл</label>
+                  <input type="file" id="file-input" class="hidden">
+                  <div id="file-preview" class="mb-4"></div>
+                  <button id="attach-button" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded">
+                    Выбрать файл
+                  </button>
+                </div>
+                <button id="encrypt-send-button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  Зашифровать и отправить
+                </button>
+              </div>
+
+              <!-- Блок "Входящие" на вкладке "Главная" -->
+              <div class="w-full max-w-2xl mt-8">
+                <h2 class="text-xl font-bold mb-4">Входящие</h2>
+                <div id="incoming-list" class="space-y-4">
+                  {% if incoming_items %}
+                    {% for item in incoming_items %}
+                    <div class="incoming-item">
+                      <div class="flex justify-between items-start">
+                        <div>
+                          <div class="flex items-center mb-1">
+                            <span class="font-bold mr-2">{{ item.sender }}</span>
+                            <span class="text-sm text-gray-500">{{ item.timestamp }}</span>
+                          </div>
+                          <div class="mt-1">
+                            {% if item.type == 'text' %}
+                              <div class="bg-gray-100 p-2 rounded">Зашифрованное сообщение ({{ item.size }} символов)</div>
+                            {% else %}
+                              <div class="bg-gray-100 p-2 rounded">Зашифрованный файл: {{ item.filename }} ({{ item.size }}, {{ item.filetype }})</div>
+                            {% endif %}
+                          </div>
+                        </div>
+                        <div>
+                          {% if item.type == 'text' %}
+                            <button class="decrypt-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded text-sm mb-1"
+                                    data-item-id="{{ item.id }}">
+                              Дешифровать
+                            </button>
+                          {% else %}
+                            <button class="decrypt-download-button bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded text-sm mb-1"
+                                    data-item-id="{{ item.id }}">
+                              Дешифровать и скачать
+                            </button>
+                          {% endif %}
+                        </div>
+                      </div>
+                      <div class="decrypted-content" id="decrypted-{{ item.id }}">
+                        {% if item.decrypted %}
+                          <div class="font-bold">Расшифрованное содержимое:</div>
+                          {% if item.type == 'text' %}
+                            <div>{{ item.decrypted }}</div>
+                          {% else %}
+                            <div>Файл: {{ item.decrypted_filename }}</div>
+                            <a href="{{ item.decrypted_url }}" download class="text-blue-500 hover:underline">Скачать</a>
+                          {% endif %}
+                        {% endif %}
+                      </div>
+                    </div>
+                    {% endfor %}
+                  {% else %}
+                    <div class="text-center text-gray-500 p-4 bg-white rounded-lg">Пусто</div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Модальное окно для выбора ключа -->
+      <div id="key-modal" class="modal">
+        <div class="modal-content">
+          <div class="flex justify-between items-center mb-4">
+            <h2 class="text-xl font-bold">Выберите ключ</h2>
+            <button id="close-key-modal" class="text-gray-500 hover:text-gray-700">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <div class="overflow-y-auto max-h-96">
+            <table class="min-w-full">
+              <thead>
+                <tr>
+                  <th class="py-2 px-4 border-b">ID ключа</th>
+                  <th class="py-2 px-4 border-b">Дата генерации</th>
+                  <th class="py-2 px-4 border-b">Статус</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for key in available_keys %}
+                <tr class="key-row hover:bg-gray-100 cursor-pointer" data-key-id="{{ key.key_id }}">
+                  <td class="py-2 px-4 border-b">{{ key.key_id }}</td>
+                  <td class="py-2 px-4 border-b">{{ key.generated }}</td>
+                  <td class="py-2 px-4 border-b">
+                    <span class="px-2 py-1 rounded text-xs
+                      {% if key.status == 'Активен' %}bg-green-100 text-green-800
+                      {% elif key.status == 'Использован' %}bg-yellow-100 text-yellow-800
+                      {% else %}bg-red-100 text-red-800{% endif %}">
+                      {{ key.status }}
+                    </span>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Боковая панель (Журнал) -->
+      <aside id="log-sidebar" class="sidebar fixed top-0 right-0 h-full w-80 bg-white shadow-lg p-4 z-50">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-bold">Журнал действий</h2>
+          <button id="close-log" class="text-gray-500 hover:text-gray-700">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="overflow-y-auto h-[calc(100%-2rem)]">
+          {% if system_logs %}
+            {% for log in system_logs %}
+            <div class="mb-4 p-3 border rounded-lg">
+              <div class="flex justify-between text-sm text-gray-500 mb-1">
+                <span>{{ log.timestamp }}</span>
+                <span class="font-semibold
+                  {% if log.level == 'INFO' %}text-blue-500
+                  {% elif log.level == 'WARNING' %}text-yellow-500
+                  {% else %}text-red-500{% endif %}">
+                  {{ log.level }}
+                </span>
+              </div>
+              <div class="font-semibold">{{ log.module }}</div>
+              <div>{{ log.message }}</div>
+            </div>
+            {% endfor %}
+          {% else %}
+            <div class="text-center text-gray-500">Действий пока нет</div>
+          {% endif %}
+        </div>
+      </aside>
+    </div>
+
+    <!-- Нижняя панель с процессами -->
+    <footer class="bg-white shadow p-4">
+      <div class="flex justify-center">
+        <div class="flex space-x-4">
+          <div id="step-1" class="step active-step">Получение сырых ключевых данных</div>
+          <div id="step-2" class="step">Просеивание ключа</div>
+          <div id="step-3" class="step">Восстановление ключа</div>
+          <div id="step-4" class="step">Сохранение ключа</div>
+          <div id="step-5" class="step">Ожидание действий пользователя</div>
+          <div id="step-6" class="step">Шифрование и отправка</div>
+          <div id="step-7" class="step">Протоколирование</div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Управление боковой панелью журнала
+    const logToggle = document.getElementById('log-toggle');
+    const closeLog = document.getElementById('close-log');
+    const logSidebar = document.getElementById('log-sidebar');
+
+    logToggle.addEventListener('click', () => {
+      logSidebar.classList.add('open');
+    });
+
+    closeLog.addEventListener('click', () => {
+      logSidebar.classList.remove('open');
+    });
+
+    // Управление модальным окном выбора ключа
+    const selectKeyButton = document.getElementById('select-key-button');
+    const keyModal = document.getElementById('key-modal');
+    const closeKeyModal = document.getElementById('close-key-modal');
+    const selectedKeySpan = document.getElementById('selected-key');
+
+    selectKeyButton.addEventListener('click', () => {
+      keyModal.classList.add('open');
+    });
+
+    closeKeyModal.addEventListener('click', () => {
+      keyModal.classList.remove('open');
+    });
+
+    // Выбор ключа из модального окна
+    document.querySelectorAll('.key-row').forEach(row => {
+      row.addEventListener('click', () => {
+        const keyId = row.getAttribute('data-key-id');
+        selectedKeySpan.textContent = keyId;
+        keyModal.classList.remove('open');
+      });
+    });
+
+    // Обработка прикрепления файла
+    const attachButton = document.getElementById('attach-button');
+    const fileInput = document.getElementById('file-input');
+    const filePreview = document.getElementById('file-preview');
+
+    attachButton.addEventListener('click', () => {
+      fileInput.click();
+    });
+
+    fileInput.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const fileItem = document.createElement('div');
+        fileItem.className = 'file-item';
+        fileItem.innerHTML = `
+          <span>${file.name} (${(file.size / 1024).toFixed(2)} KB)</span>
+          <button class="remove-file ml-2 text-red-500 hover:text-red-700">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        `;
+        filePreview.appendChild(fileItem);
+
+        fileItem.querySelector('.remove-file').addEventListener('click', () => {
+          filePreview.removeChild(fileItem);
+          fileInput.value = '';
+        });
+      }
+    });
+
+    // Обработка отправки сообщения
+    document.getElementById('encrypt-send-button').addEventListener('click', () => {
+      const message = document.getElementById('message-input').value;
+      const fileInput = document.getElementById('file-input');
+      const file = fileInput.files[0];
+      const selectedKey = document.getElementById('selected-key').textContent;
+
+      if (selectedKey === 'Ключ не выбран') {
+        alert('Пожалуйста, выберите ключ');
+        return;
+      }
+
+      if (!message && !file) {
+        alert('Пожалуйста, введите текст или выберите файл');
+        return;
+      }
+
+      alert(`Данные будут зашифрованы с использованием ключа ${selectedKey} и отправлены!`);
+    });
+
+    // Обработка дешифровки входящих данных
+    document.querySelectorAll('.decrypt-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const itemId = button.getAttribute('data-item-id');
+        const contentElement = document.getElementById(`decrypted-${itemId}`);
+
+        if (contentElement.style.display === 'block') {
+          contentElement.style.display = 'none';
+        } else {
+          // Здесь будет логика дешифровки текста с использованием модуля шифрования/дешифрования
+          contentElement.style.display = 'block';
+          contentElement.innerHTML = `
+            <div class="font-bold">Расшифрованное содержимое:</div>
+            <div>Это расшифрованное текстовое сообщение</div>
+          `;
+        }
+      });
+    });
+
+    // Обработка дешифровки и скачивания файлов
+    document.querySelectorAll('.decrypt-download-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const itemId = button.getAttribute('data-item-id');
+        const contentElement = document.getElementById(`decrypted-${itemId}`);
+
+        if (contentElement.style.display === 'block') {
+          contentElement.style.display = 'none';
+        } else {
+          // Здесь будет логика дешифровки файла с использованием модуля шифрования/дешифрования
+          contentElement.style.display = 'block';
+          contentElement.innerHTML = `
+            <div class="font-bold">Расшифрованное содержимое:</div>
+            <div>Файл: decrypted_${itemId}.pdf</div>
+            <a href="#" download="decrypted_${itemId}.pdf" class="text-blue-500 hover:underline">Скачать</a>
+          `;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+:root {
+  --background-color: #ffffff;
+  --text-color: #374151;
+  --header-bg-color: #f3f4f6;
+  --border-color: #d1d5db;
+  --hover-color: #f9fafb;
+  --status-active: #dcfce7;
+  --status-active-text: #166534;
+  --status-used: #fef3c7;
+  --status-used-text: #92400e;
+  --status-deleted: #fee2e2;
+  --status-deleted-text: #991b1b;
+  --qber-low: #10b981;
+  --qber-medium: #f59e0b;
+  --qber-high: #ef4444;
+  --online-status: #10b981;
+  --offline-status: #6b7280;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.container {
+  padding: 1.5rem;
+}
+
+.card {
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card-header {
+  background-color: var(--header-bg-color);
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  margin: -1rem -1rem 1rem -1rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.table th {
+  background-color: var(--header-bg-color);
+}
+
+.table tr:hover {
+  background-color: var(--hover-color);
+}
+
+.status-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+}
+
+.status-active {
+  background-color: var(--status-active);
+  color: var(--status-active-text);
+}
+
+.status-used {
+  background-color: var(--status-used);
+  color: var(--status-used-text);
+}
+
+.status-deleted {
+  background-color: var(--status-deleted);
+  color: var(--status-deleted-text);
+}
+
+.qber-low {
+  color: var(--qber-low);
+}
+
+.qber-medium {
+  color: var(--qber-medium);
+}
+
+.qber-high {
+  color: var(--qber-high);
+}
+
+.online-status {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--online-status);
+}
+
+.offline-status {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--offline-status);
+}
+
+.tabs {
+  display: flex;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tab-list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tab-trigger {
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+
+.tab-trigger:hover {
+  background-color: var(--hover-color);
+}
+
+.tab-trigger.active {
+  border-bottom-color: #3b82f6;
+  color: #3b82f6;
+}
+
+.tab-content {
+  display: none;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.scroll-area {
+  height: 600px;
+  overflow-y: auto;
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+  padding: 1rem;
+}
