@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QKD Admin Panel</title>
+  <title>QKD User Panel</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     .sidebar {
@@ -71,7 +71,7 @@
     <!-- Верхняя панель -->
     <header class="bg-white shadow p-4 flex justify-between items-center">
       <div>
-        <h1 class="text-2xl font-bold">QKD Admin Panel</h1>
+        <h1 class="text-2xl font-bold">QKD User Panel</h1>
       </div>
       <div class="flex items-center">
         <div class="mr-4">
@@ -94,7 +94,6 @@
         <div class="tabs">
           <div class="tabs-header mb-4 border-b border-gray-200">
             <button class="tab-button active" data-tab="main">Главная</button>
-            <button class="tab-button" data-tab="database">База данных</button>
           </div>
 
           <!-- Вкладка "Главная" -->
@@ -174,43 +173,6 @@
                   {% endif %}
                 </div>
               </div>
-            </div>
-          </div>
-
-          <!-- Вкладка "База данных" -->
-          <div id="database" class="tab-content hidden">
-            <div class="overflow-x-auto">
-              <h2 class="text-xl font-bold mb-4">Ключи шифрования</h2>
-              <table class="min-w-full bg-white border border-gray-200 mb-8">
-                <thead>
-                  <tr>
-                    <th class="py-2 px-4 border-b">ID ключа</th>
-                    <th class="py-2 px-4 border-b">Дата генерации</th>
-                    <th class="py-2 px-4 border-b">Статус</th>
-                    <th class="py-2 px-4 border-b">Длина</th>
-                    <th class="py-2 px-4 border-b">Дата использования</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- Пусто, данные будут загружаться из базы данных -->
-                </tbody>
-              </table>
-
-              <h2 class="text-xl font-bold mb-4">Пользователи</h2>
-              <table class="min-w-full bg-white border border-gray-200">
-                <thead>
-                  <tr>
-                    <th class="py-2 px-4 border-b">Имя</th>
-                    <th class="py-2 px-4 border-b">Роль</th>
-                    <th class="py-2 px-4 border-b">Статус</th>
-                    <th class="py-2 px-4 border-b">Последняя активность</th>
-                    <th class="py-2 px-4 border-b">Данные</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- Пусто, данные будут загружаться из базы данных -->
-                </tbody>
-              </table>
             </div>
           </div>
         </div>
@@ -308,17 +270,6 @@
   </div>
 
   <script>
-    // Переключение вкладок
-    document.querySelectorAll('.tab-button').forEach(button => {
-      button.addEventListener('click', () => {
-        document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
-
-        button.classList.add('active');
-        document.getElementById(button.dataset.tab).classList.remove('hidden');
-      });
-    });
-
     // Управление боковой панелью журнала
     const logToggle = document.getElementById('log-toggle');
     const closeLog = document.getElementById('close-log');

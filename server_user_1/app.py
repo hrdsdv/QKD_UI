@@ -19,27 +19,8 @@ def index():
     system_logs = key_management_module.get_system_logs()
     qber_value = None  # На этапе получения сырых данных QBER не определен
 
-    # Пример данных для вкладки "Входящие"
-    incoming_items = [
-        {
-            "id": 1,
-            "sender": "Пользователь B",
-            "timestamp": "21.11.2025 12:30:45",
-            "type": "text",
-            "size": 120,
-            "decrypted": None
-        },
-        {
-            "id": 2,
-            "sender": "Пользователь C",
-            "timestamp": "21.11.2025 12:25:30",
-            "type": "file",
-            "filename": "document.pdf",
-            "filetype": "PDF",
-            "size": "245 KB",
-            "decrypted": None
-        }
-    ]
+    # На данном этапе входящие сообщения отсутствуют
+    incoming_items = []
 
     return render_template(
         'index.html',
