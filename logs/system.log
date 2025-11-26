@@ -1,0 +1,1301 @@
+[2025-11-26T20:38:47.493454] [INFO] Подключение к основной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T20:38:47.493454] [INFO] Подключение к вторичной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_2_db.db
+[2025-11-26T20:38:47.493454] [INFO] Подключение к основной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T20:38:47.493454] [INFO] Подключение к вторичной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_2_db.db
+[2025-11-26T20:38:47.493454] [INFO] Подключение к основной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T20:38:47.493454] [INFO] Подключение к вторичной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_2_db.db
+[2025-11-26T20:38:47.493454] [INFO] Подключение к основной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T20:38:47.509609] [INFO] Подключение к вторичной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_2_db.db
+[2025-11-26T20:38:47.509609] [INFO] Подключение к основной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T20:38:47.509609] [INFO] Подключение к вторичной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_2_db.db
+[2025-11-26T20:54:11.962934] [INFO] Подключение к основной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T20:54:11.962934] [INFO] Подключение к вторичной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_2_db.db
+[2025-11-26T20:54:11.963927] [INFO] Подключение к основной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T20:54:11.964924] [INFO] Подключение к вторичной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_2_db.db
+[2025-11-26T20:54:11.964924] [INFO] Подключение к основной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T20:54:11.964924] [INFO] Подключение к вторичной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_2_db.db
+[2025-11-26T20:54:11.965921] [INFO] Подключение к основной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T20:54:11.965921] [INFO] Подключение к вторичной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_2_db.db
+[2025-11-26T20:54:11.965921] [INFO] Подключение к основной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T20:54:11.965921] [INFO] Подключение к вторичной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_2_db.db
+[2025-11-26T20:54:47.796956] [INFO] Подключение к основной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T20:54:47.797954] [INFO] Подключение к вторичной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_1_db.db
+[2025-11-26T20:54:47.797954] [INFO] Подключение к основной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T20:54:47.798951] [INFO] Подключение к вторичной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_1_db.db
+[2025-11-26T20:54:47.798951] [INFO] Подключение к основной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T20:54:47.798951] [INFO] Подключение к вторичной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_1_db.db
+[2025-11-26T20:54:47.799999] [INFO] Подключение к основной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T20:54:47.799999] [INFO] Подключение к вторичной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_1_db.db
+[2025-11-26T20:54:47.799999] [INFO] Подключение к основной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T20:54:47.800998] [INFO] Подключение к вторичной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_1_db.db
+[2025-11-26T20:55:41.113509] [ERROR] Ошибка при синхронизации данных: INSERT INTO users (first_name, last_name, student_id, username, password, role) VALUES (?, ?, ?, ?, ?, ?), параметры: ('Максим ', 'Лущаков', '987654321', 'Max', '12345678', 'user'), ошибка: no such table: users
+[2025-11-26T20:57:41.848282] [INFO] Подключение к основной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T20:57:41.848282] [INFO] Подключение к вторичной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_2_db.db
+[2025-11-26T20:57:41.849280] [INFO] Подключение к основной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T20:57:41.849280] [INFO] Подключение к вторичной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_2_db.db
+[2025-11-26T20:57:41.849280] [INFO] Подключение к основной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T20:57:41.850278] [INFO] Подключение к вторичной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_2_db.db
+[2025-11-26T20:57:41.850278] [INFO] Подключение к основной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T20:57:41.850278] [INFO] Подключение к вторичной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_2_db.db
+[2025-11-26T20:57:41.850278] [INFO] Подключение к основной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T20:57:41.851274] [INFO] Подключение к вторичной базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_2_db.db
+[2025-11-26T21:10:42.333192] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T21:10:42.333192] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T21:10:42.333192] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T21:10:42.334190] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T21:10:42.334190] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T21:14:24.960261] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T21:14:24.960261] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T21:14:24.960261] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T21:14:24.961259] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T21:14:24.961259] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T21:14:28.425579] [INFO] Получен запрос на генерацию тестовой последовательности. QBER input: 4
+[2025-11-26T21:14:30.999935] [INFO] Получен запрос на генерацию тестовой последовательности. QBER input: 4
+[2025-11-26T21:14:34.077532] [WARNING] Не удалось отправить тестовую последовательность на сервер Б: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/save_test_sequence (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000024DF9DBC2C0>, 'Connection to localhost timed out. (connect timeout=2)'))
+[2025-11-26T21:14:37.806543] [WARNING] Не удалось отправить тестовую последовательность на сервер Б: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/save_test_sequence (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000024DF9EB18B0>, 'Connection to localhost timed out. (connect timeout=2)'))
+[2025-11-26T21:14:46.621954] [INFO] Получен запрос на генерацию тестовой последовательности. QBER input: 4
+[2025-11-26T21:14:51.761579] [WARNING] Не удалось отправить тестовую последовательность на сервер Б: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/save_test_sequence (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000024DF9EB38F0>, 'Connection to localhost timed out. (connect timeout=2)'))
+[2025-11-26T21:16:11.257950] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T21:16:11.257950] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T21:16:11.258947] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T21:16:11.258947] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T21:16:11.258947] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T21:16:22.728085] [INFO] Получен запрос на генерацию тестовой последовательности. QBER input: 4
+[2025-11-26T21:16:28.269318] [WARNING] Не удалось отправить тестовую последовательность на сервер Б: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/save_test_sequence (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000020A9C763A10>, 'Connection to localhost timed out. (connect timeout=2)'))
+[2025-11-26T21:20:45.977223] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T21:20:45.977223] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T21:20:45.978221] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T21:20:45.978221] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T21:20:45.978221] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T21:20:53.151275] [INFO] Получен запрос на генерацию тестовой последовательности. QBER input: 4
+[2025-11-26T21:20:59.128969] [WARNING] Не удалось отправить тестовую последовательность на сервер Б: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/save_test_sequence (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000024340CB20F0>, 'Connection to localhost timed out. (connect timeout=2)'))
+[2025-11-26T21:21:10.927614] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T21:21:10.927614] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T21:21:10.928614] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T21:21:10.928614] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T21:21:10.928614] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T21:21:24.850661] [INFO] Получен запрос на генерацию тестовой последовательности. QBER input: 4
+[2025-11-26T21:21:38.703432] [INFO] Получен запрос на генерацию тестовой последовательности. QBER input: 4
+[2025-11-26T22:59:11.217601] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T22:59:11.217601] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T22:59:11.217601] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T22:59:11.217601] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T22:59:11.221318] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T22:59:20.168295] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T22:59:20.169478] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T22:59:20.170375] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T22:59:20.171285] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T22:59:20.171648] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T22:59:45.070980] [INFO] Генерация тестовой последовательности. QBER: 6.08%
+[2025-11-26T23:00:01.659010] [INFO] Генерация тестовой последовательности. QBER: 3.11%
+[2025-11-26T23:13:33.477723] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:13:33.478719] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:13:33.481450] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:13:33.481710] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:13:33.488699] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:13:44.094077] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T23:13:44.094077] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T23:13:44.094609] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T23:13:44.095074] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T23:13:44.095178] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T23:14:26.389070] [INFO] Генерация тестовой последовательности. QBER: 4.0%
+[2025-11-26T23:14:42.478221] [ERROR] Ошибка при выполнении запроса: INSERT INTO keys (key_id, status, length) VALUES (?, ?, ?), параметры: ('key_testA_20251126231427', 'Активен', 256), ошибка: UNIQUE constraint failed: keys.key_id
+[2025-11-26T23:14:42.483226] [ERROR] Ошибка сохранения восстановленного ключа: UNIQUE constraint failed: keys.key_id
+[2025-11-26T23:17:58.539827] [INFO] Генерация тестовой последовательности. QBER: 3.0%
+[2025-11-26T23:25:22.030459] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:25:22.030459] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:25:22.030459] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:25:22.030459] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:25:22.031424] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:25:23.456405] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:25:23.456405] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:25:23.457243] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:25:23.457541] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:25:23.457825] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:26:10.694906] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T23:26:10.695826] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T23:26:10.695902] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T23:26:10.696225] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T23:26:10.696462] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T23:26:11.002904] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T23:26:11.003908] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T23:26:11.004135] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T23:26:11.004260] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T23:26:11.004487] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-26T23:26:40.239813] [INFO] Генерация тестовой последовательности. QBER: 5.0%
+[2025-11-26T23:27:53.097053] [INFO] Генерация тестовой последовательности. QBER: 3.0%
+[2025-11-26T23:28:29.326892] [INFO] Генерация тестовой последовательности. QBER: 3.0%
+[2025-11-26T23:54:03.847047] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:54:03.848044] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:54:03.848044] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:54:03.849041] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:54:03.850034] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:54:03.853288] [INFO] Создан новый мастер-ключ для хранилища
+[2025-11-26T23:54:04.271201] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:54:04.272198] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:54:04.272198] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:54:04.272198] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:54:04.273165] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:54:29.161288] [ERROR] Ошибка при выполнении запроса: SELECT bits, bases, sifted_key FROM raw_data WHERE sequence_id = ?, параметры: ('testA_20251126212141',), ошибка: no such column: sifted_key
+[2025-11-26T23:54:29.162080] [ERROR] Ошибка при выполнении запроса: SELECT bits, bases, sifted_key FROM raw_data WHERE sequence_id = ?, параметры: ('testA_20251126212141',), ошибка: no such column: sifted_key
+[2025-11-26T23:54:29.169867] [ERROR] Ошибка восстановления ключа: no such column: sifted_key
+[2025-11-26T23:54:29.187403] [ERROR] Ошибка восстановления ключа: no such column: sifted_key
+[2025-11-26T23:55:41.894027] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:55:41.894027] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:55:41.895241] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:55:41.896213] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:55:41.897211] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:55:44.411956] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:55:44.412935] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:55:44.414929] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:55:44.416221] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:55:44.416475] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:56:00.648525] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:56:00.649597] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:56:00.649797] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:56:00.650096] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:56:00.650595] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:56:03.134690] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:56:03.135687] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:56:03.135687] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:56:03.135687] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:56:03.135687] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:56:46.894133] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:56:46.895129] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:56:46.895129] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:56:46.895506] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:56:46.895749] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:56:50.488261] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:56:50.489256] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:56:50.489871] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:56:50.490247] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:56:50.490385] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:03.107238] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:03.107238] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:03.108348] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:03.108634] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:03.109233] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:06.131240] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:06.131240] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:06.133351] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:06.133351] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:06.134381] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:10.689046] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:10.689046] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:10.690043] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:10.690206] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:10.690497] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:10.691040] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:10.692039] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:12.325347] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:12.325347] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:12.325347] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:12.326005] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:12.326345] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:12.327342] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:12.327342] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:46.267039] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:46.268037] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:46.268037] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:46.269445] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:46.270462] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:46.272437] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:46.272604] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:47.768780] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:47.769777] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:47.770105] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:47.770348] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:47.770774] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:47.771772] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:57:47.771772] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:58:07.619375] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:58:07.619375] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:58:07.620146] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:58:07.620423] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:58:07.620717] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:58:07.621369] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:58:07.622418] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:58:20.972231] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:58:20.972779] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:58:20.973215] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:58:20.973638] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:58:20.974225] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:58:20.975633] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:58:20.976631] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:58:22.484530] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:58:22.484635] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:58:22.484968] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:58:22.485276] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:58:22.485633] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:58:22.486662] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:58:22.486662] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:58:37.343319] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:58:37.344315] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:58:37.344937] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:58:37.345302] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:58:37.345494] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:58:37.346301] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:58:37.347298] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:59:19.995692] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:59:19.995692] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:59:19.996657] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:59:19.996789] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:59:19.997036] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:59:19.999651] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:59:19.999651] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:59:21.492311] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:59:21.493313] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:59:21.493693] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:59:21.493933] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:59:21.494274] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:59:21.495271] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-26T23:59:21.495271] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:10:01.389465] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:10:01.389465] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:10:01.389888] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:10:01.390160] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:10:01.390462] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:10:01.391460] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:10:01.391460] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:10:01.756110] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:10:01.756110] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:10:01.757287] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:10:01.757441] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:10:01.757805] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:10:01.759284] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:10:01.759571] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:10:11.285120] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:10:11.285884] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:10:11.286199] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:10:11.286411] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:10:11.287168] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:10:11.289134] [INFO] Создан новый мастер-ключ для хранилища
+[2025-11-27T00:10:11.294794] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:10:11.295342] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:10:11.761965] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:10:11.761965] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:10:11.761965] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:10:11.762841] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:10:11.763251] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:10:11.764441] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:10:11.764927] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:11:42.829180] [WARNING] Ключ key_testA_20251126231427 не найден
+[2025-11-27T00:11:48.119573] [WARNING] Ключ key_testA_20251126231427 не найден
+[2025-11-27T00:11:54.121538] [ERROR] Ошибка при выполнении запроса: SELECT bits, bases, sifted_key FROM raw_data WHERE sequence_id = ?, параметры: ('testA_20251126231801',), ошибка: no such column: sifted_key
+[2025-11-27T00:11:54.121763] [ERROR] Ошибка при выполнении запроса: SELECT bits, bases, sifted_key FROM raw_data WHERE sequence_id = ?, параметры: ('testA_20251126231801',), ошибка: no such column: sifted_key
+[2025-11-27T00:11:54.129003] [ERROR] Ошибка восстановления ключа: no such column: sifted_key
+[2025-11-27T00:11:54.140241] [ERROR] Ошибка восстановления ключа: no such column: sifted_key
+[2025-11-27T00:12:51.496358] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:12:51.497361] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:12:51.498357] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:12:51.499351] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:12:51.500348] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:12:51.501343] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:12:51.501343] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:12:51.790497] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:12:51.790497] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:12:51.790497] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:12:51.791495] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:12:51.791495] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:12:51.792493] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:12:51.792493] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:12:58.425470] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:12:58.425470] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:12:58.426465] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:12:58.427466] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:12:58.427466] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:12:58.430454] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:12:58.430454] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:12:59.160933] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:12:59.161630] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:12:59.162049] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:12:59.162595] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:12:59.162743] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:12:59.165490] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:12:59.166653] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:00.731521] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:00.733513] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:00.733913] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:00.734502] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:00.734647] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:00.736497] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:00.736869] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:01.051621] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:01.051621] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:01.051621] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:01.052587] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:01.052739] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:01.053616] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:01.053616] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:07.719412] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:07.719412] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:07.720409] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:07.720651] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:07.720942] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:07.721407] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:07.722404] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:08.066572] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:08.066572] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:08.067502] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:08.067502] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:08.068499] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:08.070494] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:08.071492] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:19.424592] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:19.424592] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:19.425654] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:19.425964] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:19.426582] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:19.427796] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:19.427796] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:20.993174] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:20.994171] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:20.994748] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:20.995185] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:20.996163] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:20.998158] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:20.998608] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:22.298436] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:22.299434] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:22.299434] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:22.300141] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:22.300630] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:22.301428] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:22.301428] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:25.891717] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:25.892714] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:25.892901] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:25.893210] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:25.893713] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:25.894711] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:25.894711] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:26.107373] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:26.108465] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:26.108768] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:26.109372] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:26.111379] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:26.113358] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:26.113358] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:32.629749] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:32.630756] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:32.631750] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:32.632753] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:32.633738] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:32.634746] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:32.635044] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:32.730931] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:32.731237] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:32.731237] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:32.731696] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:32.732186] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:32.733184] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:32.733364] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:34.136372] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:34.137539] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:34.137661] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:34.138341] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:34.139609] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:34.141331] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:34.141331] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:40.583406] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:40.584405] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:40.584518] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:40.584806] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:40.585401] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:40.586399] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:40.588397] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:41.214549] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:41.214549] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:41.215559] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:41.215736] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:41.216074] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:41.216544] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:41.217550] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:13:42.125269] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:42.126221] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:42.127354] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:42.127943] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:42.128350] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:42.129348] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:13:42.129691] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:14:17.048468] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:14:17.049114] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:14:17.049465] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:14:17.049802] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:14:17.049950] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:14:17.056830] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:14:17.057190] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:14:17.088107] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:14:17.088107] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:14:17.088611] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:14:17.088876] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:14:17.089125] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:14:17.093094] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:14:17.093374] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:14:58.531877] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:14:58.531877] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:14:58.532888] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:14:58.533294] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:14:58.533871] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:14:58.537873] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:14:58.537873] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:14:58.538861] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:14:58.538861] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:14:58.538861] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:14:58.539857] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:14:58.539857] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:14:58.541884] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:14:58.541884] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:06.922774] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:06.922774] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:06.923772] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:06.923976] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:06.924242] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:06.924767] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:06.925765] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:07.289501] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:15:07.290532] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:15:07.291131] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:15:07.291496] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:15:07.291496] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:15:07.293501] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:15:07.294128] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:15:31.213788] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:15:31.213788] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:15:31.213788] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:15:31.213788] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:15:31.214755] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:15:31.220867] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:15:31.221833] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:15:31.749338] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:31.749338] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:31.749338] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:31.749338] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:31.750304] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:31.755315] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:31.756290] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:39.002579] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:15:39.003576] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:15:39.003576] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:15:39.003576] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:15:39.003576] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:15:39.005571] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:15:39.005777] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:15:39.395883] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:39.395883] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:39.396849] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:39.396849] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:39.396849] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:39.397847] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:39.398844] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:52.477053] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:52.478051] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:52.478135] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:52.478407] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:52.478982] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:52.480045] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:52.480045] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:52.813985] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:52.813985] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:52.814947] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:52.814947] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:52.814947] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:52.815976] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:15:52.815976] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:16:05.990052] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:16:05.990052] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:16:05.990783] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:16:05.991086] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:16:05.991660] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:16:05.992210] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:16:05.993213] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:16:06.872056] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:16:06.872056] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:16:06.873021] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:16:06.873021] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:16:06.873021] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:16:06.874019] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:16:06.875016] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:16:57.065331] [INFO] Генерация тестовой последовательности. QBER: 4.0%
+[2025-11-27T00:17:19.942422] [DEBUG] Блок 1/1: исправлено 0 ошибок, время 0.5мс
+[2025-11-27T00:17:19.942422] [DEBUG] Блок 1/1: исправлено 0 ошибок, время 0.9мс
+[2025-11-27T00:17:19.943153] [INFO] Восстановление ключа testA_20251127001659: 100.0% блоков верифицировано, 0 ошибок исправлено, время 3.2мс, хэш совпадает
+[2025-11-27T00:17:19.943619] [INFO] Восстановление ключа testA_20251127001659: 100.0% блоков верифицировано, 0 ошибок исправлено, время 2.8мс, хэш совпадает
+[2025-11-27T00:17:19.960277] [INFO] Ключ key_testA_20251127001659 сохранён (зашифрован: True)
+[2025-11-27T00:17:19.964112] [ERROR] Ошибка при выполнении запроса: 
+                INSERT INTO keys (key_id, key_data, key_hash, status, length, is_encrypted, created_at)
+                VALUES (?, ?, ?, ?, ?, ?, datetime('now'))
+            , параметры: ('key_testA_20251127001659', 'a022a50dc5e2d656d1a15b2164b74ce28107e765c5845c403d83d73f0ab8d07a79e90384b13bcead2e50d9e8b348277a7d362f5185b3e65a7be64d8fee07606d', '871e9988cd17171b4338bfa3815eb035751e062043753bc91f865aac3d711811', 'Активен', 256, True), ошибка: UNIQUE constraint failed: keys.key_id
+[2025-11-27T00:17:19.969064] [ERROR] Ошибка сохранения восстановленного ключа: UNIQUE constraint failed: keys.key_id
+[2025-11-27T00:17:31.513852] [WARNING] Ключ key_testA_20251127001659 не найден
+[2025-11-27T00:19:49.528100] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:19:49.529097] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:19:49.529097] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:19:49.529097] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:19:49.530095] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:19:49.532091] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:19:49.532091] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:19:50.292544] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:19:50.292775] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:19:50.293130] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:19:50.293542] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:19:50.293691] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:19:50.294914] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:19:50.295243] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:19:52.876400] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:19:52.877407] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:19:52.878397] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:19:52.879393] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:19:52.879894] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:19:52.880383] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:19:52.881380] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:19:53.080849] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:19:53.080849] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:19:53.081662] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:19:53.081846] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:19:53.081846] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:19:53.083467] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:19:53.083841] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:31.663370] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:31.663370] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:31.664408] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:31.664677] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:31.664944] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:31.665365] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:31.666369] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:31.784048] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:31.784048] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:31.785045] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:31.785045] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:31.785605] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:31.786042] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:31.787046] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:34.052137] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:34.052137] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:34.053177] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:34.053484] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:34.054132] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:34.055130] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:34.055130] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:34.193759] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:34.193759] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:34.193759] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:34.194756] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:34.194936] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:34.195753] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:34.195753] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:43.940917] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:43.941914] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:43.942096] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:43.942096] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:43.942911] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:43.943918] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:43.944906] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:43.952886] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:43.952886] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:43.953436] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:43.953677] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:43.953914] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:43.954880] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:43.955290] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:45.339959] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:45.340956] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:45.341451] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:45.341954] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:45.342087] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:45.342981] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:45.343555] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:45.358938] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:45.358938] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:45.359905] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:45.360011] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:45.360279] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:45.360904] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:45.360904] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:53.799507] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:53.799507] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:53.800502] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:53.800833] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:53.801500] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:53.802497] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:53.803494] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:53.845383] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:53.846379] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:53.846483] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:53.847376] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:53.847376] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:53.849372] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:53.849372] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:56.274720] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:56.274720] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:56.275438] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:56.275791] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:56.276138] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:56.277711] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:56.277711] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:21:56.280703] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:56.281701] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:56.282105] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:56.282697] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:56.282852] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:56.284693] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:21:56.284693] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:22:03.741859] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:22:03.742856] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:22:03.743285] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:22:03.743401] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:22:03.743852] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:22:03.744851] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:22:03.745848] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:22:03.766791] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:22:03.767789] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:22:03.768081] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:22:03.768319] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:22:03.768786] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:22:03.769783] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:22:03.769783] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:22:06.139399] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:22:06.139399] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:22:06.140015] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:22:06.140361] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:22:06.140536] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:22:06.141384] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:22:06.141384] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:22:06.161334] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:22:06.161334] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:22:06.161840] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:22:06.162047] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:22:06.162571] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:22:06.163300] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:22:06.163778] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:23:28.224060] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:23:28.225058] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:23:28.225440] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:23:28.225733] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:23:28.226055] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:23:28.227059] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:23:28.228055] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:23:28.249046] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:23:28.250043] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:23:28.250169] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:23:28.250426] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:23:28.250677] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:23:28.251054] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:23:28.252038] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:24:29.400276] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:24:29.400276] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:24:29.400276] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:24:29.400996] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:24:29.401273] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:24:29.402271] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:24:29.402271] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:24:29.750244] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:24:29.751241] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:24:29.751341] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:24:29.751602] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:24:29.751856] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:24:29.753235] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:24:29.753235] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:25:19.492249] [INFO] Генерация тестовой последовательности. QBER: 10.0%
+[2025-11-27T00:25:25.877354] [WARNING] Не удалось отправить тестовую последовательность на сервер Б: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/save_test_sequence (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000002451DE88D40>, 'Connection to localhost timed out. (connect timeout=2)'))
+[2025-11-27T00:26:02.959347] [WARNING] Ключ key_testA_20251127001659 не найден
+[2025-11-27T00:26:11.197887] [DEBUG] Блок 1/1: исправлено 0 ошибок, время 0.5мс
+[2025-11-27T00:26:11.198743] [INFO] Восстановление ключа testA_20251127002521: 100.0% блоков верифицировано, 0 ошибок исправлено, время 3.1мс, хэш совпадает
+[2025-11-27T00:26:11.199459] [DEBUG] Блок 1/1: исправлено 0 ошибок, время 0.5мс
+[2025-11-27T00:26:11.199776] [INFO] Восстановление ключа testA_20251127002521: 100.0% блоков верифицировано, 0 ошибок исправлено, время 2.5мс, хэш совпадает
+[2025-11-27T00:26:11.239681] [INFO] Ключ key_testA_20251127002521 сохранён (зашифрован: True)
+[2025-11-27T00:26:11.251782] [ERROR] Ошибка при выполнении запроса: 
+                    INSERT INTO keys (key_id, key_data, key_hash, status, length, is_encrypted, created_at)
+                    VALUES (?, ?, ?, ?, ?, ?, datetime('now'))
+                , параметры: ('key_testA_20251127002521', 'dd599fa18a3b2e38407312b49601a3cb749df13a04e46263e90e565279c55d770bee2f4b0b4d61251692ad1034b39bee3042b9219e1d4392416e73c6f913e809', 'e5409684b05cffd7211a4e15dffe1f50757a6335fa136815d4799c265ede61cb', 'Активен', 256, True), ошибка: UNIQUE constraint failed: keys.key_id
+[2025-11-27T00:26:11.257101] [ERROR] Ошибка сохранения восстановленного ключа: UNIQUE constraint failed: keys.key_id
+[2025-11-27T00:26:15.254173] [WARNING] Не удалось синхронизировать восстановленный ключ: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/sync_recovered_key (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000002451E16D6D0>, 'Connection to localhost timed out. (connect timeout=2)'))
+[2025-11-27T00:40:29.556294] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:40:29.557260] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:40:29.557260] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:40:29.557260] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:40:29.557260] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:40:29.558265] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:40:29.559448] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:40:29.904399] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:40:29.904399] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:40:29.905396] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:40:29.905466] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:40:29.906027] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:40:29.906394] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:40:29.907632] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:40:57.993250] [INFO] Генерация тестовой последовательности. QBER: 4.0%
+[2025-11-27T00:41:03.805779] [WARNING] Не удалось отправить тестовую последовательность на сервер Б: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/save_test_sequence (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000022E60B68AD0>, 'Connection to localhost timed out. (connect timeout=2)'))
+[2025-11-27T00:41:14.410346] [DEBUG] Блок 1/1: исправлено 0 ошибок, время 0.5мс
+[2025-11-27T00:41:14.411343] [DEBUG] Блок 1/1: исправлено 0 ошибок, время 0.5мс
+[2025-11-27T00:41:14.411343] [INFO] Восстановление ключа testA_20251127004059: 100.0% блоков верифицировано, 0 ошибок исправлено, время 2.0мс, хэш совпадает
+[2025-11-27T00:41:14.411738] [INFO] Восстановление ключа testA_20251127004059: 100.0% блоков верифицировано, 0 ошибок исправлено, время 1.8мс, хэш совпадает
+[2025-11-27T00:41:14.425608] [INFO] Ключ key_testA_20251127004059 сохранён (зашифрован: True)
+[2025-11-27T00:41:14.430514] [ERROR] Ошибка при выполнении запроса: 
+                    INSERT INTO keys (key_id, key_data, key_hash, status, length, is_encrypted, created_at)
+                    VALUES (?, ?, ?, ?, ?, ?, datetime('now'))
+                , параметры: ('key_testA_20251127004059', '3388e6d919c341cf99c2a94436541a299479156ccc6972ee3dcec5d1ef9ab0d62c753dc2e8894f2e776e2732d603cdecd0fc374429f056c321f3545b76f2f04d', 'f45c7cf3ddd2c3f4a4aee9330e4b454e0e6ab0e7fbf082316b92b6804c5e3a15', 'Активен', 256, True), ошибка: UNIQUE constraint failed: keys.key_id
+[2025-11-27T00:41:14.435409] [ERROR] Ошибка сохранения восстановленного ключа: UNIQUE constraint failed: keys.key_id
+[2025-11-27T00:41:18.474726] [WARNING] Не удалось синхронизировать восстановленный ключ: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/sync_recovered_key (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000022E61A08FE0>, 'Connection to localhost timed out. (connect timeout=2)'))
+[2025-11-27T00:41:32.505656] [WARNING] Ключ key_testA_20251127001659 не найден
+[2025-11-27T00:42:54.665526] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:42:54.667656] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:42:54.668655] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:42:54.668986] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:42:54.668986] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:42:54.670649] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:42:54.670649] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:42:58.272399] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:42:58.272399] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:42:58.273398] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:42:58.273398] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:42:58.273398] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:42:58.274394] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:42:58.274394] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:43:19.009340] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:43:19.010325] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:43:19.010325] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:43:19.010937] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:43:19.011321] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:43:19.012318] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:43:19.012318] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:43:22.505642] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:43:22.506674] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:43:22.507001] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:43:22.507257] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:43:22.507657] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:43:22.509634] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:43:22.510633] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:43:27.043763] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:43:27.043763] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:43:27.043763] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:43:27.044729] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:43:27.044982] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:43:27.045725] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:43:27.046722] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:43:28.635408] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:43:28.635408] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:43:28.636486] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:43:28.636591] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:43:28.636877] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:43:28.637484] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:43:28.637484] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:44:24.811357] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:44:24.811357] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:44:24.811357] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:44:24.811357] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:44:24.812355] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:44:24.813356] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:44:24.814349] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:44:25.257219] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:44:25.258216] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:44:25.258216] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:44:25.258216] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:44:25.258216] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:44:25.261209] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:44:25.261209] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:44:36.905263] [INFO] Генерация тестовой последовательности. QBER: 5.0%
+[2025-11-27T00:44:43.870424] [WARNING] Не удалось отправить тестовую последовательность на сервер Б: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/save_test_sequence (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000001FF21EBA420>, 'Connection to localhost timed out. (connect timeout=2)'))
+[2025-11-27T00:44:48.502104] [DEBUG] Блок 1/1: исправлено 0 ошибок, время 0.5мс
+[2025-11-27T00:44:48.502369] [INFO] Восстановление ключа testA_20251127004439: 100.0% блоков верифицировано, 0 ошибок исправлено, время 2.5мс, хэш совпадает
+[2025-11-27T00:44:48.503308] [DEBUG] Блок 1/1: исправлено 0 ошибок, время 0.5мс
+[2025-11-27T00:44:48.503308] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:44:48.503741] [INFO] Восстановление ключа testA_20251127004439: 100.0% блоков верифицировано, 0 ошибок исправлено, время 2.1мс, хэш совпадает
+[2025-11-27T00:44:48.504099] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:44:48.518055] [INFO] Ключ key_testA_20251127004439 сохранён в защищённое хранилище
+[2025-11-27T00:44:48.522600] [INFO] Ключ key_testA_20251127004439 сохранён в защищённое хранилище
+[2025-11-27T00:44:48.531408] [INFO] Ключ key_testA_20251127004439 сохранён в защищённое хранилище
+[2025-11-27T00:44:48.532422] [INFO] Ключ key_testA_20251127004439 сохранён в защищённое хранилище
+[2025-11-27T00:44:52.548611] [WARNING] Не удалось синхронизировать восстановленный ключ: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/sync_recovered_key (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000001FF21EBBFB0>, 'Connection to localhost timed out. (connect timeout=2)'))
+[2025-11-27T00:44:52.548769] [WARNING] Не удалось синхронизировать восстановленный ключ: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/sync_recovered_key (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000001FF21EE5250>, 'Connection to localhost timed out. (connect timeout=2)'))
+[2025-11-27T00:45:04.580586] [INFO] Ключ key_testA_20251127004439 помечен как использованный пользователем 3
+[2025-11-27T00:45:04.588430] [INFO] Сообщение зашифровано: key=key_testA_20251127004439, size=6 байт, time=32.02мс
+[2025-11-27T00:45:08.695485] [WARNING] Ошибка отправки сообщения: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/receive_encrypted_message (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001FF21F757F0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение'))
+[2025-11-27T00:46:24.180229] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:46:24.180518] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:46:24.180625] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:46:24.180923] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:46:24.181412] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:46:24.182415] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:46:24.182881] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:46:24.524826] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:46:24.525824] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:46:24.525824] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:46:24.525824] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:46:24.525824] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:46:24.527818] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:46:24.527954] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:47:09.496592] [WARNING] Ключ key_testA_20251127004439 недоступен (статус: Использован)
+[2025-11-27T00:47:16.843814] [INFO] Генерация тестовой последовательности. QBER: 7.0%
+[2025-11-27T00:47:31.826407] [DEBUG] Блок 1/1: исправлено 0 ошибок, время 0.8мс
+[2025-11-27T00:47:31.827404] [DEBUG] Блок 1/1: исправлено 0 ошибок, время 0.5мс
+[2025-11-27T00:47:31.827404] [INFO] Восстановление ключа testA_20251127004718: 100.0% блоков верифицировано, 0 ошибок исправлено, время 2.7мс, хэш совпадает
+[2025-11-27T00:47:31.828400] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:47:31.828400] [INFO] Восстановление ключа testA_20251127004718: 100.0% блоков верифицировано, 0 ошибок исправлено, время 2.5мс, хэш совпадает
+[2025-11-27T00:47:31.829128] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:47:31.843603] [INFO] Ключ key_testA_20251127004718 сохранён в защищённое хранилище
+[2025-11-27T00:47:31.847870] [INFO] Ключ key_testA_20251127004718 сохранён в защищённое хранилище
+[2025-11-27T00:47:31.858881] [INFO] Ключ key_testA_20251127004718 сохранён в защищённое хранилище
+[2025-11-27T00:47:31.859877] [INFO] Ключ key_testA_20251127004718 сохранён в защищённое хранилище
+[2025-11-27T00:47:33.885298] [ERROR] Ошибка при выполнении запроса: INSERT INTO keys (key_id, status, length) VALUES (?, ?, ?), параметры: ('key_testA_20251127004718', 'Активен', 256), ошибка: UNIQUE constraint failed: keys.key_id
+[2025-11-27T00:47:33.892007] [ERROR] Ошибка синхронизации восстановленного ключа: UNIQUE constraint failed: keys.key_id
+[2025-11-27T00:47:43.387393] [WARNING] Ключ key_testA_20251127004439 недоступен (статус: Использован)
+[2025-11-27T00:47:49.906359] [INFO] Ключ key_testA_20251127004718 помечен как использованный пользователем 3
+[2025-11-27T00:47:49.913515] [INFO] Сообщение зашифровано: key=key_testA_20251127004718, size=7 байт, time=32.07мс
+[2025-11-27T00:47:52.000698] [INFO] Получено зашифрованное сообщение от Admin (key=key_testA_20251127004718)
+[2025-11-27T00:50:48.615143] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:50:48.615143] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:50:48.615868] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:50:48.616181] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:50:48.616429] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:50:48.619135] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:50:48.620185] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:50:48.774748] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:50:48.775713] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:50:48.775866] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:50:48.776126] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:50:48.776400] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:50:48.776796] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:50:48.777819] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:50:51.773379] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:50:51.774377] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:50:51.774377] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:50:51.774923] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:50:51.775374] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:50:51.776581] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:50:51.777376] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:50:51.853742] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:50:51.853742] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:50:51.853742] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:50:51.853742] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:50:51.854703] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:50:51.855737] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:50:51.856239] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:07.768365] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:07.769557] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:07.769771] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:07.770131] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:07.770387] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:07.771534] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:07.771942] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:07.776346] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:07.776346] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:07.776346] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:07.779348] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:07.781332] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:07.784510] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:07.784912] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:10.361999] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:10.362998] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:10.362998] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:10.363394] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:10.363640] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:10.365991] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:10.367011] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:10.373969] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:10.373969] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:10.374966] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:10.374966] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:10.374966] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:10.376961] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:10.376961] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:15.034495] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:15.036445] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:15.037435] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:15.037435] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:15.038428] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:15.039425] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:15.039425] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:15.055384] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:15.055384] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:15.055384] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:15.055384] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:15.056381] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:15.057379] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:15.058375] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:16.613189] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:16.615201] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:16.616180] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:16.616416] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:16.617177] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:16.620413] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:16.620413] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:16.622394] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:16.623391] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:16.623597] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:16.623836] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:16.624074] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:16.624439] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:16.625385] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:24.206768] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:24.206768] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:24.207724] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:24.207901] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:24.208147] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:24.208722] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:24.209720] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:24.242663] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:24.242663] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:24.243090] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:24.243343] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:24.243629] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:24.244666] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:24.245327] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:27.741474] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:27.742440] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:27.742440] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:27.742985] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:27.743438] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:27.744469] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:27.744469] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:27.776351] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:27.777348] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:27.777708] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:27.777976] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:27.778345] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:27.781338] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:27.781338] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:33.311822] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:33.312820] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:33.312820] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:33.312820] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:33.313817] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:33.314813] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:33.315811] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:33.362687] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:33.363736] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:33.364134] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:33.364679] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:33.364679] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:33.366856] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:33.367671] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:36.203647] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:36.204762] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:36.204762] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:36.205654] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:36.205654] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:36.208239] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:36.208740] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:36.238524] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:36.238807] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:36.239521] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:36.239521] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:36.240570] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:36.242561] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:36.242561] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:42.887321] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:42.887866] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:42.888071] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:42.888358] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:42.888623] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:42.890316] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:42.891315] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:42.931203] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:42.931583] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:42.931919] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:42.932216] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:42.932504] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:42.933197] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:42.934195] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:45.434528] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:45.435524] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:45.436211] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:45.436312] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:45.436587] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:45.437551] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:45.437551] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:51:45.477427] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:45.478543] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:45.478861] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:45.479131] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:45.479447] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:45.480446] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:51:45.482412] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:52:36.348265] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:52:36.348265] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:52:36.349324] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:52:36.349612] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:52:36.350104] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:52:36.350287] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:52:36.351257] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:52:36.391150] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:52:36.391150] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:52:36.391150] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:52:36.391150] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:52:36.392147] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:52:36.393144] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:52:36.393144] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:52:45.974705] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:52:45.977207] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:52:45.978204] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:52:45.981240] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:52:45.984189] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:52:45.988178] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:52:45.990172] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:52:46.490523] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:52:46.490908] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:52:46.490908] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:52:46.491266] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:52:46.491502] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:52:46.491907] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:52:46.492905] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:53:10.343400] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:53:10.345349] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:53:10.348341] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:53:10.351344] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:53:10.355322] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:53:10.361310] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:53:10.362304] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:53:11.127750] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:53:11.127750] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:53:11.127750] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:53:11.128749] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:53:11.128969] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:53:11.129746] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:53:11.130743] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:53:20.529224] [INFO] Генерация тестовой последовательности. QBER: 6.0%
+[2025-11-27T00:53:33.943957] [DEBUG] Блок 1/1: исправлено 0 ошибок, время 0.6мс
+[2025-11-27T00:53:33.944714] [DEBUG] Блок 1/1: исправлено 0 ошибок, время 0.5мс
+[2025-11-27T00:53:33.945341] [INFO] Восстановление ключа testA_20251127005322: 100.0% блоков верифицировано, 0 ошибок исправлено, время 2.9мс, хэш совпадает
+[2025-11-27T00:53:33.945712] [INFO] Восстановление ключа testA_20251127005322: 100.0% блоков верифицировано, 0 ошибок исправлено, время 2.3мс, хэш совпадает
+[2025-11-27T00:53:33.945712] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:53:33.945712] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:53:33.960137] [INFO] Ключ key_testA_20251127005322 сохранён в защищённое хранилище
+[2025-11-27T00:53:33.965139] [INFO] Ключ key_testA_20251127005322 сохранён в защищённое хранилище
+[2025-11-27T00:53:33.971118] [INFO] Ключ key_testA_20251127005322 сохранён в защищённое хранилище
+[2025-11-27T00:53:33.972149] [INFO] Ключ key_testA_20251127005322 сохранён в защищённое хранилище
+[2025-11-27T00:53:35.993418] [ERROR] Ошибка при выполнении запроса: INSERT INTO keys (key_id, status, length) VALUES (?, ?, ?), параметры: ('key_testA_20251127005322', 'Активен', 256), ошибка: UNIQUE constraint failed: keys.key_id
+[2025-11-27T00:53:35.998404] [ERROR] Ошибка синхронизации восстановленного ключа: UNIQUE constraint failed: keys.key_id
+[2025-11-27T00:53:47.673970] [INFO] Ключ key_testA_20251127005322 помечен как использованный пользователем 3
+[2025-11-27T00:53:47.681569] [INFO] Сообщение зашифровано: key=key_testA_20251127005322, size=7 байт, time=28.32мс
+[2025-11-27T00:53:49.771595] [INFO] Получено зашифрованное сообщение от Admin (key=key_testA_20251127005322)
+[2025-11-27T00:54:27.858381] [WARNING] Ключ key_testA_20251127005322 не найден
+[2025-11-27T00:54:35.292061] [INFO] Генерация тестовой последовательности. QBER: 4.0%
+[2025-11-27T00:54:46.689253] [DEBUG] Блок 1/1: исправлено 0 ошибок, время 0.5мс
+[2025-11-27T00:54:46.690250] [INFO] Восстановление ключа testB_20251127005436: 100.0% блоков верифицировано, 0 ошибок исправлено, время 1.6мс, хэш совпадает
+[2025-11-27T00:54:46.690643] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:54:46.701822] [INFO] Ключ key_testB_20251127005436 сохранён в защищённое хранилище
+[2025-11-27T00:54:46.706035] [INFO] Ключ key_testB_20251127005436 сохранён в защищённое хранилище
+[2025-11-27T00:55:15.477649] [WARNING] Ключ key_testA_20251127005322 не найден
+[2025-11-27T00:55:19.176996] [INFO] Ключ key_testB_20251127005436 помечен как использованный пользователем 4
+[2025-11-27T00:55:19.185772] [INFO] Сообщение зашифровано: key=key_testB_20251127005436, size=2 байт, time=32.04мс
+[2025-11-27T00:55:21.242690] [INFO] Получено зашифрованное сообщение от Max (key=key_testB_20251127005436)
+[2025-11-27T00:57:49.973324] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:57:49.973963] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:57:49.974187] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:57:49.974455] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:57:49.974688] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:57:49.976021] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:57:49.976315] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:57:50.326455] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:57:50.327003] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:57:50.327525] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:57:50.327808] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:57:50.327905] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:57:50.328450] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:57:50.329448] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:58:01.627335] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:58:01.627335] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:58:01.627335] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:58:01.628301] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:58:01.628301] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:58:01.629335] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:58:01.629885] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:58:02.490434] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:58:02.490434] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:58:02.491430] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:58:02.491677] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:58:02.491907] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:58:02.493425] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:58:02.493989] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T00:58:15.385132] [INFO] Генерация тестовой последовательности. QBER: 1.0%
+[2025-11-27T00:58:28.029047] [DEBUG] Блок 1/1: исправлено 0 ошибок, время 0.5мс
+[2025-11-27T00:58:28.030042] [DEBUG] Блок 1/1: исправлено 0 ошибок, время 0.5мс
+[2025-11-27T00:58:28.030454] [INFO] Восстановление ключа testA_20251127005816: 100.0% блоков верифицировано, 0 ошибок исправлено, время 2.3мс, хэш совпадает
+[2025-11-27T00:58:28.030806] [INFO] Восстановление ключа testA_20251127005816: 100.0% блоков верифицировано, 0 ошибок исправлено, время 2.1мс, хэш совпадает
+[2025-11-27T00:58:28.031036] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:58:28.031188] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T00:58:28.041701] [INFO] Ключ key_testA_20251127005816 сохранён в защищённое хранилище
+[2025-11-27T00:58:28.046176] [INFO] Ключ key_testA_20251127005816 сохранён в защищённое хранилище
+[2025-11-27T00:58:28.063519] [INFO] Ключ key_testA_20251127005816 сохранён в защищённое хранилище
+[2025-11-27T00:58:28.065223] [INFO] Ключ key_testA_20251127005816 сохранён в защищённое хранилище
+[2025-11-27T00:58:30.082010] [ERROR] Ошибка при выполнении запроса: INSERT INTO keys (key_id, status, length) VALUES (?, ?, ?), параметры: ('key_testA_20251127005816', 'Активен', 256), ошибка: UNIQUE constraint failed: keys.key_id
+[2025-11-27T00:58:30.086996] [ERROR] Ошибка синхронизации восстановленного ключа: UNIQUE constraint failed: keys.key_id
+[2025-11-27T00:58:40.427792] [INFO] Ключ key_testA_20251127005816 помечен как использованный пользователем 3
+[2025-11-27T00:58:40.436775] [INFO] Сообщение зашифровано: key=key_testA_20251127005816, size=2 байт, time=31.62мс
+[2025-11-27T00:58:42.531502] [INFO] Получено зашифрованное сообщение от Admin (key=key_testA_20251127005816)
+[2025-11-27T01:00:20.116290] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:20.265755] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:20.269734] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:20.270733] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:20.272727] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:20.284708] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:20.286688] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:20.674276] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:20.674276] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:20.678266] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:20.680260] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:20.685261] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:20.699210] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:20.708194] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:24.721895] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:24.721895] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:24.721895] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:24.722867] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:24.723163] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:24.723886] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:24.723886] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:25.041011] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:25.041011] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:25.041011] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:25.041011] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:25.042008] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:25.044020] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:25.044020] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:36.968068] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:36.968068] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:36.969064] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:36.969422] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:36.970062] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:36.971333] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:36.972056] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:36.989790] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:36.989790] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:36.990862] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:36.991163] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:36.991784] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:36.992793] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:36.993248] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:46.561092] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:46.561092] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:46.562084] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:46.563093] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:46.564089] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:46.565077] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:46.566074] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:46.583027] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:46.583027] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:46.583611] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:46.584035] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:46.584150] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:46.585022] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:46.585636] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:48.150551] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:48.150551] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:48.150551] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:48.151548] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:48.151705] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:48.152546] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:48.152546] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:00:48.162535] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:48.163670] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:48.164514] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:48.164514] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:48.164514] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:48.165511] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:00:48.166508] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:01:03.936949] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:01:03.937948] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:01:03.937948] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:01:03.938172] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:01:03.938957] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:01:03.940041] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:01:03.940041] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:01:03.940041] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:01:03.940041] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:01:03.941948] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:01:03.941948] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:01:03.942942] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:01:10.536030] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:01:10.538535] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:02:24.940936] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:02:24.940936] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:02:24.941573] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:02:24.941937] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:02:24.941937] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:02:24.942931] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:02:24.943977] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:02:25.289834] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:02:25.289834] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:02:25.290831] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:02:25.291142] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:02:25.291142] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:02:25.291829] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:02:25.292826] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:02:32.857607] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:02:32.858554] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:02:32.860549] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:02:32.860549] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:02:32.861547] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:02:32.863828] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:02:32.864539] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:02:33.558616] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:02:33.559613] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:02:33.559613] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:02:33.559613] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:02:33.560585] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:02:33.561608] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:02:33.561608] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:02:40.710411] [INFO] Генерация тестовой последовательности. QBER: 8.0%
+[2025-11-27T01:02:53.037374] [DEBUG] Блок 1/1: исправлено 0 ошибок, время 1.1мс
+[2025-11-27T01:02:53.038424] [INFO] Восстановление ключа testA_20251127010242: 100.0% блоков верифицировано, 0 ошибок исправлено, время 3.5мс, хэш совпадает
+[2025-11-27T01:02:53.039368] [DEBUG] Блок 1/1: исправлено 0 ошибок, время 0.5мс
+[2025-11-27T01:02:53.039738] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:02:53.039902] [INFO] Восстановление ключа testA_20251127010242: 100.0% блоков верифицировано, 0 ошибок исправлено, время 1.5мс, хэш совпадает
+[2025-11-27T01:02:53.040364] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:02:53.053666] [INFO] Ключ key_testA_20251127010242 сохранён в защищённое хранилище
+[2025-11-27T01:02:53.057856] [INFO] Ключ key_testA_20251127010242 сохранён в защищённое хранилище
+[2025-11-27T01:02:53.069499] [INFO] Ключ key_testA_20251127010242 сохранён в защищённое хранилище
+[2025-11-27T01:02:53.070501] [INFO] Ключ key_testA_20251127010242 сохранён в защищённое хранилище
+[2025-11-27T01:02:55.095602] [ERROR] Ошибка при выполнении запроса: INSERT INTO keys (key_id, status, length) VALUES (?, ?, ?), параметры: ('key_testA_20251127010242', 'Активен', 256), ошибка: UNIQUE constraint failed: keys.key_id
+[2025-11-27T01:02:55.100561] [ERROR] Ошибка синхронизации восстановленного ключа: UNIQUE constraint failed: keys.key_id
+[2025-11-27T01:03:04.684142] [WARNING] Ключ key_testA_20251127005816 недоступен (статус: Использован)
+[2025-11-27T01:03:09.671708] [INFO] Ключ key_testA_20251127010242 помечен как использованный пользователем 3
+[2025-11-27T01:03:09.679275] [INFO] Сообщение зашифровано: key=key_testA_20251127010242, size=6 байт, time=30.63мс
+[2025-11-27T01:03:11.733458] [INFO] Получено зашифрованное сообщение от Admin (key=key_testA_20251127010242)
+[2025-11-27T01:24:11.347849] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:24:11.348845] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:24:11.349073] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:24:11.350281] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:24:11.350797] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:24:11.352321] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:24:11.352615] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:24:11.702887] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:24:11.703956] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:24:11.704397] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:24:11.704708] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:24:11.704880] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:24:11.705878] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:24:11.705878] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:24:18.266334] [INFO] Генерация тестовой последовательности. QBER: 6.0%
+[2025-11-27T01:24:24.716243] [WARNING] Не удалось отправить тестовую последовательность на сервер Б: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/save_test_sequence (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000002CD98A30A70>, 'Connection to localhost timed out. (connect timeout=2)'))
+[2025-11-27T01:31:43.248890] [INFO] Генерация тестовой последовательности. QBER: 11.0%
+[2025-11-27T01:31:48.587173] [WARNING] Не удалось отправить тестовую последовательность на сервер Б: HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/save_test_sequence (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x000002CD98D94170>, 'Connection to localhost timed out. (connect timeout=2)'))
+[2025-11-27T01:43:30.143432] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:43:30.143432] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:43:30.143432] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:43:30.144430] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:43:30.144430] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:43:30.146426] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:43:30.146426] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:43:30.528404] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:43:30.529402] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:43:30.529402] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:43:30.529402] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:43:30.530397] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:43:30.531395] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:43:30.531395] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-27T01:44:37.330854] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:44:37.330854] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:44:37.330854] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:44:37.331853] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:44:37.331853] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:44:37.339697] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:44:37.339831] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:44:38.820921] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:44:38.820921] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:44:38.821883] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:44:38.821883] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:44:38.821883] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:44:38.822880] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-27T01:44:38.823877] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db

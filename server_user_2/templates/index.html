@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QKD User Panel</title>
+  <title>QKD Admin Panel</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     .sidebar {
@@ -68,44 +68,65 @@
 </head>
 <body class="bg-gray-100">
   <div class="flex flex-col h-screen">
-    <!-- Верхняя панель -->
-    <header class="bg-white shadow p-4 flex justify-between items-center">
-      <div>
-        <h1 class="text-2xl font-bold">QKD User Panel</h1>
+  <!-- Верхняя панель -->
+<header class="bg-white shadow p-4 flex justify-between items-center">
+  <div>
+    <h1 class="text-2xl font-bold">QKD Admin Panel</h1>
+  </div>
+  <div class="flex items-center">
+    {% if 'username' in session %}
+      <div class="mr-4">
+        <span class="font-bold">Пользователь: {{ session['username'] }}</span>
       </div>
-      <div class="flex items-center">
-        <div class="mr-4">
-          <span class="font-bold">QBER:</span>
-          <span id="qber-value" class="ml-2 text-2xl {% if qber_value %} {% if qber_value <= 4 %}text-green-500 {% elif qber_value <= 10 %}text-yellow-500 {% else %}text-red-500 {% endif %} {% else %}text-gray-500 {% endif %}">
-            {% if qber_value %}{{ qber_value }}%{% else %}—{% endif %}
-          </span>
-        </div>
-        <button id="log-toggle" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          Журнал
-        </button>
-      </div>
-    </header>
+      <a href="{{ url_for('logout') }}" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-4">
+        Выйти
+      </a>
+    {% endif %}
+    <div class="mr-4">
+      <span class="font-bold">QBER:</span>
+      <span id="qber-value" class="ml-2 text-2xl {% if qber_value %} {% if qber_value <= 4 %}text-green-500 {% elif qber_value <= 10 %}text-yellow-500 {% else %}text-red-500 {% endif %} {% else %}text-gray-500 {% endif %}">
+        {% if qber_value %}{{ qber_value }}%{% else %}—{% endif %}
+      </span>
+    </div>
+    <button id="log-toggle" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      Журнал
+    </button>
+  </div>
+</header>
+
 
     <!-- Основной контент -->
     <div class="flex flex-1 overflow-hidden">
       <!-- Основная область -->
       <main class="flex-1 p-4 overflow-y-auto">
-        <!-- Вкладки -->
-        <div class="tabs">
-          <div class="tabs-header mb-4 border-b border-gray-200">
-            <button class="tab-button active" data-tab="main">Главная</button>
-          </div>
+      <!-- Вкладки -->
+<div class="tabs">
+  <div class="tabs-header mb-4 border-b border-gray-200">
+    <button class="tab-button active" data-tab="main">Главная</button>
+    {% if session.get('role') == 'admin' %}
+      <button class="tab-button" data-tab="database">База данных</button>
+    {% endif %}
+  </div>
 
           <!-- Вкладка "Главная" -->
           <div id="main" class="tab-content active">
             <div class="flex flex-col items-center h-full">
               <div class="w-full max-w-2xl mb-8">
                 <div class="flex items-center mb-4">
-                  <button id="select-key-button" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded mr-4">
-                    Выбрать ключ
-                  </button>
-                  <span id="selected-key" class="text-gray-700">Ключ не выбран</span>
-                </div>
+  <button id="test-mode-button" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mr-4">
+    Режим тестирования
+  </button>
+  <button id="select-raw-key-button" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded mr-4">
+    Выбор сырого ключа
+  </button>
+  <button id="select-key-button" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded mr-4">
+    Выбор восстановленного ключа
+  </button>
+  <span id="selected-key" class="text-gray-700">Ключ не выбран</span>
+</div>
+
+                <!-- Блок для отображения статуса QKD -->
+
                 <textarea id="message-input" class="w-full p-2 border border-gray-300 rounded mb-4" rows="6" placeholder="Введите текст для шифрования..."></textarea>
                 <div class="mb-4">
                   <label class="block text-sm font-medium text-gray-700 mb-2">Прикрепить файл</label>
@@ -175,6 +196,45 @@
               </div>
             </div>
           </div>
+
+      <!-- Вкладка "База данных" -->
+{% if session.get('role') == 'admin' %}
+  <div id="database" class="tab-content hidden">
+    <div class="overflow-x-auto">
+      <h2 class="text-xl font-bold mb-4">Ключи шифрования</h2>
+      <table class="min-w-full bg-white border border-gray-200 mb-8">
+        <thead>
+          <tr>
+            <th class="py-2 px-4 border-b">ID ключа</th>
+            <th class="py-2 px-4 border-b">Дата генерации</th>
+            <th class="py-2 px-4 border-b">Статус</th>
+            <th class="py-2 px-4 border-b">Длина</th>
+            <th class="py-2 px-4 border-b">Дата использования</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Пусто, данные будут загружаться из базы данных -->
+        </tbody>
+      </table>
+      <h2 class="text-xl font-bold mb-4">Пользователи</h2>
+      <table class="min-w-full bg-white border border-gray-200">
+        <thead>
+          <tr>
+            <th class="py-2 px-4 border-b">Имя</th>
+            <th class="py-2 px-4 border-b">Роль</th>
+            <th class="py-2 px-4 border-b">Статус</th>
+            <th class="py-2 px-4 border-b">Последняя активность</th>
+            <th class="py-2 px-4 border-b">Данные</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Пусто, данные будут загружаться из базы данных -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endif %}
+
         </div>
       </main>
 
@@ -182,7 +242,7 @@
       <div id="key-modal" class="modal">
         <div class="modal-content">
           <div class="flex justify-between items-center mb-4">
-            <h2 class="text-xl font-bold">Выберите ключ</h2>
+            <h2 class="text-xl font-bold">Выбор восстановленного ключа</h2>
             <button id="close-key-modal" class="text-gray-500 hover:text-gray-700">
               <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -194,7 +254,7 @@
               <thead>
                 <tr>
                   <th class="py-2 px-4 border-b">ID ключа</th>
-                  <th class="py-2 px-4 border-b">Дата генерации</th>
+                  <th class="py-2 px-4 border-b">Дата восстановления</th>
                   <th class="py-2 px-4 border-b">Статус</th>
                 </tr>
               </thead>
@@ -218,6 +278,123 @@
           </div>
         </div>
       </div>
+
+    <!-- Модальное окно для режима тестирования -->
+<div id="test-mode-modal" class="modal">
+  <div class="modal-content" style="max-width: 90%; width: 90%; max-height: 80vh;">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-xl font-bold">Режим тестирования (Абонент Б)</h2>
+      <button id="close-test-mode-modal" class="text-gray-500 hover:text-gray-700">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <div class="space-y-4">
+      <p class="text-sm text-gray-600 mb-4">Режим тестирования эмулирует работу реальных QKD-устройств для обоих абонентов.</p>
+      <div class="flex items-center mb-4">
+        <label for="qber-input" class="block text-sm font-medium text-gray-700 mr-2">QBER (%):</label>
+        <input type="number" id="qber-input" class="p-2 border border-gray-300 rounded w-24" min="0" max="100" step="0.1" placeholder="Введите %">
+      </div>
+      <button id="generate-test-sequence" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4">
+        Генерация тестовой последовательности
+      </button>
+      <div class="mt-4">
+        <h3 class="font-bold mb-2">Метрики (Абонент Б):</h3>
+        <div class="metrics">
+          <div id="metrics-A" style="font-weight: bold; margin-bottom: 10px; color: #6366f1;"></div>
+          <div class="metric">
+            <span class="font-bold">Подключение к QKD-устройству:</span>
+            <span id="connection-time">—</span>
+          </div>
+          <div class="metric">
+            <span class="font-bold">Генерация «сырого» ключа:</span>
+            <span id="generation-status">—</span>
+          </div>
+          <div class="metric">
+            <span class="font-bold">Сверка базисов:</span>
+            <span id="bases-comparison">—</span>
+          </div>
+          <div class="metric">
+            <span class="font-bold">Восстановление ключа:</span>
+            <span id="key-recovery">—</span>
+          </div>
+          <div class="metric">
+            <span class="font-bold">Шифрование/дешифрование файла:</span>
+            <span id="encryption-time">—</span>
+          </div>
+          <div class="metric">
+            <span class="font-bold">Уничтожение ключа:</span>
+            <span id="key-destruction">—</span>
+          </div>
+        </div>
+      </div>
+      <p class="text-sm text-gray-600">Примечание: Абонент Б получает тестовые данные от Абонента А автоматически.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Модальное окно для выбора сырой последовательности -->
+<div id="raw-key-modal" class="modal">
+  <div class="modal-content" style="max-width: 90%; width: 90%; max-height: 90vh;">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-xl font-bold">Выберите сырую последовательность</h2>
+      <button id="close-raw-key-modal" class="text-gray-500 hover:text-gray-700">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <div class="h-[calc(90vh-150px)] overflow-y-auto">
+      <table class="min-w-full">
+        <thead>
+          <tr>
+            <th class="py-2 px-4 border-b">ID последовательности</th>
+            <th class="py-2 px-4 border-b">Последовательность</th>
+            <th class="py-2 px-4 border-b">Дата генерации</th>
+            <th class="py-2 px-4 border-b">Выбрана</th>
+            <th class="py-2 px-4 border-b">Действия</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for data in raw_data %}
+          <tr class="raw-key-row hover:bg-gray-100" data-sequence-id="{{ data.sequence_id }}">
+            <td class="py-2 px-4 border-b">{{ data.sequence_id }}</td>
+            <td class="py-2 px-4 border-b font-mono text-xs">{{ data.bits[-8:] if data.bits else '' }}</td>
+            <td class="py-2 px-4 border-b text-sm">{{ data.generated_at }}</td>
+            <td class="py-2 px-4 border-b text-sm">{{ data.selected_by | default('Нет') }}</td>
+            <td class="py-2 px-4 border-b">
+              <div class="flex items-center gap-2">
+                {% if not data.selected_by %}
+                <button class="select-sequence-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded text-sm"
+                        data-sequence-id="{{ data.sequence_id }}">
+                  Выбрать
+                </button>
+                {% elif data.selected_by %}
+                <button class="recover-key-button bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded text-sm"
+                        data-sequence-id="{{ data.sequence_id }}">
+                  Восстановить
+                </button>
+                {% endif %}
+                <button class="delete-sequence-button bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-sm"
+                        data-sequence-id="{{ data.sequence_id }}"
+                        title="Удалить последовательность">
+                  <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                  </svg>
+                </button>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
 
       <!-- Боковая панель (Журнал) -->
       <aside id="log-sidebar" class="sidebar fixed top-0 right-0 h-full w-80 bg-white shadow-lg p-4 z-50">
@@ -255,21 +432,48 @@
 
     <!-- Нижняя панель с процессами -->
     <footer class="bg-white shadow p-4">
-      <div class="flex justify-center">
-        <div class="flex space-x-4">
-          <div id="step-1" class="step active-step">Получение сырых ключевых данных</div>
-          <div id="step-2" class="step">Просеивание ключа</div>
-          <div id="step-3" class="step">Восстановление ключа</div>
-          <div id="step-4" class="step">Сохранение ключа</div>
-          <div id="step-5" class="step">Ожидание действий пользователя</div>
-          <div id="step-6" class="step">Шифрование и отправка</div>
-          <div id="step-7" class="step">Протоколирование</div>
+  <div class="flex justify-center">
+    <div class="flex space-x-4">
+      <div id="step-1" class="step active-step">
+        Получение сырых ключевых данных
+        <div class="qkd-status mt-2 text-center">
+          {% if last_8_bits and last_8_bases %}
+            <div class="bits text-sm">{{ last_8_bits }}</div>
+            <div class="bases text-sm">{{ last_8_bases }}</div>
+          {% else %}
+            <div class="text-sm text-gray-500">Ожидание генерации</div>
+          {% endif %}
         </div>
       </div>
-    </footer>
+      <div id="step-2" class="step">
+        Просеивание ключа
+        <div id="step-2-details" class="text-xs mt-1" style="display:none;"></div>
+      </div>
+      <div id="step-3" class="step">
+        Восстановление ключа
+        <div id="step-3-details" class="text-xs mt-1" style="display:none;"></div>
+      </div>
+      <div id="step-4" class="step">Сохранение ключа</div>
+      <div id="step-5" class="step">Ожидание действий пользователя</div>
+      <div id="step-6" class="step">Шифрование и отправка</div>
+      <div id="step-7" class="step">Протоколирование</div>
+    </div>
+  </div>
+</footer>
   </div>
 
   <script>
+    // Переключение вкладок
+    document.querySelectorAll('.tab-button').forEach(button => {
+      button.addEventListener('click', () => {
+        document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+
+        button.classList.add('active');
+        document.getElementById(button.dataset.tab).classList.remove('hidden');
+      });
+    });
+
     // Управление боковой панелью журнала
     const logToggle = document.getElementById('log-toggle');
     const closeLog = document.getElementById('close-log');
@@ -302,7 +506,11 @@
       row.addEventListener('click', () => {
         const keyId = row.getAttribute('data-key-id');
         selectedKeySpan.textContent = keyId;
+        selectedKeySpan.dataset.keyId = keyId;  // Сохраняем ID ключа в data-атрибуте
         keyModal.classList.remove('open');
+        
+        // Подсвечиваем этап "Ожидание действий пользователя"
+        document.getElementById('step-5').classList.add('active-step');
       });
     });
 
@@ -337,15 +545,16 @@
       }
     });
 
-    // Обработка отправки сообщения
+    // Обработка отправки сообщения с шифрованием ГОСТ Р 34.12-2018
     document.getElementById('encrypt-send-button').addEventListener('click', () => {
       const message = document.getElementById('message-input').value;
       const fileInput = document.getElementById('file-input');
       const file = fileInput.files[0];
-      const selectedKey = document.getElementById('selected-key').textContent;
+      const selectedKeyElement = document.getElementById('selected-key');
+      const selectedKey = selectedKeyElement.dataset.keyId || '';
 
-      if (selectedKey === 'Ключ не выбран') {
-        alert('Пожалуйста, выберите ключ');
+      if (!selectedKey || selectedKey === '') {
+        alert('Пожалуйста, выберите ключ для шифрования');
         return;
       }
 
@@ -354,7 +563,51 @@
         return;
       }
 
-      alert(`Данные будут зашифрованы с использованием ключа ${selectedKey} и отправлены!`);
+      // Показываем индикатор загрузки
+      const button = document.getElementById('encrypt-send-button');
+      const originalText = button.textContent;
+      button.textContent = 'Шифрование...';
+      button.disabled = true;
+
+      // Отправляем на сервер для шифрования
+      fetch('/encrypt_message', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `message=${encodeURIComponent(message)}&key_id=${encodeURIComponent(selectedKey)}`
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success') {
+          alert(`Сообщение зашифровано и отправлено!\n\nКлюч: ${selectedKey}\nВремя шифрования: ${data.encryption_time_ms} мс\nОтправлено получателю: ${data.sent_to_receiver ? 'Да' : 'Нет'}`);
+          
+          // Очищаем поле ввода
+          document.getElementById('message-input').value = '';
+          
+          // Обновляем статус ключа (помечен как использованный)
+          selectedKeyElement.textContent = 'Ключ не выбран';
+          selectedKeyElement.dataset.keyId = '';
+          
+          // Подсвечиваем этап "Шифрование и отправка"
+          document.getElementById('step-6').classList.add('active-step');
+          
+          // Подсвечиваем этап "Протоколирование"
+          setTimeout(() => {
+            document.getElementById('step-7').classList.add('active-step');
+          }, 500);
+        } else {
+          alert(`Ошибка шифрования: ${data.message}`);
+        }
+      })
+      .catch(error => {
+        console.error('Ошибка:', error);
+        alert('Ошибка при шифровании сообщения');
+      })
+      .finally(() => {
+        button.textContent = originalText;
+        button.disabled = false;
+      });
     });
 
     // Обработка дешифровки входящих данных
@@ -365,14 +618,54 @@
 
         if (contentElement.style.display === 'block') {
           contentElement.style.display = 'none';
-        } else {
-          // Здесь будет логика дешифровки текста с использованием модуля шифрования/дешифрования
-          contentElement.style.display = 'block';
-          contentElement.innerHTML = `
-            <div class="font-bold">Расшифрованное содержимое:</div>
-            <div>Это расшифрованное текстовое сообщение</div>
-          `;
+          return;
         }
+        
+        // Показываем индикатор загрузки
+        button.textContent = 'Дешифрование...';
+        button.disabled = true;
+        
+        // Отправляем запрос на дешифрование
+        fetch('/decrypt_message', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: `message_id=${itemId}`
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === 'success') {
+            contentElement.style.display = 'block';
+            contentElement.innerHTML = `
+              <div class="bg-green-50 border border-green-200 rounded p-3 mt-2">
+                <div class="font-bold text-green-700 mb-2">Расшифрованное сообщение:</div>
+                <div class="bg-white p-2 rounded border">${data.plaintext}</div>
+                <div class="text-xs text-gray-500 mt-2">
+                  От: ${data.sender_name || 'Неизвестно'} | 
+                  Время дешифрования: ${data.decryption_time_ms} мс | 
+                  Хэш: ${data.hash_verified ? '✓ Верифицирован' : '✗ Не верифицирован'} |
+                  Ключ: ${data.key_destroyed ? 'Уничтожен' : 'Активен'}
+                </div>
+              </div>
+            `;
+            button.textContent = 'Скрыть';
+            button.classList.remove('bg-blue-500', 'hover:bg-blue-700');
+            button.classList.add('bg-gray-500', 'hover:bg-gray-700');
+          } else {
+            alert(`Ошибка дешифрования: ${data.message}`);
+          }
+        })
+        .catch(error => {
+          console.error('Ошибка:', error);
+          alert('Ошибка при дешифровании сообщения');
+        })
+        .finally(() => {
+          button.disabled = false;
+          if (button.textContent === 'Дешифрование...') {
+            button.textContent = 'Дешифровать';
+          }
+        });
       });
     });
 
@@ -395,6 +688,387 @@
         }
       });
     });
+        // Управление модальным окном выбора сырого ключа
+    const selectRawKeyButton = document.getElementById('select-raw-key-button');
+    const rawKeyModal = document.getElementById('raw-key-modal');
+    const closeRawKeyModal = document.getElementById('close-raw-key-modal');
+    const selectRawKey = document.getElementById('select-raw-key');
+
+    // Функция обновления таблицы raw_data
+    const refreshRawDataTable = () => {
+      fetch('/api/get_raw_data')
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === 'success') {
+            const tbody = document.querySelector('#raw-key-modal tbody');
+            tbody.innerHTML = '';
+            
+            data.raw_data.forEach(item => {
+              const row = document.createElement('tr');
+              row.className = 'raw-key-row hover:bg-gray-100';
+              row.setAttribute('data-sequence-id', item.sequence_id);
+              
+              const lastBits = item.bits ? item.bits.slice(-8) : '';
+              const selectedBy = item.selected_by || 'Нет';
+              const isTest = item.is_test ? ' (тест)' : '';
+              
+              row.innerHTML = `
+                <td class="py-2 px-4 border-b">${item.sequence_id}${isTest}</td>
+                <td class="py-2 px-4 border-b font-mono text-xs">${lastBits}</td>
+                <td class="py-2 px-4 border-b text-sm">${item.generated_at || ''}</td>
+                <td class="py-2 px-4 border-b text-sm">${selectedBy}</td>
+                <td class="py-2 px-4 border-b">
+                  ${!item.selected_by ? 
+                    `<button class="select-sequence-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded text-sm" data-sequence-id="${item.sequence_id}">Выбрать</button>` :
+                    `<button class="recover-key-button bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded text-sm" data-sequence-id="${item.sequence_id}">Восстановить</button>`
+                  }
+                </td>
+              `;
+              tbody.appendChild(row);
+            });
+            
+            // Привязываем обработчики к новым кнопкам
+            bindSequenceButtons();
+          }
+        })
+        .catch(error => console.error('Ошибка загрузки raw_data:', error));
+    };
+
+    selectRawKeyButton.addEventListener('click', () => {
+      refreshRawDataTable();
+      rawKeyModal.classList.add('open');
+    });
+
+    closeRawKeyModal.addEventListener('click', () => {
+      rawKeyModal.classList.remove('open');
+    });
+
+  // Функция привязки обработчиков к кнопкам
+  const bindSequenceButtons = () => {
+    document.querySelectorAll('.select-sequence-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const sequenceId = button.getAttribute('data-sequence-id');
+
+        // Подсвечиваем этап "Просеивание ключа"
+        document.getElementById('step-2').classList.add('active-step');
+        document.getElementById('step-2-details').style.display = 'block';
+        document.getElementById('step-2-details').textContent = 'Обработка...';
+
+        fetch('/select_sequence', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: `sequence_id=${sequenceId}`
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === 'success') {
+            // Обновляем детали этапа
+            document.getElementById('step-2-details').textContent = `Количество несовпадений = ${data.mismatches}`;
+            
+            // Обновляем QBER в header
+            const qberElement = document.querySelector('#qber-value');
+            qberElement.textContent = `${data.qber.toFixed(2)}%`;
+            
+            // Применяем цветовую индикацию
+            qberElement.className = 'ml-2 text-2xl';
+            if (data.qber <= 4) {
+              qberElement.classList.add('text-green-500');
+            } else if (data.qber <= 10) {
+              qberElement.classList.add('text-yellow-500');
+            } else {
+              qberElement.classList.add('text-red-500');
+            }
+            
+            alert(`Последовательность выбрана.\nКоличество несовпадений: ${data.mismatches}\nQBER: ${data.qber.toFixed(2)}%`);
+            document.getElementById('raw-key-modal').classList.remove('open');
+            
+            // Перезагружаем страницу для обновления таблицы
+            setTimeout(() => location.reload(), 1000);
+          } else {
+            alert(data.message);
+            document.getElementById('step-2').classList.remove('active-step');
+            document.getElementById('step-2-details').style.display = 'none';
+          }
+        })
+        .catch(error => {
+          console.error('Ошибка:', error);
+          alert('Ошибка при выборе последовательности');
+          document.getElementById('step-2').classList.remove('active-step');
+          document.getElementById('step-2-details').style.display = 'none';
+        });
+      });
+    });
+
+    // Обработчики для кнопок восстановления
+    document.querySelectorAll('.recover-key-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const sequenceId = button.getAttribute('data-sequence-id');
+        
+        document.getElementById('step-3').classList.add('active-step');
+        document.getElementById('step-3-details').style.display = 'block';
+        document.getElementById('step-3-details').textContent = 'Восстановление...';
+        
+        fetch('/recover_key', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: `sequence_id=${sequenceId}`
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === 'success') {
+            document.getElementById('step-3-details').textContent = 'Ключ восстановлен';
+            document.getElementById('step-4').classList.add('active-step');
+            alert(`Ключ успешно восстановлен!\nID ключа: ${data.key_id}`);
+            document.getElementById('raw-key-modal').classList.remove('open');
+            setTimeout(() => location.reload(), 1000);
+          } else {
+            alert(data.message);
+            document.getElementById('step-3').classList.remove('active-step');
+            document.getElementById('step-3-details').style.display = 'none';
+          }
+        })
+        .catch(error => {
+          console.error('Ошибка:', error);
+          alert('Ошибка при восстановлении ключа');
+          document.getElementById('step-3').classList.remove('active-step');
+          document.getElementById('step-3-details').style.display = 'none';
+        });
+      });
+    });
+  };
+
+  // Первоначальная привязка обработчиков
+  bindSequenceButtons();
+
+// Управление модальным окном режима тестирования
+const testModeButton = document.getElementById('test-mode-button');
+const testModeModal = document.getElementById('test-mode-modal');
+const closeTestModeModal = document.getElementById('close-test-mode-modal');
+
+testModeButton.addEventListener('click', () => {
+  testModeModal.classList.add('open');
+});
+
+closeTestModeModal.addEventListener('click', () => {
+  testModeModal.classList.remove('open');
+});
+
+window.apiServerA = '{{ remote_server_a }}';
+
+const generateTestSequenceButton = document.getElementById('generate-test-sequence');
+
+generateTestSequenceButton.addEventListener('click', () => {
+  const qberInput = document.getElementById('qber-input');
+  const qberValue = qberInput.value;
+  
+  if (!qberValue || qberValue === '') {
+    alert('Пожалуйста, введите значение QBER в процентах');
+    qberInput.focus();
+    return;
+  }
+  
+  if (parseFloat(qberValue) < 0 || parseFloat(qberValue) > 100) {
+    alert('Значение QBER должно быть от 0 до 100%');
+    qberInput.focus();
+    return;
+  }
+  
+  document.getElementById('connection-time').textContent = 'Подключение...';
+  document.getElementById('generation-status').textContent = 'Генерация...';
+  document.getElementById('bases-comparison').textContent = 'Ожидание...';
+  document.getElementById('key-recovery').textContent = 'Ожидание...';
+  document.getElementById('encryption-time').textContent = 'Ожидание...';
+  document.getElementById('key-destruction').textContent = 'Ожидание...';
+  
+  // Сначала запрашиваем генерацию на сервере А
+  fetch(`${window.apiServerA}/generate_test_sequence`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: `qber_value=${qberValue}`
+  })
+  .then(response => response.json())
+  .then(dataA => {
+    if (dataA.status === 'success') {
+      // Теперь получаем метрики на сервере Б
+      fetch('/generate_test_sequence', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `seq_id_b=${dataA.seq_id_b}`
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success') {
+          document.getElementById('connection-time').textContent = data.connection_time;
+          document.getElementById('generation-status').textContent = data.generation_status;
+          document.getElementById('bases-comparison').textContent = data.bases_comparison;
+          document.getElementById('key-recovery').textContent = data.key_recovery;
+          document.getElementById('encryption-time').textContent = data.encryption_time;
+          document.getElementById('key-destruction').textContent = data.key_destruction;
+          document.getElementById('metrics-A').textContent = `Абонент А: ${dataA.bases_comparison}`;
+        } else {
+          document.getElementById('bases-comparison').textContent = data.message || 'Ошибка получения данных';
+        }
+      });
+    } else {
+      document.getElementById('bases-comparison').textContent = dataA.message || 'Ошибка генерации на сервере А';
+    }
+  })
+  .catch(error => { 
+    console.error('Ошибка:', error);
+    document.getElementById('bases-comparison').textContent = 'Ошибка соединения с сервером А';
+  });
+});
+
+// Обработчик кнопки удаления последовательности
+document.addEventListener('click', (e) => {
+  if (e.target.closest('.delete-sequence-button')) {
+    const button = e.target.closest('.delete-sequence-button');
+    const sequenceId = button.getAttribute('data-sequence-id');
+    
+    if (confirm(`Вы уверены, что хотите удалить последовательность ${sequenceId}?`)) {
+      fetch('/delete_sequence', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `sequence_id=${sequenceId}`
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success') {
+          alert('Последовательность удалена');
+          location.reload();
+        } else {
+          alert('Ошибка: ' + data.message);
+        }
+      })
+      .catch(error => {
+        console.error('Ошибка:', error);
+        alert('Ошибка при удалении последовательности');
+      });
+    }
+  }
+});
+
+// Автообновление таблиц БД для администратора (каждые 5 секунд)
+{% if session.get('role') == 'admin' %}
+function updateDatabaseTables() {
+  fetch('/api/get_all_tables')
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'success') {
+        updateKeysTable(data.tables.keys);
+        updateUsersTable(data.tables.users);
+      }
+    })
+    .catch(error => console.error('Ошибка обновления таблиц:', error));
+}
+
+function updateKeysTable(keys) {
+  const tbody = document.querySelector('#database table:first-of-type tbody');
+  if (!tbody) return;
+  
+  tbody.innerHTML = '';
+  keys.forEach(key => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td class="py-2 px-4 border-b">${key.key_id || ''}</td>
+      <td class="py-2 px-4 border-b">${key.created_at || ''}</td>
+      <td class="py-2 px-4 border-b">
+        <span class="px-2 py-1 rounded text-xs ${
+          key.status === 'Активен' ? 'bg-green-100 text-green-800' :
+          key.status === 'Использован' ? 'bg-yellow-100 text-yellow-800' :
+          'bg-red-100 text-red-800'
+        }">
+          ${key.status || ''}
+        </span>
+      </td>
+      <td class="py-2 px-4 border-b">${key.length || ''}</td>
+      <td class="py-2 px-4 border-b">${key.used_at || '—'}</td>
+    `;
+    tbody.appendChild(row);
+  });
+}
+
+function updateUsersTable(users) {
+  const tbody = document.querySelector('#database table:last-of-type tbody');
+  if (!tbody) return;
+  
+  tbody.innerHTML = '';
+  users.forEach(user => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td class="py-2 px-4 border-b">${user.first_name || ''} ${user.last_name || ''}</td>
+      <td class="py-2 px-4 border-b">${user.role || ''}</td>
+      <td class="py-2 px-4 border-b">
+        <span class="px-2 py-1 rounded text-xs ${
+          user.is_active ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
+        }">
+          ${user.is_active ? 'Активен' : 'Неактивен'}
+        </span>
+      </td>
+      <td class="py-2 px-4 border-b">${user.last_login || '—'}</td>
+      <td class="py-2 px-4 border-b text-xs">${user.username || ''} (${user.email || ''})</td>
+    `;
+    tbody.appendChild(row);
+  });
+}
+
+// Обновлять таблицы каждые 5 секунд, если открыта вкладка "База данных"
+setInterval(() => {
+  const dbTab = document.getElementById('database');
+  if (dbTab && !dbTab.classList.contains('hidden')) {
+    updateDatabaseTables();
+  }
+}, 5000);
+
+// Первоначальная загрузка при открытии вкладки
+document.querySelector('[data-tab="database"]')?.addEventListener('click', () => {
+  setTimeout(updateDatabaseTables, 100);
+});
+{% endif %}
+
+// Автообновление входящих сообщений каждые 3 секунды
+function updateIncomingMessages() {
+  // Перезагружаем страницу для обновления входящих
+  // В будущем можно заменить на AJAX запрос
+  location.reload();
+}
+
+// Проверяем новые сообщения каждые 10 секунд
+setInterval(() => {
+  // Проверяем, есть ли новые сообщения через простой счетчик
+  const currentCount = document.querySelectorAll('.incoming-item').length;
+  const storedCount = localStorage.getItem('incoming_count') || '0';
+  
+  if (currentCount.toString() !== storedCount) {
+    localStorage.setItem('incoming_count', currentCount.toString());
+  }
+  
+  // Обновляем страницу для получения новых сообщений
+  // Только если мы на вкладке "Главная"
+  const mainTab = document.getElementById('main');
+  if (mainTab && !mainTab.classList.contains('hidden')) {
+    fetch(window.location.href)
+      .then(response => response.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const newIncomingList = doc.querySelector('#incoming-list');
+        const currentIncomingList = document.querySelector('#incoming-list');
+        
+        if (newIncomingList && currentIncomingList) {
+          // Проверяем, изменилось ли содержимое
+          if (newIncomingList.innerHTML !== currentIncomingList.innerHTML) {
+            currentIncomingList.innerHTML = newIncomingList.innerHTML;
+            console.log('Входящие сообщения обновлены');
+          }
+        }
+      })
+      .catch(error => console.error('Ошибка обновления входящих:', error));
+  }
+}, 10000); // Каждые 10 секунд
+
   </script>
 </body>
 </html>
