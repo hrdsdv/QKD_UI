@@ -117,6 +117,68 @@ class MessageCrypto:
                 'message': str(e)
             }
     
+    def encrypt_file(self, file_content: bytes, file_name: str, key_id: str, 
+                    sender_id: int, receiver_id: int) -> Dict[str, Any]:
+        """
+        Шифрует файл с использованием квантового ключа.
+        
+        :param file_content: Содержимое файла в байтах
+        :param file_name: Имя файла
+        :param key_id: ID квантового ключа
+        :param sender_id: ID отправителя
+        :param receiver_id: ID получателя
+        :return: Словарь с результатом операции
+        """
+        start_time = time.perf_counter()
+        
+        try:
+            # 1. Получаем квантовый ключ из защищённого хранилища
+            key_bytes = self.key_manager.get_key_for_encryption(key_id)
+            if not key_bytes:
+                return {
+                    'status': 'error',
+                    'message': f'Ключ {key_id} не найден или недоступен'
+                }
+            
+            # 2. Создаём шифр ГОСТ
+            cipher = GOSTCipher(key_bytes)
+            
+            # 3. Шифруем файл
+            ciphertext = cipher.encrypt(file_content)
+            
+            # 4. Вычисляем хэш для проверки целостности
+            file_hash = GOSTHash.hash_256(file_content).hex()
+            
+            # 5. Кодируем в base64 для передачи
+            ciphertext_b64 = base64.b64encode(ciphertext).decode('ascii')
+            
+            end_time = time.perf_counter()
+            encryption_time = round((end_time - start_time) * 1000, 2)
+            
+            log_to_file(
+                f"Файл зашифрован: {file_name}, key={key_id}, size={len(file_content)} байт, "
+                f"time={encryption_time}мс",
+                level="INFO"
+            )
+            
+            return {
+                'status': 'success',
+                'key_id': key_id,
+                'ciphertext': ciphertext_b64,
+                'hash': file_hash,
+                'encryption_time_ms': encryption_time,
+                'original_size': len(file_content),
+                'encrypted_size': len(ciphertext),
+                'file_name': file_name
+            }
+            
+        except Exception as e:
+            log_to_file(f"Ошибка шифрования файла: {e}", level="ERROR")
+            return {
+                'status': 'error',
+                'message': str(e)
+            }
+    
     def decrypt_message(self, ciphertext_b64: str, key_id: str, 
                        user_id: int, expected_hash: str = None) -> Dict[str, Any]:
         """
@@ -184,6 +246,75 @@ class MessageCrypto:
             
         except Exception as e:
             log_to_file(f"Ошибка дешифрования сообщения: {e}", level="ERROR")
+            return {
+                'status': 'error',
+                'message': str(e)
+            }
+    
+    def decrypt_file(self, ciphertext_b64: str, key_id: str, 
+                    user_id: int, expected_hash: str = None) -> Dict[str, Any]:
+        """
+        Дешифрует файл.
+        
+        :param ciphertext_b64: Зашифрованный файл в base64
+        :param key_id: ID квантового ключа
+        :param user_id: ID пользователя (получателя)
+        :param expected_hash: Ожидаемый хэш для проверки целостности
+        :return: Словарь с результатом операции
+        """
+        start_time = time.perf_counter()
+        
+        try:
+            # 1. Получаем квантовый ключ
+            key_bytes = self.key_manager.get_key_for_encryption(key_id)
+            if not key_bytes:
+                return {
+                    'status': 'error',
+                    'message': f'Ключ {key_id} не найден или недоступен'
+                }
+            
+            # 2. Декодируем из base64
+            ciphertext = base64.b64decode(ciphertext_b64)
+            
+            # 3. Создаём шифр ГОСТ
+            cipher = GOSTCipher(key_bytes)
+            
+            # 4. Дешифруем
+            plaintext_bytes = cipher.decrypt(ciphertext)
+            
+            # 5. Проверяем хэш если передан
+            hash_verified = False
+            if expected_hash:
+                actual_hash = GOSTHash.hash_256(plaintext_bytes).hex()
+                hash_verified = (actual_hash == expected_hash)
+                
+                if not hash_verified:
+                    log_to_file(
+                        f"Предупреждение: хэш файла не совпадает! "
+                        f"Ожидалось: {expected_hash}, получено: {actual_hash}",
+                        level="WARNING"
+                    )
+            
+            end_time = time.perf_counter()
+            decryption_time = round((end_time - start_time) * 1000, 2)
+            
+            log_to_file(
+                f"Файл дешифрован: key={key_id}, size={len(plaintext_bytes)} байт, "
+                f"time={decryption_time}мс, hash_ok={hash_verified}",
+                level="INFO"
+            )
+            
+            return {
+                'status': 'success',
+                'file_content': plaintext_bytes,
+                'key_id': key_id,
+                'hash_verified': hash_verified,
+                'decryption_time_ms': decryption_time,
+                'file_size': len(plaintext_bytes)
+            }
+            
+        except Exception as e:
+            log_to_file(f"Ошибка дешифрования файла: {e}", level="ERROR")
             return {
                 'status': 'error',
                 'message': str(e)

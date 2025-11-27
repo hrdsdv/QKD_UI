@@ -1,3 +1,4 @@
+import datetime
 import os
 import sys
 
@@ -16,25 +17,18 @@ from modules.database_utils import DatabaseManager
 from modules.gost_cipher import GOSTCipher, GOSTHash, AESCipher
 from modules.message_crypto import MessageCrypto
 from utils.logging_utils import log_to_file
-import ssl
 
 # Импорт конфигурации (noinspection PyUnresolvedReferences)
 try:
     from config import (
         SERVER_B_HOST, SERVER_B_PORT, REMOTE_SERVER_A,
-        SERVER_B_SSL_CERT, SERVER_B_SSL_KEY, CA_CERT,
-        USE_TLS, VERIFY_SSL, FLASK_SECRET_KEY
+        FLASK_SECRET_KEY
     )
 except ImportError:
     # Fallback значения если config.py не найден
     SERVER_B_HOST = '0.0.0.0'
     SERVER_B_PORT = 5001
     REMOTE_SERVER_A = 'http://localhost:5000'
-    SERVER_B_SSL_CERT = ''
-    SERVER_B_SSL_KEY = ''
-    CA_CERT = ''
-    USE_TLS = False
-    VERIFY_SSL = False
     FLASK_SECRET_KEY = 'dev-secret-key'
 
 import threading
@@ -144,6 +138,33 @@ def index():
         last_8_bits = last_sequence['bits'][-8:] if last_sequence else None
         last_8_bases = last_sequence['bases'][-8:] if last_sequence else None
 
+        # Получаем тестовые сообщения из БД для текущего сервера
+        # Фильтруем по имени сервера (server_2) для полученных сообщений
+        test_messages = []
+        try:
+            receiver = 'server_2'  # Имя сервера как получателя
+            db_manager_test = DatabaseManager(db_path)
+            query = '''
+                SELECT message_id, sender, receiver, message_text, created_at
+                FROM test_messages
+                WHERE receiver = ? AND direction = 'received'
+                ORDER BY created_at DESC
+                LIMIT 50
+            '''
+            results = db_manager_test.execute_query(query, (receiver,), fetch=True, sync=False)
+            if results:
+                for row in results:
+                    test_messages.append({
+                        'id': row['message_id'],
+                        'sender': row['sender'],
+                        'receiver': row['receiver'],
+                        'message': row['message_text'],
+                        'received_at': row['created_at']
+                    })
+        except Exception as e:
+            log_to_file(f"Ошибка получения тестовых сообщений для шаблона: {e}", level="ERROR")
+            test_messages = []
+
         return render_template(
             'index.html',
             available_keys=available_keys,
@@ -153,6 +174,7 @@ def index():
             raw_data=raw_data,
             last_8_bits=last_8_bits,
             last_8_bases=last_8_bases,
+            test_messages=test_messages,  # Тестовые сообщения из БД
             remote_server_a=REMOTE_SERVER_A  # Адрес удалённого сервера А
         )
     except Exception as e:
@@ -325,14 +347,20 @@ def sync_recovered_key():
     from utils.logging_utils import log_to_file
     try:
         data = request.get_json()
-        key_id = data.get('key_id')
-        status = data.get('status', 'Активен')
-        length = data.get('length', 256)
+        sequence_id = data.get('sequence_id')
+        recovered_key = data.get('recovered_key')
         
-        # Добавляем ключ в свою БД
-        key_recovery_module.add_key(key_id, status, length)
+        if not sequence_id or not recovered_key:
+            return jsonify({'status': 'error', 'message': 'Отсутствуют обязательные параметры'}), 400
         
-        return jsonify({'status': 'success', 'message': 'Ключ синхронизирован'})
+        # Сохраняем ключ используя метод save_recovered_key, который обрабатывает дубликаты
+        success = key_recovery_module.save_recovered_key(sequence_id, recovered_key, encrypt=True)
+        
+        if success:
+            return jsonify({'status': 'success', 'message': 'Ключ синхронизирован'})
+        else:
+            return jsonify({'status': 'error', 'message': 'Не удалось сохранить ключ'}), 500
+            
     except Exception as e:
         log_to_file(f"Ошибка синхронизации восстановленного ключа: {e}", level="ERROR")
         return jsonify({'status': 'error', 'message': str(e)}), 500
@@ -481,6 +509,125 @@ def generate_test_sequence():
 @app.route('/encrypt_message', methods=['POST'])
 def encrypt_message():
     """
+    Шифрует сообщение (текст и/или файл) и отправляет его получателю.
+    Использует ГОСТ Р 34.12-2018 (Кузнечик) в режиме CTR.
+    """
+    if 'user_id' not in session:
+        return jsonify({'status': 'error', 'message': 'Не авторизован'}), 401
+    
+    message_text = request.form.get('message', '')
+    key_id = request.form.get('key_id')
+    receiver_id = request.form.get('receiver_id', 1)  # По умолчанию отправляем абоненту А
+    file = request.files.get('file')
+    
+    if not message_text and not file:
+        return jsonify({'status': 'error', 'message': 'Необходимо ввести текст или выбрать файл'}), 400
+    if not key_id:
+        return jsonify({'status': 'error', 'message': 'Не выбран ключ для шифрования'}), 400
+    
+    try:
+        receiver_id = int(receiver_id)
+    except ValueError:
+        return jsonify({'status': 'error', 'message': 'Некорректный ID получателя'}), 400
+    
+    try:
+        # Определяем тип сообщения
+        if message_text and file:
+            message_type = 'text_and_file'
+        elif file:
+            message_type = 'file'
+        else:
+            message_type = 'text'
+        
+        # Шифруем текст если есть
+        encrypted_text = None
+        text_hash = None
+        if message_text:
+            result_text = message_crypto.encrypt_message(
+                plaintext=message_text,
+                key_id=key_id,
+                sender_id=session['user_id'],
+                receiver_id=receiver_id
+            )
+            if result_text['status'] != 'success':
+                return jsonify(result_text)
+            encrypted_text = result_text['ciphertext']
+            text_hash = result_text['hash']
+        
+        # Шифруем файл если есть
+        encrypted_file = None
+        file_hash = None
+        file_name = None
+        file_size = None
+        if file:
+            file_content = file.read()
+            file_name = file.filename
+            file_size = len(file_content)
+            
+            result_file = message_crypto.encrypt_file(
+                file_content=file_content,
+                file_name=file_name,
+                key_id=key_id,
+                sender_id=session['user_id'],
+                receiver_id=receiver_id
+            )
+            if result_file['status'] != 'success':
+                return jsonify(result_file)
+            encrypted_file = result_file['ciphertext']
+            file_hash = result_file['hash']
+        
+        # Отправляем зашифрованное сообщение на сервер получателя
+        try:
+            payload = {
+                'sender_id': session['user_id'],
+                'sender_name': session.get('username', 'Unknown'),
+                'receiver_id': receiver_id,
+                'key_id': key_id,
+                'message_type': message_type
+            }
+            
+            if encrypted_text:
+                payload['ciphertext'] = encrypted_text
+                payload['hash'] = text_hash
+            
+            if encrypted_file:
+                payload['file_ciphertext'] = encrypted_file
+                payload['file_hash'] = file_hash
+                payload['file_name'] = file_name
+                payload['file_size'] = file_size
+            
+            response = requests.post(
+                f'{REMOTE_SERVER_A}/api/receive_encrypted_message',
+                json=payload,
+                timeout=5
+            )
+            
+            if response.status_code == 200:
+                sent_to_receiver = True
+            else:
+                sent_to_receiver = False
+                log_to_file(f"Ошибка отправки: {response.text}", level="WARNING")
+        except Exception as e:
+            log_to_file(f"Ошибка отправки сообщения: {e}", level="WARNING")
+            sent_to_receiver = False
+        
+        return jsonify({
+            'status': 'success',
+            'message_type': message_type,
+            'key_id': key_id,
+            'encryption_time_ms': result_text.get('encryption_time_ms', 0) if message_text else result_file.get('encryption_time_ms', 0),
+            'sent_to_receiver': sent_to_receiver
+        })
+        
+    except Exception as e:
+        log_to_file(f"Ошибка шифрования: {e}", level="ERROR")
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
+
+# Старая версия для совместимости (будет удалена)
+@app.route('/encrypt_message_old', methods=['POST'])
+def encrypt_message_old():
+    """
     Шифрует текстовое сообщение и отправляет его получателю.
     Использует ГОСТ Р 34.12-2018 (Кузнечик) в режиме CTR.
     """
@@ -524,8 +671,7 @@ def encrypt_message():
                     'hash': result['hash'],
                     'message_type': 'text'
                 },
-                timeout=5,
-                verify=VERIFY_SSL
+                timeout=5
             )
             if response.status_code == 200:
                 result['sent_to_receiver'] = True
@@ -543,7 +689,7 @@ def encrypt_message():
 @app.route('/decrypt_message', methods=['POST'])
 def decrypt_message():
     """
-    Дешифрует полученное сообщение.
+    Дешифрует полученное сообщение (текст и/или файл).
     После дешифрования ключ уничтожается (политика одноразового использования).
     """
     if 'user_id' not in session:
@@ -568,20 +714,88 @@ def decrypt_message():
     if message['receiver_id'] != session['user_id']:
         return jsonify({'status': 'error', 'message': 'Нет доступа к этому сообщению'}), 403
     
-    # Дешифруем
-    result = message_crypto.decrypt_message(
-        ciphertext_b64=message['content'],
-        key_id=message['key_id'],
-        user_id=session['user_id'],
-        expected_hash=message.get('content_hash')
-    )
+    message_type = message.get('message_type', 'text')
+    result = {'status': 'success', 'sender_name': message.get('sender_name', 'Unknown')}
     
-    if result['status'] == 'success':
+    try:
+        # Дешифруем текст если есть
+        if message_type in ['text', 'text_and_file'] and message.get('content'):
+            text_result = message_crypto.decrypt_message(
+                ciphertext_b64=message['content'],
+                key_id=message['key_id'],
+                user_id=session['user_id'],
+                expected_hash=message.get('content_hash')
+            )
+            
+            if text_result['status'] != 'success':
+                return jsonify(text_result)
+            
+            result['plaintext'] = text_result['plaintext']
+            result['hash_verified'] = text_result['hash_verified']
+            result['decryption_time_ms'] = text_result['decryption_time_ms']
+            result['key_destroyed'] = text_result['key_destroyed']
+        
+        # Дешифруем файл если есть
+        if message_type in ['file', 'text_and_file'] and message.get('file_path'):
+            file_result = message_crypto.decrypt_file(
+                ciphertext_b64=message['file_path'],
+                key_id=message['key_id'],
+                user_id=session['user_id'],
+                expected_hash=message.get('content_hash') if message_type == 'file' else None
+            )
+            
+            if file_result['status'] != 'success':
+                return jsonify(file_result)
+            
+            # Сохраняем файл для скачивания
+            import tempfile
+            temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=f"_{message.get('file_name', 'file')}")
+            temp_file.write(file_result['file_content'])
+            temp_file.close()
+            
+            result['file_path'] = temp_file.name
+            result['file_name'] = message.get('file_name', 'decrypted_file')
+            result['file_size'] = file_result['file_size']
+            result['file_hash_verified'] = file_result['hash_verified']
+            
+            if 'decryption_time_ms' not in result:
+                result['decryption_time_ms'] = file_result['decryption_time_ms']
+                result['key_destroyed'] = True
+        
         # Помечаем сообщение как прочитанное
         message_crypto.mark_message_as_read(message_id, session['user_id'])
-        result['sender_name'] = message.get('sender_name', 'Unknown')
+        
+        return jsonify(result)
+        
+    except Exception as e:
+        log_to_file(f"Ошибка дешифрования: {e}", level="ERROR")
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
+
+@app.route('/download_decrypted_file/<path:file_path>')
+def download_decrypted_file(file_path):
+    """Скачивание дешифрованного файла."""
+    if 'user_id' not in session:
+        return jsonify({'status': 'error', 'message': 'Не авторизован'}), 401
     
-    return jsonify(result)
+    try:
+        from flask import send_file
+        import os
+        
+        if not os.path.exists(file_path):
+            return jsonify({'status': 'error', 'message': 'Файл не найден'}), 404
+        
+        # Получаем имя файла из пути
+        file_name = os.path.basename(file_path)
+        
+        return send_file(
+            file_path,
+            as_attachment=True,
+            download_name=file_name
+        )
+    except Exception as e:
+        log_to_file(f"Ошибка скачивания файла: {e}", level="ERROR")
+        return jsonify({'status': 'error', 'message': str(e)}), 500
 
 
 @app.route('/api/receive_encrypted_message', methods=['POST'])
@@ -596,9 +810,15 @@ def receive_encrypted_message():
         sender_name = data.get('sender_name', 'Unknown')
         receiver_id = data.get('receiver_id')
         key_id = data.get('key_id')
-        ciphertext = data.get('ciphertext')
-        content_hash = data.get('hash')
         message_type = data.get('message_type', 'text')
+        
+        # Текстовое сообщение
+        ciphertext = data.get('ciphertext', '')
+        content_hash = data.get('hash', '')
+        
+        # Файл
+        file_ciphertext = data.get('file_ciphertext', '')
+        file_hash = data.get('file_hash', '')
         file_name = data.get('file_name')
         file_size = data.get('file_size')
         
@@ -606,16 +826,17 @@ def receive_encrypted_message():
         print(f"DEBUG: key_id={key_id}, message_type={message_type}")
         
         # Сохраняем в локальную БД
+        # file_path используем для хранения зашифрованного файла в base64
         query = """
             INSERT INTO messages 
             (sender_id, sender_name, receiver_id, key_id, message_type, content, content_hash,
-             file_name, file_size, is_encrypted, sent_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 1, datetime('now'))
+             file_path, file_name, file_size, is_encrypted, sent_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, datetime('now'))
         """
         db_manager.execute_query(
             query,
             (sender_id, sender_name, receiver_id, key_id, message_type, ciphertext,
-             content_hash, file_name, file_size),
+             content_hash, file_ciphertext, file_name, file_size),
             sync=False
         )
         
@@ -663,8 +884,7 @@ def destroy_key():
             requests.post(
                 f'{REMOTE_SERVER_A}/api/sync_key_destruction',
                 json={'key_id': key_id},
-                timeout=2,
-                verify=VERIFY_SSL
+                timeout=2
             )
         except Exception as e:
             log_to_file(f"Не удалось синхронизировать уничтожение ключа: {e}", level="WARNING")
@@ -672,6 +892,24 @@ def destroy_key():
         return jsonify({'status': 'success', 'message': f'Ключ {key_id} уничтожен'})
     else:
         return jsonify({'status': 'error', 'message': 'Не удалось уничтожить ключ'}), 500
+
+
+@app.route('/api/get_incoming_messages', methods=['GET'])
+def api_get_incoming_messages():
+    """API endpoint для получения входящих сообщений."""
+    if 'user_id' not in session:
+        return jsonify({'status': 'error', 'message': 'Не авторизован'}), 401
+    
+    try:
+        incoming_items = key_management_module.get_incoming_messages(session['user_id'])
+        return jsonify({
+            'status': 'success',
+            'messages': incoming_items,
+            'count': len(incoming_items)
+        })
+    except Exception as e:
+        log_to_file(f"Ошибка получения входящих сообщений: {e}", level="ERROR")
+        return jsonify({'status': 'error', 'message': str(e)}), 500
 
 
 @app.route('/api/get_all_tables', methods=['GET'])
@@ -728,6 +966,190 @@ def delete_sequence():
         return jsonify({'status': 'error', 'message': str(e)}), 500
 
 
+@app.route('/api/test_rest_send', methods=['POST'])
+def test_rest_send():
+    """
+    ТЕСТОВЫЙ ENDPOINT: Отправка тестового сообщения через REST API.
+    Можно удалить после тестирования без последствий.
+    """
+    if 'user_id' not in session:
+        return jsonify({'status': 'error', 'message': 'Не авторизован'}), 401
+    
+    test_message = request.form.get('test_message', '')
+    
+    if not test_message:
+        return jsonify({'status': 'error', 'message': 'Сообщение не может быть пустым'}), 400
+    
+    try:
+        import time
+        from datetime import datetime as dt
+        start_time = time.perf_counter()
+        
+        sender = session.get('username', 'Unknown')  # Реальное имя отправителя
+        
+        # Отправляем тестовое сообщение на сервер А через REST API
+        response = requests.post(
+            f'{REMOTE_SERVER_A}/api/test_rest_receive',
+            json={
+                'message': test_message,
+                'sender': sender
+            },
+            timeout=5
+        )
+        
+        end_time = time.perf_counter()
+        response_time = round((end_time - start_time) * 1000, 2)
+        
+        if response.status_code == 200:
+            response_data = response.json()
+            receiver = response_data.get('receiver', 'server_1')  # Получаем имя получателя из ответа
+            
+            # Сохраняем отправленное сообщение в локальную БД (сервер 2)
+            db_manager_test = DatabaseManager(db_path)
+            query_sent = '''
+                INSERT INTO test_messages (sender, receiver, message_text, direction, created_at)
+                VALUES (?, ?, ?, 'sent', datetime('now'))
+            '''
+            db_manager_test.execute_query(query_sent, (sender, receiver, test_message), sync=False)
+            log_to_file(f"Сохранено отправленное сообщение от {sender} для {receiver}: {test_message}", level="INFO")
+            
+            return jsonify({
+                'status': 'success',
+                'message': 'Сообщение отправлено через REST API',
+                'response_time_ms': response_time,
+                'remote_server': REMOTE_SERVER_A,
+                'receiver': receiver
+            })
+        else:
+            return jsonify({
+                'status': 'error',
+                'message': f'Ошибка сервера: {response.status_code}'
+            }), 500
+            
+    except Exception as e:
+        log_to_file(f"Ошибка тестирования REST API: {e}", level="ERROR")
+        return jsonify({
+            'status': 'error',
+            'message': str(e)
+        }), 500
+
+
+@app.route('/api/test_rest_receive', methods=['POST'])
+def test_rest_receive():
+    """
+    ТЕСТОВЫЙ ENDPOINT: Приём тестового сообщения через REST API.
+    Сохраняет сообщение в базу данных.
+    Можно удалить после тестирования без последствий.
+    """
+    try:
+        data = request.get_json()
+        message = data.get('message', '')
+        sender = data.get('sender', 'Unknown')
+        
+        # Определяем получателя - это имя сервера (server_2)
+        receiver = 'server_2'
+        
+        # Сохраняем полученное сообщение в базу данных
+        db_manager_test = DatabaseManager(db_path)
+        query = '''
+            INSERT INTO test_messages (sender, receiver, message_text, direction, created_at)
+            VALUES (?, ?, ?, 'received', datetime('now'))
+        '''
+        db_manager_test.execute_query(query, (sender, receiver, message), sync=False)
+        
+        log_to_file(f"Получено тестовое сообщение от {sender} для {receiver}: {message}", level="INFO")
+        
+        # Возвращаем имя получателя (как в примере)
+        return jsonify({
+            'status': 'success',
+            'receiver': receiver,
+            'message': 'Сообщение получено и сохранено в БД'
+        })
+        
+    except Exception as e:
+        log_to_file(f"Ошибка приёма тестового сообщения: {e}", level="ERROR")
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
+
+@app.route('/api/test_rest_get_messages', methods=['GET'])
+def test_rest_get_messages():
+    """
+    ТЕСТОВЫЙ ENDPOINT: Получение списка тестовых сообщений из БД.
+    Можно удалить после тестирования без последствий.
+    """
+    if 'user_id' not in session:
+        return jsonify({'status': 'error', 'message': 'Не авторизован'}), 401
+    
+    try:
+        # Фильтруем по имени сервера (server_2) для полученных сообщений
+        receiver = 'server_2'
+        log_to_file(f"DEBUG: Получение тестовых сообщений для получателя: {receiver}", level="INFO")
+        
+        # Получаем только полученные сообщения из БД для сервера
+        db_manager_test = DatabaseManager(db_path)
+        query = '''
+            SELECT message_id, sender, receiver, message_text, created_at
+            FROM test_messages
+            WHERE receiver = ? AND direction = 'received'
+            ORDER BY created_at DESC
+            LIMIT 50
+        '''
+        results = db_manager_test.execute_query(query, (receiver,), fetch=True, sync=False)
+        
+        log_to_file(f"DEBUG: Найдено сообщений в БД: {len(results) if results else 0}", level="INFO")
+        
+        # Форматируем сообщения для фронтенда
+        messages = []
+        if results:
+            for row in results:
+                messages.append({
+                    'id': row['message_id'],
+                    'sender': row['sender'],
+                    'receiver': row['receiver'],
+                    'message': row['message_text'],
+                    'received_at': row['created_at']
+                })
+        
+        log_to_file(f"DEBUG: Возвращено сообщений: {len(messages)}", level="INFO")
+        
+        return jsonify({
+            'status': 'success',
+            'messages': messages,
+            'count': len(messages)
+        })
+        
+    except Exception as e:
+        log_to_file(f"Ошибка получения тестовых сообщений: {e}", level="ERROR")
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
+
+@app.route('/api/test_rest_clear', methods=['POST'])
+def test_rest_clear():
+    """
+    ТЕСТОВЫЙ ENDPOINT: Очистка тестовых сообщений из БД.
+    Можно удалить после тестирования без последствий.
+    """
+    if 'user_id' not in session:
+        return jsonify({'status': 'error', 'message': 'Не авторизован'}), 401
+    
+    try:
+        # Удаляем только полученные сообщения из БД для сервера
+        receiver = 'server_2'
+        db_manager_test = DatabaseManager(db_path)
+        query = "DELETE FROM test_messages WHERE receiver = ? AND direction = 'received'"
+        db_manager_test.execute_query(query, (receiver,), sync=False)
+        
+        log_to_file(f"Очищены тестовые сообщения для {receiver}", level="INFO")
+        
+        log_to_file(f"Очищены тестовые сообщения для {current_user}", level="INFO")
+        
+        return jsonify({'status': 'success', 'message': 'Тестовые сообщения очищены из БД'})
+        
+    except Exception as e:
+        log_to_file(f"Ошибка очистки тестовых сообщений: {e}", level="ERROR")
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
+
 @app.route('/api/sync_key_destruction', methods=['POST'])
 def sync_key_destruction():
     """API endpoint для синхронизации уничтожения ключа."""
@@ -746,18 +1168,7 @@ def sync_key_destruction():
 if __name__ == '__main__':
     print(f"Запуск сервера Б на {SERVER_B_HOST}:{SERVER_B_PORT}")
     print(f"Удалённый сервер А: {REMOTE_SERVER_A}")
-    print(f"TLS: {'Включён' if USE_TLS else 'Отключён'}")
-    
-    if USE_TLS and os.path.exists(SERVER_B_SSL_CERT) and os.path.exists(SERVER_B_SSL_KEY):
-        # Запуск с TLS
-        context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
-        context.load_cert_chain(SERVER_B_SSL_CERT, SERVER_B_SSL_KEY)
-        print(f"SSL-сертификат: {SERVER_B_SSL_CERT}")
-        app.run(host=SERVER_B_HOST, port=SERVER_B_PORT, debug=True, ssl_context=context)
-    else:
-        # Запуск без TLS (для разработки)
-        if USE_TLS:
-            print("ПРЕДУПРЕЖДЕНИЕ: TLS включён, но сертификаты не найдены!")
-            print(f"Ожидаемые файлы: {SERVER_B_SSL_CERT}, {SERVER_B_SSL_KEY}")
-            print("Запустите: python ssl/generate_certs.py")
-        app.run(host=SERVER_B_HOST, port=SERVER_B_PORT, debug=True)
+    print(f"Сервер запущен на {SERVER_B_HOST}:{SERVER_B_PORT}")
+    print(f"Удалённый сервер А: {REMOTE_SERVER_A}")
+    print("Режим: REST API (HTTP)")
+    app.run(host=SERVER_B_HOST, port=SERVER_B_PORT, debug=True)

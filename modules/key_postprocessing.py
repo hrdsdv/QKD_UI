@@ -34,7 +34,7 @@ class KeyPostprocessingModule:
         self.station_name = "A" if "user_1" in db_path else "B"
         self.remote_server_url = remote_server_url
     
-    def get_local_sequence(self, sequence_id: str) -> dict:
+    def get_local_sequence(self, sequence_id: str) -> dict | None:
         """
         Получает локальную последовательность из БД.
         
@@ -51,7 +51,7 @@ class KeyPostprocessingModule:
             log_to_file(f"Ошибка получения локальной последовательности: {e}", level="ERROR")
             return None
     
-    def get_remote_sequence(self, sequence_id: str) -> dict:
+    def get_remote_sequence(self, sequence_id: str) -> dict | None:
         """
         Получает последовательность удалённого абонента через REST API.
         

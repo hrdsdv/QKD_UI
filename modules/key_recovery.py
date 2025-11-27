@@ -264,26 +264,10 @@ class KeyRecoveryModule:
             
             if success:
                 # Также добавляем запись в таблицу keys для отображения в UI
-                check_query = "SELECT key_id FROM keys WHERE key_id = ?"
-                existing = self.db_manager.execute_query(check_query, (key_id,), fetch=True, sync=False)
-                
-                if existing and len(existing) > 0:
-                    # Обновляем существующий ключ
+                # Используем INSERT OR REPLACE для упрощения логики
+                try:
                     query = """
-                        UPDATE keys 
-                        SET key_hash = ?, status = 'Активен', 
-                            length = ?, created_at = datetime('now')
-                        WHERE key_id = ?
-                    """
-                    self.db_manager.execute_query(
-                        query, 
-                        (key_hash, len(recovered_key), key_id),
-                        sync=False
-                    )
-                else:
-                    # Вставляем новую запись
-                    query = """
-                        INSERT INTO keys (key_id, key_hash, status, length, created_at)
+                        INSERT OR REPLACE INTO keys (key_id, key_hash, status, length, created_at)
                         VALUES (?, ?, 'Активен', ?, datetime('now'))
                     """
                     self.db_manager.execute_query(
@@ -291,8 +275,11 @@ class KeyRecoveryModule:
                         (key_id, key_hash, len(recovered_key)),
                         sync=False
                     )
+                    log_to_file(f"Ключ {key_id} сохранён в защищённое хранилище", level="INFO")
+                except Exception as e:
+                    log_to_file(f"Ошибка сохранения ключа в таблицу keys: {e}", level="WARNING")
+                    # Не критично, ключ уже в secure_keys
                 
-                log_to_file(f"Ключ {key_id} сохранён в защищённое хранилище", level="INFO")
                 return True
             else:
                 log_to_file(f"Не удалось сохранить ключ {key_id} в защищённое хранилище", level="ERROR")

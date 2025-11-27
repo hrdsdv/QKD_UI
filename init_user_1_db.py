@@ -141,6 +141,19 @@ def init_db():
     ''')
     print("Создана таблица sessions")
 
+    # Создаем таблицу test_messages для хранения тестовых REST API сообщений
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS test_messages (
+        message_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        sender TEXT NOT NULL,
+        receiver TEXT NOT NULL,
+        message_text TEXT NOT NULL,
+        direction TEXT NOT NULL DEFAULT 'received',
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+    ''')
+    print("Создана таблица test_messages")
+
     # Добавление пользователей по умолчанию
     # Абонент А (для сервера 1)
     cursor.execute('''

@@ -64,7 +64,8 @@ class DatabaseManager:
             raise
 
     def add_key(self, key_id: str, status: str, length: int) -> None:
-        query = "INSERT INTO keys (key_id, status, length) VALUES (?, ?, ?)"
+        """Добавляет или обновляет ключ в БД."""
+        query = "INSERT OR REPLACE INTO keys (key_id, status, length, created_at) VALUES (?, ?, ?, datetime('now'))"
         self.execute_query(query, (key_id, status, length), sync=False)
 
     def get_available_keys(self) -> List[Dict[str, Any]]:

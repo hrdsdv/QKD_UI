@@ -283,7 +283,78 @@
         </div>
       </div>
 
-    <!-- Модальное окно для режима тестирования -->
+    <!-- ТЕСТОВОЕ МОДАЛЬНОЕ ОКНО: Проверка REST API -->
+<!-- Можно удалить этот блок после тестирования без последствий -->
+<div id="rest-test-modal" class="modal">
+  <div class="modal-content" style="max-width: 600px;">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-xl font-bold">🌐 Тест REST API</h2>
+      <button id="close-rest-test-modal" class="text-gray-500 hover:text-gray-700">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    
+    <div class="mb-4">
+      <p class="text-sm text-gray-600 mb-2">
+        Отправьте тестовое сообщение для проверки REST API соединения между серверами.
+      </p>
+      <div class="bg-blue-50 border border-blue-200 rounded p-3 mb-4">
+        <div class="text-sm">
+          <strong>Режим:</strong> 
+          <span id="rest-status" class="font-mono text-green-600">REST API (HTTP)</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-700 mb-2">Тестовое сообщение:</label>
+      <textarea id="rest-test-input" class="w-full p-2 border border-gray-300 rounded" rows="3" placeholder="Введите тестовое сообщение..."></textarea>
+    </div>
+    
+    <div class="flex gap-2 mb-4">
+      <button id="rest-send-button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Отправить тест
+      </button>
+      <button id="rest-clear-button" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+        Очистить
+      </button>
+    </div>
+    
+    <div id="rest-result" class="hidden mb-4 p-3 rounded"></div>
+    
+    <div class="mb-2">
+      <h3 class="font-bold text-sm mb-2">Полученные тестовые сообщения:</h3>
+      <div id="rest-received-messages" class="max-h-60 overflow-y-auto border border-gray-300 rounded p-2 bg-gray-50">
+        {% if test_messages and test_messages|length > 0 %}
+          {% for msg in test_messages %}
+          <div class="mb-2 p-2 bg-white border border-gray-200 rounded" data-message-id="{{ msg.id }}">
+            <div class="text-xs text-gray-500 mb-1">
+              <strong>Отправитель:</strong> {{ msg.sender }} | 
+              <strong>Получатель:</strong> {{ msg.receiver }}
+            </div>
+            <div class="text-xs text-gray-400 mb-1">
+              <strong>Дата и время:</strong> {{ msg.received_at }}
+            </div>
+            <div class="text-sm mt-1 p-2 bg-gray-50 rounded">{{ msg.message }}</div>
+          </div>
+          {% endfor %}
+        {% else %}
+          <p class="text-sm text-gray-500">Нет сообщений</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Кнопка для открытия REST API теста (можно удалить) -->
+<button id="open-rest-test" class="fixed bottom-4 right-4 bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-full shadow-lg z-50 relative" title="Тест REST API">
+  🌐 REST
+  <span id="rest-badge" class="hidden absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+</button>
+
+<!-- Модальное окно для режима тестирования -->
 <div id="test-mode-modal" class="modal">
   <div class="modal-content" style="max-width: 90%; width: 90%; max-height: 80vh;">
     <div class="flex justify-between items-center mb-4">
@@ -466,6 +537,9 @@
   </div>
 
   <script>
+    // Глобальные переменные из Jinja2
+    window.isAdmin = {% if session.get('role') == 'admin' %}true{% else %}false{% endif %};
+    
     // Переключение вкладок
     document.querySelectorAll('.tab-button').forEach(button => {
       button.addEventListener('click', () => {
@@ -572,21 +646,39 @@
       button.textContent = 'Шифрование...';
       button.disabled = true;
 
+      // Формируем данные для отправки
+      const formData = new FormData();
+      formData.append('key_id', selectedKey);
+      if (message) {
+        formData.append('message', message);
+      }
+      if (file) {
+        formData.append('file', file);
+      }
+
       // Отправляем на сервер для шифрования
       fetch('/encrypt_message', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: `message=${encodeURIComponent(message)}&key_id=${encodeURIComponent(selectedKey)}`
+        body: formData
       })
       .then(response => response.json())
       .then(data => {
         if (data.status === 'success') {
-          alert(`Сообщение зашифровано и отправлено!\n\nКлюч: ${selectedKey}\nВремя шифрования: ${data.encryption_time_ms} мс\nОтправлено получателю: ${data.sent_to_receiver ? 'Да' : 'Нет'}`);
+          let messageType = '';
+          if (message && file) {
+            messageType = 'текст и файл';
+          } else if (message) {
+            messageType = 'текст';
+          } else {
+            messageType = 'файл';
+          }
           
-          // Очищаем поле ввода
+          alert(`Сообщение зашифровано и отправлено!\n\nТип: ${messageType}\nКлюч: ${selectedKey}\nВремя шифрования: ${data.encryption_time_ms} мс\nОтправлено получателю: ${data.sent_to_receiver ? 'Да' : 'Нет'}`);
+          
+          // Очищаем поля ввода
           document.getElementById('message-input').value = '';
+          fileInput.value = '';
+          document.getElementById('file-preview').innerHTML = '';
           
           // Обновляем статус ключа (помечен как использованный)
           selectedKeyElement.textContent = 'Ключ не выбран';
@@ -613,9 +705,11 @@
       });
     });
 
-    // Обработка дешифровки входящих данных
-    document.querySelectorAll('.decrypt-button').forEach(button => {
-      button.addEventListener('click', () => {
+    // Обработка дешифровки входящих данных (используем делегирование событий)
+    document.addEventListener('click', (e) => {
+      if (!e.target.classList.contains('decrypt-button')) return;
+      
+      const button = e.target;
         const itemId = button.getAttribute('data-item-id');
         const contentElement = document.getElementById(`decrypted-${itemId}`);
 
@@ -669,7 +763,6 @@
             button.textContent = 'Дешифровать';
           }
         });
-      });
     });
 
     // Обработка дешифровки и скачивания файлов
@@ -997,105 +1090,346 @@ document.addEventListener('click', (e) => {
 });
 
 // Автообновление таблиц БД для администратора (каждые 5 секунд)
-{% if session.get('role') == 'admin' %}
-function updateDatabaseTables() {
-  fetch('/api/get_all_tables')
+if (window.isAdmin) {
+  function updateDatabaseTables() {
+    fetch('/api/get_all_tables')
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success') {
+          updateKeysTable(data.tables.keys);
+          updateUsersTable(data.tables.users);
+        }
+      })
+      .catch(error => console.error('Ошибка обновления таблиц:', error));
+  }
+
+  function updateKeysTable(keys) {
+    const tbody = document.querySelector('#database table:first-of-type tbody');
+    if (!tbody) return;
+    
+    tbody.innerHTML = '';
+    keys.forEach(key => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td class="py-2 px-4 border-b">${key.key_id || ''}</td>
+        <td class="py-2 px-4 border-b">${key.created_at || ''}</td>
+        <td class="py-2 px-4 border-b">
+          <span class="px-2 py-1 rounded text-xs ${
+            key.status === 'Активен' ? 'bg-green-100 text-green-800' :
+            key.status === 'Использован' ? 'bg-yellow-100 text-yellow-800' :
+            'bg-red-100 text-red-800'
+          }">
+            ${key.status || ''}
+          </span>
+        </td>
+        <td class="py-2 px-4 border-b">${key.length || ''}</td>
+        <td class="py-2 px-4 border-b">${key.used_at || '—'}</td>
+      `;
+      tbody.appendChild(row);
+    });
+  }
+
+  function updateUsersTable(users) {
+    const tbody = document.querySelector('#database table:last-of-type tbody');
+    if (!tbody) return;
+    
+    tbody.innerHTML = '';
+    users.forEach(user => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td class="py-2 px-4 border-b">${user.first_name || ''} ${user.last_name || ''}</td>
+        <td class="py-2 px-4 border-b">${user.role || ''}</td>
+        <td class="py-2 px-4 border-b">
+          <span class="px-2 py-1 rounded text-xs ${
+            user.is_active ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
+          }">
+            ${user.is_active ? 'Активен' : 'Неактивен'}
+          </span>
+        </td>
+        <td class="py-2 px-4 border-b">${user.last_login || '—'}</td>
+        <td class="py-2 px-4 border-b text-xs">${user.username || ''} (${user.email || ''})</td>
+      `;
+      tbody.appendChild(row);
+    });
+  }
+
+  // Обновлять таблицы каждые 5 секунд, если открыта вкладка "База данных"
+  setInterval(() => {
+    const dbTab = document.getElementById('database');
+    if (dbTab && !dbTab.classList.contains('hidden')) {
+      updateDatabaseTables();
+    }
+  }, 5000);
+
+  // Первоначальная загрузка при открытии вкладки
+  document.querySelector('[data-tab="database"]')?.addEventListener('click', () => {
+    setTimeout(updateDatabaseTables, 100);
+  });
+}
+
+// Автообновление входящих сообщений каждые 5 секунд
+function updateIncomingMessages() {
+  fetch('/api/get_incoming_messages')
     .then(response => response.json())
     .then(data => {
-      if (data.status === 'success') {
-        updateKeysTable(data.tables.keys);
-        updateUsersTable(data.tables.users);
+      if (data.status === 'success' && data.messages) {
+        const incomingList = document.getElementById('incoming-list');
+        if (!incomingList) return;
+        
+        if (data.messages.length === 0) {
+          incomingList.innerHTML = '<div class="text-center text-gray-500 p-4 bg-white rounded-lg">Пусто</div>';
+        } else {
+          let html = '';
+          data.messages.forEach(item => {
+            html += `
+              <div class="incoming-item">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <div class="flex items-center mb-1">
+                      <span class="font-bold mr-2">${item.sender}</span>
+                      <span class="text-sm text-gray-500">${item.timestamp}</span>
+                    </div>
+                    <div class="mt-1">
+                      ${item.type === 'text' 
+                        ? `<div class="bg-gray-100 p-2 rounded">Зашифрованное сообщение (${item.size} символов)</div>`
+                        : `<div class="bg-gray-100 p-2 rounded">Зашифрованный файл: ${item.filename} (${item.size}, ${item.filetype})</div>`
+                      }
+                    </div>
+                  </div>
+                  <div>
+                    <button class="decrypt-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded text-sm mb-1"
+                            data-item-id="${item.id}">
+                      Дешифровать
+                    </button>
+                  </div>
+                </div>
+                <div class="decrypted-content" id="decrypted-${item.id}"></div>
+              </div>
+            `;
+          });
+          incomingList.innerHTML = html;
+        }
+        console.log(`Обновлено входящих сообщений: ${data.count}`);
       }
     })
-    .catch(error => console.error('Ошибка обновления таблиц:', error));
+    .catch(error => console.error('Ошибка обновления входящих:', error));
 }
 
-function updateKeysTable(keys) {
-  const tbody = document.querySelector('#database table:first-of-type tbody');
-  if (!tbody) return;
-  
-  tbody.innerHTML = '';
-  keys.forEach(key => {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td class="py-2 px-4 border-b">${key.key_id || ''}</td>
-      <td class="py-2 px-4 border-b">${key.created_at || ''}</td>
-      <td class="py-2 px-4 border-b">
-        <span class="px-2 py-1 rounded text-xs ${
-          key.status === 'Активен' ? 'bg-green-100 text-green-800' :
-          key.status === 'Использован' ? 'bg-yellow-100 text-yellow-800' :
-          'bg-red-100 text-red-800'
-        }">
-          ${key.status || ''}
-        </span>
-      </td>
-      <td class="py-2 px-4 border-b">${key.length || ''}</td>
-      <td class="py-2 px-4 border-b">${key.used_at || '—'}</td>
-    `;
-    tbody.appendChild(row);
-  });
-}
-
-function updateUsersTable(users) {
-  const tbody = document.querySelector('#database table:last-of-type tbody');
-  if (!tbody) return;
-  
-  tbody.innerHTML = '';
-  users.forEach(user => {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td class="py-2 px-4 border-b">${user.first_name || ''} ${user.last_name || ''}</td>
-      <td class="py-2 px-4 border-b">${user.role || ''}</td>
-      <td class="py-2 px-4 border-b">
-        <span class="px-2 py-1 rounded text-xs ${
-          user.is_active ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
-        }">
-          ${user.is_active ? 'Активен' : 'Неактивен'}
-        </span>
-      </td>
-      <td class="py-2 px-4 border-b">${user.last_login || '—'}</td>
-      <td class="py-2 px-4 border-b text-xs">${user.username || ''} (${user.email || ''})</td>
-    `;
-    tbody.appendChild(row);
-  });
-}
-
-// Обновлять таблицы каждые 5 секунд, если открыта вкладка "База данных"
-setInterval(() => {
-  const dbTab = document.getElementById('database');
-  if (dbTab && !dbTab.classList.contains('hidden')) {
-    updateDatabaseTables();
-  }
-}, 5000);
-
-// Первоначальная загрузка при открытии вкладки
-document.querySelector('[data-tab="database"]')?.addEventListener('click', () => {
-  setTimeout(updateDatabaseTables, 100);
-});
-{% endif %}
-
-// Автообновление входящих сообщений каждые 10 секунд
+// Обновляем каждые 5 секунд, если на вкладке "Главная"
 setInterval(() => {
   const mainTab = document.getElementById('main');
   if (mainTab && !mainTab.classList.contains('hidden')) {
-    fetch(window.location.href)
-      .then(response => response.text())
-      .then(html => {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-        const newIncomingList = doc.querySelector('#incoming-list');
-        const currentIncomingList = document.querySelector('#incoming-list');
+    updateIncomingMessages();
+  }
+}, 5000);
+
+// ============================================
+// ТЕСТОВЫЙ КОД: Проверка REST API
+// Можно удалить весь этот блок после тестирования
+// ============================================
+
+// Открытие/закрытие модального окна REST API теста
+document.getElementById('open-rest-test')?.addEventListener('click', () => {
+  document.getElementById('rest-test-modal').classList.add('open');
+  loadTestMessages();
+  
+  // Скрываем бейдж при открытии окна (сообщения прочитаны)
+  const badge = document.getElementById('rest-badge');
+  if (badge) {
+    badge.classList.add('hidden');
+  }
+});
+
+document.getElementById('close-rest-test-modal')?.addEventListener('click', () => {
+  document.getElementById('rest-test-modal').classList.remove('open');
+});
+
+// Отправка тестового сообщения
+document.getElementById('rest-send-button')?.addEventListener('click', () => {
+  const message = document.getElementById('rest-test-input').value;
+  
+  if (!message) {
+    alert('Введите тестовое сообщение');
+    return;
+  }
+  
+  const button = document.getElementById('rest-send-button');
+  const originalText = button.textContent;
+  button.textContent = 'Отправка...';
+  button.disabled = true;
+  
+  fetch('/api/test_rest_send', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: `test_message=${encodeURIComponent(message)}`
+  })
+  .then(response => response.json())
+  .then(data => {
+    const resultDiv = document.getElementById('rest-result');
+    resultDiv.classList.remove('hidden');
+    
+    if (data.status === 'success') {
+      resultDiv.className = 'mb-4 p-3 rounded bg-green-50 border border-green-200';
+      resultDiv.innerHTML = `
+        <div class="text-green-800">
+          <strong>✅ Успешно отправлено!</strong><br>
+          <span class="text-sm">
+            Время отклика: ${data.response_time_ms} мс<br>
+            Режим: REST API (HTTP)<br>
+            Сервер: ${data.remote_server}
+          </span>
+        </div>
+      `;
+      document.getElementById('rest-test-input').value = '';
+    } else {
+      resultDiv.className = 'mb-4 p-3 rounded bg-red-50 border border-red-200';
+      resultDiv.innerHTML = `
+        <div class="text-red-800">
+          <strong>❌ Ошибка:</strong> ${data.message}
+        </div>
+      `;
+    }
+  })
+  .catch(error => {
+    const resultDiv = document.getElementById('rest-result');
+    resultDiv.classList.remove('hidden');
+    resultDiv.className = 'mb-4 p-3 rounded bg-red-50 border border-red-200';
+    resultDiv.innerHTML = `
+      <div class="text-red-800">
+        <strong>❌ Ошибка соединения:</strong> ${error.message}
+      </div>
+    `;
+  })
+  .finally(() => {
+    button.textContent = originalText;
+    button.disabled = false;
+  });
+});
+
+// Загрузка полученных тестовых сообщений (обновление через AJAX)
+function loadTestMessages() {
+  fetch('/api/test_rest_get_messages')
+    .then(response => response.json())
+    .then(data => {
+      const container = document.getElementById('rest-received-messages');
+      const badge = document.getElementById('rest-badge');
+      
+      if (data.status === 'success' && data.messages.length > 0) {
+        // Получаем существующие ID сообщений из контейнера
+        const existingIds = new Set();
+        container.querySelectorAll('[data-message-id]').forEach(el => {
+          existingIds.add(el.getAttribute('data-message-id'));
+        });
         
-        if (newIncomingList && currentIncomingList) {
-          if (newIncomingList.innerHTML !== currentIncomingList.innerHTML) {
-            currentIncomingList.innerHTML = newIncomingList.innerHTML;
-            console.log('Входящие сообщения обновлены');
-          }
+        // Формируем HTML для всех сообщений
+        container.innerHTML = data.messages.map(msg => {
+          // Форматируем дату и время
+          const date = new Date(msg.received_at);
+          const formattedDate = date.toLocaleString('ru-RU', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+          });
+          
+          return `
+            <div class="mb-2 p-2 bg-white border border-gray-200 rounded" data-message-id="${msg.id}">
+              <div class="text-xs text-gray-500 mb-1">
+                <strong>Отправитель:</strong> ${msg.sender} | 
+                <strong>Получатель:</strong> ${msg.receiver}
+              </div>
+              <div class="text-xs text-gray-400 mb-1">
+                <strong>Дата и время:</strong> ${formattedDate}
+              </div>
+              <div class="text-sm mt-1 p-2 bg-gray-50 rounded">${msg.message}</div>
+            </div>
+          `;
+        }).join('');
+        
+        // Обновляем бейдж с количеством сообщений
+        if (badge) {
+          badge.textContent = data.count;
+          badge.classList.remove('hidden');
+        }
+      } else {
+        // Если нет сообщений, показываем заглушку только если контейнер пуст
+        if (container.children.length === 0) {
+          container.innerHTML = '<p class="text-sm text-gray-500">Нет сообщений</p>';
+        }
+        if (badge) {
+          badge.classList.add('hidden');
+        }
+      }
+    })
+    .catch(error => {
+      console.error('Ошибка загрузки сообщений:', error);
+    });
+}
+
+// Очистка тестовых сообщений
+document.getElementById('rest-clear-button')?.addEventListener('click', () => {
+  if (confirm('Очистить все тестовые сообщения?')) {
+    fetch('/api/test_rest_clear', { method: 'POST' })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success') {
+          loadTestMessages();
+          alert('Тестовые сообщения очищены');
         }
       })
-      .catch(error => console.error('Ошибка обновления входящих:', error));
+      .catch(error => {
+        console.error('Ошибка очистки:', error);
+      });
   }
-}, 10000); // Каждые 10 секунд
+});
+
+// Автообновление полученных сообщений каждые 3 секунды (только если окно открыто)
+setInterval(() => {
+  const modal = document.getElementById('rest-test-modal');
+  if (modal && modal.classList.contains('open')) {
+    loadTestMessages();
+  }
+}, 3000);
+
+// Фоновая проверка новых сообщений для обновления бейджа (каждые 5 секунд)
+setInterval(() => {
+  const modal = document.getElementById('rest-test-modal');
+  if (modal && !modal.classList.contains('open')) {
+    // Только обновляем бейдж, не загружаем полный список
+    fetch('/api/test_rest_get_messages')
+      .then(response => response.json())
+      .then(data => {
+        const badge = document.getElementById('rest-badge');
+        if (data.status === 'success' && data.count > 0 && badge) {
+          badge.textContent = data.count;
+          badge.classList.remove('hidden');
+        } else if (badge) {
+          badge.classList.add('hidden');
+        }
+      })
+      .catch(error => console.error('Ошибка проверки сообщений:', error));
+  }
+}, 5000);
+
+// Первоначальная загрузка бейджа при открытии страницы
+setTimeout(() => {
+  fetch('/api/test_rest_get_messages')
+    .then(response => response.json())
+    .then(data => {
+      const badge = document.getElementById('rest-badge');
+      if (data.status === 'success' && data.count > 0 && badge) {
+        badge.textContent = data.count;
+        badge.classList.remove('hidden');
+      }
+    })
+    .catch(error => console.error('Ошибка загрузки бейджа:', error));
+}, 1000);
+
+// ============================================
+// КОНЕЦ ТЕСТОВОГО КОДА
+// ============================================
 
   </script>
 </body>
