@@ -607,11 +607,11 @@ def encrypt_message():
             file_hash = result_file['hash']
         
         # Отправляем зашифрованное сообщение на сервер получателя
+        # receiver_id не передаем - он определится на стороне получателя
         try:
             payload = {
                 'sender_id': session['user_id'],
                 'sender_name': session.get('username', 'Unknown'),
-                'receiver_id': receiver_id,
                 'key_id': key_id,
                 'message_type': message_type
             }
@@ -776,7 +776,7 @@ def receive_encrypted_message():
         
         sender_id = data.get('sender_id')
         sender_name = data.get('sender_name', 'Unknown')
-        receiver_id = data.get('receiver_id')
+        # receiver_id из запроса игнорируем - определяем на стороне получателя
         key_id = data.get('key_id')
         message_type = data.get('message_type', 'text')
         
@@ -790,20 +790,39 @@ def receive_encrypted_message():
         file_name = data.get('file_name')
         file_size = data.get('file_size')
         
-        # Сохраняем в локальную БД
-        # file_path используем для хранения зашифрованного файла в base64
+        # Определяем получателей на стороне получателя (сервер 1)
+        # Сохраняем сообщение для всех пользователей с ролью 'user' на этом сервере
+        user_query = "SELECT user_id FROM users WHERE role = 'user'"
+        users_result = db_manager.execute_query(user_query, (), fetch=True, sync=False)
+        
+        # Сохраняем сообщение для каждого пользователя на сервере
         query = """
             INSERT INTO messages 
             (sender_id, sender_name, receiver_id, key_id, message_type, content, content_hash,
              file_path, file_name, file_size, is_encrypted, sent_at)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, datetime('now'))
         """
-        db_manager.execute_query(
-            query,
-            (sender_id, sender_name, receiver_id, key_id, message_type, ciphertext,
-             content_hash, file_ciphertext, file_name, file_size),
-            sync=False
-        )
+        
+        if users_result:
+            for user in users_result:
+                receiver_id = user['user_id']
+                db_manager.execute_query(
+                    query,
+                    (sender_id, sender_name, receiver_id, key_id, message_type, ciphertext,
+                     content_hash, file_ciphertext, file_name, file_size),
+                    sync=False
+                )
+                log_to_file(f"Сохранено сообщение от {sender_name} для receiver_id={receiver_id}", level="INFO")
+        else:
+            # Если нет пользователей, используем значение по умолчанию
+            receiver_id = 2  # Для сервера 1 это обычно UserB
+            db_manager.execute_query(
+                query,
+                (sender_id, sender_name, receiver_id, key_id, message_type, ciphertext,
+                 content_hash, file_ciphertext, file_name, file_size),
+                sync=False
+            )
+            log_to_file(f"Получено сообщение от {sender_name} (пользователи не найдены), receiver_id={receiver_id}", level="INFO")
         
         log_to_file(f"Получено зашифрованное сообщение от {sender_name} (key={key_id})", level="INFO")
         

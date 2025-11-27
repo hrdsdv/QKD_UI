@@ -3778,3 +3778,228 @@ r_user_2\databases\user_2_db.db
 [2025-11-28T02:16:46.156309] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
 [2025-11-28T02:16:46.158271] [INFO] DEBUG: Найдено сообщений в БД: 2
 [2025-11-28T02:16:46.158271] [INFO] DEBUG: Возвращено сообщений: 2
+[2025-11-28T02:27:31.459205] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:27:31.459205] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:27:31.459205] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:27:31.459205] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:27:31.460204] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:27:31.461201] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:27:31.461201] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:27:31.793802] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:27:31.793802] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:27:31.793802] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:27:31.794799] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:27:31.794799] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:27:31.795796] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:27:31.795796] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:27:33.693257] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:27:35.159555] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-11-28T02:27:35.160551] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:27:39.568056] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-11-28T02:27:39.569056] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:27:40.234308] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:27:40.234308] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:27:40.235306] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:27:40.235306] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:27:40.235306] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:27:40.236304] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:27:40.237300] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:27:40.572216] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:27:40.573213] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:27:40.573213] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:27:40.573213] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:27:40.574211] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:27:40.575209] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:27:40.575209] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:27:42.287338] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:27:44.149742] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-11-28T02:27:44.149742] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:27:44.570397] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_2
+[2025-11-28T02:27:44.570397] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:27:44.571390] [INFO] DEBUG: Найдено сообщений в БД: 2
+[2025-11-28T02:27:44.571390] [INFO] DEBUG: Возвращено сообщений: 2
+[2025-11-28T02:27:45.736920] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:27:47.121738] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:27:47.571006] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-11-28T02:27:47.571006] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:27:48.574472] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_2
+[2025-11-28T02:27:48.574472] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:27:48.575468] [INFO] DEBUG: Найдено сообщений в БД: 2
+[2025-11-28T02:27:48.575468] [INFO] DEBUG: Возвращено сообщений: 2
+[2025-11-28T02:27:50.761425] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-11-28T02:27:50.761425] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:27:52.576328] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_2
+[2025-11-28T02:27:52.577325] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:27:52.578371] [INFO] DEBUG: Найдено сообщений в БД: 2
+[2025-11-28T02:27:52.579323] [INFO] DEBUG: Возвращено сообщений: 2
+[2025-11-28T02:27:55.760166] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-11-28T02:27:55.761160] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:27:57.343706] [INFO] Ключ key_testB_20251128021247 помечен как использованный пользователем 4
+[2025-11-28T02:27:57.350687] [INFO] Сообщение зашифровано: key=key_testB_20251128021247, size=6 байт, time=37.41мс
+[2025-11-28T02:27:57.572872] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_2
+[2025-11-28T02:27:57.572872] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:27:57.574865] [INFO] DEBUG: Найдено сообщений в БД: 2
+[2025-11-28T02:27:57.575863] [INFO] DEBUG: Возвращено сообщений: 2
+[2025-11-28T02:27:59.424792] [INFO] Сохранено сообщение от hisoka для receiver_id=1
+[2025-11-28T02:27:59.428560] [INFO] Сохранено сообщение от hisoka для receiver_id=2
+[2025-11-28T02:27:59.433060] [INFO] Сохранено сообщение от hisoka для receiver_id=4
+[2025-11-28T02:27:59.435084] [INFO] Получено зашифрованное сообщение от hisoka (key=key_testB_20251128021247)
+[2025-11-28T02:28:00.772220] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-11-28T02:28:00.773189] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:28:02.144694] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_2
+[2025-11-28T02:28:02.145689] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:28:02.146687] [INFO] DEBUG: Найдено сообщений в БД: 2
+[2025-11-28T02:28:02.146687] [INFO] DEBUG: Возвращено сообщений: 2
+[2025-11-28T02:28:06.572241] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-11-28T02:28:06.573205] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:28:07.143879] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_2
+[2025-11-28T02:28:07.144876] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:28:07.146874] [INFO] DEBUG: Найдено сообщений в БД: 2
+[2025-11-28T02:28:07.146874] [INFO] DEBUG: Возвращено сообщений: 2
+[2025-11-28T02:28:07.841267] [ERROR] Ошибка уничтожения ключа key_testB_20251128021247: no such column: destroyed_at
+[2025-11-28T02:28:07.842265] [INFO] Сообщение дешифровано: key=key_testB_20251128021247, size=6 байт, time=22.48мс, hash_ok=True
+[2025-11-28T02:28:11.578836] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-11-28T02:28:11.578836] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:28:12.152969] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_2
+[2025-11-28T02:28:12.152969] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:28:12.155010] [INFO] DEBUG: Найдено сообщений в БД: 2
+[2025-11-28T02:28:12.155010] [INFO] DEBUG: Возвращено сообщений: 2
+[2025-11-28T02:28:16.578693] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-11-28T02:28:16.579658] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:28:17.153289] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_2
+[2025-11-28T02:28:17.154287] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:28:17.155283] [INFO] DEBUG: Найдено сообщений в БД: 2
+[2025-11-28T02:28:17.155283] [INFO] DEBUG: Возвращено сообщений: 2
+[2025-11-28T02:28:20.770983] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-11-28T02:28:20.771973] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:28:22.566396] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_2
+[2025-11-28T02:28:22.566396] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:28:22.568552] [INFO] DEBUG: Найдено сообщений в БД: 2
+[2025-11-28T02:28:22.568552] [INFO] DEBUG: Возвращено сообщений: 2
+[2025-11-28T02:28:25.594486] [INFO] Генерация тестовой последовательности. QBER: 7.0%
+[2025-11-28T02:28:25.767291] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-11-28T02:28:25.768257] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:28:27.567981] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_2
+[2025-11-28T02:28:27.568980] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:28:27.569976] [INFO] DEBUG: Найдено сообщений в БД: 2
+[2025-11-28T02:28:27.570974] [INFO] DEBUG: Возвращено сообщений: 2
+[2025-11-28T02:28:31.029011] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-11-28T02:28:31.111760] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:28:32.573222] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_2
+[2025-11-28T02:28:32.575196] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:28:32.576174] [INFO] DEBUG: Найдено сообщений в БД: 2
+[2025-11-28T02:28:32.577188] [INFO] DEBUG: Возвращено сообщений: 2
+[2025-11-28T02:28:35.760948] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-11-28T02:28:35.761949] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:28:37.570729] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_2
+[2025-11-28T02:28:37.570729] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:28:37.572770] [INFO] DEBUG: Найдено сообщений в БД: 2
+[2025-11-28T02:28:37.572770] [INFO] DEBUG: Возвращено сообщений: 2
+[2025-11-28T02:28:38.222561] [DEBUG] Блок 1/1: исправлено 0 ошибок, время 0.5мс
+[2025-11-28T02:28:38.223558] [INFO] Восстановление ключа testA_20251128022828: 100.0% блоков верифицировано, 0 ошибок исправлено, время 2.2мс, хэш совпадает
+[2025-11-28T02:28:38.223558] [DEBUG] Блок 1/1: исправлено 0 ошибок, время 0.5мс
+[2025-11-28T02:28:38.224556] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:28:38.224556] [INFO] Восстановление ключа testA_20251128022828: 100.0% блоков верифицировано, 0 ошибок исправлено, время 2.4мс, хэш совпадает
+[2025-11-28T02:28:38.224556] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:28:38.238069] [INFO] Ключ key_testA_20251128022828 сохранён в защищённое хранилище
+[2025-11-28T02:28:38.241963] [INFO] Ключ key_testA_20251128022828 сохранён в защищённое хранилище
+[2025-11-28T02:28:38.254011] [INFO] Ключ key_testA_20251128022828 сохранён в защищённое хранилище
+[2025-11-28T02:28:38.257997] [INFO] Ключ key_testA_20251128022828 сохранён в защищённое хранилище
+[2025-11-28T02:28:40.268330] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:28:40.276811] [INFO] Ключ key_testA_20251128022828 сохранён в защищённое хранилище
+[2025-11-28T02:28:40.281272] [INFO] Ключ key_testA_20251128022828 сохранён в защищённое хранилище
+[2025-11-28T02:28:40.284264] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:28:40.289436] [INFO] Ключ key_testA_20251128022828 сохранён в защищённое хранилище
+[2025-11-28T02:28:40.294425] [INFO] Ключ key_testA_20251128022828 сохранён в защищённое хранилище
+[2025-11-28T02:28:41.424836] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-11-28T02:28:41.425832] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:28:42.566815] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_2
+[2025-11-28T02:28:42.567811] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:28:42.568810] [INFO] DEBUG: Найдено сообщений в БД: 2
+[2025-11-28T02:28:42.569812] [INFO] DEBUG: Возвращено сообщений: 2
+[2025-11-28T02:28:43.739153] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:28:44.820563] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-11-28T02:28:44.820563] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:28:47.575953] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_2
+[2025-11-28T02:28:47.576949] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:28:47.579001] [INFO] DEBUG: Найдено сообщений в БД: 2
+[2025-11-28T02:28:47.579001] [INFO] DEBUG: Возвращено сообщений: 2
+[2025-11-28T02:28:48.832767] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-11-28T02:28:48.832767] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:28:52.576783] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_2
+[2025-11-28T02:28:52.576783] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:28:52.577784] [INFO] DEBUG: Найдено сообщений в БД: 2
+[2025-11-28T02:28:52.578781] [INFO] DEBUG: Возвращено сообщений: 2
+[2025-11-28T02:28:53.819963] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-11-28T02:28:53.820961] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:28:54.985286] [ERROR] Ошибка шифрования: MessageCrypto.encrypt_file() got an unexpected keyword argument 'file_content'
+[2025-11-28T02:28:57.574481] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_2
+[2025-11-28T02:28:57.575478] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:28:57.576478] [INFO] DEBUG: Найдено сообщений в БД: 2
+[2025-11-28T02:28:57.577474] [INFO] DEBUG: Возвращено сообщений: 2
+[2025-11-28T02:29:02.573428] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_2
+[2025-11-28T02:29:02.573428] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:29:02.575423] [INFO] DEBUG: Найдено сообщений в БД: 2
+[2025-11-28T02:29:02.575423] [INFO] DEBUG: Возвращено сообщений: 2
+[2025-11-28T02:29:03.442587] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-11-28T02:29:03.445588] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:29:04.566932] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-11-28T02:29:04.566932] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:29:05.579538] [ERROR] Ошибка уничтожения ключа key_testB_20251128021247: no such column: destroyed_at
+[2025-11-28T02:29:05.579538] [INFO] Сообщение дешифровано: key=key_testB_20251128021247, size=6 байт, time=33.17мс, hash_ok=True
+[2025-11-28T02:29:07.145379] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_2
+[2025-11-28T02:29:07.145379] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:29:07.147382] [INFO] DEBUG: Найдено сообщений в БД: 2
+[2025-11-28T02:29:07.147382] [INFO] DEBUG: Возвращено сообщений: 2
+[2025-11-28T02:29:08.324216] [ERROR] Ошибка уничтожения ключа key_testB_20251128021247: no such column: destroyed_at
+[2025-11-28T02:29:08.324216] [INFO] Сообщение дешифровано: key=key_testB_20251128021247, size=6 байт, time=16.45мс, hash_ok=True
+[2025-11-28T02:29:09.575287] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-11-28T02:29:09.575287] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:29:12.158150] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_2
+[2025-11-28T02:29:12.159135] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:29:12.160104] [INFO] DEBUG: Найдено сообщений в БД: 2
+[2025-11-28T02:29:12.161103] [INFO] DEBUG: Возвращено сообщений: 2
+[2025-11-28T02:29:13.127151] [ERROR] Ошибка уничтожения ключа key_testB_20251128021247: no such column: destroyed_at
+[2025-11-28T02:29:13.128148] [INFO] Сообщение дешифровано: key=key_testB_20251128021247, size=6 байт, time=39.54мс, hash_ok=True
+[2025-11-28T02:29:14.566120] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-11-28T02:29:14.566120] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:29:17.145443] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_2
+[2025-11-28T02:29:17.146440] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:29:17.147439] [INFO] DEBUG: Найдено сообщений в БД: 2
+[2025-11-28T02:29:17.147439] [INFO] DEBUG: Возвращено сообщений: 2
+[2025-11-28T02:29:17.838598] [ERROR] Ошибка уничтожения ключа key_testB_20251128021247: no such column: destroyed_at
+[2025-11-28T02:29:17.838598] [INFO] Сообщение дешифровано: key=key_testB_20251128021247, size=6 байт, time=16.23мс, hash_ok=True
+[2025-11-28T02:29:19.571959] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-11-28T02:29:19.572944] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:29:22.145811] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_2
+[2025-11-28T02:29:22.145811] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:29:22.147777] [INFO] DEBUG: Найдено сообщений в БД: 2
+[2025-11-28T02:29:22.147777] [INFO] DEBUG: Возвращено сообщений: 2
+[2025-11-28T02:29:23.539526] [ERROR] Ошибка уничтожения ключа key_testB_20251128021247: no such column: destroyed_at
+[2025-11-28T02:29:23.539526] [INFO] Сообщение дешифровано: key=key_testB_20251128021247, size=6 байт, time=17.48мс, hash_ok=True
+[2025-11-28T02:29:24.577468] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-11-28T02:29:24.577468] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:29:27.144604] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_2
+[2025-11-28T02:29:27.144604] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:29:27.146607] [INFO] DEBUG: Найдено сообщений в БД: 2
+[2025-11-28T02:29:27.146607] [INFO] DEBUG: Возвращено сообщений: 2
+[2025-11-28T02:29:28.827660] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-11-28T02:29:28.829655] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:29:32.604160] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_2
+[2025-11-28T02:29:32.615135] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:29:32.617119] [INFO] DEBUG: Найдено сообщений в БД: 2
+[2025-11-28T02:29:32.619113] [INFO] DEBUG: Возвращено сообщений: 2
+[2025-11-28T02:29:34.578588] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-11-28T02:29:34.579627] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:29:37.570628] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_2
+[2025-11-28T02:29:37.570628] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:29:37.571637] [INFO] DEBUG: Найдено сообщений в БД: 2
+[2025-11-28T02:29:37.571637] [INFO] DEBUG: Возвращено сообщений: 2
+[2025-11-28T02:29:38.827250] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-11-28T02:29:38.827250] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
+[2025-11-28T02:29:42.576349] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_2
+[2025-11-28T02:29:42.576349] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_2\databases\user_2_db.db
+[2025-11-28T02:29:42.578348] [INFO] DEBUG: Найдено сообщений в БД: 2
+[2025-11-28T02:29:42.578348] [INFO] DEBUG: Возвращено сообщений: 2
+[2025-11-28T02:29:43.827053] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-11-28T02:29:43.827053] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\qkd_encryption_system\server_user_1\databases\user_1_db.db
