@@ -502,6 +502,34 @@ def generate_test_sequence():
     })
 
 
+@app.route('/api/sync_test_mode_state', methods=['POST'])
+def sync_test_mode_state():
+    """API endpoint для синхронизации состояния режима тестирования от другого сервера"""
+    try:
+        data = request.get_json()
+        # Сохраняем состояние в глобальной переменной для доступа из JavaScript
+        if not hasattr(sync_test_mode_state, 'test_state'):
+            sync_test_mode_state.test_state = {}
+        sync_test_mode_state.test_state.update(data)
+        return jsonify({'status': 'success', 'message': 'Состояние синхронизировано'})
+    except Exception as e:
+        log_to_file(f"Ошибка синхронизации состояния тестирования: {e}", level="ERROR")
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
+
+@app.route('/api/get_test_mode_state', methods=['GET'])
+def get_test_mode_state():
+    """API endpoint для получения текущего состояния режима тестирования"""
+    try:
+        if hasattr(sync_test_mode_state, 'test_state'):
+            return jsonify({'status': 'success', 'state': sync_test_mode_state.test_state})
+        else:
+            return jsonify({'status': 'success', 'state': {'is_generating': False}})
+    except Exception as e:
+        log_to_file(f"Ошибка получения состояния тестирования: {e}", level="ERROR")
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
+
 # ============================================
 # ENDPOINTS ДЛЯ ШИФРОВАНИЯ/ДЕШИФРОВАНИЯ СООБЩЕНИЙ
 # ============================================
@@ -720,11 +748,14 @@ def decrypt_message():
     try:
         # Дешифруем текст если есть
         if message_type in ['text', 'text_and_file'] and message.get('content'):
+            # Если есть и файл, ключ не уничтожаем при дешифровании текста
+            destroy_key_in_text = (message_type == 'text')
             text_result = message_crypto.decrypt_message(
                 ciphertext_b64=message['content'],
                 key_id=message['key_id'],
                 user_id=session['user_id'],
-                expected_hash=message.get('content_hash')
+                expected_hash=message.get('content_hash'),
+                destroy_key=destroy_key_in_text
             )
             
             if text_result['status'] != 'success':
@@ -733,15 +764,19 @@ def decrypt_message():
             result['plaintext'] = text_result['plaintext']
             result['hash_verified'] = text_result['hash_verified']
             result['decryption_time_ms'] = text_result['decryption_time_ms']
-            result['key_destroyed'] = text_result['key_destroyed']
+            if destroy_key_in_text:
+                result['key_destroyed'] = text_result.get('key_destroyed', False)
         
         # Дешифруем файл если есть
         if message_type in ['file', 'text_and_file'] and message.get('file_path'):
+            # Ключ уничтожаем только если это последний компонент сообщения
+            destroy_key = True
             file_result = message_crypto.decrypt_file(
                 ciphertext_b64=message['file_path'],
                 key_id=message['key_id'],
                 user_id=session['user_id'],
-                expected_hash=message.get('content_hash') if message_type == 'file' else None
+                expected_hash=message.get('content_hash') if message_type == 'file' else None,
+                destroy_key=destroy_key
             )
             
             if file_result['status'] != 'success':
@@ -749,18 +784,35 @@ def decrypt_message():
             
             # Сохраняем файл для скачивания
             import tempfile
-            temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=f"_{message.get('file_name', 'file')}")
-            temp_file.write(file_result['file_content'])
-            temp_file.close()
+            import os
+            file_name = message.get('file_name', 'decrypted_file')
+            # Создаем временный файл с правильным расширением
+            # Используем tempfile.gettempdir() для получения директории временных файлов
+            temp_dir = tempfile.gettempdir()
+            # Сохраняем оригинальное имя файла в отдельной переменной
+            original_file_name = file_name
+            # Создаем уникальное имя файла
+            import time
+            unique_name = f"decrypted_{int(time.time())}_{original_file_name}"
+            temp_file_path = os.path.join(temp_dir, unique_name)
             
-            result['file_path'] = temp_file.name
-            result['file_name'] = message.get('file_name', 'decrypted_file')
+            with open(temp_file_path, 'wb') as f:
+                f.write(file_result['file_content'])
+            
+            # Создаем URL для скачивания
+            import urllib.parse
+            file_path_encoded = urllib.parse.quote(temp_file_path)
+            download_url = f'/download_decrypted_file/{file_path_encoded}'
+            
+            result['file_path'] = temp_file_path
+            result['file_name'] = original_file_name
             result['file_size'] = file_result['file_size']
             result['file_hash_verified'] = file_result['hash_verified']
+            result['download_url'] = download_url
             
             if 'decryption_time_ms' not in result:
                 result['decryption_time_ms'] = file_result['decryption_time_ms']
-                result['key_destroyed'] = True
+            result['key_destroyed'] = file_result.get('key_destroyed', False)
         
         # Помечаем сообщение как прочитанное
         message_crypto.mark_message_as_read(message_id, session['user_id'])
@@ -781,12 +833,25 @@ def download_decrypted_file(file_path):
     try:
         from flask import send_file
         import os
+        import urllib.parse
+        
+        # Декодируем URL-encoded путь
+        file_path = urllib.parse.unquote(file_path)
         
         if not os.path.exists(file_path):
+            log_to_file(f"Файл не найден: {file_path}", level="ERROR")
             return jsonify({'status': 'error', 'message': 'Файл не найден'}), 404
         
         # Получаем имя файла из пути
         file_name = os.path.basename(file_path)
+        # Извлекаем оригинальное имя файла (после префикса decrypted_TIMESTAMP_)
+        if file_name.startswith('decrypted_'):
+            # Формат: decrypted_TIMESTAMP_original_name.ext
+            parts = file_name.split('_', 2)  # Разделяем на ['decrypted', 'TIMESTAMP', 'original_name.ext']
+            if len(parts) >= 3:
+                file_name = parts[2]  # Берем оригинальное имя
+        
+        log_to_file(f"Скачивание файла: {file_path} как {file_name}", level="INFO")
         
         return send_file(
             file_path,

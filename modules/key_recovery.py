@@ -346,15 +346,16 @@ class KeyRecoveryModule:
             import os
             random_data = os.urandom(256).hex()
             
+            # Обновляем статус на "Уничтожен", но не удаляем запись из БД
             query = "UPDATE keys SET key_data = ?, status = 'Уничтожен', used_by = ?, used_at = datetime('now') WHERE key_id = ?"
             self.db_manager.execute_query(query, (random_data, user_id, key_id), sync=False)
             
-            # Удаляем запись
-            query = "DELETE FROM keys WHERE key_id = ?"
-            self.db_manager.execute_query(query, (key_id,), sync=False)
+            # Также обновляем статус в secure_keys если ключ там есть
+            query_secure = "UPDATE secure_keys SET status = 'Уничтожен', destroyed_at = datetime('now'), used_by = ? WHERE key_id = ?"
+            self.db_manager.execute_query(query_secure, (user_id, key_id), sync=False)
             
             # Логируем уничтожение
-            log_to_file(f"Ключ {key_id} безвозвратно уничтожен пользователем {user_id}", level="INFO")
+            log_to_file(f"Ключ {key_id} уничтожен пользователем {user_id} (статус изменен на 'Уничтожен')", level="INFO")
             log_to_db(self.db_manager.db_path, user_id, 'KeyRecoveryModule', 'INFO', f"Ключ {key_id} уничтожен")
             
             return True

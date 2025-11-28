@@ -296,6 +296,7 @@ class KeyManagementModule:
                     UNION
                     SELECT key_id, length, status, created_at
                     FROM keys WHERE status = 'Активен'
+                    ORDER BY created_at DESC
                 ''')
                 return [dict(row) for row in cursor.fetchall()]
         except Exception as e:

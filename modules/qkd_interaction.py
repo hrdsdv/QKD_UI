@@ -115,7 +115,23 @@ class QKDModule:
             # Получаем все сырые данные (и тестовые, и реальные)
             query = "SELECT * FROM raw_data ORDER BY generated_at DESC"
             result = self.db_manager.execute_query(query, fetch=True, sync=False)
-            return result if result else []
+            
+            if not result:
+                return []
+            
+            # Проверяем, был ли восстановлен ключ для каждой последовательности
+            for item in result:
+                sequence_id = item.get('sequence_id', '')
+                if sequence_id:
+                    key_id = f"key_{sequence_id}"
+                    # Проверяем наличие ключа в таблице keys
+                    key_query = "SELECT key_id FROM keys WHERE key_id = ? AND status = 'Активен'"
+                    key_result = self.db_manager.execute_query(key_query, (key_id,), fetch=True, sync=False)
+                    item['is_recovered'] = bool(key_result)
+                else:
+                    item['is_recovered'] = False
+            
+            return result
         except Exception as e:
             from utils.logging_utils import log_to_file
             log_to_file(f"Ошибка получения сырых данных: {e}", level="ERROR")

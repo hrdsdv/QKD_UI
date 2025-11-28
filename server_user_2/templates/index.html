@@ -260,9 +260,10 @@
               </thead>
               <tbody>
                 {% for key in available_keys %}
+                {% if key.status != 'Уничтожен' %}
                 <tr class="key-row hover:bg-gray-100 cursor-pointer" data-key-id="{{ key.key_id }}">
                   <td class="py-2 px-4 border-b">{{ key.key_id }}</td>
-                  <td class="py-2 px-4 border-b">{{ key.generated }}</td>
+                  <td class="py-2 px-4 border-b">{{ key.created_at or key.generated or '' }}</td>
                   <td class="py-2 px-4 border-b">
                     <span class="px-2 py-1 rounded text-xs
                       {% if key.status == 'Активен' %}bg-green-100 text-green-800
@@ -272,6 +273,7 @@
                     </span>
                   </td>
                 </tr>
+                {% endif %}
                 {% endfor %}
               </tbody>
             </table>
@@ -386,15 +388,15 @@
             <span class="font-bold">Сверка базисов:</span>
             <span id="bases-comparison">—</span>
           </div>
-          <div class="metric">
+          <div class="metric test-mode-hidden" style="display: none;">
             <span class="font-bold">Восстановление ключа:</span>
             <span id="key-recovery">—</span>
           </div>
-          <div class="metric">
+          <div class="metric test-mode-hidden" style="display: none;">
             <span class="font-bold">Шифрование/дешифрование файла:</span>
             <span id="encryption-time">—</span>
           </div>
-          <div class="metric">
+          <div class="metric test-mode-hidden" style="display: none;">
             <span class="font-bold">Уничтожение ключа:</span>
             <span id="key-destruction">—</span>
           </div>
@@ -442,10 +444,17 @@
                   Выбрать
                 </button>
                 {% elif data.selected_by %}
+                  {% if data.is_recovered %}
+                <button class="recover-key-button bg-gray-400 cursor-not-allowed text-white font-bold py-1 px-3 rounded text-sm"
+                        data-sequence-id="{{ data.sequence_id }}" disabled>
+                  Восстановлено
+                </button>
+                  {% else %}
                 <button class="recover-key-button bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded text-sm"
                         data-sequence-id="{{ data.sequence_id }}">
                   Восстановить
                 </button>
+                  {% endif %}
                 {% endif %}
                 <button class="delete-sequence-button bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-sm"
                         data-sequence-id="{{ data.sequence_id }}"
@@ -762,23 +771,75 @@
         });
     });
 
-    // Обработка дешифровки и скачивания файлов
-    document.querySelectorAll('.decrypt-download-button').forEach(button => {
-      button.addEventListener('click', () => {
-        const itemId = button.getAttribute('data-item-id');
-        const contentElement = document.getElementById(`decrypted-${itemId}`);
+    // Обработка дешифровки и скачивания файлов (используем делегирование событий)
+    document.addEventListener('click', (e) => {
+      if (!e.target.classList.contains('decrypt-download-button')) return;
+      
+      const button = e.target;
+      const itemId = button.getAttribute('data-item-id');
+      const contentElement = document.getElementById(`decrypted-${itemId}`);
 
-        if (contentElement.style.display === 'block') {
-          contentElement.style.display = 'none';
-        } else {
-          // Здесь будет логика дешифровки файла с использованием модуля шифрования/дешифрования
+      if (contentElement && contentElement.style.display === 'block' && contentElement.innerHTML.trim() !== '') {
+        contentElement.style.display = 'none';
+        return;
+      }
+      
+      // Показываем индикатор загрузки
+      button.textContent = 'Дешифрование...';
+      button.disabled = true;
+      
+      // Отправляем запрос на дешифрование
+      fetch('/decrypt_message', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `message_id=${itemId}`
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success') {
           contentElement.style.display = 'block';
-          contentElement.innerHTML = `
-            <div class="font-bold">Расшифрованное содержимое:</div>
-            <div>Файл: decrypted_${itemId}.pdf</div>
-            <a href="#" download="decrypted_${itemId}.pdf" class="text-blue-500 hover:underline">Скачать</a>
-          `;
+          
+          let html = `<div class="mt-2 p-3 bg-green-50 border border-green-200 rounded">`;
+          html += `<div class="font-bold text-green-800 mb-2">Расшифровано успешно</div>`;
+          
+          // Если есть текст
+          if (data.plaintext) {
+            html += `<div class="mb-2"><strong>Текст:</strong><div class="mt-1 p-2 bg-white rounded">${data.plaintext}</div></div>`;
+          }
+          
+          // Если есть файл
+          if (data.download_url && data.file_name) {
+            html += `<div class="mb-2"><strong>Файл:</strong> ${data.file_name} (${data.file_size || 0} байт)</div>`;
+            html += `<a href="${data.download_url}" download="${data.file_name}" class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded text-sm">Скачать файл</a>`;
+          }
+          
+          html += `</div>`;
+          contentElement.innerHTML = html;
+          
+          // Автоматически скачиваем файл если он есть
+          if (data.download_url && data.file_name) {
+            const link = document.createElement('a');
+            link.href = data.download_url;
+            link.download = data.file_name;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          }
+        } else {
+          contentElement.style.display = 'block';
+          contentElement.innerHTML = `<div class="mt-2 p-3 bg-red-50 border border-red-200 rounded text-red-800">Ошибка: ${data.message}</div>`;
         }
+        button.textContent = 'Дешифровать и скачать';
+        button.disabled = false;
+      })
+      .catch(error => {
+        console.error('Ошибка:', error);
+        contentElement.style.display = 'block';
+        contentElement.innerHTML = `<div class="mt-2 p-3 bg-red-50 border border-red-200 rounded text-red-800">Ошибка дешифрования: ${error.message}</div>`;
+        button.textContent = 'Дешифровать и скачать';
+        button.disabled = false;
       });
     });
         // Управление модальным окном выбора сырого ключа
@@ -813,7 +874,10 @@
                 <td class="py-2 px-4 border-b">
                   ${!item.selected_by ? 
                     `<button class="select-sequence-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded text-sm" data-sequence-id="${item.sequence_id}">Выбрать</button>` :
-                    `<button class="recover-key-button bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded text-sm" data-sequence-id="${item.sequence_id}">Восстановить</button>`
+                    (item.is_recovered ? 
+                      `<button class="recover-key-button bg-gray-400 cursor-not-allowed text-white font-bold py-1 px-3 rounded text-sm" data-sequence-id="${item.sequence_id}" disabled>Восстановлено</button>` :
+                      `<button class="recover-key-button bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded text-sm" data-sequence-id="${item.sequence_id}">Восстановить</button>`
+                    )
                   }
                 </td>
               `;
@@ -914,6 +978,13 @@
             document.getElementById('step-3-details').textContent = 'Ключ восстановлен';
             document.getElementById('step-4').classList.add('active-step');
             alert(`Ключ успешно восстановлен!\nID ключа: ${data.key_id}`);
+            
+            // Делаем кнопку "Восстановить" неактивной
+            button.disabled = true;
+            button.classList.remove('bg-green-500', 'hover:bg-green-700');
+            button.classList.add('bg-gray-400', 'cursor-not-allowed');
+            button.textContent = 'Восстановлено';
+            
             document.getElementById('raw-key-modal').classList.remove('open');
             setTimeout(() => location.reload(), 1000);
           } else {
@@ -951,9 +1022,59 @@ closeTestModeModal.addEventListener('click', () => {
 window.apiServerA = '{{ remote_server_a }}';
 
 const generateTestSequenceButton = document.getElementById('generate-test-sequence');
+const qberInput = document.getElementById('qber-input');
+
+// Функция для проверки состояния тестирования и блокировки интерфейса
+function checkTestModeState() {
+  fetch('/api/get_test_mode_state')
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'success' && data.state) {
+        const state = data.state;
+        if (state.is_generating) {
+          // Блокируем кнопку и поле QBER
+          generateTestSequenceButton.disabled = true;
+          generateTestSequenceButton.classList.add('opacity-50', 'cursor-not-allowed');
+          qberInput.disabled = true;
+          qberInput.classList.add('opacity-50', 'cursor-not-allowed');
+          
+          // Обновляем метрики если они есть
+          if (state.connection_time) {
+            document.getElementById('connection-time').textContent = state.connection_time;
+          }
+          if (state.generation_status) {
+            document.getElementById('generation-status').textContent = state.generation_status;
+          }
+          if (state.bases_comparison) {
+            document.getElementById('bases-comparison').textContent = state.bases_comparison;
+          }
+          if (state.key_recovery) {
+            document.getElementById('key-recovery').textContent = state.key_recovery;
+          }
+          if (state.encryption_time) {
+            document.getElementById('encryption-time').textContent = state.encryption_time;
+          }
+          if (state.key_destruction) {
+            document.getElementById('key-destruction').textContent = state.key_destruction;
+          }
+        } else {
+          // Разблокируем кнопку и поле QBER
+          generateTestSequenceButton.disabled = false;
+          generateTestSequenceButton.classList.remove('opacity-50', 'cursor-not-allowed');
+          qberInput.disabled = false;
+          qberInput.classList.remove('opacity-50', 'cursor-not-allowed');
+        }
+      }
+    })
+    .catch(error => console.error('Ошибка проверки состояния тестирования:', error));
+}
+
+// Проверяем состояние каждые 2 секунды
+setInterval(checkTestModeState, 2000);
+// Проверяем сразу при загрузке
+checkTestModeState();
 
 generateTestSequenceButton.addEventListener('click', () => {
-  const qberInput = document.getElementById('qber-input');
   const qberValue = qberInput.value;
   
   if (!qberValue || qberValue === '') {
@@ -1063,6 +1184,9 @@ if (window.isAdmin) {
     
     tbody.innerHTML = '';
     keys.forEach(key => {
+      // Пропускаем уничтоженные ключи
+      if (key.status === 'Уничтожен') return;
+      
       const row = document.createElement('tr');
       row.innerHTML = `
         <td class="py-2 px-4 border-b">${key.key_id || ''}</td>
@@ -1146,7 +1270,7 @@ function updateIncomingMessages() {
                     <div class="mt-1">
                       ${item.type === 'text' 
                         ? `<div class="bg-gray-100 p-2 rounded">Зашифрованное сообщение (${item.size} символов)</div>`
-                        : `<div class="bg-gray-100 p-2 rounded">Зашифрованный файл: ${item.filename} (${item.size}, ${item.filetype})</div>`
+                        : `<div class="bg-gray-100 p-2 rounded">Зашифрованный файл: ${item.filename || item.file_name || 'файл'} (${item.size || 0} байт${item.filetype ? ', ' + item.filetype : ''})</div>`
                       }
                     </div>
                   </div>
@@ -1176,6 +1300,9 @@ setInterval(() => {
     updateIncomingMessages();
   }
 }, 5000);
+
+// Вызываем сразу при загрузке страницы
+updateIncomingMessages();
 
 // ============================================
 // ТЕСТОВЫЙ КОД: Проверка REST API

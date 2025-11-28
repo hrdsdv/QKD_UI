@@ -152,6 +152,22 @@ class MessageCrypto:
             # 5. Кодируем в base64 для передачи
             ciphertext_b64 = base64.b64encode(ciphertext).decode('ascii')
             
+            # 6. Помечаем ключ как использованный
+            self.key_manager.use_key(key_id, sender_id)
+            
+            # 7. Сохраняем сообщение в БД
+            file_size = len(file_content)
+            message_id = self._save_encrypted_message(
+                sender_id=sender_id,
+                receiver_id=receiver_id,
+                key_id=key_id,
+                message_type='file',
+                encrypted_content=ciphertext_b64,
+                content_hash=file_hash,
+                file_name=file_name,
+                file_size=file_size
+            )
+            
             end_time = time.perf_counter()
             encryption_time = round((end_time - start_time) * 1000, 2)
             
@@ -163,6 +179,7 @@ class MessageCrypto:
             
             return {
                 'status': 'success',
+                'message_id': message_id,
                 'key_id': key_id,
                 'ciphertext': ciphertext_b64,
                 'hash': file_hash,
@@ -180,7 +197,7 @@ class MessageCrypto:
             }
     
     def decrypt_message(self, ciphertext_b64: str, key_id: str, 
-                       user_id: int, expected_hash: str = None) -> Dict[str, Any]:
+                       user_id: int, expected_hash: str = None, destroy_key: bool = True) -> Dict[str, Any]:
         """
         Дешифрует текстовое сообщение.
         
@@ -188,6 +205,7 @@ class MessageCrypto:
         :param key_id: ID квантового ключа
         :param user_id: ID пользователя (получателя)
         :param expected_hash: Ожидаемый хэш для проверки целостности
+        :param destroy_key: Уничтожать ли ключ после дешифрования (по умолчанию True)
         :return: Словарь с результатом операции
         """
         start_time = time.perf_counter()
@@ -224,7 +242,10 @@ class MessageCrypto:
             plaintext = plaintext_bytes.decode('utf-8')
             
             # 6. Уничтожаем ключ после использования (политика одноразового использования)
-            self.key_manager.destroy_key(key_id, user_id)
+            key_destroyed = False
+            if destroy_key:
+                self.key_manager.destroy_key(key_id, user_id)
+                key_destroyed = True
             
             end_time = time.perf_counter()
             decryption_time = round((end_time - start_time) * 1000, 2)
@@ -241,7 +262,7 @@ class MessageCrypto:
                 'key_id': key_id,
                 'hash_verified': hash_verified,
                 'decryption_time_ms': decryption_time,
-                'key_destroyed': True
+                'key_destroyed': key_destroyed
             }
             
         except Exception as e:
@@ -252,7 +273,7 @@ class MessageCrypto:
             }
     
     def decrypt_file(self, ciphertext_b64: str, key_id: str, 
-                    user_id: int, expected_hash: str = None) -> Dict[str, Any]:
+                    user_id: int, expected_hash: str = None, destroy_key: bool = True) -> Dict[str, Any]:
         """
         Дешифрует файл.
         
@@ -260,6 +281,7 @@ class MessageCrypto:
         :param key_id: ID квантового ключа
         :param user_id: ID пользователя (получателя)
         :param expected_hash: Ожидаемый хэш для проверки целостности
+        :param destroy_key: Уничтожать ли ключ после дешифрования (по умолчанию True)
         :return: Словарь с результатом операции
         """
         start_time = time.perf_counter()
@@ -295,6 +317,12 @@ class MessageCrypto:
                         level="WARNING"
                     )
             
+            # 6. Уничтожаем ключ после использования (политика одноразового использования)
+            key_destroyed = False
+            if destroy_key:
+                self.key_manager.destroy_key(key_id, user_id)
+                key_destroyed = True
+            
             end_time = time.perf_counter()
             decryption_time = round((end_time - start_time) * 1000, 2)
             
@@ -310,7 +338,8 @@ class MessageCrypto:
                 'key_id': key_id,
                 'hash_verified': hash_verified,
                 'decryption_time_ms': decryption_time,
-                'file_size': len(plaintext_bytes)
+                'file_size': len(plaintext_bytes),
+                'key_destroyed': key_destroyed
             }
             
         except Exception as e:
@@ -320,152 +349,7 @@ class MessageCrypto:
                 'message': str(e)
             }
     
-    def encrypt_file(self, file_path: str, key_id: str, sender_id: int,
-                    receiver_id: int) -> Dict[str, Any]:
-        """
-        Шифрует файл с использованием квантового ключа.
-        
-        :param file_path: Путь к файлу
-        :param key_id: ID квантового ключа
-        :param sender_id: ID отправителя
-        :param receiver_id: ID получателя
-        :return: Словарь с результатом операции
-        """
-        start_time = time.perf_counter()
-        
-        try:
-            # Читаем файл
-            with open(file_path, 'rb') as f:
-                file_data = f.read()
-            
-            file_name = os.path.basename(file_path)
-            file_size = len(file_data)
-            
-            # Получаем ключ
-            key_bytes = self.key_manager.get_key_for_encryption(key_id)
-            if not key_bytes:
-                return {
-                    'status': 'error',
-                    'message': f'Ключ {key_id} не найден'
-                }
-            
-            # Шифруем
-            cipher = GOSTCipher(key_bytes)
-            encrypted_data = cipher.encrypt(file_data)
-            
-            # Хэш для проверки целостности
-            file_hash = GOSTHash.hash_256(file_data).hex()
-            
-            # Кодируем в base64
-            encrypted_b64 = base64.b64encode(encrypted_data).decode('ascii')
-            
-            # Помечаем ключ как использованный
-            self.key_manager.use_key(key_id, sender_id)
-            
-            # Сохраняем в БД
-            message_id = self._save_encrypted_message(
-                sender_id=sender_id,
-                receiver_id=receiver_id,
-                key_id=key_id,
-                message_type='file',
-                encrypted_content=encrypted_b64,
-                content_hash=file_hash,
-                file_name=file_name,
-                file_size=file_size
-            )
-            
-            end_time = time.perf_counter()
-            encryption_time = round((end_time - start_time) * 1000, 2)
-            
-            log_to_file(
-                f"Файл зашифрован: {file_name}, key={key_id}, "
-                f"size={file_size} байт, time={encryption_time}мс",
-                level="INFO"
-            )
-            
-            return {
-                'status': 'success',
-                'message_id': message_id,
-                'key_id': key_id,
-                'file_name': file_name,
-                'original_size': file_size,
-                'encrypted_size': len(encrypted_data),
-                'hash': file_hash,
-                'encryption_time_ms': encryption_time
-            }
-            
-        except Exception as e:
-            log_to_file(f"Ошибка шифрования файла: {e}", level="ERROR")
-            return {
-                'status': 'error',
-                'message': str(e)
-            }
     
-    def decrypt_file(self, encrypted_b64: str, key_id: str, user_id: int,
-                    output_path: str, expected_hash: str = None) -> Dict[str, Any]:
-        """
-        Дешифрует файл.
-        
-        :param encrypted_b64: Зашифрованные данные в base64
-        :param key_id: ID квантового ключа
-        :param user_id: ID пользователя
-        :param output_path: Путь для сохранения расшифрованного файла
-        :param expected_hash: Ожидаемый хэш файла
-        :return: Словарь с результатом операции
-        """
-        start_time = time.perf_counter()
-        
-        try:
-            # Получаем ключ
-            key_bytes = self.key_manager.get_key_for_encryption(key_id)
-            if not key_bytes:
-                return {
-                    'status': 'error',
-                    'message': f'Ключ {key_id} не найден'
-                }
-            
-            # Декодируем и дешифруем
-            encrypted_data = base64.b64decode(encrypted_b64)
-            cipher = GOSTCipher(key_bytes)
-            file_data = cipher.decrypt(encrypted_data)
-            
-            # Проверяем хэш
-            hash_verified = True
-            if expected_hash:
-                actual_hash = GOSTHash.hash_256(file_data).hex()
-                hash_verified = (actual_hash == expected_hash)
-            
-            # Сохраняем файл
-            with open(output_path, 'wb') as f:
-                f.write(file_data)
-            
-            # Уничтожаем ключ
-            self.key_manager.destroy_key(key_id, user_id)
-            
-            end_time = time.perf_counter()
-            decryption_time = round((end_time - start_time) * 1000, 2)
-            
-            log_to_file(
-                f"Файл дешифрован: {output_path}, key={key_id}, "
-                f"size={len(file_data)} байт, time={decryption_time}мс",
-                level="INFO"
-            )
-            
-            return {
-                'status': 'success',
-                'output_path': output_path,
-                'file_size': len(file_data),
-                'hash_verified': hash_verified,
-                'decryption_time_ms': decryption_time,
-                'key_destroyed': True
-            }
-            
-        except Exception as e:
-            log_to_file(f"Ошибка дешифрования файла: {e}", level="ERROR")
-            return {
-                'status': 'error',
-                'message': str(e)
-            }
     
     def _save_encrypted_message(self, sender_id: int, receiver_id: int, key_id: str,
                                message_type: str, encrypted_content: str, content_hash: str,
