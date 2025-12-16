@@ -815,7 +815,30 @@
           </div>
         </div>
       </div>
-      <div id="step-6" class="step">Шифрование и отправка</div>
+      <div id="step-6" class="step">
+        Шифрование и отправка
+        <div id="step-6-viz" class="send-viz mt-2" style="display:none;">
+          <div class="send-progress">
+            <div id="send-progress-fill" class="send-progress-fill"></div>
+          </div>
+          <div class="text-xs text-gray-600 mb-2" id="send-progress-text">0% • Ожидание...</div>
+          <div class="send-stages">
+            <div class="send-stage" data-stage="prepare">
+              <span class="dot"></span><span>Подготовка</span>
+            </div>
+            <div class="send-stage" data-stage="encrypt">
+              <span class="dot"></span><span>Шифрование</span>
+            </div>
+            <div class="send-stage" data-stage="send">
+              <span class="dot"></span><span>Отправка</span>
+            </div>
+            <div class="send-stage" data-stage="deliver">
+              <span class="dot"></span><span>Доставка</span>
+            </div>
+          </div>
+          <div id="send-current-stage" class="text-xs text-gray-700 italic">Ожидание...</div>
+        </div>
+      </div>
     </div>
   </div>
 </footer>
