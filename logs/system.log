@@ -23653,3 +23653,1230 @@ EXT, параметры: (), ошибка: duplicate column name: plaintext
 [2025-12-16T22:36:41.245414+03:00] [WARNING] [QKD] Порт COM3 занят другой программой. Попытка освободить...
 [2025-12-16T22:36:41.245414+03:00] [WARNING] [QKD] Не удалось освободить порт: could not open port 'COM3': FileNotFoundError(2, 'Не удается найти указанный файл.', None, 2)
 [2025-12-16T22:36:41.245414+03:00] [INFO] [QKD] Ожидание 3 секунд перед повторной попыткой...
+[2025-12-16T22:38:21.775238+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:38:21.776268+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:38:21.776268+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:38:21.777235+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:38:21.777235+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:38:21.778263+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:38:21.779260+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:38:21.789233+03:00] [INFO] [AUTO-START] ========== АВТОМАТИЧЕСКИЙ ЗАПУСК QKD ==========
+[2025-12-16T22:38:21.789233+03:00] [INFO] [AUTO-START] Попытка автоматического подключения к QKD устройству (COM3, 9600)...
+[2025-12-16T22:38:21.790233+03:00] [INFO] [AUTO-START] ТЕСТ: Тестовая запись уже существует, пропускаем
+[2025-12-16T22:38:21.790233+03:00] [INFO] [AUTO-START] Вызов connect_serial('COM3', 9600) с повторными попытками...
+[2025-12-16T22:38:21.790233+03:00] [INFO] [QKD] Попытка подключения #1/5 к COM3...
+[2025-12-16T22:38:21.791197+03:00] [ERROR] Ошибка подключения к QKD-устройству (попытка 1/5): could not open port 'COM3': FileNotFoundError(2, 'Не удается найти указанный файл.', None, 2)
+[2025-12-16T22:38:21.791197+03:00] [WARNING] [QKD] Порт COM3 занят другой программой. Попытка освободить...
+[2025-12-16T22:38:21.791197+03:00] [WARNING] [QKD] Не удалось освободить порт: could not open port 'COM3': FileNotFoundError(2, 'Не удается найти указанный файл.', None, 2)
+[2025-12-16T22:38:21.791197+03:00] [INFO] [QKD] Ожидание 3 секунд перед повторной попыткой...
+[2025-12-16T22:38:24.792367+03:00] [INFO] [QKD] Попытка подключения #2/5 к COM3...
+[2025-12-16T22:38:24.792367+03:00] [ERROR] Ошибка подключения к QKD-устройству (попытка 2/5): could not open port 'COM3': FileNotFoundError(2, 'Не удается найти указанный файл.', None, 2)
+[2025-12-16T22:38:24.793374+03:00] [WARNING] [QKD] Порт COM3 занят другой программой. Попытка освободить...
+[2025-12-16T22:38:24.793374+03:00] [WARNING] [QKD] Не удалось освободить порт: could not open port 'COM3': FileNotFoundError(2, 'Не удается найти указанный файл.', None, 2)
+[2025-12-16T22:38:24.793374+03:00] [INFO] [QKD] Ожидание 3 секунд перед повторной попыткой...
+[2025-12-16T22:38:27.795379+03:00] [INFO] [QKD] Попытка подключения #3/5 к COM3...
+[2025-12-16T22:38:27.796235+03:00] [ERROR] Ошибка подключения к QKD-устройству (попытка 3/5): could not open port 'COM3': FileNotFoundError(2, 'Не удается найти указанный файл.', None, 2)
+[2025-12-16T22:38:27.796235+03:00] [WARNING] [QKD] Порт COM3 занят другой программой. Попытка освободить...
+[2025-12-16T22:38:27.796235+03:00] [WARNING] [QKD] Не удалось освободить порт: could not open port 'COM3': FileNotFoundError(2, 'Не удается найти указанный файл.', None, 2)
+[2025-12-16T22:38:27.797232+03:00] [INFO] [QKD] Ожидание 3 секунд перед повторной попыткой...
+[2025-12-16T22:38:30.797922+03:00] [INFO] [QKD] Попытка подключения #4/5 к COM3...
+[2025-12-16T22:38:30.798777+03:00] [ERROR] Ошибка подключения к QKD-устройству (попытка 4/5): could not open port 'COM3': FileNotFoundError(2, 'Не удается найти указанный файл.', None, 2)
+[2025-12-16T22:38:30.798777+03:00] [WARNING] [QKD] Порт COM3 занят другой программой. Попытка освободить...
+[2025-12-16T22:38:30.799774+03:00] [WARNING] [QKD] Не удалось освободить порт: could not open port 'COM3': FileNotFoundError(2, 'Не удается найти указанный файл.', None, 2)
+[2025-12-16T22:38:30.799774+03:00] [INFO] [QKD] Ожидание 3 секунд перед повторной попыткой...
+[2025-12-16T22:38:33.800380+03:00] [INFO] [QKD] Попытка подключения #5/5 к COM3...
+[2025-12-16T22:38:33.801232+03:00] [ERROR] Ошибка подключения к QKD-устройству (попытка 5/5): could not open port 'COM3': FileNotFoundError(2, 'Не удается найти указанный файл.', None, 2)
+[2025-12-16T22:38:33.801232+03:00] [WARNING] [QKD] Порт COM3 занят другой программой. Попытка освободить...
+[2025-12-16T22:38:33.802227+03:00] [WARNING] [QKD] Не удалось освободить порт: could not open port 'COM3': FileNotFoundError(2, 'Не удается найти указанный файл.', None, 2)
+[2025-12-16T22:38:33.807350+03:00] [ERROR] [QKD ERROR] Все 5 попыток подключения исчерпаны. Закройте программу, использующую COM3, и перезапустите сервер.
+[2025-12-16T22:38:33.808312+03:00] [ERROR] [AUTO-START] ОШИБКА: Не удалось подключиться к COM3. Проверьте подключение устройства.
+[2025-12-16T22:38:34.137371+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:38:34.139488+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:38:34.139488+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:38:34.140452+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:38:34.140452+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:38:34.141488+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:38:34.142478+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:38:34.152451+03:00] [INFO] [AUTO-START] ========== АВТОМАТИЧЕСКИЙ ЗАПУСК QKD ==========
+[2025-12-16T22:38:34.152451+03:00] [INFO] [AUTO-START] Попытка автоматического подключения к QKD устройству (COM3, 9600)...
+[2025-12-16T22:38:34.153448+03:00] [INFO] [AUTO-START] ТЕСТ: Тестовая запись уже существует, пропускаем
+[2025-12-16T22:38:34.153448+03:00] [INFO] [AUTO-START] Вызов connect_serial('COM3', 9600) с повторными попытками...
+[2025-12-16T22:38:34.153448+03:00] [INFO] [QKD] Попытка подключения #1/5 к COM3...
+[2025-12-16T22:38:34.154415+03:00] [ERROR] Ошибка подключения к QKD-устройству (попытка 1/5): could not open port 'COM3': FileNotFoundError(2, 'Не удается найти указанный файл.', None, 2)
+[2025-12-16T22:38:34.154415+03:00] [WARNING] [QKD] Порт COM3 занят другой программой. Попытка освободить...
+[2025-12-16T22:38:34.154415+03:00] [WARNING] [QKD] Не удалось освободить порт: could not open port 'COM3': FileNotFoundError(2, 'Не удается найти указанный файл.', None, 2)
+[2025-12-16T22:38:34.154415+03:00] [INFO] [QKD] Ожидание 3 секунд перед повторной попыткой...
+[2025-12-16T22:38:37.156504+03:00] [INFO] [QKD] Попытка подключения #2/5 к COM3...
+[2025-12-16T22:38:37.157393+03:00] [ERROR] Ошибка подключения к QKD-устройству (попытка 2/5): could not open port 'COM3': FileNotFoundError(2, 'Не удается найти указанный файл.', None, 2)
+[2025-12-16T22:38:37.157393+03:00] [WARNING] [QKD] Порт COM3 занят другой программой. Попытка освободить...
+[2025-12-16T22:38:37.158414+03:00] [WARNING] [QKD] Не удалось освободить порт: could not open port 'COM3': FileNotFoundError(2, 'Не удается найти указанный файл.', None, 2)
+[2025-12-16T22:38:37.158414+03:00] [INFO] [QKD] Ожидание 3 секунд перед повторной попыткой...
+[2025-12-16T22:38:40.159112+03:00] [INFO] [QKD] Попытка подключения #3/5 к COM3...
+[2025-12-16T22:38:40.159112+03:00] [ERROR] Ошибка подключения к QKD-устройству (попытка 3/5): could not open port 'COM3': FileNotFoundError(2, 'Не удается найти указанный файл.', None, 2)
+[2025-12-16T22:38:40.160078+03:00] [WARNING] [QKD] Порт COM3 занят другой программой. Попытка освободить...
+[2025-12-16T22:38:40.160078+03:00] [WARNING] [QKD] Не удалось освободить порт: could not open port 'COM3': FileNotFoundError(2, 'Не удается найти указанный файл.', None, 2)
+[2025-12-16T22:38:40.160078+03:00] [INFO] [QKD] Ожидание 3 секунд перед повторной попыткой...
+[2025-12-16T22:38:43.160807+03:00] [INFO] [QKD] Попытка подключения #4/5 к COM3...
+[2025-12-16T22:38:43.160807+03:00] [ERROR] Ошибка подключения к QKD-устройству (попытка 4/5): could not open port 'COM3': FileNotFoundError(2, 'Не удается найти указанный файл.', None, 2)
+[2025-12-16T22:38:43.161773+03:00] [WARNING] [QKD] Порт COM3 занят другой программой. Попытка освободить...
+[2025-12-16T22:38:43.161773+03:00] [WARNING] [QKD] Не удалось освободить порт: could not open port 'COM3': FileNotFoundError(2, 'Не удается найти указанный файл.', None, 2)
+[2025-12-16T22:38:43.161773+03:00] [INFO] [QKD] Ожидание 3 секунд перед повторной попыткой...
+[2025-12-16T22:38:46.162710+03:00] [INFO] [QKD] Попытка подключения #5/5 к COM3...
+[2025-12-16T22:38:46.163716+03:00] [ERROR] Ошибка подключения к QKD-устройству (попытка 5/5): could not open port 'COM3': FileNotFoundError(2, 'Не удается найти указанный файл.', None, 2)
+[2025-12-16T22:38:46.163716+03:00] [WARNING] [QKD] Порт COM3 занят другой программой. Попытка освободить...
+[2025-12-16T22:38:46.163716+03:00] [WARNING] [QKD] Не удалось освободить порт: could not open port 'COM3': FileNotFoundError(2, 'Не удается найти указанный файл.', None, 2)
+[2025-12-16T22:38:46.169314+03:00] [ERROR] [QKD ERROR] Все 5 попыток подключения исчерпаны. Закройте программу, использующую COM3, и перезапустите сервер.
+[2025-12-16T22:38:46.169314+03:00] [ERROR] [AUTO-START] ОШИБКА: Не удалось подключиться к COM3. Проверьте подключение устройства.
+[2025-12-16T22:38:46.199237+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:38:46.201232+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:38:46.202260+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:38:46.203225+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:38:46.203225+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:38:46.206218+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:38:46.215401+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:38:46.216437+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:38:46.216437+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:38:46.217436+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:38:46.217436+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:38:46.219431+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:38:46.219431+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:38:46.222423+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:38:46.223421+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:38:46.229880+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:38:46.229880+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:38:46.230877+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:38:46.230877+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:38:46.231876+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:38:46.231876+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:38:46.231876+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:38:46.234869+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:38:46.235865+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:38:46.242620+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:38:46.242620+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:38:46.243621+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:38:46.244619+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:38:46.244619+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:38:46.244619+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:38:46.244619+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:38:46.260908+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:38:46.260908+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:38:46.265018+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:38:46.265018+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:38:46.279141+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:38:46.279141+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:38:46.280142+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:38:46.283134+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:38:46.285242+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:38:46.290790+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:38:46.290790+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:38:46.290790+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:38:46.295351+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:38:46.296357+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:38:46.301312+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:38:46.301312+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:38:46.301312+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:38:50.393631+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:38:50.395625+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:38:50.395625+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:38:50.395625+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:38:50.395625+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:38:50.397656+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:38:50.410549+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:38:50.410549+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:38:50.411548+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:38:50.411548+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:38:50.411548+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:38:50.412510+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:38:50.412510+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:38:50.426587+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:38:50.426587+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:38:50.426587+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:38:55.658277+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:38:55.659274+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:38:55.667253+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:38:55.667253+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:38:55.669249+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:38:55.669249+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:38:55.670246+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:38:55.670246+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:38:55.671244+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:38:55.736763+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:38:55.737760+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:38:55.738757+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:38:55.740757+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:38:55.908773+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:38:55.911760+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:38:55.915749+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:39:00.402025+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:39:00.402025+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:39:00.402025+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:39:00.403021+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:39:00.403021+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:39:00.404058+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:39:00.416502+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:39:00.416502+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:39:00.417499+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:39:00.417499+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:39:00.417499+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:39:00.417499+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:39:00.418496+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:39:00.433832+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:39:00.433832+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:39:00.434832+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:39:05.401208+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:39:05.402274+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:39:05.402274+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:39:05.402274+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:39:05.403273+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:39:05.404270+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:39:05.409306+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:39:05.409306+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:39:05.410309+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:39:05.417283+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:39:05.417283+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:39:05.418282+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:39:05.418282+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:39:05.419279+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:39:05.419279+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:39:05.419279+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:39:10.679127+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:39:10.680124+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:39:10.697079+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:39:10.716028+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:39:10.717026+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:39:10.822743+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:39:10.822743+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:39:10.824738+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:39:10.825735+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:39:10.826733+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:39:10.827730+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:39:10.853660+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:39:10.915494+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:39:11.788495+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:39:11.788495+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:39:11.789491+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:39:15.392517+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:39:15.392517+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:39:15.393515+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:39:15.394513+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:39:15.395511+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:39:15.395511+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:39:15.408740+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:39:15.408740+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:39:15.409738+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:39:15.409738+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:39:15.410737+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:39:15.410737+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:39:15.410737+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:39:15.423832+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:39:15.423832+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:39:15.423832+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:39:20.395898+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:39:20.396896+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:39:20.396896+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:39:20.396896+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:39:20.396896+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:39:20.397894+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:39:20.410922+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:39:20.410922+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:39:20.411894+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:39:20.411894+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:39:20.411894+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:39:20.412892+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:39:20.412892+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:39:20.426681+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:39:20.426681+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:39:20.427676+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:39:25.392232+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:39:25.392232+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:39:25.393229+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:39:25.394228+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:39:25.394228+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:39:25.395226+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:39:25.408177+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:39:25.409173+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:39:25.410202+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:39:25.410202+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:39:25.411169+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:39:25.411169+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:39:25.412167+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:39:25.628587+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:39:25.628587+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:39:25.629584+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:39:30.393491+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:39:30.394489+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:39:30.395486+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:39:30.395486+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:39:30.395486+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:39:30.396484+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:39:30.409970+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:39:30.409970+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:39:30.410954+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:39:30.410954+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:39:30.411950+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:39:30.411950+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:39:30.411950+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:39:30.426760+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:39:30.426760+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:39:30.426760+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:39:35.393725+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:39:35.394722+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:39:35.395719+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:39:35.395719+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:39:35.396749+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:39:35.401750+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:39:35.402702+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:39:35.403700+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:39:35.403700+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:39:35.403700+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:39:35.404696+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:39:35.404696+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:39:35.407690+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:39:35.413717+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:39:35.414713+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:39:35.414713+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:39:40.404648+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:39:40.405646+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:39:40.405646+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:39:40.405646+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:39:40.406649+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:39:40.407640+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:39:40.412627+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:39:40.413625+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:39:40.414646+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:39:40.414646+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:39:40.414646+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:39:40.415619+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:39:40.415619+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:39:40.419608+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:39:40.420605+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:39:40.420605+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:39:45.394623+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:39:45.395620+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:39:45.396618+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:39:45.398611+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:39:45.398611+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:39:45.398611+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:39:45.411914+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:39:45.411914+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:39:45.412878+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:39:45.412878+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:39:45.413876+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:39:45.413876+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:39:45.413876+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:39:45.443077+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:39:45.443077+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:39:45.444074+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:39:50.399077+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:39:50.400075+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:39:50.400075+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:39:50.400075+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:39:50.400075+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:39:50.402071+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:39:50.406058+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:39:50.407056+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:39:50.407056+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:39:50.408080+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:39:50.408080+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:39:50.408080+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:39:50.409051+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:39:50.415058+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:39:50.415058+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:39:50.415058+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:39:55.403936+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:39:55.403936+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:39:55.405899+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:39:55.405899+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:39:55.406896+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:39:55.406896+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:39:55.420928+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:39:55.420928+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:39:55.421924+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:39:55.421924+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:39:55.422921+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:39:55.422921+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:39:55.422921+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:39:55.435982+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:39:55.436970+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:39:55.436970+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:40:00.402967+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:40:00.403963+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:40:00.403963+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:40:00.404961+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:40:00.405959+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:40:00.419128+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:40:00.419128+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:40:00.420121+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:40:00.420121+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:40:00.420121+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:40:00.420121+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:40:00.421097+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:40:00.434754+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:40:00.434754+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:40:00.434754+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:40:05.393823+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:40:05.394820+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:40:05.395817+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:40:05.396815+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:40:05.396815+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:40:05.397811+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:40:05.411448+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:40:05.411448+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:40:05.412446+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:40:05.412446+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:40:05.413475+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:40:05.413475+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:40:05.413475+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:40:05.426840+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:40:05.426840+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:40:05.426840+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:40:10.395164+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:40:10.395164+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:40:10.395164+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:40:10.396161+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:40:10.396161+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:40:10.397158+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:40:10.411103+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:40:10.412101+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:40:10.412101+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:40:10.413097+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:40:10.413097+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:40:10.413097+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:40:10.413097+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:40:10.427345+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:40:10.427345+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:40:10.427345+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:40:15.406391+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:40:15.406391+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:40:15.407388+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:40:15.408385+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:40:15.408385+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:40:15.409381+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:40:15.423216+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:40:15.423216+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:40:15.424180+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:40:15.424180+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:40:15.424180+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:40:15.425178+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:40:15.425178+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:40:15.438224+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:40:15.439228+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:40:15.439228+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:40:20.400957+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:40:20.401953+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:40:20.401953+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:40:20.402950+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:40:20.402950+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:40:20.403948+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:40:20.415545+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:40:20.415545+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:40:20.416599+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:40:20.416599+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:40:20.416599+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:40:20.417597+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:40:20.417597+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:40:20.430728+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:40:20.431727+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:40:20.431727+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:40:25.392277+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:40:25.393274+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:40:25.394272+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:40:25.395269+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:40:25.396268+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:40:25.396268+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:40:25.399259+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:40:25.399259+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:40:25.400270+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:40:25.400270+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:40:25.401254+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:40:25.401254+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:40:25.401254+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:40:25.411227+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:40:25.411227+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:40:25.411227+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:40:30.394764+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:40:30.394764+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:40:30.394764+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:40:30.394764+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:40:30.395763+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:40:30.396762+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:40:30.409098+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:40:30.409098+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:40:30.410096+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:40:30.410096+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:40:30.410096+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:40:30.411093+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:40:30.411093+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:40:30.424139+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:40:30.425158+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:40:30.425158+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:40:35.401678+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:40:35.401678+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:40:35.403676+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:40:35.403676+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:40:35.404674+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:40:35.404674+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:40:35.415544+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:40:35.416544+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:40:35.417540+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:40:35.417540+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:40:35.417540+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:40:35.417540+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:40:35.418538+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:40:35.433422+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:40:35.433422+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:40:35.434416+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:40:40.399104+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:40:40.400101+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:40:40.401097+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:40:40.401097+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:40:40.401097+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:40:40.402098+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:40:40.407092+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:40:40.408080+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:40:40.409101+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:40:40.409101+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:40:40.409101+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:40:40.410074+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:40:40.410074+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:40:40.415140+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:40:40.415140+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:40:40.416139+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:40:45.405497+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:40:45.406495+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:40:45.406495+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:40:45.407491+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:40:45.407491+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:40:45.409485+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:40:45.422096+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:40:45.422096+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:40:45.423092+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:40:45.440046+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:40:45.441050+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:40:45.441050+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:40:45.442070+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:40:45.442070+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:40:45.442070+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:40:45.443038+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:40:50.401398+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:40:50.403396+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:40:50.403396+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:40:50.403396+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:40:50.404389+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:40:50.405404+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:40:50.416757+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:40:50.416757+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:40:50.417754+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:40:50.417754+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:40:50.417754+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:40:50.417754+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:40:50.418751+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:40:50.431980+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:40:50.432978+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:40:50.432978+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:40:55.394810+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:40:55.395776+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:40:55.395776+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:40:55.396775+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:40:55.396775+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:40:55.397810+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:40:55.411662+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:40:55.412660+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:40:55.412660+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:40:55.413687+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:40:55.413687+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:40:55.414653+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:40:55.414653+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:40:55.427730+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:40:55.427730+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:40:55.428728+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:41:00.399470+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:41:00.399470+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:41:00.400467+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:41:00.400467+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:41:00.401465+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:41:00.402462+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:41:00.413526+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:41:00.414528+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:41:00.414528+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:41:00.415525+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:41:00.415525+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:41:00.415525+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:41:00.416536+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:41:00.430744+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:41:00.430744+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:41:00.431733+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:41:05.402299+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:41:05.402299+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:41:05.404829+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:41:05.404829+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:41:05.405307+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:41:05.411298+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:41:05.412290+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:41:05.412290+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:41:05.414285+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:41:05.420636+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:41:05.420636+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:41:05.421633+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:41:05.421633+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:41:05.421633+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:41:05.421633+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:41:05.422631+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:41:10.402385+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:41:10.403380+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:41:10.404448+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:41:10.404448+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:41:10.404448+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:41:10.405445+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:41:10.417216+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:41:10.418215+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:41:10.418215+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:41:10.419212+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:41:10.419212+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:41:10.419212+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:41:10.419212+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:41:10.433407+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:41:10.434406+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:41:10.434406+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:41:15.392834+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:41:15.393796+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:41:15.394792+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:41:15.395789+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:41:15.395789+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:41:15.396786+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:41:15.410889+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:41:15.410889+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:41:15.411889+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:41:15.412886+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:41:15.412886+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:41:15.412886+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:41:15.413895+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:41:15.430574+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:41:15.430574+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:41:15.431565+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:41:20.391645+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:41:20.392642+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:41:20.393642+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:41:20.393642+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:41:20.393642+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:41:20.394636+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:41:20.407642+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:41:20.407642+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:41:20.408641+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:41:20.408641+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:41:20.408641+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:41:20.409638+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:41:20.409638+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:41:20.424644+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:41:20.424644+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:41:20.424644+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:41:25.403231+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:41:25.404193+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:41:25.405192+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:41:25.406187+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:41:25.406187+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:41:25.407184+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:41:25.410177+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:41:25.411175+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:41:25.411175+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:41:25.412183+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:41:25.412183+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:41:25.412183+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:41:25.413170+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:41:25.436107+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:41:25.437104+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:41:25.437104+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:41:30.400092+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:41:30.400092+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:41:30.400092+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:41:30.401089+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:41:30.402122+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:41:30.408069+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:41:30.408069+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:41:30.408069+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:41:30.411092+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:41:30.416080+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:41:30.416080+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:41:30.417074+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:41:30.417074+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:41:30.417074+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:41:30.418043+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:41:30.418043+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:41:35.402195+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:41:35.403196+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:41:35.403196+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:41:35.403196+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:41:35.405190+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:41:35.406189+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:41:35.412173+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:41:35.412173+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:41:35.413171+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:41:35.417158+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:41:35.418156+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:41:35.418156+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:41:35.419156+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:41:35.419156+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:41:35.419156+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:41:35.419156+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:41:40.395455+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:41:40.396451+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:41:40.397448+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:41:40.397448+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:41:40.397448+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:41:40.398446+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:41:40.402828+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:41:40.403821+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:41:40.404818+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:41:40.404818+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:41:40.404818+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:41:40.405816+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:41:40.405816+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:41:40.412418+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:41:40.412418+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:41:40.412418+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:41:45.401162+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:41:45.401162+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:41:45.402160+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:41:45.403157+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:41:45.404153+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:41:45.404153+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:41:45.417381+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:41:45.417381+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:41:45.418382+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:41:45.418382+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:41:45.418382+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:41:45.419380+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:41:45.419380+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:41:45.432647+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:41:45.433648+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:41:45.433648+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:41:50.399673+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:41:50.400697+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:41:50.401704+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:41:50.401704+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:41:50.401704+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:41:50.403662+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:41:50.414512+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:41:50.415502+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:41:50.415502+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:41:50.416498+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:41:50.416498+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:41:50.416498+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:41:50.417491+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:41:50.431693+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:41:50.432691+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:41:50.432691+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:41:55.405411+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:41:55.405411+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:41:55.407372+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:41:55.407372+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:41:55.407372+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:41:55.407372+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:41:55.420500+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:41:55.421499+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:41:55.422497+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:41:55.422497+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:41:55.422497+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:41:55.423494+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:41:55.423494+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:41:55.438676+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:41:55.438676+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:41:55.438676+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:42:00.398516+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:42:00.400556+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:42:00.400556+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:42:00.400556+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:42:00.400556+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:42:00.402550+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:42:00.407537+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:42:00.407537+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:42:00.408534+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:42:00.408534+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:42:00.408534+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:42:00.409531+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:42:00.409531+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:42:00.415540+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:42:00.415540+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:42:00.416537+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:42:05.405176+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:42:05.405176+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:42:05.406155+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:42:05.407151+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:42:05.407151+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:42:05.408149+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:42:05.421440+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:42:05.421440+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:42:05.422437+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:42:05.422437+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:42:05.422437+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:42:05.423433+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:42:05.423433+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:42:05.437214+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:42:05.437214+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:42:05.438211+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:42:10.408343+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:42:10.411323+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:42:10.411323+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:42:10.411323+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:42:10.412319+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:42:10.413318+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:42:10.418348+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:42:10.418348+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:42:10.419346+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:42:10.419346+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:42:10.419346+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:42:10.420342+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:42:10.420342+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:42:10.432737+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:42:10.433736+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:42:10.433736+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:42:15.394809+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:42:15.395749+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:42:15.396781+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:42:15.397744+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:42:15.397744+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:42:15.397744+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:42:15.411258+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:42:15.411258+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:42:15.412257+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:42:15.412257+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:42:15.413304+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:42:15.413304+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:42:15.413304+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:42:15.426182+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:42:15.426182+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:42:15.426182+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:42:20.406215+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:42:20.406215+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:42:20.406215+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:42:20.407212+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:42:20.407212+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:42:20.409424+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:42:20.414923+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:42:20.414923+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:42:20.415944+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:42:20.415944+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:42:20.415944+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:42:20.416962+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:42:20.416962+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:42:20.419956+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:42:20.420954+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:42:20.420954+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:42:25.390835+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:42:25.392832+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:42:25.393850+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:42:25.395942+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:42:25.395942+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:42:25.395942+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:42:25.408289+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:42:25.408289+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:42:25.409286+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:42:25.409286+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:42:25.410283+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:42:25.410283+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:42:25.410283+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:42:25.441918+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:42:25.442927+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:42:25.443912+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:42:30.397353+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:42:30.398327+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:42:30.398327+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:42:30.398327+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:42:30.399324+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:42:30.400321+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:42:30.405308+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:42:30.405308+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:42:30.406306+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:42:30.406306+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:42:30.406306+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:42:30.407303+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:42:30.407303+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:42:30.416255+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:42:30.416255+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:42:30.416255+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:42:35.404042+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:42:35.404042+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:42:35.406013+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:42:35.406013+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:42:35.406013+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:42:35.407004+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:42:35.419153+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:42:35.419153+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:42:35.420150+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:42:35.420150+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:42:35.420150+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:42:35.420150+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:42:35.421148+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:42:35.434921+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:42:35.435917+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:42:35.435917+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:42:38.436094+03:00] [WARNING] Ключ key_testB_20251208171307 недоступен (статус: Использован)
+[2025-12-16T22:42:40.409960+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:42:40.411950+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:42:40.411950+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:42:40.411950+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:42:40.411950+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:42:40.412948+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:42:40.436866+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:42:40.437853+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:42:40.439881+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:42:40.439881+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:42:40.439881+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:42:40.440844+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:42:40.440844+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:42:40.454942+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:42:40.455933+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:42:40.457929+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:42:45.390943+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:42:45.392936+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:42:45.393934+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:42:45.393934+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:42:45.393934+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:42:45.396927+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:42:45.400917+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:42:45.401915+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:42:45.402909+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:42:45.403910+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:42:45.404924+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:42:45.405902+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:42:45.405902+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:42:45.417869+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:42:45.417869+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:42:45.418868+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:42:50.397663+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:42:50.398660+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:42:50.399658+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:42:50.399658+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:42:50.399658+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:42:50.400655+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:42:50.414876+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:42:50.414876+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:42:50.415873+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:42:50.415873+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:42:50.415873+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:42:50.416870+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:42:50.416870+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:42:50.428870+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:42:50.429867+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:42:50.429867+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:42:55.400666+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:42:55.401719+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:42:55.401719+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:42:55.402717+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:42:55.402717+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:42:55.404711+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:42:55.417850+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:42:55.417850+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:42:55.418850+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:42:55.418850+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:42:55.418850+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:42:55.419851+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:42:55.419851+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:42:55.434933+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:42:55.434933+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:42:55.435930+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:43:00.400763+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:43:00.402757+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:43:00.402757+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:43:00.403754+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:43:00.403754+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:43:00.416975+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:43:00.416975+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:43:00.417973+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:43:00.417973+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:43:00.417973+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:43:00.417973+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:43:00.418944+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:43:00.428877+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:43:00.435068+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:43:00.435068+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:43:00.436065+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:43:05.400798+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:43:05.400798+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:43:05.401841+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:43:05.401841+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:43:05.402870+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:43:05.403835+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:43:05.418011+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:43:05.418011+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:43:05.419008+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:43:05.419008+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:43:05.420005+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:43:05.420005+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:43:05.420005+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:43:05.433265+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:43:05.433265+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:43:05.433265+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:43:10.399846+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:43:10.400843+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:43:10.400843+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:43:10.401841+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:43:10.401841+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:43:10.415150+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:43:10.415150+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:43:10.416152+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:43:10.416152+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:43:10.416152+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:43:10.417126+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:43:10.417126+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:43:10.426286+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:43:10.433035+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:43:10.433035+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:43:10.434031+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:43:15.402306+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:43:15.403305+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:43:15.403305+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:43:15.403305+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:43:15.404301+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:43:15.404301+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:43:15.409417+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:43:15.409417+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:43:15.410378+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:43:15.410378+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:43:15.411372+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:43:15.411372+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:43:15.411372+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:43:15.423352+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:43:15.424381+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:43:15.424381+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:43:20.404506+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:43:20.404506+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:43:20.404506+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:43:20.405501+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:43:20.406499+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:43:20.411513+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:43:20.411513+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:43:20.413481+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:43:20.413481+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:43:20.414492+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:43:20.414492+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:43:20.414492+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:43:20.415477+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:43:20.421484+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:43:20.421484+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:43:20.421484+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:43:25.392011+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:43:25.392011+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:43:25.393009+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:43:25.393009+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:43:25.393009+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:43:25.394007+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:43:25.399991+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:43:25.399991+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:43:25.399991+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:43:25.419487+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:43:25.419487+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:43:25.420458+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:43:25.420458+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:43:25.420458+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:43:25.421455+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:43:25.421455+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:43:31.132783+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:43:31.132783+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:43:31.132783+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:43:31.132783+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:43:31.132783+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:43:31.132783+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:43:31.148383+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:43:31.148383+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:43:31.148383+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:43:31.148383+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:43:31.148383+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:43:31.148383+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:43:31.148383+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:43:31.163921+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:43:31.163921+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:43:31.163921+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:43:36.141829+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:43:36.142567+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:43:36.142567+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:43:36.142567+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:43:36.143568+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:43:36.144576+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:43:36.158775+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:43:36.158775+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:43:36.159780+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:43:36.160773+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:43:36.160773+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:43:36.160773+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:43:36.161768+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:43:36.176435+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:43:36.177435+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:43:36.177435+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:43:41.137086+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:43:41.139080+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:43:41.140107+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:43:41.140107+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:43:41.142072+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:43:41.146062+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:43:41.146062+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:43:41.147059+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:43:41.147059+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:43:41.148057+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:43:41.148057+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:43:41.148057+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:43:41.150052+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:43:41.155060+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:43:41.155060+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:43:41.156058+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:43:46.135889+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:43:46.136895+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:43:46.137852+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:43:46.137852+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:43:46.137852+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:43:46.138849+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:43:46.152962+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:43:46.152962+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:43:46.153957+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:43:46.153957+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:43:46.154955+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:43:46.154955+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:43:46.155953+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:43:46.169205+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:43:46.170232+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:43:46.170232+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:43:51.133063+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:43:51.137052+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:43:51.137052+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:43:51.137052+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:43:51.138051+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:43:51.144036+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:43:51.144036+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:43:51.145032+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:43:51.146030+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:43:51.146030+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:43:51.146030+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:43:51.147028+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:43:51.147028+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:43:51.151015+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:43:51.151015+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:43:51.152011+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:43:56.134516+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:43:56.135532+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:43:56.135532+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:43:56.136510+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:43:56.136510+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:43:56.138504+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:43:56.141512+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:43:56.142579+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:43:56.142579+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:43:56.143577+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:43:56.143577+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:43:56.143577+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:43:56.144574+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:43:56.152799+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:43:56.152799+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:43:56.152799+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:44:01.131320+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:44:01.131320+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:44:01.133312+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:44:01.134310+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:44:01.135309+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:44:01.136305+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:44:01.139297+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:44:01.139297+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:44:01.140294+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:44:01.141292+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:44:01.141292+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:44:01.142291+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:44:01.143292+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:44:01.147275+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:44:01.147275+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:44:01.147275+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:44:06.140600+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:44:06.141442+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:44:06.141442+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:44:06.141442+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:44:06.141442+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:44:06.142444+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:44:06.158682+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:44:06.158682+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:44:06.159679+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:44:06.159679+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:44:06.159679+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:44:06.159679+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:44:06.160676+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:44:06.174105+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:44:06.174105+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:44:06.174105+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:44:11.136527+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:44:11.137524+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:44:11.138521+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:44:11.138521+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:44:11.139518+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:44:11.143523+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:44:11.144522+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:44:11.144522+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:44:11.145590+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:44:11.145590+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:44:11.145590+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:44:11.146595+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:44:11.147586+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:44:11.152689+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:44:11.152689+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:44:11.153696+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:44:16.127401+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:44:16.128398+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:44:16.128398+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:44:16.128398+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:44:16.129395+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:44:16.130393+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:44:16.144355+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:44:16.144355+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:44:16.145353+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:44:16.145353+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:44:16.146350+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:44:16.146350+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:44:16.146350+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:44:16.160420+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:44:16.161419+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:44:16.161419+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:44:21.144115+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:44:21.145116+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:44:21.145116+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:44:21.146140+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:44:21.147135+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:44:21.157031+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:44:21.157031+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:44:21.158029+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:44:21.158029+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:44:21.158029+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:44:21.158029+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:44:21.159001+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:44:21.169158+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:44:21.174583+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:44:21.175584+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:44:21.175584+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:44:26.132120+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:44:26.132120+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:44:26.133121+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:44:26.134119+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:44:26.134119+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:44:26.135115+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:44:26.149493+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:44:26.149493+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:44:26.150494+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:44:26.150494+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:44:26.151490+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:44:26.151490+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:44:26.151490+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:44:26.164605+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:44:26.165602+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:44:26.165602+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
+[2025-12-16T22:45:08.143191+03:00] [INFO] DEBUG: Получение входящих сообщений для user_id=4, username=Dima, role=user
+[2025-12-16T22:45:08.144191+03:00] [INFO] DEBUG: Получение отправленных сообщений для user_id=4
+[2025-12-16T22:45:08.145188+03:00] [INFO] DEBUG: Получение тестовых сообщений для получателя: server_1
+[2025-12-16T22:45:08.145188+03:00] [INFO] Подключение к базе данных: C:\Users\Vaan\Desktop\РАБОЧАЯ\server_user_1\databases\user_1_db.db
+[2025-12-16T22:45:08.145188+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:45:08.147196+03:00] [ERROR] Ошибка при выполнении запроса: ALTER TABLE messages ADD COLUMN plaintext TEXT, параметры: (), ошибка: duplicate column name: plaintext
+[2025-12-16T22:45:08.156260+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Все сообщения для receiver_id=4: 1
+[2025-12-16T22:45:08.156260+03:00] [INFO] DEBUG: message_id=3, sender_id=4, receiver_id=4, is_encrypted=1
+[2025-12-16T22:45:08.158256+03:00] [INFO] DEBUG: database_utils.get_incoming_messages: Найдено с фильтром is_encrypted=1: 1
+[2025-12-16T22:45:08.158256+03:00] [INFO] DEBUG: Первое сообщение из БД: message_id=3, sender_name=Dima, receiver_id=4, is_encrypted=1
+[2025-12-16T22:45:08.159251+03:00] [INFO] DEBUG: get_incoming_messages для receiver_id=4, найдено сообщений: 1
+[2025-12-16T22:45:08.159251+03:00] [INFO] DEBUG: Найдено входящих сообщений: 1
+[2025-12-16T22:45:08.160248+03:00] [INFO] DEBUG: Первое сообщение: {'id': 3, 'sender': 'Dima', 'timestamp': '2025-12-08 17:14:43', 'type': 'text', 'key_id': 'key_testB_20251208171307', 'content': 'jUWhWQ00OgaWSEYKVl+uVKW/otiT', 'content_hash': 'b2b11afc89e6a4635f13e1fe404909ee873b2aa9b4d62ce414d327d39fef258e', 'size': 28}
+[2025-12-16T22:45:08.173215+03:00] [INFO] DEBUG: database_utils.get_sent_messages для sender_id=4, найдено отправленных: 5
+[2025-12-16T22:45:08.173215+03:00] [INFO] DEBUG: get_sent_messages для sender_id=4, найдено сообщений: 5
+[2025-12-16T22:45:08.174212+03:00] [INFO] DEBUG: Найдено отправленных сообщений: 5
