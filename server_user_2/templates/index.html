@@ -182,6 +182,82 @@
     .recovery-block.error .block-result {
       color: #dc2626;
     }
+
+    /* Визуализация "Шифрование и отправка" */
+    .send-viz {
+      background: #f9fafb;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      border: 1px solid #e5e7eb;
+    }
+    .send-progress {
+      width: 100%;
+      height: 0.5rem;
+      background: #e5e7eb;
+      border-radius: 9999px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+    .send-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+      border-radius: 9999px;
+      transition: width 0.4s ease, background 0.4s ease;
+    }
+    .send-stages {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 0.5rem;
+      margin-bottom: 0.35rem;
+    }
+    .send-stage {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.45rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.4rem;
+      background: white;
+      font-size: 0.75rem;
+      transition: all 0.3s ease;
+    }
+    .send-stage.active {
+      border-color: #3b82f6;
+      background: #eff6ff;
+      box-shadow: 0 0 0 1px #bfdbfe inset;
+    }
+    .send-stage.done {
+      border-color: #10b981;
+      background: #ecfdf3;
+      box-shadow: 0 0 0 1px #bbf7d0 inset;
+    }
+    .send-stage .dot {
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 9999px;
+      background: #d1d5db;
+      position: relative;
+      overflow: hidden;
+    }
+    .send-stage.active .dot {
+      background: #3b82f6;
+    }
+    .send-stage.done .dot {
+      background: #10b981;
+    }
+    .send-stage.active .dot::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), transparent 55%);
+      animation: send-dot-pulse 1s infinite;
+    }
+    @keyframes send-dot-pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.7; }
+      100% { transform: scale(1); opacity: 1; }
+    }
     .file-item {
       display: flex;
       align-items: center;
@@ -861,6 +937,63 @@
       }
     });
 
+    // ------------------------------
+    // Анимация "Шифрование и отправка"
+    // ------------------------------
+    let sendAnimationTimeouts = [];
+    function clearSendAnimation() {
+      sendAnimationTimeouts.forEach(t => clearTimeout(t));
+      sendAnimationTimeouts = [];
+    }
+    function resetSendViz() {
+      clearSendAnimation();
+      const viz = document.getElementById('step-6-viz');
+      if (viz) viz.style.display = 'none';
+      const fill = document.getElementById('send-progress-fill');
+      if (fill) fill.style.width = '0%';
+      const text = document.getElementById('send-progress-text');
+      if (text) text.textContent = '0% • Ожидание...';
+      const current = document.getElementById('send-current-stage');
+      if (current) current.textContent = 'Ожидание...';
+      document.querySelectorAll('.send-stage').forEach(s => s.classList.remove('active', 'done'));
+    }
+    function setSendStage(stage, percent, label) {
+      const fill = document.getElementById('send-progress-fill');
+      const text = document.getElementById('send-progress-text');
+      const current = document.getElementById('send-current-stage');
+      if (fill) fill.style.width = `${percent}%`;
+      if (text) text.textContent = `${percent}% • ${label}`;
+      if (current) current.textContent = label;
+      document.querySelectorAll('.send-stage').forEach(s => {
+        const st = s.getAttribute('data-stage');
+        if (st === stage) {
+          s.classList.add('active');
+        } else {
+          s.classList.remove('active');
+        }
+        if (percent >= 100) s.classList.add('done');
+      });
+    }
+    function markSendDone() {
+      document.querySelectorAll('.send-stage').forEach(s => s.classList.add('done'));
+      const fill = document.getElementById('send-progress-fill');
+      const text = document.getElementById('send-progress-text');
+      const current = document.getElementById('send-current-stage');
+      if (fill) fill.style.width = '100%';
+      if (text) text.textContent = '100% • Готово';
+      if (current) current.textContent = '✓ Отправлено и зашифровано';
+    }
+    function startSendAnimation() {
+      const viz = document.getElementById('step-6-viz');
+      if (viz) viz.style.display = 'block';
+      document.getElementById('step-6').classList.add('active-step');
+      setSendStage('prepare', 10, 'Подготовка сообщения...');
+      clearSendAnimation();
+      sendAnimationTimeouts.push(setTimeout(() => setSendStage('encrypt', 35, 'Шифрование ГОСТ...'), 700));
+      sendAnimationTimeouts.push(setTimeout(() => setSendStage('send', 65, 'Отправка на сервер...'), 1700));
+      sendAnimationTimeouts.push(setTimeout(() => setSendStage('deliver', 90, 'Доставка получателю...'), 3000));
+    }
+
     // Обработка отправки сообщения с шифрованием ГОСТ Р 34.12-2018
     document.getElementById('encrypt-send-button').addEventListener('click', () => {
       const message = document.getElementById('message-input').value;
@@ -880,7 +1013,7 @@
       }
 
       // Активируем step-6 при нажатии "Зашифровать и отправить"
-      document.getElementById('step-6').classList.add('active-step');
+      startSendAnimation();
       
       // Показываем индикатор загрузки
       const button = document.getElementById('encrypt-send-button');
@@ -906,6 +1039,7 @@
       .then(response => response.json())
       .then(data => {
         if (data.status === 'success') {
+          markSendDone();
           let messageType = '';
           if (message && file) {
             messageType = 'текст и файл';
@@ -929,13 +1063,16 @@
           // Убираем зеленый цвет с step-6 после отправки
           setTimeout(() => {
             document.getElementById('step-6').classList.remove('active-step');
-          }, 1000);
+            resetSendViz();
+          }, 1200);
         } else {
+          resetSendViz();
           alert(`Ошибка шифрования: ${data.message}`);
         }
       })
       .catch(error => {
         console.error('Ошибка:', error);
+        resetSendViz();
         alert('Ошибка при шифровании сообщения');
       })
       .finally(() => {
@@ -1515,10 +1652,6 @@
       });
     });
   };
-
-  // Первоначальная привязка обработчиков (оставлено для совместимости)
-  const bindSequenceButtons = () => {};
-  bindSequenceButtons();
 
 // Управление модальным окном режима тестирования
 const testModeButton = document.getElementById('test-mode-button');
