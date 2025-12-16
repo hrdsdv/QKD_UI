@@ -10,6 +10,39 @@ class DatabaseManager:
         # Убираем автоматическую синхронизацию между базами - каждый абонент работает со своей БД
         self.second_db_path = None
         log_to_file(f"Подключение к базе данных: {self.db_path}", level="INFO")
+    
+    def _column_exists(self, table_name: str, column_name: str) -> bool:
+        """Проверяет, существует ли колонка в таблице."""
+        try:
+            with sqlite3.connect(self.db_path) as conn:
+                cursor = conn.cursor()
+                # Используем параметризованный запрос для безопасности
+                cursor.execute("PRAGMA table_info(?)", (table_name,))
+                columns = [column[1] for column in cursor.fetchall()]
+                return column_name in columns
+        except sqlite3.Error:
+            # Если PRAGMA не работает с параметрами, используем прямой запрос
+            try:
+                with sqlite3.connect(self.db_path) as conn:
+                    cursor = conn.cursor()
+                    cursor.execute(f"PRAGMA table_info({table_name})")
+                    columns = [column[1] for column in cursor.fetchall()]
+                    return column_name in columns
+            except sqlite3.Error:
+                return False
+    
+    def _ensure_column_exists(self, table_name: str, column_name: str, column_type: str):
+        """Убеждается, что колонка существует в таблице. Если нет - добавляет её."""
+        if not self._column_exists(table_name, column_name):
+            try:
+                # Используем прямой SQL, так как имена таблиц и колонок контролируются
+                query = f"ALTER TABLE {table_name} ADD COLUMN {column_name} {column_type}"
+                self.execute_query(query, sync=False)
+                log_to_file(f"Добавлена колонка {column_name} в таблицу {table_name}", level="INFO")
+            except sqlite3.Error as e:
+                # Игнорируем ошибку, если колонка уже существует (может быть race condition)
+                if "duplicate column" not in str(e).lower():
+                    log_to_file(f"Не удалось добавить колонку {column_name}: {e}", level="WARNING")
 
     def execute_query(self, query: str, parameters: tuple = (), fetch: bool = False, sync: bool = False) -> Optional[List[Dict[str, Any]]]:
         try:
@@ -96,13 +129,7 @@ class DatabaseManager:
         from utils.logging_utils import log_to_file
         
         # Убеждаемся, что поле plaintext существует в таблице (может использоваться в других запросах)
-        try:
-            self.execute_query(
-                "ALTER TABLE messages ADD COLUMN plaintext TEXT",
-                sync=False
-            )
-        except:
-            pass  # Поле уже существует
+        self._ensure_column_exists('messages', 'plaintext', 'TEXT')
         
         # Сначала получаем ВСЕ сообщения для получателя для отладки
         debug_query = '''
@@ -160,13 +187,7 @@ class DatabaseManager:
             return []
         
         # Убеждаемся, что поле plaintext существует в таблице
-        try:
-            self.execute_query(
-                "ALTER TABLE messages ADD COLUMN plaintext TEXT",
-                sync=False
-            )
-        except:
-            pass  # Поле уже существует
+        self._ensure_column_exists('messages', 'plaintext', 'TEXT')
         
         # Получаем только сообщения, которые были отправлены с этого сервера
         # Критерий: наличие поля plaintext (оно сохраняется только при отправке через encrypt_message)

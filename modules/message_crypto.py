@@ -363,15 +363,8 @@ class MessageCrypto:
         """
         from utils.timezone_utils import moscow_datetime_sql
         
-        # Проверяем, есть ли поле plaintext в таблице
-        try:
-            # Пытаемся добавить поле plaintext, если его нет (SQLite игнорирует если поле уже существует)
-            self.db_manager.execute_query(
-                "ALTER TABLE messages ADD COLUMN plaintext TEXT",
-                sync=False
-            )
-        except:
-            pass  # Поле уже существует
+        # Убеждаемся, что поле plaintext существует в таблице
+        self.db_manager._ensure_column_exists('messages', 'plaintext', 'TEXT')
         
         # Если plaintext передан, сохраняем его, иначе NULL
         if plaintext:

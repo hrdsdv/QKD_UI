@@ -92,17 +92,11 @@
         Выйти
       </a>
     {% endif %}
-    <div class="mr-4">
-      <span class="font-bold">QBER:</span>
-      <span id="qber-value" class="ml-2 text-2xl {% if qber_value %} {% if qber_value <= 4 %}text-green-500 {% elif qber_value <= 10 %}text-yellow-500 {% else %}text-red-500 {% endif %} {% else %}text-gray-500 {% endif %}">
-        {% if qber_value %}{{ qber_value }}%{% else %}—{% endif %}
-      </span>
-    </div>
-    <button id="log-toggle" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4">
-      Журнал
-    </button>
-    <button id="settings-toggle" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+    <button id="settings-toggle" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-4">
       Настройки сети
+    </button>
+    <button id="log-toggle" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      Журнал
     </button>
   </div>
 </header>
@@ -979,19 +973,7 @@
         // Обновляем детали этапа - показываем N = количество несовпадений
         document.getElementById('step-2-details').textContent = `N = ${data.mismatches}`;
         
-        // Обновляем QBER в header
-        const qberElement = document.querySelector('#qber-value');
-        qberElement.textContent = `${data.qber.toFixed(2)}%`;
-        
-        // Применяем цветовую индикацию
-        qberElement.className = 'ml-2 text-2xl';
-        if (data.qber <= 4) {
-          qberElement.classList.add('text-green-500');
-        } else if (data.qber <= 10) {
-          qberElement.classList.add('text-yellow-500');
-        } else {
-          qberElement.classList.add('text-red-500');
-        }
+        // QBER элемент удален из интерфейса
         
         alert(`Последовательность выбрана.\nКоличество несовпадений: ${data.mismatches}\nQBER: ${data.qber.toFixed(2)}%`);
         document.getElementById('raw-key-modal').classList.remove('open');
