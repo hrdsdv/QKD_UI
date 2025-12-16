@@ -309,25 +309,32 @@ class KeyManagementModule:
                 sender_result = self.db_manager.execute_query(sender_query, (msg.get('sender_id'),), fetch=True, sync=False)
                 sender_username = sender_result[0]['username'] if sender_result else 'Неизвестно'
             
+            message_type = msg.get('message_type', 'text')
             formatted_msg = {
                 'id': msg['message_id'],
                 'sender': sender_username,  # Используем username вместо sender_name
                 'timestamp': format_datetime_for_display(msg.get('sent_at', '')),
-                'type': msg.get('message_type', 'text'),
+                'type': message_type,
                 'key_id': msg.get('key_id', ''),
                 'content': msg.get('content', ''),
                 'content_hash': msg.get('content_hash', '')
             }
             
-            if msg.get('message_type') == 'text':
+            if message_type == 'text':
                 # Для текстовых сообщений
                 content_length = len(msg.get('content', ''))
                 formatted_msg['size'] = content_length
-            else:
-                # Для файлов
+            elif message_type in ('file', 'text_and_file'):
+                # Для файлов или сообщений с файлом
                 formatted_msg['filename'] = msg.get('file_name', '')
                 formatted_msg['size'] = msg.get('file_size', 0)
                 formatted_msg['filetype'] = msg.get('file_type', '')
+                # Если есть и текст, добавляем его
+                if message_type == 'text_and_file' and msg.get('content'):
+                    formatted_msg['content'] = msg.get('content', '')
+            else:
+                # Fallback для неизвестных типов
+                formatted_msg['size'] = 0
             
             formatted_messages.append(formatted_msg)
         
@@ -349,26 +356,33 @@ class KeyManagementModule:
                 receiver_result = self.db_manager.execute_query(receiver_query, (msg.get('receiver_id'),), fetch=True, sync=False)
                 receiver_username = receiver_result[0]['username'] if receiver_result else 'Неизвестно'
             
+            message_type = msg.get('message_type', 'text')
             formatted_msg = {
                 'id': msg['message_id'],
                 'receiver': receiver_username,
                 'timestamp': format_datetime_for_display(msg.get('sent_at', '')),
-                'type': msg.get('message_type', 'text'),
+                'type': message_type,
                 'key_id': msg.get('key_id', ''),
                 'content': msg.get('content', ''),
                 'content_hash': msg.get('content_hash', ''),
                 'plaintext': msg.get('plaintext', '')  # Оригинальный текст
             }
             
-            if msg.get('message_type') == 'text':
+            if message_type == 'text':
                 # Для текстовых сообщений
                 content_length = len(msg.get('content', ''))
                 formatted_msg['size'] = content_length
-            else:
-                # Для файлов
+            elif message_type in ('file', 'text_and_file'):
+                # Для файлов или сообщений с файлом
                 formatted_msg['filename'] = msg.get('file_name', '')
                 formatted_msg['size'] = msg.get('file_size', 0)
                 formatted_msg['filetype'] = msg.get('file_type', '')
+                # Если есть и текст, добавляем его
+                if message_type == 'text_and_file' and msg.get('content'):
+                    formatted_msg['content'] = msg.get('content', '')
+            else:
+                # Fallback для неизвестных типов
+                formatted_msg['size'] = 0
             
             formatted_messages.append(formatted_msg)
         

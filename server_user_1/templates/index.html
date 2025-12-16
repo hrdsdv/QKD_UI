@@ -188,7 +188,7 @@
                             </div>
                           </div>
                           <div>
-                            {% if item.type == 'text' %}
+                            {% if item.type == 'text' or item.type == 'text_and_file' %}
                               <button class="decrypt-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded text-sm mb-1"
                                       data-item-id="{{ item.id }}">
                                 Дешифровать
@@ -1397,12 +1397,15 @@ function updateIncomingMessages() {
                       ${item.type === 'text'
                         ? `<div class="bg-gray-100 p-2 rounded mb-2">Зашифрованное сообщение (${item.size || 0} символов)</div>
                            <div class="bg-gray-50 p-2 rounded text-xs font-mono break-all">${item.content || ''}</div>`
+                        : item.type === 'text_and_file'
+                        ? `<div class="bg-gray-100 p-2 rounded mb-2">Зашифрованное сообщение и файл: ${item.filename || item.file_name || 'файл'} (${item.size || 0} байт${item.filetype ? ', ' + item.filetype : ''})</div>
+                           <div class="bg-gray-50 p-2 rounded text-xs font-mono break-all">${item.content || ''}</div>`
                         : `<div class="bg-gray-100 p-2 rounded">Зашифрованный файл: ${item.filename || item.file_name || 'файл'} (${item.size || 0} байт${item.filetype ? ', ' + item.filetype : ''})</div>`
                       }
                     </div>
                   </div>
                   <div>
-                    ${item.type === 'text'
+                    ${item.type === 'text' || item.type === 'text_and_file'
                       ? `<button class="decrypt-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded text-sm mb-1" data-item-id="${item.id}">Дешифровать</button>`
                       : `<button class="decrypt-download-button bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded text-sm mb-1" data-item-id="${item.id}">Дешифровать и скачать</button>`
                     }
