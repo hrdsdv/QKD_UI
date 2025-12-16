@@ -550,6 +550,7 @@
       <div id="step-2" class="step">
         Просеивание ключа
         <div id="step-2-details" class="text-xs mt-1" style="display:none;"></div>
+        <div id="step-2-bits-comparison" class="text-xs mt-2 font-mono" style="display:none;"></div>
       </div>
       <div id="step-3" class="step">
         Восстановление ключа
@@ -973,6 +974,33 @@
         // Обновляем детали этапа - показываем N = количество несовпадений
         document.getElementById('step-2-details').textContent = `N = ${data.mismatches}`;
         
+        // Отображаем последние 32 бита обеих последовательностей с цветовой индикацией
+        const bitsComparisonDiv = document.getElementById('step-2-bits-comparison');
+        if (data.last_32_bits_local && data.last_32_bits_remote) {
+          bitsComparisonDiv.style.display = 'block';
+          
+          // Функция для создания HTML с цветовой индикацией
+          const createColoredBits = (bits1, bits2) => {
+            let html = '';
+            for (let i = 0; i < Math.min(bits1.length, bits2.length); i++) {
+              const color = bits1[i] === bits2[i] ? 'text-green-600' : 'text-red-600';
+              html += `<span class="${color}">${bits1[i]}</span>`;
+            }
+            return html;
+          };
+          
+          bitsComparisonDiv.innerHTML = `
+            <div class="mt-2">
+              <div class="text-xs text-gray-600 mb-1">Последние 32 бита последовательности А:</div>
+              <div class="text-sm">${createColoredBits(data.last_32_bits_local, data.last_32_bits_remote)}</div>
+              <div class="text-xs text-gray-600 mb-1 mt-2">Последние 32 бита последовательности Б:</div>
+              <div class="text-sm">${createColoredBits(data.last_32_bits_remote, data.last_32_bits_local)}</div>
+            </div>
+          `;
+        } else {
+          bitsComparisonDiv.style.display = 'none';
+        }
+        
         // QBER элемент удален из интерфейса
         
         alert(`Последовательность выбрана.\nКоличество несовпадений: ${data.mismatches}\nQBER: ${data.qber.toFixed(2)}%`);
@@ -984,6 +1012,7 @@
         alert(data.message);
         document.getElementById('step-2').classList.remove('active-step');
         document.getElementById('step-2-details').style.display = 'none';
+        document.getElementById('step-2-bits-comparison').style.display = 'none';
       }
     })
     .catch(error => {
@@ -991,6 +1020,7 @@
       alert('Ошибка при выборе последовательности');
       document.getElementById('step-2').classList.remove('active-step');
       document.getElementById('step-2-details').style.display = 'none';
+      document.getElementById('step-2-bits-comparison').style.display = 'none';
     });
       });
     });
@@ -1016,6 +1046,7 @@
             // Убираем зеленый цвет с "Просеивание ключа" после восстановления
             document.getElementById('step-2').classList.remove('active-step');
             document.getElementById('step-2-details').style.display = 'none';
+            document.getElementById('step-2-bits-comparison').style.display = 'none';
             alert(`Ключ успешно восстановлен!\nID ключа: ${data.key_id}`);
             document.getElementById('raw-key-modal').classList.remove('open');
             setTimeout(() => location.reload(), 1000);
@@ -1172,6 +1203,32 @@ generateTestSequenceButton.addEventListener('click', () => {
         document.getElementById('step-2-details').style.display = 'block';
         if (data.mismatches !== undefined) {
           document.getElementById('step-2-details').textContent = `N = ${data.mismatches}`;
+          
+          // Отображаем последние 32 бита, если они есть
+          const bitsComparisonDiv = document.getElementById('step-2-bits-comparison');
+          if (data.last_32_bits_local && data.last_32_bits_remote) {
+            bitsComparisonDiv.style.display = 'block';
+            
+            const createColoredBits = (bits1, bits2) => {
+              let html = '';
+              for (let i = 0; i < Math.min(bits1.length, bits2.length); i++) {
+                const color = bits1[i] === bits2[i] ? 'text-green-600' : 'text-red-600';
+                html += `<span class="${color}">${bits1[i]}</span>`;
+              }
+              return html;
+            };
+            
+            bitsComparisonDiv.innerHTML = `
+              <div class="mt-2">
+                <div class="text-xs text-gray-600 mb-1">Последние 32 бита последовательности А:</div>
+                <div class="text-sm">${createColoredBits(data.last_32_bits_local, data.last_32_bits_remote)}</div>
+                <div class="text-xs text-gray-600 mb-1 mt-2">Последние 32 бита последовательности Б:</div>
+                <div class="text-sm">${createColoredBits(data.last_32_bits_remote, data.last_32_bits_local)}</div>
+              </div>
+            `;
+          } else {
+            bitsComparisonDiv.style.display = 'none';
+          }
         }
       }, 2000);
     } else {
@@ -1207,6 +1264,7 @@ document.addEventListener('click', (e) => {
         // Убираем зеленый цвет с "Просеивание ключа" после восстановления
         document.getElementById('step-2').classList.remove('active-step');
         document.getElementById('step-2-details').style.display = 'none';
+        document.getElementById('step-2-bits-comparison').style.display = 'none';
         alert(`Ключ успешно восстановлен!\nID ключа: ${data.key_id}`);
         
         // Делаем кнопку "Восстановить" неактивной

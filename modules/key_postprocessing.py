@@ -185,6 +185,18 @@ class KeyPostprocessingModule:
             sifted_key_local = ''.join(sifted_bits_local)
             sifted_key_remote = ''.join(sifted_bits_remote)
             
+            # Получаем последние 32 бита обеих последовательностей для визуализации
+            # Берем последние 32 символа, если последовательность длиннее, иначе берем все
+            last_32_bits_local = local_bits[-32:] if len(local_bits) >= 32 else local_bits
+            last_32_bits_remote = remote_bits[-32:] if len(remote_bits) >= 32 else remote_bits
+            
+            # Дополняем до одинаковой длины для корректного сравнения (дополняем нулями справа)
+            max_len = max(len(last_32_bits_local), len(last_32_bits_remote))
+            if len(last_32_bits_local) < max_len:
+                last_32_bits_local = last_32_bits_local.ljust(max_len, '0')
+            if len(last_32_bits_remote) < max_len:
+                last_32_bits_remote = last_32_bits_remote.ljust(max_len, '0')
+            
             # Проверка порога QBER
             needs_regeneration = qber > self.QBER_THRESHOLD
             
@@ -198,7 +210,9 @@ class KeyPostprocessingModule:
                 'qber': round(qber, 2),
                 'needs_regeneration': needs_regeneration,
                 'sifted_key_local': sifted_key_local,
-                'sifted_key_remote': sifted_key_remote
+                'sifted_key_remote': sifted_key_remote,
+                'last_32_bits_local': last_32_bits_local,
+                'last_32_bits_remote': last_32_bits_remote
             }
             
             # Логируем результат

@@ -367,7 +367,9 @@ def select_sequence():
             'mismatches': mismatches, 
             'qber': qber_value,
             'sifted_length': comparison_result.get('sifted_length', 0),
-            'matching_bases': comparison_result.get('matching_bases', 0)
+            'matching_bases': comparison_result.get('matching_bases', 0),
+            'last_32_bits_local': comparison_result.get('last_32_bits_local', ''),
+            'last_32_bits_remote': comparison_result.get('last_32_bits_remote', '')
         })
     else:
         return jsonify({'status': 'error', 'message': 'Не удалось выбрать последовательность'}), 500
@@ -611,6 +613,17 @@ def generate_test_sequence():
 
     key_destruction = "Использован и уничтожен"
 
+    # Получаем последние 32 бита обеих последовательностей для визуализации
+    last_32_bits_a = bits_a[-32:] if len(bits_a) >= 32 else bits_a
+    last_32_bits_b = bits_b[-32:] if len(bits_b) >= 32 else bits_b
+    
+    # Дополняем до одинаковой длины для корректного сравнения
+    max_len = max(len(last_32_bits_a), len(last_32_bits_b))
+    if len(last_32_bits_a) < max_len:
+        last_32_bits_a = last_32_bits_a.ljust(max_len, '0')
+    if len(last_32_bits_b) < max_len:
+        last_32_bits_b = last_32_bits_b.ljust(max_len, '0')
+    
     return jsonify({
         'status': 'success',
         'connection_time': f'{conn_time} сек',
@@ -624,7 +637,9 @@ def generate_test_sequence():
         'encryption_time': encryption_time,
         'key_destruction': key_destruction,
         'seq_id_a': seq_id_a,
-        'seq_id_b': seq_id_b
+        'seq_id_b': seq_id_b,
+        'last_32_bits_local': last_32_bits_b,  # Для сервера Б локальная последовательность - это bits_b
+        'last_32_bits_remote': last_32_bits_a  # Удаленная - это bits_a
     })
 
 
