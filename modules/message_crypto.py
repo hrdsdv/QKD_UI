@@ -80,14 +80,15 @@ class MessageCrypto:
             # 6. Помечаем ключ как использованный
             self.key_manager.use_key(key_id, sender_id)
             
-            # 7. Сохраняем сообщение в БД
+            # 7. Сохраняем сообщение в БД (с оригинальным текстом для отправителя)
             message_id = self._save_encrypted_message(
                 sender_id=sender_id,
                 receiver_id=receiver_id,
                 key_id=key_id,
                 message_type='text',
                 encrypted_content=ciphertext_b64,
-                content_hash=message_hash
+                content_hash=message_hash,
+                plaintext=plaintext  # Сохраняем оригинальный текст
             )
             
             end_time = time.perf_counter()
@@ -353,24 +354,52 @@ class MessageCrypto:
     
     def _save_encrypted_message(self, sender_id: int, receiver_id: int, key_id: str,
                                message_type: str, encrypted_content: str, content_hash: str,
-                               file_name: str = None, file_size: int = None) -> int:
+                               file_name: str = None, file_size: int = None, plaintext: str = None) -> int:
         """
         Сохраняет зашифрованное сообщение в базе данных.
         
+        :param plaintext: Оригинальный незашифрованный текст (сохраняется только на стороне отправителя)
         :return: ID сообщения
         """
-        query = """
-            INSERT INTO messages 
-            (sender_id, receiver_id, key_id, message_type, content, content_hash,
-             file_name, file_size, is_encrypted, sent_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1, datetime('now'))
-        """
-        self.db_manager.execute_query(
-            query,
-            (sender_id, receiver_id, key_id, message_type, encrypted_content,
-             content_hash, file_name, file_size),
-            sync=False
-        )
+        from utils.timezone_utils import moscow_datetime_sql
+        
+        # Проверяем, есть ли поле plaintext в таблице
+        try:
+            # Пытаемся добавить поле plaintext, если его нет (SQLite игнорирует если поле уже существует)
+            self.db_manager.execute_query(
+                "ALTER TABLE messages ADD COLUMN plaintext TEXT",
+                sync=False
+            )
+        except:
+            pass  # Поле уже существует
+        
+        # Если plaintext передан, сохраняем его, иначе NULL
+        if plaintext:
+            query = f"""
+                INSERT INTO messages 
+                (sender_id, receiver_id, key_id, message_type, content, content_hash,
+                 file_name, file_size, plaintext, is_encrypted, sent_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 1, {moscow_datetime_sql()})
+            """
+            self.db_manager.execute_query(
+                query,
+                (sender_id, receiver_id, key_id, message_type, encrypted_content,
+                 content_hash, file_name, file_size, plaintext),
+                sync=False
+            )
+        else:
+            query = f"""
+                INSERT INTO messages 
+                (sender_id, receiver_id, key_id, message_type, content, content_hash,
+                 file_name, file_size, is_encrypted, sent_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1, {moscow_datetime_sql()})
+            """
+            self.db_manager.execute_query(
+                query,
+                (sender_id, receiver_id, key_id, message_type, encrypted_content,
+                 content_hash, file_name, file_size),
+                sync=False
+            )
         
         # Получаем ID вставленной записи
         result = self.db_manager.execute_query(
@@ -404,9 +433,10 @@ class MessageCrypto:
         :return: Успешность операции
         """
         try:
-            query = """
+            from utils.timezone_utils import moscow_datetime_sql
+            query = f"""
                 UPDATE messages 
-                SET is_read = 1, read_at = datetime('now')
+                SET is_read = 1, read_at = {moscow_datetime_sql()}
                 WHERE message_id = ? AND receiver_id = ?
             """
             self.db_manager.execute_query(query, (message_id, user_id), sync=False)

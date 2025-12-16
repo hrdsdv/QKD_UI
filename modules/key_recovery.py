@@ -77,10 +77,17 @@ class KeyRecoveryModule:
         
         # Мастер-ключ для шифрования ключей в БД (AES-256-GCM)
         if master_key:
+            # Проверяем длину переданного ключа
+            if len(master_key) != 32:
+                raise ValueError(f"Длина мастер-ключа должна быть 32 байта (256 бит), получено {len(master_key)} байт")
             self.master_key = master_key
         else:
             # Генерируем или загружаем мастер-ключ
             self.master_key = self._get_or_create_master_key()
+        
+        # Дополнительная проверка перед созданием AESCipher
+        if self.master_key and len(self.master_key) != 32:
+            raise ValueError(f"Длина мастер-ключа должна быть 32 байта (256 бит), получено {len(self.master_key)} байт")
         
         self.key_cipher = AESCipher(self.master_key) if self.master_key else None
     
@@ -94,7 +101,25 @@ class KeyRecoveryModule:
         
         if os.path.exists(master_key_file):
             with open(master_key_file, 'rb') as f:
-                return f.read()
+                master_key = f.read()
+            
+            # Проверяем длину ключа (должно быть 32 байта для AES-256)
+            if len(master_key) != 32:
+                log_to_file(
+                    f"Обнаружен мастер-ключ неправильной длины ({len(master_key)} байт вместо 32). "
+                    "Пересоздаём ключ.",
+                    level="WARNING"
+                )
+                # Пересоздаём ключ правильной длины
+                master_key = os.urandom(32)
+                with open(master_key_file, 'wb') as f:
+                    f.write(master_key)
+                # Устанавливаем права доступа (только владелец)
+                try:
+                    os.chmod(master_key_file, 0o600)
+                except:
+                    pass
+            return master_key
         else:
             # Генерируем новый мастер-ключ
             master_key = os.urandom(32)
@@ -266,9 +291,10 @@ class KeyRecoveryModule:
                 # Также добавляем запись в таблицу keys для отображения в UI
                 # Используем INSERT OR REPLACE для упрощения логики
                 try:
-                    query = """
+                    from utils.timezone_utils import moscow_datetime_sql
+                    query = f"""
                         INSERT OR REPLACE INTO keys (key_id, key_hash, status, length, created_at)
-                        VALUES (?, ?, 'Активен', ?, datetime('now'))
+                        VALUES (?, ?, 'Активен', ?, {moscow_datetime_sql()})
                     """
                     self.db_manager.execute_query(
                         query, 
@@ -346,16 +372,17 @@ class KeyRecoveryModule:
             import os
             random_data = os.urandom(256).hex()
             
-            # Обновляем статус на "Уничтожен", но не удаляем запись из БД
-            query = "UPDATE keys SET key_data = ?, status = 'Уничтожен', used_by = ?, used_at = datetime('now') WHERE key_id = ?"
+            # Обновляем статус на "Использован и уничтожен", но не удаляем запись из БД
+            from utils.timezone_utils import moscow_datetime_sql
+            query = f"UPDATE keys SET key_data = ?, status = 'Использован и уничтожен', used_by = ?, used_at = {moscow_datetime_sql()} WHERE key_id = ?"
             self.db_manager.execute_query(query, (random_data, user_id, key_id), sync=False)
             
             # Также обновляем статус в secure_keys если ключ там есть
-            query_secure = "UPDATE secure_keys SET status = 'Уничтожен', destroyed_at = datetime('now'), used_by = ? WHERE key_id = ?"
+            query_secure = f"UPDATE secure_keys SET status = 'Уничтожен', destroyed_at = {moscow_datetime_sql()}, used_by = ? WHERE key_id = ?"
             self.db_manager.execute_query(query_secure, (user_id, key_id), sync=False)
             
             # Логируем уничтожение
-            log_to_file(f"Ключ {key_id} уничтожен пользователем {user_id} (статус изменен на 'Уничтожен')", level="INFO")
+            log_to_file(f"Ключ {key_id} уничтожен пользователем {user_id} (статус изменен на 'Использован и уничтожен')", level="INFO")
             log_to_db(self.db_manager.db_path, user_id, 'KeyRecoveryModule', 'INFO', f"Ключ {key_id} уничтожен")
             
             return True

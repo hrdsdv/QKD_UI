@@ -28,13 +28,17 @@ except ImportError:
     # Fallback значения если config.py не найден
     SERVER_B_HOST = '0.0.0.0'
     SERVER_B_PORT = 5001
-    REMOTE_SERVER_A = 'http://localhost:5000'
+    # ВАЖНО: Замените localhost на реальный IP-адрес ПК1 для работы между разными ПК!
+    # Узнать IP ПК1 можно командой: ipconfig (Windows) или ip addr (Linux)
+    REMOTE_SERVER_A = 'http://127.0.0.1:5000'  # ⚠️ ЗАМЕНИТЕ на IP ПК1!
     FLASK_SECRET_KEY = 'dev-secret-key'
 
 import threading
 import time
 import random
 import requests
+from datetime import datetime
+from utils.timezone_utils import moscow_now, moscow_now_str, moscow_datetime_sql
 
 app = Flask(__name__)
 CORS(app)  # Разрешаем кросс-доменные запросы для работы между разными ПК
@@ -47,12 +51,133 @@ db_path = os.path.abspath(os.path.join('databases', 'user_2_db.db'))
 print(f"Путь к базе данных: {db_path}")
 db_manager = DatabaseManager(db_path)
 
+# Создаем таблицу settings, если её нет
+try:
+    db_manager.execute_query('''
+        CREATE TABLE IF NOT EXISTS settings (
+            setting_key TEXT PRIMARY KEY,
+            setting_value TEXT NOT NULL,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ''', sync=False)
+    # Добавляем начальное значение, если его нет
+    result = db_manager.execute_query(
+        "SELECT setting_value FROM settings WHERE setting_key = ?",
+        ('remote_server_url',), fetch=True, sync=False
+    )
+    if not result:
+        db_manager.execute_query(
+            "INSERT INTO settings (setting_key, setting_value) VALUES (?, ?)",
+            ('remote_server_url', REMOTE_SERVER_A), sync=False
+        )
+except Exception as e:
+    log_to_file(f"Ошибка создания таблицы settings: {e}", level="WARNING")
+
 # Инициализация модулей
 qkd_module = QKDModule(db_path)
-key_postprocessing_module = KeyPostprocessingModule(db_path, remote_server_url=REMOTE_SERVER_A)
 key_recovery_module = KeyRecoveryModule(db_path)
 key_management_module = KeyManagementModule(db_path)
 message_crypto = MessageCrypto(db_path)
+
+# Функция для получения IP удаленного сервера из БД
+def get_remote_server_url():
+    """Получает IP-адрес удаленного сервера из БД или использует значение из config.py."""
+    try:
+        result = db_manager.execute_query(
+            "SELECT setting_value FROM settings WHERE setting_key = ?",
+            ('remote_server_url',), fetch=True, sync=False
+        )
+        if result and result[0]['setting_value']:
+            return result[0]['setting_value']
+    except Exception as e:
+        log_to_file(f"Ошибка получения IP из БД, используем config.py: {e}", level="WARNING")
+    
+    # Fallback на config.py
+    return REMOTE_SERVER_A
+
+# Инициализируем key_postprocessing_module с динамическим URL
+key_postprocessing_module = KeyPostprocessingModule(db_path, remote_server_url=get_remote_server_url())
+
+def start_qkd_automatically():
+    """
+    Автоматически запускает чтение данных с QKD устройства для второго абонента.
+    Подключается к COM-порту и начинает генерацию последовательностей.
+    """
+    try:
+        log_to_file("[AUTO-START] ========== АВТОМАТИЧЕСКИЙ ЗАПУСК QKD (Абонент Б) ==========", level="INFO")
+        print("[AUTO-START] ========== АВТОМАТИЧЕСКИЙ ЗАПУСК QKD (Абонент Б) ==========")
+        
+        # Определяем COM порт для второго абонента
+        # По умолчанию COM3, но можно изменить в config.py или здесь
+        qkd_port = 'COM3'  # Измените на нужный COM порт для второго абонента
+        
+        log_to_file(f"[AUTO-START] Попытка автоматического подключения к QKD устройству ({qkd_port}, 9600)...", level="INFO")
+        print(f"[AUTO-START] Попытка автоматического подключения к QKD устройству ({qkd_port}, 9600)...")
+        
+        # Проверяем, существует ли тестовая запись (для проверки БД)
+        try:
+            test_result = db_manager.execute_query(
+                "SELECT sequence_id FROM raw_data WHERE sequence_id = ?",
+                ("TEST_AUTO_START",), fetch=True, sync=False
+            )
+            if test_result and len(test_result) > 0:
+                log_to_file("[AUTO-START] ТЕСТ: Тестовая запись уже существует, пропускаем", level="INFO")
+                print("[AUTO-START] ТЕСТ: Тестовая запись уже существует, пропускаем")
+            else:
+                # Создаём тестовую запись для проверки БД
+                test_bits = '0' * 256
+                test_bases = '+' * 256
+                db_manager.execute_query(
+                    "INSERT INTO raw_data (sequence_id, bits, bases, station, is_test) VALUES (?, ?, ?, ?, ?)",
+                    ("TEST_AUTO_START", test_bits, test_bases, "B", 1), sync=False
+                )
+                log_to_file("[AUTO-START] ТЕСТ: Тестовая запись создана", level="INFO")
+                print("[AUTO-START] ТЕСТ: Тестовая запись создана")
+        except Exception as test_error:
+            log_to_file(f"[AUTO-START] ТЕСТ: Ошибка при проверке тестовой записи: {test_error}", level="WARNING")
+            print(f"[AUTO-START] ТЕСТ: Ошибка при проверке тестовой записи: {test_error}")
+        
+        # Подключаемся к COM порту с повторными попытками
+        log_to_file(f"[AUTO-START] Вызов connect_serial('{qkd_port}', 9600) с повторными попытками...", level="INFO")
+        print(f"[AUTO-START] Вызов connect_serial('{qkd_port}', 9600) с повторными попытками...")
+        print("[AUTO-START] =========================================")
+        print("[AUTO-START] ВАЖНО: Если порт занят другой программой:")
+        print(f"[AUTO-START] 1. Закройте программу, использующую {qkd_port}")
+        print("[AUTO-START] 2. Подождите 3-5 секунд")
+        print("[AUTO-START] 3. Система автоматически повторит попытку подключения")
+        print("[AUTO-START] =========================================")
+        
+        if qkd_module.connect_serial(qkd_port, baudrate=9600, retry_count=5, retry_delay=3):
+            log_to_file(f"[AUTO-START] {qkd_port} подключен успешно, запуск генерации...", level="INFO")
+            print(f"[AUTO-START] {qkd_port} подключен успешно, запуск генерации...")
+            
+            # Небольшая задержка перед запуском потока
+            time.sleep(0.5)
+            
+            # Запускаем генерацию в отдельном потоке
+            log_to_file("[AUTO-START] Создание потока для start_generation...", level="INFO")
+            print("[AUTO-START] Создание потока для start_generation...")
+            
+            thread = threading.Thread(target=qkd_module.start_generation, daemon=True, name="QKD-Auto-Generation-B")
+            thread.start()
+            
+            # Проверяем, что поток запустился
+            time.sleep(0.1)
+            log_to_file(f"[AUTO-START] Поток генерации запущен: {thread.name}, alive={thread.is_alive()}, ident={thread.ident}", level="INFO")
+            print(f"[AUTO-START] Поток генерации запущен: {thread.name}, alive={thread.is_alive()}, ident={thread.ident}")
+            
+            if not thread.is_alive():
+                log_to_file("[AUTO-START] ВНИМАНИЕ: Поток не запустился или уже завершился!", level="ERROR")
+                print("[AUTO-START] ВНИМАНИЕ: Поток не запустился или уже завершился!")
+        else:
+            log_to_file(f"[AUTO-START] ОШИБКА: Не удалось подключиться к {qkd_port}. Проверьте подключение устройства.", level="ERROR")
+            print(f"[AUTO-START] ОШИБКА: Не удалось подключиться к {qkd_port}. Проверьте подключение устройства.")
+    except Exception as e:
+        error_msg = f"[AUTO-START] КРИТИЧЕСКАЯ ОШИБКА при автоматическом запуске: {e}"
+        log_to_file(error_msg, level="ERROR")
+        print(error_msg)
+        import traceback
+        print(traceback.format_exc())
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -133,10 +258,10 @@ def index():
         if incoming_items:
             print(f"DEBUG: Первое сообщение: {incoming_items[0]}")
 
-        # Получаем последние 8 бит и их базисы
+        # Получаем последние 32 бита и их базисы
         last_sequence = qkd_module.get_last_sequence()
-        last_8_bits = last_sequence['bits'][-8:] if last_sequence else None
-        last_8_bases = last_sequence['bases'][-8:] if last_sequence else None
+        last_32_bits = last_sequence['bits'][-32:] if last_sequence and len(last_sequence.get('bits', '')) >= 32 else (last_sequence['bits'] if last_sequence else None)
+        last_32_bases = last_sequence['bases'][-32:] if last_sequence and len(last_sequence.get('bases', '')) >= 32 else (last_sequence['bases'] if last_sequence else None)
 
         # Получаем тестовые сообщения из БД для текущего сервера
         # Фильтруем по имени сервера (server_2) для полученных сообщений
@@ -172,10 +297,10 @@ def index():
             qber_value=qber_value,
             incoming_items=incoming_items,
             raw_data=raw_data,
-            last_8_bits=last_8_bits,
-            last_8_bases=last_8_bases,
+            last_32_bits=last_32_bits,
+            last_32_bases=last_32_bases,
             test_messages=test_messages,  # Тестовые сообщения из БД
-            remote_server_a=REMOTE_SERVER_A  # Адрес удалённого сервера А
+            remote_server_a=get_remote_server_url()  # Адрес удалённого сервера А
         )
     except Exception as e:
         print(f"Ошибка при загрузке главной страницы: {e}")
@@ -209,7 +334,7 @@ def select_sequence():
         # Уведомляем первый сервер о выборе последовательности
         import requests
         try:
-            requests.post(f'{REMOTE_SERVER_A}/api/sync_sequence_selection', json={
+            requests.post(f'{get_remote_server_url()}/api/sync_sequence_selection', json={
                 'sequence_id': sequence_id,
                 'selected_by': f'B_{username}',
                 'station': 'B'
@@ -319,7 +444,7 @@ def recover_key():
         # Синхронизируем восстановленный ключ с сервером А
         import requests
         try:
-            requests.post(f'{REMOTE_SERVER_A}/api/sync_recovered_key', json={
+            requests.post(f'{get_remote_server_url()}/api/sync_recovered_key', json={
                 'key_id': key_id,
                 'sequence_id': sequence_id,
                 'recovered_key': recovered_key,
@@ -405,7 +530,7 @@ def generate_test_sequence():
     # Запросить последовательность А через REST API с сервера А
     import requests
     try:
-        response = requests.get(f'{REMOTE_SERVER_A}/api/get_test_sequence/{seq_id_a}', timeout=2)
+        response = requests.get(f'{get_remote_server_url()}/api/get_test_sequence/{seq_id_a}', timeout=2)
         if response.status_code == 200:
             data_a = response.json()
             bits_a = data_a.get('bits')
@@ -492,6 +617,7 @@ def generate_test_sequence():
         'generation_status': '100%',
         'bases_comparison': bases_comparison,
         'factual_qber': factual_qber,
+        'mismatches': mismatches,  # Добавляем количество несовпадений
         'key_recovery': f'{recovery_percentage}% (хэш: {"OK" if hash_match else "НЕ совпадает"})',
         'recovery_time': f'{recovery_time} мс',
         'errors_corrected': errors_corrected if errors_corrected >= 0 else 'Ошибка',
@@ -605,11 +731,17 @@ def encrypt_message():
             file_hash = result_file['hash']
         
         # Отправляем зашифрованное сообщение на сервер получателя
-        # receiver_id не передаем - он определится на стороне получателя
+        # Получаем username получателя для передачи на сервер получателя
+        receiver_query = "SELECT username FROM users WHERE user_id = ?"
+        receiver_result = db_manager.execute_query(receiver_query, (receiver_id,), fetch=True, sync=False)
+        receiver_name = receiver_result[0]['username'] if receiver_result else None
+        
         try:
             payload = {
                 'sender_id': session['user_id'],
                 'sender_name': session.get('username', 'Unknown'),
+                'receiver_id': receiver_id,  # Передаем receiver_id получателю (для обратной совместимости)
+                'receiver_name': receiver_name,  # Передаем username получателя
                 'key_id': key_id,
                 'message_type': message_type
             }
@@ -625,7 +757,7 @@ def encrypt_message():
                 payload['file_size'] = file_size
             
             response = requests.post(
-                f'{REMOTE_SERVER_A}/api/receive_encrypted_message',
+                f'{get_remote_server_url()}/api/receive_encrypted_message',
                 json=payload,
                 timeout=5
             )
@@ -688,7 +820,7 @@ def encrypt_message_old():
         # Отправляем зашифрованное сообщение на сервер получателя
         try:
             response = requests.post(
-                f'{REMOTE_SERVER_A}/api/receive_encrypted_message',
+                f'{get_remote_server_url()}/api/receive_encrypted_message',
                 json={
                     'message_id': result['message_id'],
                     'sender_id': session['user_id'],
@@ -887,52 +1019,84 @@ def receive_encrypted_message():
         file_name = data.get('file_name')
         file_size = data.get('file_size')
         
-        # Определяем получателей на стороне получателя (сервер 2)
-        # Сохраняем сообщение для всех пользователей с ролью 'user' на этом сервере
-        user_query = "SELECT user_id FROM users WHERE role = 'user'"
-        users_result = db_manager.execute_query(user_query, (), fetch=True, sync=False)
+        # Получаем receiver_id из запроса (это ID на сервере отправителя)
+        # Но нам нужно найти правильный user_id получателя на ЭТОМ сервере
+        receiver_id_from_request = data.get('receiver_id')
+        receiver_name = data.get('receiver_name')  # Имя получателя (если передано)
         
-        # Сохраняем сообщение для каждого пользователя на сервере
-        query = """
+        log_to_file(f"DEBUG: receive_encrypted_message: получен receiver_id={receiver_id_from_request}, receiver_name={receiver_name}", level="INFO")
+        
+        # ВАЖНО: Сохраняем сообщение для ВСЕХ пользователей с ролью 'user' на этом сервере,
+        # исключая отправителя (если он есть на этом сервере).
+        # Это гарантирует, что сообщение будет доступно любому авторизованному пользователю,
+        # независимо от того, кто именно авторизован в данный момент.
+        receiver_ids_to_save = []
+        
+        # Ищем всех пользователей с ролью 'user' на этом сервере
+        # ВАЖНО: sender_id - это ID отправителя на сервере отправителя, 
+        # на этом сервере может быть другой пользователь с таким же ID
+        # Поэтому исключаем отправителя только если он действительно существует на этом сервере
+        # И проверяем по username, а не по user_id, так как user_id могут не совпадать между серверами
+        user_query = "SELECT user_id, username FROM users WHERE role = 'user'"
+        if sender_id and sender_name:
+            # Проверяем, есть ли на этом сервере пользователь с таким же username как отправитель
+            sender_check = db_manager.execute_query(
+                "SELECT user_id, username FROM users WHERE username = ?",
+                (sender_name,),
+                fetch=True,
+                sync=False
+            )
+            if sender_check:
+                # Если нашли пользователя с таким же username, исключаем его
+                sender_user_id = sender_check[0]['user_id']
+                user_query += f" AND user_id != {sender_user_id}"
+                log_to_file(f"DEBUG: Исключаем отправителя с username='{sender_name}' (user_id={sender_user_id}) из списка получателей", level="INFO")
+        
+        user_result = db_manager.execute_query(user_query, fetch=True, sync=False)
+        if user_result:
+            receiver_ids_to_save = [user['user_id'] for user in user_result]
+            log_to_file(f"DEBUG: Найдено получателей с ролью 'user' (исключая отправителя): {receiver_ids_to_save}", level="INFO")
+            # Логируем детали каждого найденного пользователя
+            for user in user_result:
+                log_to_file(f"DEBUG: Пользователь найден: user_id={user.get('user_id')}, username={user.get('username')}, role='user'", level="INFO")
+        else:
+            log_to_file(f"DEBUG: Не найдено пользователей с ролью 'user' на этом сервере", level="ERROR")
+        
+        # Дополнительная проверка: получаем ВСЕХ пользователей на сервере для отладки
+        all_users_query = "SELECT user_id, username, role FROM users"
+        all_users_result = db_manager.execute_query(all_users_query, fetch=True, sync=False) or []
+        log_to_file(f"DEBUG: Все пользователи на сервере: {[(u.get('user_id'), u.get('username'), u.get('role')) for u in all_users_result]}", level="INFO")
+        
+        if not receiver_ids_to_save:
+            return jsonify({'status': 'error', 'message': 'Не удалось определить получателя'}), 400
+        
+        log_to_file(f"DEBUG: receive_encrypted_message: sender_id={sender_id}, sender_name={sender_name}, receiver_ids={receiver_ids_to_save}, key_id={key_id}", level="INFO")
+        
+        # Сохраняем сообщение для каждого получателя
+        query = f"""
             INSERT INTO messages 
             (sender_id, sender_name, receiver_id, key_id, message_type, content, content_hash,
              file_path, file_name, file_size, is_encrypted, sent_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, datetime('now'))
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, {moscow_datetime_sql()})
         """
         
-        if users_result:
-            for user in users_result:
-                receiver_id = user['user_id']
-                db_manager.execute_query(
-                    query,
-                    (sender_id, sender_name, receiver_id, key_id, message_type, ciphertext,
-                     content_hash, file_ciphertext, file_name, file_size),
-                    sync=False
-                )
-                log_to_file(f"Сохранено сообщение от {sender_name} для receiver_id={receiver_id}", level="INFO")
-                print(f"DEBUG: Сохранено сообщение от {sender_name} для receiver_id={receiver_id}")
-        else:
-            # Если нет пользователей, используем значение по умолчанию
-            receiver_id = 1  # Для сервера 2 это обычно UserA
+        for rec_id in receiver_ids_to_save:
             db_manager.execute_query(
                 query,
-                (sender_id, sender_name, receiver_id, key_id, message_type, ciphertext,
+                (sender_id, sender_name, rec_id, key_id, message_type, ciphertext,
                  content_hash, file_ciphertext, file_name, file_size),
                 sync=False
             )
-            log_to_file(f"Получено сообщение от {sender_name} (пользователи не найдены), receiver_id={receiver_id}", level="INFO")
-            print(f"DEBUG: Получено сообщение от {sender_name} (пользователи не найдены), receiver_id={receiver_id}")
+            # Проверяем, что сообщение действительно сохранено
+            check_query = "SELECT message_id, receiver_id, is_encrypted FROM messages WHERE receiver_id = ? AND sender_id = ? AND key_id = ? ORDER BY sent_at DESC LIMIT 1"
+            check_result = db_manager.execute_query(check_query, (rec_id, sender_id, key_id), fetch=True, sync=False)
+            if check_result:
+                log_to_file(f"DEBUG: Проверка сохранения: message_id={check_result[0].get('message_id')}, receiver_id={check_result[0].get('receiver_id')}, is_encrypted={check_result[0].get('is_encrypted')}", level="INFO")
+            else:
+                log_to_file(f"DEBUG: ОШИБКА: Сообщение НЕ найдено в БД после сохранения для receiver_id={rec_id}", level="ERROR")
         
-        print(f"DEBUG: key_id={key_id}, message_type={message_type}")
-        print(f"DEBUG: Сообщение успешно сохранено в БД")
-        
-        # Проверяем, что сообщение действительно сохранилось
-        if users_result:
-            for user in users_result:
-                receiver_id = user['user_id']
-                check_query = "SELECT COUNT(*) as count FROM messages WHERE receiver_id = ?"
-                result = db_manager.execute_query(check_query, (receiver_id,), fetch=True, sync=False)
-                print(f"DEBUG: Всего сообщений для receiver_id={receiver_id}: {result[0]['count'] if result else 0}")
+        log_to_file(f"Сохранено сообщение от {sender_name} (sender_id={sender_id}) для receiver_ids={receiver_ids_to_save}, is_encrypted=1", level="INFO")
+        print(f"DEBUG: Сохранено сообщение от {sender_name} для receiver_ids={receiver_ids_to_save}")
         
         log_to_file(f"Получено зашифрованное сообщение от {sender_name} (key={key_id})", level="INFO")
         
@@ -969,7 +1133,7 @@ def destroy_key():
         # Синхронизируем уничтожение с другим сервером
         try:
             requests.post(
-                f'{REMOTE_SERVER_A}/api/sync_key_destruction',
+                f'{get_remote_server_url()}/api/sync_key_destruction',
                 json={'key_id': key_id},
                 timeout=2
             )
@@ -988,7 +1152,11 @@ def api_get_incoming_messages():
         return jsonify({'status': 'error', 'message': 'Не авторизован'}), 401
     
     try:
-        incoming_items = key_management_module.get_incoming_messages(session['user_id'])
+        user_id = session['user_id']
+        username = session.get('username', 'Unknown')
+        log_to_file(f"DEBUG: api_get_incoming_messages: user_id={user_id}, username={username}", level="INFO")
+        incoming_items = key_management_module.get_incoming_messages(user_id)
+        log_to_file(f"DEBUG: api_get_incoming_messages: найдено сообщений: {len(incoming_items)}", level="INFO")
         return jsonify({
             'status': 'success',
             'messages': incoming_items,
@@ -996,6 +1164,71 @@ def api_get_incoming_messages():
         })
     except Exception as e:
         log_to_file(f"Ошибка получения входящих сообщений: {e}", level="ERROR")
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
+
+@app.route('/api/get_sent_messages', methods=['GET'])
+def api_get_sent_messages():
+    """API endpoint для получения отправленных сообщений."""
+    if 'user_id' not in session:
+        return jsonify({'status': 'error', 'message': 'Не авторизован'}), 401
+    
+    try:
+        sent_items = key_management_module.get_sent_messages(session['user_id'])
+        return jsonify({
+            'status': 'success',
+            'messages': sent_items,
+            'count': len(sent_items)
+        })
+    except Exception as e:
+        log_to_file(f"Ошибка получения отправленных сообщений: {e}", level="ERROR")
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
+
+@app.route('/api/view_sent_message', methods=['POST'])
+def api_view_sent_message():
+    """API endpoint для просмотра информации об отправленном сообщении."""
+    if 'user_id' not in session:
+        return jsonify({'status': 'error', 'message': 'Не авторизован'}), 401
+    
+    message_id = request.form.get('message_id')
+    if not message_id:
+        return jsonify({'status': 'error', 'message': 'Не указан ID сообщения'}), 400
+    
+    try:
+        message_id = int(message_id)
+    except ValueError:
+        return jsonify({'status': 'error', 'message': 'Некорректный ID сообщения'}), 400
+    
+    try:
+        # Получаем сообщение из БД
+        message = message_crypto.get_encrypted_message(message_id)
+        if not message:
+            return jsonify({'status': 'error', 'message': 'Сообщение не найдено'}), 404
+        
+        # Проверяем, что сообщение отправлено текущим пользователем
+        if message['sender_id'] != session['user_id']:
+            return jsonify({'status': 'error', 'message': 'Нет доступа к этому сообщению'}), 403
+        
+        # Получаем username получателя из таблицы users
+        receiver_query = "SELECT username FROM users WHERE user_id = ?"
+        receiver_result = db_manager.execute_query(receiver_query, (message['receiver_id'],), fetch=True, sync=False)
+        receiver_name = receiver_result[0]['username'] if receiver_result else 'Неизвестно'
+        
+        # Форматируем дату прочтения
+        from utils.timezone_utils import format_datetime_for_display
+        read_at = format_datetime_for_display(message.get('read_at', '')) if message.get('read_at') else None
+        
+        return jsonify({
+            'status': 'success',
+            'receiver_name': receiver_name,
+            'timestamp': format_datetime_for_display(message.get('sent_at', '')),
+            'message_type': message.get('message_type', 'text'),
+            'key_id': message.get('key_id', ''),
+            'plaintext': message.get('plaintext', '')  # Оригинальный текст сообщения
+        })
+    except Exception as e:
+        log_to_file(f"Ошибка получения информации о сообщении: {e}", level="ERROR")
         return jsonify({'status': 'error', 'message': str(e)}), 500
 
 
@@ -1068,15 +1301,13 @@ def test_rest_send():
         return jsonify({'status': 'error', 'message': 'Сообщение не может быть пустым'}), 400
     
     try:
-        import time
-        from datetime import datetime as dt
         start_time = time.perf_counter()
         
         sender = session.get('username', 'Unknown')  # Реальное имя отправителя
         
         # Отправляем тестовое сообщение на сервер А через REST API
         response = requests.post(
-            f'{REMOTE_SERVER_A}/api/test_rest_receive',
+            f'{get_remote_server_url()}/api/test_rest_receive',
             json={
                 'message': test_message,
                 'sender': sender
@@ -1093,9 +1324,9 @@ def test_rest_send():
             
             # Сохраняем отправленное сообщение в локальную БД (сервер 2)
             db_manager_test = DatabaseManager(db_path)
-            query_sent = '''
+            query_sent = f'''
                 INSERT INTO test_messages (sender, receiver, message_text, direction, created_at)
-                VALUES (?, ?, ?, 'sent', datetime('now'))
+                VALUES (?, ?, ?, 'sent', {moscow_datetime_sql()})
             '''
             db_manager_test.execute_query(query_sent, (sender, receiver, test_message), sync=False)
             log_to_file(f"Сохранено отправленное сообщение от {sender} для {receiver}: {test_message}", level="INFO")
@@ -1104,7 +1335,7 @@ def test_rest_send():
                 'status': 'success',
                 'message': 'Сообщение отправлено через REST API',
                 'response_time_ms': response_time,
-                'remote_server': REMOTE_SERVER_A,
+                'remote_server': get_remote_server_url(),
                 'receiver': receiver
             })
         else:
@@ -1138,9 +1369,9 @@ def test_rest_receive():
         
         # Сохраняем полученное сообщение в базу данных
         db_manager_test = DatabaseManager(db_path)
-        query = '''
+        query = f'''
             INSERT INTO test_messages (sender, receiver, message_text, direction, created_at)
-            VALUES (?, ?, ?, 'received', datetime('now'))
+            VALUES (?, ?, ?, 'received', {moscow_datetime_sql()})
         '''
         db_manager_test.execute_query(query, (sender, receiver, message), sync=False)
         
@@ -1228,8 +1459,6 @@ def test_rest_clear():
         
         log_to_file(f"Очищены тестовые сообщения для {receiver}", level="INFO")
         
-        log_to_file(f"Очищены тестовые сообщения для {current_user}", level="INFO")
-        
         return jsonify({'status': 'success', 'message': 'Тестовые сообщения очищены из БД'})
         
     except Exception as e:
@@ -1252,10 +1481,79 @@ def sync_key_destruction():
         return jsonify({'status': 'error', 'message': str(e)}), 500
 
 
+@app.route('/api/save_remote_server_url', methods=['POST'])
+def save_remote_server_url():
+    """API endpoint для сохранения IP-адреса удаленного сервера."""
+    if 'user_id' not in session:
+        return jsonify({'status': 'error', 'message': 'Не авторизован'}), 401
+    
+    try:
+        data = request.get_json()
+        remote_url = data.get('remote_server_url', '').strip()
+        
+        if not remote_url:
+            return jsonify({'status': 'error', 'message': 'IP-адрес не может быть пустым'}), 400
+        
+        # Валидация URL
+        if not remote_url.startswith('http://') and not remote_url.startswith('https://'):
+            remote_url = 'http://' + remote_url
+        
+        # Сохраняем в БД
+        from utils.timezone_utils import moscow_datetime_sql
+        query = f'''
+            INSERT OR REPLACE INTO settings (setting_key, setting_value, updated_at)
+            VALUES ('remote_server_url', ?, {moscow_datetime_sql()})
+        '''
+        db_manager.execute_query(query, (remote_url,), sync=False)
+        
+        # Обновляем key_postprocessing_module с новым URL
+        global key_postprocessing_module
+        key_postprocessing_module = KeyPostprocessingModule(db_path, remote_server_url=remote_url)
+        
+        log_to_file(f"Сохранен IP удаленного сервера: {remote_url}", level="INFO")
+        
+        return jsonify({
+            'status': 'success',
+            'message': 'IP-адрес удаленного сервера успешно сохранен',
+            'remote_server_url': remote_url
+        })
+    except Exception as e:
+        log_to_file(f"Ошибка сохранения IP удаленного сервера: {e}", level="ERROR")
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
+
+@app.route('/api/get_remote_server_url', methods=['GET'])
+def api_get_remote_server_url():
+    """API endpoint для получения текущего IP-адреса удаленного сервера."""
+    if 'user_id' not in session:
+        return jsonify({'status': 'error', 'message': 'Не авторизован'}), 401
+    
+    try:
+        remote_url = get_remote_server_url()
+        return jsonify({
+            'status': 'success',
+            'remote_server_url': remote_url
+        })
+    except Exception as e:
+        log_to_file(f"Ошибка получения IP удаленного сервера: {e}", level="ERROR")
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
+
 if __name__ == '__main__':
     print(f"Запуск сервера Б на {SERVER_B_HOST}:{SERVER_B_PORT}")
-    print(f"Удалённый сервер А: {REMOTE_SERVER_A}")
+    print(f"Удалённый сервер А: {get_remote_server_url()}")
     print(f"Сервер запущен на {SERVER_B_HOST}:{SERVER_B_PORT}")
-    print(f"Удалённый сервер А: {REMOTE_SERVER_A}")
+    print(f"Удалённый сервер А: {get_remote_server_url()}")
     print("Режим: REST API (HTTP)")
+    
+    # Автоматически запускаем чтение данных с QKD устройства
+    # ВАЖНО: В debug режиме Flask перезагружает модуль, поэтому функция может вызваться дважды
+    # Используем флаг для предотвращения двойного вызова
+    if not hasattr(app, 'qkd_started'):
+        start_qkd_automatically()
+        app.qkd_started = True
+    else:
+        log_to_file("[AUTO-START] QKD уже запущен, пропускаем повторный запуск", level="INFO")
+        print("[AUTO-START] QKD уже запущен, пропускаем повторный запуск")
+    
     app.run(host=SERVER_B_HOST, port=SERVER_B_PORT, debug=True)

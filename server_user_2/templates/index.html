@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QKD Admin Panel</title>
+  <title>Абонент Б</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     .sidebar {
@@ -64,6 +64,13 @@
       margin-top: 1rem;
       display: none;
     }
+    .view-sent-content {
+      background-color: #f0f9ff;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin-top: 1rem;
+      display: none;
+    }
   </style>
 </head>
 <body class="bg-gray-100">
@@ -71,7 +78,7 @@
   <!-- Верхняя панель -->
 <header class="bg-white shadow p-4 flex justify-between items-center">
   <div>
-    <h1 class="text-2xl font-bold">QKD Admin Panel</h1>
+    <h1 class="text-2xl font-bold">Абонент Б</h1>
   </div>
   <div class="flex items-center">
     {% if 'username' in session %}
@@ -88,8 +95,11 @@
         {% if qber_value %}{{ qber_value }}%{% else %}—{% endif %}
       </span>
     </div>
-    <button id="log-toggle" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    <button id="log-toggle" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4">
       Журнал
+    </button>
+    <button id="settings-toggle" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+      Настройки сети
     </button>
   </div>
 </header>
@@ -141,57 +151,69 @@
                 </button>
               </div>
 
-              <!-- Блок "Входящие" на вкладке "Главная" -->
-              <div class="w-full max-w-2xl mt-8">
-                <h2 class="text-xl font-bold mb-4">Входящие</h2>
-                <div id="incoming-list" class="space-y-4">
-                  {% if incoming_items %}
-                    {% for item in incoming_items %}
-                    <div class="incoming-item">
-                      <div class="flex justify-between items-start">
-                        <div>
-                          <div class="flex items-center mb-1">
-                            <span class="font-bold mr-2">{{ item.sender }}</span>
-                            <span class="text-sm text-gray-500">{{ item.timestamp }}</span>
+              <!-- Блоки "Отправленные" и "Входящие" на вкладке "Главная" -->
+              <div class="w-full max-w-6xl mt-8 flex gap-8">
+                <!-- Блок "Отправленные" слева -->
+                <div class="flex-1">
+                  <h2 class="text-xl font-bold mb-4">Отправленные</h2>
+                  <div id="sent-list" class="space-y-4">
+                    <div class="text-center text-gray-500 p-4 bg-white rounded-lg">Пусто</div>
+                  </div>
+                </div>
+                
+                <!-- Блок "Входящие" справа -->
+                <div class="flex-1">
+                  <h2 class="text-xl font-bold mb-4">Входящие</h2>
+                  <div id="incoming-list" class="space-y-4">
+                    {% if incoming_items %}
+                      {% for item in incoming_items %}
+                      <div class="incoming-item">
+                        <div class="flex justify-between items-start">
+                          <div>
+                            <div class="flex items-center mb-1">
+                              <span class="font-bold mr-2">{{ item.sender }}</span>
+                              <span class="text-sm text-gray-500">{{ item.timestamp }}</span>
+                            </div>
+                            <div class="mt-1">
+                              {% if item.type == 'text' %}
+                                <div class="bg-gray-100 p-2 rounded mb-2">Зашифрованное сообщение ({{ item.size }} символов)</div>
+                                <div class="bg-gray-50 p-2 rounded text-xs font-mono break-all">{{ item.content }}</div>
+                              {% else %}
+                                <div class="bg-gray-100 p-2 rounded">Зашифрованный файл: {{ item.filename }} ({{ item.size }}, {{ item.filetype }})</div>
+                              {% endif %}
+                            </div>
                           </div>
-                          <div class="mt-1">
+                          <div>
                             {% if item.type == 'text' %}
-                              <div class="bg-gray-100 p-2 rounded">Зашифрованное сообщение ({{ item.size }} символов)</div>
+                              <button class="decrypt-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded text-sm mb-1"
+                                      data-item-id="{{ item.id }}">
+                                Дешифровать
+                              </button>
                             {% else %}
-                              <div class="bg-gray-100 p-2 rounded">Зашифрованный файл: {{ item.filename }} ({{ item.size }}, {{ item.filetype }})</div>
+                              <button class="decrypt-download-button bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded text-sm mb-1"
+                                      data-item-id="{{ item.id }}">
+                                Дешифровать и скачать
+                              </button>
                             {% endif %}
                           </div>
                         </div>
-                        <div>
-                          {% if item.type == 'text' %}
-                            <button class="decrypt-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded text-sm mb-1"
-                                    data-item-id="{{ item.id }}">
-                              Дешифровать
-                            </button>
-                          {% else %}
-                            <button class="decrypt-download-button bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded text-sm mb-1"
-                                    data-item-id="{{ item.id }}">
-                              Дешифровать и скачать
-                            </button>
+                        <div class="decrypted-content" id="decrypted-{{ item.id }}">
+                          {% if item.decrypted %}
+                            <div class="font-bold">Расшифрованное содержимое:</div>
+                            {% if item.type == 'text' %}
+                              <div>{{ item.decrypted }}</div>
+                            {% else %}
+                              <div>Файл: {{ item.decrypted_filename }}</div>
+                              <a href="{{ item.decrypted_url }}" download class="text-blue-500 hover:underline">Скачать</a>
+                            {% endif %}
                           {% endif %}
                         </div>
                       </div>
-                      <div class="decrypted-content" id="decrypted-{{ item.id }}">
-                        {% if item.decrypted %}
-                          <div class="font-bold">Расшифрованное содержимое:</div>
-                          {% if item.type == 'text' %}
-                            <div>{{ item.decrypted }}</div>
-                          {% else %}
-                            <div>Файл: {{ item.decrypted_filename }}</div>
-                            <a href="{{ item.decrypted_url }}" download class="text-blue-500 hover:underline">Скачать</a>
-                          {% endif %}
-                        {% endif %}
-                      </div>
-                    </div>
-                    {% endfor %}
-                  {% else %}
-                    <div class="text-center text-gray-500 p-4 bg-white rounded-lg">Пусто</div>
-                  {% endif %}
+                      {% endfor %}
+                    {% else %}
+                      <div class="text-center text-gray-500 p-4 bg-white rounded-lg">Пусто</div>
+                    {% endif %}
+                  </div>
                 </div>
               </div>
             </div>
@@ -240,7 +262,7 @@
 
       <!-- Модальное окно для выбора ключа -->
       <div id="key-modal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content" style="max-width: 800px; width: 90%;">
           <div class="flex justify-between items-center mb-4">
             <h2 class="text-xl font-bold">Выбор восстановленного ключа</h2>
             <button id="close-key-modal" class="text-gray-500 hover:text-gray-700">
@@ -261,13 +283,16 @@
               <tbody>
                 {% for key in available_keys %}
                 {% if key.status != 'Уничтожен' %}
-                <tr class="key-row hover:bg-gray-100 cursor-pointer" data-key-id="{{ key.key_id }}">
+                <tr class="key-row {% if key.status == 'Использован и уничтожен' %}opacity-50 cursor-not-allowed{% else %}hover:bg-gray-100 cursor-pointer{% endif %}" 
+                    data-key-id="{{ key.key_id }}" 
+                    {% if key.status == 'Использован и уничтожен' %}data-disabled="true"{% endif %}>
                   <td class="py-2 px-4 border-b">{{ key.key_id }}</td>
                   <td class="py-2 px-4 border-b">{{ key.created_at or key.generated or '' }}</td>
                   <td class="py-2 px-4 border-b">
                     <span class="px-2 py-1 rounded text-xs
                       {% if key.status == 'Активен' %}bg-green-100 text-green-800
                       {% elif key.status == 'Использован' %}bg-yellow-100 text-yellow-800
+                      {% elif key.status == 'Использован и уничтожен' %}bg-red-100 text-red-800
                       {% else %}bg-red-100 text-red-800{% endif %}">
                       {{ key.status }}
                     </span>
@@ -286,7 +311,7 @@
 <div id="rest-test-modal" class="modal">
   <div class="modal-content" style="max-width: 600px;">
     <div class="flex justify-between items-center mb-4">
-      <h2 class="text-xl font-bold">🌐 Тест REST API</h2>
+      <h2 class="text-xl font-bold">💬 Чат</h2>
       <button id="close-rest-test-modal" class="text-gray-500 hover:text-gray-700">
         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -296,7 +321,7 @@
     
     <div class="mb-4">
       <p class="text-sm text-gray-600 mb-2">
-        Отправьте тестовое сообщение для проверки REST API соединения между серверами.
+        Отправьте сообщение для общения между серверами.
       </p>
       <div class="bg-blue-50 border border-blue-200 rounded p-3 mb-4">
         <div class="text-sm">
@@ -307,13 +332,13 @@
     </div>
     
     <div class="mb-4">
-      <label class="block text-sm font-medium text-gray-700 mb-2">Тестовое сообщение:</label>
-      <textarea id="rest-test-input" class="w-full p-2 border border-gray-300 rounded" rows="3" placeholder="Введите тестовое сообщение..."></textarea>
+      <label class="block text-sm font-medium text-gray-700 mb-2">Сообщение:</label>
+      <textarea id="rest-test-input" class="w-full p-2 border border-gray-300 rounded" rows="3" placeholder="Введите сообщение..."></textarea>
     </div>
     
     <div class="flex gap-2 mb-4">
       <button id="rest-send-button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        Отправить тест
+        Отправить
       </button>
       <button id="rest-clear-button" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
         Очистить
@@ -323,7 +348,7 @@
     <div id="rest-result" class="hidden mb-4 p-3 rounded"></div>
     
     <div class="mb-2">
-      <h3 class="font-bold text-sm mb-2">Полученные тестовые сообщения:</h3>
+      <h3 class="font-bold text-sm mb-2">Полученные сообщения:</h3>
       <div id="rest-received-messages" class="max-h-60 overflow-y-auto border border-gray-300 rounded p-2 bg-gray-50">
         {% if test_messages and test_messages|length > 0 %}
           {% for msg in test_messages %}
@@ -346,9 +371,9 @@
   </div>
 </div>
 
-<!-- Кнопка для открытия REST API теста (можно удалить) -->
-<button id="open-rest-test" class="fixed bottom-4 right-4 bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-full shadow-lg z-50 relative" title="Тест REST API">
-  🌐 REST
+<!-- Кнопка для открытия чата -->
+<button id="open-rest-test" class="fixed bottom-4 right-4 bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-full shadow-lg z-50 relative" title="Чат">
+  💬 Чат
   <span id="rest-badge" class="hidden absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
 </button>
 
@@ -514,12 +539,12 @@
     <footer class="bg-white shadow p-4">
   <div class="flex justify-center">
     <div class="flex space-x-4">
-      <div id="step-1" class="step active-step">
+      <div id="step-1" class="step">
         Получение сырых ключевых данных
         <div class="qkd-status mt-2 text-center">
-          {% if last_8_bits and last_8_bases %}
-            <div class="bits text-sm">{{ last_8_bits }}</div>
-            <div class="bases text-sm">{{ last_8_bases }}</div>
+          {% if last_32_bits and last_32_bases %}
+            <div class="bits text-sm font-mono">{{ last_32_bits }}</div>
+            <div class="bases text-sm font-mono">{{ last_32_bases }}</div>
           {% else %}
             <div class="text-sm text-gray-500">Ожидание генерации</div>
           {% endif %}
@@ -533,10 +558,7 @@
         Восстановление ключа
         <div id="step-3-details" class="text-xs mt-1" style="display:none;"></div>
       </div>
-      <div id="step-4" class="step">Сохранение ключа</div>
-      <div id="step-5" class="step">Ожидание действий пользователя</div>
       <div id="step-6" class="step">Шифрование и отправка</div>
-      <div id="step-7" class="step">Протоколирование</div>
     </div>
   </div>
 </footer>
@@ -585,17 +607,47 @@
     });
 
     // Выбор ключа из модального окна
-    document.querySelectorAll('.key-row').forEach(row => {
-      row.addEventListener('click', () => {
-        const keyId = row.getAttribute('data-key-id');
-        selectedKeySpan.textContent = keyId;
-        selectedKeySpan.dataset.keyId = keyId;  // Сохраняем ID ключа в data-атрибуте
-        keyModal.classList.remove('open');
-        
-        // Подсвечиваем этап "Ожидание действий пользователя"
-        document.getElementById('step-5').classList.add('active-step');
+    const handleKeyRowClick = () => {
+      document.querySelectorAll('.key-row').forEach(row => {
+        // Удаляем старые обработчики, добавляя новый только если его еще нет
+        if (!row.hasAttribute('data-listener-attached')) {
+          row.setAttribute('data-listener-attached', 'true');
+          row.addEventListener('click', function() {
+            // Проверяем, не заблокирован ли ключ
+            if (this.getAttribute('data-disabled') === 'true') {
+              return; // Не обрабатываем клик для заблокированных ключей
+            }
+            const keyId = this.getAttribute('data-key-id');
+            selectedKeySpan.textContent = keyId;
+            selectedKeySpan.dataset.keyId = keyId;  // Сохраняем ID ключа в data-атрибуте
+            
+            // Обновляем UI строки: серый цвет, статус "Использован и уничтожен", некликабельная
+            this.classList.remove('hover:bg-gray-100', 'cursor-pointer');
+            this.classList.add('opacity-50', 'cursor-not-allowed');
+            this.setAttribute('data-disabled', 'true');
+            
+            // Обновляем статус в строке
+            const statusCell = this.querySelector('td:last-child span');
+            if (statusCell) {
+              statusCell.textContent = 'Использован и уничтожен';
+              statusCell.className = 'px-2 py-1 rounded text-xs bg-gray-100 text-gray-600';
+            }
+            
+            keyModal.classList.remove('open');
+          });
+        }
       });
+    };
+    
+    // Привязываем обработчики при открытии модального окна
+    selectKeyButton.addEventListener('click', () => {
+      keyModal.classList.add('open');
+      // Перепривязываем обработчики при каждом открытии
+      handleKeyRowClick();
     });
+    
+    // Первоначальная привязка
+    handleKeyRowClick();
 
     // Обработка прикрепления файла
     const attachButton = document.getElementById('attach-button');
@@ -646,6 +698,9 @@
         return;
       }
 
+      // Активируем step-6 при нажатии "Зашифровать и отправить"
+      document.getElementById('step-6').classList.add('active-step');
+      
       // Показываем индикатор загрузки
       const button = document.getElementById('encrypt-send-button');
       const originalText = button.textContent;
@@ -690,13 +745,10 @@
           selectedKeyElement.textContent = 'Ключ не выбран';
           selectedKeyElement.dataset.keyId = '';
           
-          // Подсвечиваем этап "Шифрование и отправка"
-          document.getElementById('step-6').classList.add('active-step');
-          
-          // Подсвечиваем этап "Протоколирование"
+          // Убираем зеленый цвет с step-6 после отправки
           setTimeout(() => {
-            document.getElementById('step-7').classList.add('active-step');
-          }, 500);
+            document.getElementById('step-6').classList.remove('active-step');
+          }, 1000);
         } else {
           alert(`Ошибка шифрования: ${data.message}`);
         }
@@ -921,8 +973,8 @@
         .then(response => response.json())
         .then(data => {
           if (data.status === 'success') {
-            // Обновляем детали этапа
-            document.getElementById('step-2-details').textContent = `Количество несовпадений = ${data.mismatches}`;
+            // Обновляем детали этапа - показываем N = количество несовпадений
+            document.getElementById('step-2-details').textContent = `N = ${data.mismatches}`;
             
             // Обновляем QBER в header
             const qberElement = document.querySelector('#qber-value');
@@ -976,7 +1028,9 @@
         .then(data => {
           if (data.status === 'success') {
             document.getElementById('step-3-details').textContent = 'Ключ восстановлен';
-            document.getElementById('step-4').classList.add('active-step');
+            // Убираем зеленый цвет с "Просеивание ключа" после восстановления
+            document.getElementById('step-2').classList.remove('active-step');
+            document.getElementById('step-2-details').style.display = 'none';
             alert(`Ключ успешно восстановлен!\nID ключа: ${data.key_id}`);
             
             // Делаем кнопку "Восстановить" неактивной
@@ -1105,6 +1159,9 @@ generateTestSequenceButton.addEventListener('click', () => {
   .then(response => response.json())
   .then(dataA => {
     if (dataA.status === 'success') {
+      // Активируем step-1 при генерации
+      document.getElementById('step-1').classList.add('active-step');
+      
       // Теперь получаем метрики на сервере Б
       fetch('/generate_test_sequence', {
         method: 'POST',
@@ -1121,6 +1178,16 @@ generateTestSequenceButton.addEventListener('click', () => {
           document.getElementById('encryption-time').textContent = data.encryption_time;
           document.getElementById('key-destruction').textContent = data.key_destruction;
           document.getElementById('metrics-A').textContent = `Абонент А: ${dataA.bases_comparison}`;
+          // Убираем зеленый цвет с step-1 после завершения генерации
+          setTimeout(() => {
+            document.getElementById('step-1').classList.remove('active-step');
+            // Активируем step-2 после генерации и показываем N = количество несовпадений
+            document.getElementById('step-2').classList.add('active-step');
+            document.getElementById('step-2-details').style.display = 'block';
+            if (data.mismatches !== undefined) {
+              document.getElementById('step-2-details').textContent = `N = ${data.mismatches}`;
+            }
+          }, 2000);
         } else {
           document.getElementById('bases-comparison').textContent = data.message || 'Ошибка получения данных';
         }
@@ -1269,7 +1336,8 @@ function updateIncomingMessages() {
                     </div>
                     <div class="mt-1">
                       ${item.type === 'text' 
-                        ? `<div class="bg-gray-100 p-2 rounded">Зашифрованное сообщение (${item.size} символов)</div>`
+                        ? `<div class="bg-gray-100 p-2 rounded mb-2">Зашифрованное сообщение (${item.size} символов)</div>
+                           <div class="bg-gray-50 p-2 rounded text-xs font-mono break-all">${item.content || ''}</div>`
                         : `<div class="bg-gray-100 p-2 rounded">Зашифрованный файл: ${item.filename || item.file_name || 'файл'} (${item.size || 0} байт${item.filetype ? ', ' + item.filetype : ''})</div>`
                       }
                     </div>
@@ -1293,16 +1361,130 @@ function updateIncomingMessages() {
     .catch(error => console.error('Ошибка обновления входящих:', error));
 }
 
+// Автообновление отправленных сообщений каждые 5 секунд
+function updateSentMessages() {
+  fetch('/api/get_sent_messages')
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'success' && data.messages) {
+        const sentList = document.getElementById('sent-list');
+        if (!sentList) return;
+        
+        if (data.messages.length === 0) {
+          sentList.innerHTML = '<div class="text-center text-gray-500 p-4 bg-white rounded-lg">Пусто</div>';
+        } else {
+          let html = '';
+          data.messages.forEach((item) => {
+            html += `
+              <div class="incoming-item">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <div class="flex items-center mb-1">
+                      <span class="font-bold mr-2">Кому: ${item.receiver || 'Неизвестно'}</span>
+                      <span class="text-sm text-gray-500">${item.timestamp || ''}</span>
+                    </div>
+                    <div class="mt-1">
+                      ${item.type === 'text' 
+                        ? `<div class="bg-gray-100 p-2 rounded mb-2">Зашифрованное сообщение (${item.size || 0} символов)</div>
+                           <div class="bg-gray-50 p-2 rounded text-xs font-mono break-all">${item.content || ''}</div>`
+                        : `<div class="bg-gray-100 p-2 rounded">Зашифрованный файл: ${item.filename || item.file_name || 'файл'} (${item.size || 0} байт${item.filetype ? ', ' + item.filetype : ''})</div>`
+                      }
+                    </div>
+                  </div>
+                  <div>
+                    <button class="view-sent-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded text-sm mb-1" data-item-id="${item.id}">
+                      Просмотр
+                    </button>
+                  </div>
+                </div>
+                <div class="view-sent-content" id="view-sent-${item.id}"></div>
+              </div>
+            `;
+          });
+          sentList.innerHTML = html;
+        }
+      }
+    })
+    .catch(error => {
+      console.error('Ошибка обновления отправленных:', error);
+    });
+}
+
+// Обработка кнопки "Просмотр" для отправленных сообщений
+document.addEventListener('click', (e) => {
+  if (!e.target.classList.contains('view-sent-button')) return;
+  
+  const button = e.target;
+  const itemId = button.getAttribute('data-item-id');
+  const contentElement = document.getElementById(`view-sent-${itemId}`);
+
+  if (contentElement.style.display === 'block') {
+    contentElement.style.display = 'none';
+    button.textContent = 'Просмотр';
+    return;
+  }
+  
+  // Показываем индикатор загрузки
+  button.textContent = 'Загрузка...';
+  button.disabled = true;
+  
+  // Отправляем запрос на получение информации о сообщении
+  fetch('/api/view_sent_message', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: `message_id=${itemId}`
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.status === 'success') {
+      contentElement.style.display = 'block';
+      let html = `<div class="bg-blue-50 border border-blue-200 rounded p-3 mt-2">`;
+      html += `<div class="font-bold text-blue-700 mb-2">Информация о сообщении:</div>`;
+      html += `<div class="text-sm space-y-1">`;
+      html += `<div><strong>Получатель:</strong> ${data.receiver_name || 'Неизвестно'}</div>`;
+      html += `<div><strong>Отправлено:</strong> ${data.timestamp || ''}</div>`;
+      html += `<div><strong>Тип:</strong> ${data.message_type === 'text' ? 'Текст' : data.message_type === 'file' ? 'Файл' : 'Текст и файл'}</div>`;
+      html += `<div><strong>Ключ:</strong> ${data.key_id || ''}</div>`;
+      if (data.plaintext) {
+        html += `<div class="mt-2"><strong>Сообщение:</strong></div>`;
+        html += `<div class="bg-white p-2 rounded border mt-1">${data.plaintext}</div>`;
+      }
+      html += `</div>`;
+      html += `</div>`;
+      contentElement.innerHTML = html;
+      button.textContent = 'Скрыть';
+      button.classList.remove('bg-blue-500', 'hover:bg-blue-700');
+      button.classList.add('bg-gray-500', 'hover:bg-gray-700');
+    } else {
+      alert(`Ошибка: ${data.message}`);
+    }
+  })
+  .catch(error => {
+    console.error('Ошибка:', error);
+    alert('Ошибка при получении информации о сообщении');
+  })
+  .finally(() => {
+    button.disabled = false;
+    if (button.textContent === 'Загрузка...') {
+      button.textContent = 'Просмотр';
+    }
+  });
+});
+
 // Обновляем каждые 5 секунд, если на вкладке "Главная"
 setInterval(() => {
   const mainTab = document.getElementById('main');
   if (mainTab && !mainTab.classList.contains('hidden')) {
     updateIncomingMessages();
+    updateSentMessages();
   }
 }, 5000);
 
 // Вызываем сразу при загрузке страницы
 updateIncomingMessages();
+updateSentMessages();
 
 // ============================================
 // ТЕСТОВЫЙ КОД: Проверка REST API
@@ -1511,6 +1693,120 @@ setTimeout(() => {
 // ============================================
 // КОНЕЦ ТЕСТОВОГО КОДА
 // ============================================
+
+// ============================================
+// НАСТРОЙКИ СЕТИ - Управление IP удаленного сервера
+// ============================================
+
+// Модальное окно для настройки IP
+const settingsModal = document.createElement('div');
+settingsModal.id = 'settings-modal';
+settingsModal.className = 'modal';
+settingsModal.innerHTML = `
+  <div class="modal-content">
+    <h2 class="text-2xl font-bold mb-4">Настройки сети</h2>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="remote-server-url">
+        IP-адрес удаленного сервера (Абонент А):
+      </label>
+      <input 
+        type="text" 
+        id="remote-server-url" 
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        placeholder="http://172.16.111.52:5000"
+      />
+      <p class="text-gray-600 text-xs mt-2">
+        Введите IP-адрес и порт удаленного сервера. Например: http://172.16.111.52:5000
+      </p>
+    </div>
+    <div class="flex justify-end space-x-4">
+      <button 
+        id="settings-cancel" 
+        class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Отмена
+      </button>
+      <button 
+        id="settings-save" 
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Сохранить
+      </button>
+    </div>
+    <div id="settings-message" class="mt-4 hidden"></div>
+  </div>
+`;
+document.body.appendChild(settingsModal);
+
+// Загрузка текущего IP при открытии модального окна
+document.getElementById('settings-toggle').addEventListener('click', async () => {
+  settingsModal.classList.add('open');
+  
+  try {
+    const response = await fetch('/api/get_remote_server_url');
+    const data = await response.json();
+    if (data.status === 'success') {
+      document.getElementById('remote-server-url').value = data.remote_server_url;
+    }
+  } catch (error) {
+    console.error('Ошибка загрузки IP:', error);
+  }
+});
+
+// Закрытие модального окна
+document.getElementById('settings-cancel').addEventListener('click', () => {
+  settingsModal.classList.remove('open');
+});
+
+settingsModal.addEventListener('click', (e) => {
+  if (e.target === settingsModal) {
+    settingsModal.classList.remove('open');
+  }
+});
+
+// Сохранение IP
+document.getElementById('settings-save').addEventListener('click', async () => {
+  const remoteUrl = document.getElementById('remote-server-url').value.trim();
+  const messageDiv = document.getElementById('settings-message');
+  
+  if (!remoteUrl) {
+    messageDiv.className = 'mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded';
+    messageDiv.textContent = 'Пожалуйста, введите IP-адрес удаленного сервера';
+    messageDiv.classList.remove('hidden');
+    return;
+  }
+  
+  try {
+    const response = await fetch('/api/save_remote_server_url', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ remote_server_url: remoteUrl })
+    });
+    
+    const data = await response.json();
+    
+    if (data.status === 'success') {
+      messageDiv.className = 'mt-4 p-3 bg-green-100 border border-green-400 text-green-700 rounded';
+      messageDiv.textContent = 'IP-адрес успешно сохранен!';
+      messageDiv.classList.remove('hidden');
+      
+      setTimeout(() => {
+        settingsModal.classList.remove('open');
+        messageDiv.classList.add('hidden');
+      }, 1500);
+    } else {
+      messageDiv.className = 'mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded';
+      messageDiv.textContent = 'Ошибка: ' + (data.message || 'Не удалось сохранить IP-адрес');
+      messageDiv.classList.remove('hidden');
+    }
+  } catch (error) {
+    messageDiv.className = 'mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded';
+    messageDiv.textContent = 'Ошибка: ' + error.message;
+    messageDiv.classList.remove('hidden');
+  }
+});
 
   </script>
 </body>

@@ -114,31 +114,48 @@ class KeyPostprocessingModule:
             local_bits = local_data['bits']
             local_bases = local_data['bases']
             
-            # Получаем удалённые данные (если не переданы явно)
-            if remote_bits is None or remote_bases is None:
-                remote_data = self.get_remote_sequence(sequence_id)
-                if remote_data:
-                    remote_bits = remote_data['bits']
-                    remote_bases = remote_data['bases']
-                else:
-                    # Fallback: используем данные из локальной БД (для тестового режима)
-                    # Ищем парную последовательность
-                    if sequence_id.startswith('testA_'):
-                        pair_id = sequence_id.replace('testA_', 'testB_')
-                    elif sequence_id.startswith('testB_'):
-                        pair_id = sequence_id.replace('testB_', 'testA_')
-                    else:
-                        pair_id = None
-                    
-                    if pair_id:
-                        query = "SELECT bits, bases FROM raw_data WHERE sequence_id = ?"
-                        result = self.db_manager.execute_query(query, (pair_id,), fetch=True, sync=False)
-                        if result:
-                            remote_bits = result[0]['bits']
-                            remote_bases = result[0]['bases']
+            # КРИТИЧНО: Проверяем, является ли это реальной последовательностью (не тестовой)
+            query = "SELECT is_test FROM raw_data WHERE sequence_id = ?"
+            result = self.db_manager.execute_query(query, (sequence_id,), fetch=True, sync=False)
+            is_test_sequence = False
+            if result and len(result) > 0:
+                is_test_value = result[0].get('is_test')
+                # Проверяем, что это не тестовая последовательность
+                is_test_sequence = bool(is_test_value) if is_test_value is not None else False
             
-            if not remote_bits or not remote_bases:
-                return {'error': 'Удалённая последовательность не найдена', 'mismatches': 0, 'qber': 0}
+            # Для реальных последовательностей (is_test = False или 0) не требуется удалённая последовательность
+            # Используем только локальную последовательность
+            if not is_test_sequence:
+                log_to_file(f"[KEY-POST] Реальная последовательность {sequence_id}, используем только локальные данные", level="INFO")
+                # Для реальных последовательностей используем локальные данные как для обеих сторон
+                remote_bits = local_bits
+                remote_bases = local_bases
+            else:
+                # Для тестовых последовательностей получаем удалённые данные
+                if remote_bits is None or remote_bases is None:
+                    remote_data = self.get_remote_sequence(sequence_id)
+                    if remote_data:
+                        remote_bits = remote_data['bits']
+                        remote_bases = remote_data['bases']
+                    else:
+                        # Fallback: используем данные из локальной БД (для тестового режима)
+                        # Ищем парную последовательность
+                        if sequence_id.startswith('testA_'):
+                            pair_id = sequence_id.replace('testA_', 'testB_')
+                        elif sequence_id.startswith('testB_'):
+                            pair_id = sequence_id.replace('testB_', 'testA_')
+                        else:
+                            pair_id = None
+                        
+                        if pair_id:
+                            query = "SELECT bits, bases FROM raw_data WHERE sequence_id = ?"
+                            result = self.db_manager.execute_query(query, (pair_id,), fetch=True, sync=False)
+                            if result:
+                                remote_bits = result[0]['bits']
+                                remote_bases = result[0]['bases']
+                
+                if not remote_bits or not remote_bases:
+                    return {'error': 'Удалённая последовательность не найдена', 'mismatches': 0, 'qber': 0}
             
             # Убеждаемся, что длины совпадают
             min_len = min(len(local_bits), len(remote_bits), len(local_bases), len(remote_bases))
