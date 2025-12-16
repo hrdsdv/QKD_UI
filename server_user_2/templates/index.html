@@ -17,6 +17,171 @@
       color: #10b981;
       font-weight: bold;
     }
+    
+    /* Стили для визуализации восстановления ключа */
+    .recovery-viz {
+      background: #f9fafb;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid #e5e7eb;
+    }
+    
+    .recovery-block {
+      background: white;
+      border: 2px solid #d1d5db;
+      border-radius: 0.375rem;
+      padding: 0.75rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    .recovery-block.waiting {
+      border-color: #9ca3af;
+      background: #f3f4f6;
+    }
+    
+    .recovery-block.encoding {
+      border-color: #fbbf24;
+      background: #fef3c7;
+    }
+    
+    .recovery-block.decoding {
+      border-color: #f97316;
+      background: #ffedd5;
+    }
+    
+    .recovery-block.completed {
+      border-color: #10b981;
+      background: #d1fae5;
+    }
+    
+    .recovery-block.error {
+      border-color: #ef4444;
+      background: #fee2e2;
+    }
+    
+    .block-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .status-icon {
+      font-size: 1rem;
+    }
+    
+    .data-bar, .parity-bar {
+      height: 1.5rem;
+      background: #e5e7eb;
+      border-radius: 0.25rem;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+    
+    .data-fill, .parity-fill {
+      height: 100%;
+      background: #9ca3af;
+      border-radius: 0.25rem;
+      transition: background-color 0.3s ease, width 0.3s ease;
+      position: relative;
+    }
+    
+    .recovery-block.waiting .data-fill {
+      background: #9ca3af;
+      width: 100%;
+    }
+    
+    .recovery-block.encoding .data-fill {
+      background: #fbbf24;
+      width: 100%;
+    }
+    
+    .recovery-block.decoding .data-fill {
+      background: #f97316;
+      width: 100%;
+    }
+    
+    .recovery-block.completed .data-fill {
+      background: #10b981;
+      width: 100%;
+    }
+    
+    .recovery-block.waiting .parity-fill {
+      background: transparent;
+      width: 0%;
+    }
+    
+    .recovery-block.encoding .parity-fill,
+    .recovery-block.decoding .parity-fill,
+    .recovery-block.completed .parity-fill {
+      background: #6b7280;
+      width: 100%;
+      transition: width 0.5s ease;
+    }
+    
+    /* Анимация волны */
+    .wave {
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.5) 50%, 
+        transparent 100%);
+      animation: wave-animation 1.5s ease-in-out infinite;
+    }
+    
+    .wave.forward {
+      animation: wave-forward 1.5s ease-in-out;
+    }
+    
+    .wave.backward {
+      animation: wave-backward 1.5s ease-in-out;
+    }
+    
+    @keyframes wave-forward {
+      0% {
+        left: -100%;
+      }
+      100% {
+        left: 100%;
+      }
+    }
+    
+    @keyframes wave-backward {
+      0% {
+        left: 100%;
+      }
+      100% {
+        left: -100%;
+      }
+    }
+    
+    .data-label, .parity-label {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-bottom: 0.25rem;
+    }
+    
+    .block-result {
+      font-size: 0.75rem;
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .recovery-block.completed .block-result {
+      color: #059669;
+    }
+    
+    .recovery-block.error .block-result {
+      color: #dc2626;
+    }
     .file-item {
       display: flex;
       align-items: center;
@@ -552,6 +717,27 @@
       <div id="step-3" class="step">
         Восстановление ключа
         <div id="step-3-details" class="text-xs mt-1" style="display:none;"></div>
+        <div id="step-3-recovery-viz" class="recovery-viz mt-2" style="display:none;">
+          <div class="flex justify-between items-center mb-2">
+            <div class="recovery-progress flex-1 mr-4">
+              <div class="w-full bg-gray-200 rounded-full h-2 mb-1">
+                <div id="recovery-progress-bar" class="bg-blue-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+              </div>
+              <div class="text-xs text-gray-600" id="recovery-progress-text">0% (0/0 блоков)</div>
+            </div>
+            <button id="skip-recovery-animation" class="text-xs px-2 py-1 bg-gray-300 hover:bg-gray-400 rounded">Пропустить анимацию</button>
+          </div>
+          
+          <div id="recovery-blocks-container" class="grid grid-cols-3 gap-2 mb-3"></div>
+          
+          <div id="recovery-current-stage" class="text-xs text-gray-700 mb-2 italic"></div>
+          
+          <div id="recovery-stats" class="text-xs space-y-1">
+            <div>• Исправлено ошибок: <span id="recovery-total-errors">0</span></div>
+            <div>• Общее время: <span id="recovery-total-time">0 мс</span></div>
+            <div>• Хэш: <span id="recovery-hash-status">Ожидание...</span></div>
+          </div>
+        </div>
       </div>
       <div id="step-6" class="step">Шифрование и отправка</div>
     </div>
@@ -947,6 +1133,235 @@
       rawKeyModal.classList.remove('open');
     });
 
+  // Функция для создания HTML блока
+  function createBlockHTML(blockInfo, index) {
+    return `
+      <div class="recovery-block waiting" id="recovery-block-${blockInfo.block_id}" data-block-id="${blockInfo.block_id}">
+        <div class="block-header">
+          <span>Блок ${blockInfo.block_id}</span>
+          <span class="status-icon">⏳</span>
+        </div>
+        <div class="data-label">Данные (${blockInfo.data_bytes} байт)</div>
+        <div class="data-bar">
+          <div class="data-fill"></div>
+          <div class="wave" style="display: none;"></div>
+        </div>
+        <div class="parity-label">Избыточность (${blockInfo.parity_bytes} символов)</div>
+        <div class="parity-bar">
+          <div class="parity-fill"></div>
+        </div>
+        <div class="block-result"></div>
+      </div>
+    `;
+  }
+  
+  // Функция анимации восстановления ключа
+  let recoveryAnimationCancelled = false;
+  
+  window.animateKeyRecovery = function (blocksInfo, totalBlocks, totalErrors, totalTime, hashVerified) {
+    recoveryAnimationCancelled = false;
+    const container = document.getElementById('recovery-blocks-container');
+    const progressBar = document.getElementById('recovery-progress-bar');
+    const progressText = document.getElementById('recovery-progress-text');
+    const currentStage = document.getElementById('recovery-current-stage');
+    const totalErrorsEl = document.getElementById('recovery-total-errors');
+    const totalTimeEl = document.getElementById('recovery-total-time');
+    const hashStatusEl = document.getElementById('recovery-hash-status');
+    
+    // Очищаем контейнер
+    container.innerHTML = '';
+    
+    // Создаем блоки
+    blocksInfo.forEach((blockInfo, index) => {
+      container.innerHTML += createBlockHTML(blockInfo, index);
+    });
+    
+    // Обновляем статистику
+    totalErrorsEl.textContent = totalErrors;
+    totalTimeEl.textContent = `${totalTime} мс`;
+    hashStatusEl.textContent = 'Ожидание...';
+    
+    // Функция для обновления блока
+    function updateBlock(blockId, status, stage, errors = null) {
+      const block = document.getElementById(`recovery-block-${blockId}`);
+      if (!block) return;
+      
+      block.className = `recovery-block ${status}`;
+      const statusIcon = block.querySelector('.status-icon');
+      const wave = block.querySelector('.wave');
+      const result = block.querySelector('.block-result');
+      
+      // Обновляем иконку
+      if (status === 'waiting') statusIcon.textContent = '⏳';
+      else if (status === 'encoding') statusIcon.textContent = '🔄';
+      else if (status === 'decoding') statusIcon.textContent = '🔄';
+      else if (status === 'completed') statusIcon.textContent = '✓';
+      else if (status === 'error') statusIcon.textContent = '✗';
+      
+      // Показываем/скрываем волну
+      if (status === 'encoding') {
+        wave.style.display = 'block';
+        wave.className = 'wave forward';
+      } else if (status === 'decoding') {
+        wave.style.display = 'block';
+        wave.className = 'wave backward';
+      } else {
+        wave.style.display = 'none';
+      }
+      
+      // Обновляем результат
+      if (status === 'completed') {
+        if (errors === 0) {
+          result.textContent = '✓ Ошибок не обнаружено';
+        } else if (errors > 0) {
+          result.textContent = `✓ Исправлено ${errors} ${errors === 1 ? 'ошибка' : errors < 5 ? 'ошибки' : 'ошибок'}`;
+        }
+      } else if (status === 'error') {
+        result.textContent = '✗ Ошибка восстановления';
+      } else {
+        result.textContent = '';
+      }
+    }
+    
+    // Функция для обновления прогресса
+    function updateProgress(completed, total) {
+      const percent = Math.round((completed / total) * 100);
+      progressBar.style.width = `${percent}%`;
+      progressText.textContent = `${percent}% (${completed}/${total} блоков)`;
+    }
+    
+    // Анимация по блокам (по 2-3 одновременно)
+    let currentIndex = 0;
+    const blocksPerBatch = 2;
+    
+    async function processBatch() {
+      if (recoveryAnimationCancelled) return;
+      
+      const batch = blocksInfo.slice(currentIndex, currentIndex + blocksPerBatch);
+      if (batch.length === 0) {
+        // Все блоки обработаны, переходим к проверке хэша
+        await checkHash();
+        return;
+      }
+      
+      // Показываем блоки в батче
+      for (const blockInfo of batch) {
+        if (recoveryAnimationCancelled) return;
+        
+        // Инициализация
+        updateBlock(blockInfo.block_id, 'waiting', 'Инициализация...');
+        await sleep(200);
+        
+        // Кодирование
+        updateBlock(blockInfo.block_id, 'encoding', 'Кодирование...');
+        currentStage.textContent = `Блок ${blockInfo.block_id}: Кодирование... Добавление избыточности (${blockInfo.parity_bytes} символов)`;
+        await sleep(500);
+        
+        // Декодирование
+        updateBlock(blockInfo.block_id, 'decoding', 'Декодирование...');
+        currentStage.textContent = `Блок ${blockInfo.block_id}: Декодирование (алгоритм Берлекэмпа-Месси)... Исправление ошибок...`;
+        await sleep(800);
+        
+        // Завершение
+        updateBlock(blockInfo.block_id, 'completed', 'Завершено', blockInfo.errors_corrected);
+        currentIndex++;
+        updateProgress(currentIndex, totalBlocks);
+        
+        await sleep(300);
+      }
+      
+      // Небольшая пауза между батчами
+      await sleep(200);
+      processBatch();
+    }
+    
+    async function checkHash() {
+      if (recoveryAnimationCancelled) return;
+      
+      currentStage.textContent = 'Сборка восстановленного ключа...';
+      await sleep(500);
+      
+      currentStage.textContent = 'Вычисление хэша (ГОСТ Р 34.11-2018 Стрибог)...';
+      hashStatusEl.textContent = 'Вычисление...';
+      await sleep(800);
+      
+      if (hashVerified) {
+        hashStatusEl.textContent = '✓ Совпадают';
+        hashStatusEl.style.color = '#10b981';
+        currentStage.textContent = '✓ Хэши совпадают. Восстановление завершено успешно.';
+      } else {
+        hashStatusEl.textContent = '✗ Не совпадают';
+        hashStatusEl.style.color = '#ef4444';
+        currentStage.textContent = '✗ Хэши не совпадают. Возможна ошибка восстановления.';
+      }
+      
+      await sleep(500);
+      currentStage.textContent = '✓ Восстановление завершено';
+    }
+    
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    
+    // Начинаем анимацию
+    currentStage.textContent = 'Инициализация... Получение последовательности...';
+    updateProgress(0, totalBlocks);
+    
+    setTimeout(() => {
+      if (!recoveryAnimationCancelled) {
+        currentStage.textContent = 'Разбиение на блоки...';
+        setTimeout(() => {
+          if (!recoveryAnimationCancelled) {
+            processBatch();
+          }
+        }, 500);
+      }
+    }, 500);
+  }
+  
+  // Обработчик кнопки "Пропустить анимацию"
+  document.addEventListener('click', (e) => {
+    if (e.target.id === 'skip-recovery-animation' && window.currentRecoveryData) {
+      recoveryAnimationCancelled = true;
+      
+      const { blocksInfo, totalErrors, totalTime, hashVerified } = window.currentRecoveryData;
+      
+      // Показываем все блоки как завершенные
+      const blocks = document.querySelectorAll('.recovery-block');
+      blocks.forEach(block => {
+        block.className = 'recovery-block completed';
+        const statusIcon = block.querySelector('.status-icon');
+        const wave = block.querySelector('.wave');
+        const result = block.querySelector('.block-result');
+        if (statusIcon) statusIcon.textContent = '✓';
+        if (wave) wave.style.display = 'none';
+        if (result) {
+          const blockId = block.getAttribute('data-block-id');
+          const blockInfo = blocksInfo.find(b => b.block_id == blockId);
+          if (blockInfo) {
+            if (blockInfo.errors_corrected === 0) {
+              result.textContent = '✓ Ошибок не обнаружено';
+            } else {
+              result.textContent = `✓ Исправлено ${blockInfo.errors_corrected} ${blockInfo.errors_corrected === 1 ? 'ошибка' : 'ошибок'}`;
+            }
+          }
+        }
+      });
+      
+      // Обновляем прогресс
+      document.getElementById('recovery-progress-bar').style.width = '100%';
+      document.getElementById('recovery-progress-text').textContent = `100% (${blocksInfo.length}/${blocksInfo.length} блоков)`;
+      
+      // Обновляем статистику
+      document.getElementById('recovery-total-errors').textContent = totalErrors;
+      document.getElementById('recovery-total-time').textContent = `${totalTime} мс`;
+      const hashStatusEl = document.getElementById('recovery-hash-status');
+      hashStatusEl.textContent = hashVerified ? '✓ Совпадают' : '✗ Не совпадают';
+      hashStatusEl.style.color = hashVerified ? '#10b981' : '#ef4444';
+      document.getElementById('recovery-current-stage').textContent = hashVerified ? '✓ Восстановление завершено успешно' : '✗ Ошибка восстановления';
+    }
+  });
+
   // Функция привязки обработчиков к кнопкам
   const bindSequenceButtons = () => {
     document.querySelectorAll('.select-sequence-button').forEach(button => {
@@ -1023,55 +1438,86 @@
       });
     });
 
-    // Обработчики для кнопок восстановления
-    document.querySelectorAll('.recover-key-button').forEach(button => {
-      button.addEventListener('click', () => {
-        const sequenceId = button.getAttribute('data-sequence-id');
-        
-        document.getElementById('step-3').classList.add('active-step');
-        document.getElementById('step-3-details').style.display = 'block';
-        document.getElementById('step-3-details').textContent = 'Восстановление...';
-        
-        fetch('/recover_key', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: `sequence_id=${sequenceId}`
-        })
-        .then(response => response.json())
-        .then(data => {
-          if (data.status === 'success') {
-            document.getElementById('step-3-details').textContent = 'Ключ восстановлен';
-            // Убираем зеленый цвет с "Просеивание ключа" после восстановления
-            document.getElementById('step-2').classList.remove('active-step');
-            document.getElementById('step-2-details').style.display = 'none';
-            document.getElementById('step-2-bits-comparison').style.display = 'none';
+    // Обработчики для кнопок восстановления (делегирование)
+    document.addEventListener('click', (e) => {
+      const button = e.target.closest('.recover-key-button');
+      if (!button) return;
+      
+      const sequenceId = button.getAttribute('data-sequence-id');
+      
+      document.getElementById('step-3').classList.add('active-step');
+      document.getElementById('step-3-details').style.display = 'block';
+      document.getElementById('step-3-details').textContent = 'Восстановление...';
+      document.getElementById('step-3-recovery-viz').style.display = 'block';
+      
+      // Убираем зеленый цвет с "Просеивание ключа"
+      document.getElementById('step-2').classList.remove('active-step');
+      document.getElementById('step-2-details').style.display = 'none';
+      document.getElementById('step-2-bits-comparison').style.display = 'none';
+      
+      fetch('/recover_key', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `sequence_id=${sequenceId}`
+      })
+      .then(response => {
+        if (!response.ok) {
+          return response.json().then(err => Promise.reject(new Error(err.message || `HTTP ${response.status}`)));
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (data.status === 'success') {
+          document.getElementById('step-3-details').textContent = 'Ключ восстановлен';
+          
+          // Запускаем анимацию
+          const blocksInfo = data.blocks_info || [];
+          const totalBlocks = data.blocks_total || blocksInfo.length;
+          const totalErrors = data.errors_corrected || 0;
+          const totalTime = data.recovery_time_ms || 0;
+          const hashVerified = data.hash_verified || false;
+          
+          // Сохраняем данные для кнопки пропуска
+          window.currentRecoveryData = { blocksInfo, totalBlocks, totalErrors, totalTime, hashVerified };
+          
+          animateKeyRecovery(blocksInfo, totalBlocks, totalErrors, totalTime, hashVerified);
+          
+          // Делаем кнопку "Восстановить" неактивной
+          button.disabled = true;
+          button.classList.remove('bg-green-500', 'hover:bg-green-700');
+          button.classList.add('bg-gray-400', 'cursor-not-allowed');
+          button.textContent = 'Восстановлено';
+          
+          // После завершения анимации (через 13 секунд)
+          setTimeout(() => {
             alert(`Ключ успешно восстановлен!\nID ключа: ${data.key_id}`);
-            
-            // Делаем кнопку "Восстановить" неактивной
-            button.disabled = true;
-            button.classList.remove('bg-green-500', 'hover:bg-green-700');
-            button.classList.add('bg-gray-400', 'cursor-not-allowed');
-            button.textContent = 'Восстановлено';
-            
             document.getElementById('raw-key-modal').classList.remove('open');
             setTimeout(() => location.reload(), 1000);
-          } else {
-            alert(data.message);
-            document.getElementById('step-3').classList.remove('active-step');
-            document.getElementById('step-3-details').style.display = 'none';
-          }
-        })
-        .catch(error => {
-          console.error('Ошибка:', error);
-          alert('Ошибка при восстановлении ключа');
+          }, 13500);
+        } else {
+          alert(data.message);
           document.getElementById('step-3').classList.remove('active-step');
           document.getElementById('step-3-details').style.display = 'none';
-        });
+          document.getElementById('step-3-recovery-viz').style.display = 'none';
+        }
+      })
+      .catch(error => {
+        console.error('Ошибка при восстановлении ключа:', error);
+        // Проверяем, не является ли это ошибкой сети или парсинга
+        if (error instanceof TypeError && error.message.includes('fetch')) {
+          alert('Ошибка сети при восстановлении ключа. Проверьте подключение к серверу.');
+        } else {
+          alert(`Ошибка при восстановлении ключа: ${error.message || 'Неизвестная ошибка'}`);
+        }
+        document.getElementById('step-3').classList.remove('active-step');
+        document.getElementById('step-3-details').style.display = 'none';
+        document.getElementById('step-3-recovery-viz').style.display = 'none';
       });
     });
   };
 
-  // Первоначальная привязка обработчиков
+  // Первоначальная привязка обработчиков (оставлено для совместимости)
+  const bindSequenceButtons = () => {};
   bindSequenceButtons();
 
 // Управление модальным окном режима тестирования

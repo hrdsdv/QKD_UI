@@ -180,10 +180,20 @@ class KeyRecoveryModule:
             original_hash = GOSTHash.hash_256(byte_data)
             
             # Разбиваем на блоки и обрабатываем
+            # Убеждаемся, что есть хотя бы один блок (даже если данные пустые)
             blocks = [byte_data[i:i+BLOCK_SIZE] for i in range(0, len(byte_data), BLOCK_SIZE)]
+            if not blocks and len(byte_data) > 0:
+                # Если данные есть, но блоков нет (не должно произойти), создаем один блок
+                blocks = [byte_data]
+            elif not blocks:
+                # Если данных нет вообще, создаем пустой блок
+                blocks = [b'']
+            
+            log_to_file(f"Восстановление ключа {sequence_id}: длина данных {len(byte_data)} байт, создано {len(blocks)} блоков", level="INFO")
             recovered_blocks = []
             total_errors_corrected = 0
             blocks_verified = 0
+            blocks_info = []  # Детальная информация о каждом блоке для визуализации
             
             for i, block in enumerate(blocks):
                 block_start = time.perf_counter()
@@ -200,14 +210,27 @@ class KeyRecoveryModule:
                     total_errors_corrected += errors
                     
                     # Проверяем хэш блока
-                    if decoded_block == block:
+                    block_verified = decoded_block == block
+                    if block_verified:
                         blocks_verified += 1
                 else:
                     # Не удалось восстановить блок
                     recovered_blocks.append(block)  # Используем исходный
+                    block_verified = False
+                    errors = -1
                 
                 block_time = (time.perf_counter() - block_start) * 1000
                 log_to_file(f"Блок {i+1}/{len(blocks)}: исправлено {errors} ошибок, время {block_time:.1f}мс", level="DEBUG")
+                
+                # Сохраняем информацию о блоке для визуализации
+                blocks_info.append({
+                    'block_id': i + 1,
+                    'data_bytes': len(block),
+                    'parity_bytes': RS_ECC_LENGTH,
+                    'errors_corrected': errors if errors >= 0 else 0,
+                    'verified': block_verified,
+                    'processing_time_ms': round(block_time, 1)
+                })
             
             # Собираем восстановленный ключ
             recovered_data = b''.join(recovered_blocks)
@@ -240,7 +263,8 @@ class KeyRecoveryModule:
                 'recovery_time_ms': round(recovery_time_ms, 1),
                 'hash_verified': hash_match,
                 'original_hash': original_hash.hex(),
-                'recovered_hash': recovered_hash.hex()
+                'recovered_hash': recovered_hash.hex(),
+                'blocks_info': blocks_info  # Детальная информация о каждом блоке
             }
             
             log_to_file(

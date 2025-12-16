@@ -433,9 +433,14 @@ def recover_key():
         return jsonify({'status': 'error', 'message': 'Не указан ID последовательности'}), 400
 
     # Используем новый модуль восстановления с полной диагностикой
-    recovery_result = key_recovery_module.recover_key(sequence_id)
+    try:
+        recovery_result = key_recovery_module.recover_key(sequence_id)
+    except Exception as e:
+        log_to_file(f"Исключение при восстановлении ключа {sequence_id}: {e}", level="ERROR")
+        return jsonify({'status': 'error', 'message': f'Ошибка при восстановлении: {str(e)}'}), 500
     
     if recovery_result.get('status') == 'error':
+        log_to_file(f"Восстановление ключа {sequence_id} вернуло ошибку: {recovery_result.get('message')}", level="ERROR")
         return jsonify(recovery_result), 500
     
     recovered_key = recovery_result.get('recovered_key', '')
@@ -463,7 +468,9 @@ def recover_key():
             'recovery_percentage': recovery_result.get('recovery_percentage', 0),
             'recovery_time_ms': recovery_result.get('recovery_time_ms', 0),
             'hash_verified': recovery_result.get('hash_verified', False),
-            'errors_corrected': recovery_result.get('errors_corrected', 0)
+            'errors_corrected': recovery_result.get('errors_corrected', 0),
+            'blocks_info': recovery_result.get('blocks_info', []),
+            'blocks_total': recovery_result.get('blocks_total', 0)
         })
     else:
         return jsonify({'status': 'error', 'message': 'Не удалось сохранить восстановленный ключ'}), 500
