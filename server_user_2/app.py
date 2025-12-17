@@ -361,6 +361,36 @@ def select_sequence():
         qber_value = comparison_result.get('qber', 0)
         needs_regeneration = comparison_result.get('needs_regeneration', False)
         
+        # Сохраняем просеянный ключ в БД для последующего использования при восстановлении
+        sifted_key_local = comparison_result.get('sifted_key_local', '')
+        if sifted_key_local:
+            key_postprocessing_module.save_sifted_key(sequence_id, sifted_key_local)
+        
+        # Получаем локальные данные для базисов
+        local_data = key_postprocessing_module.get_local_sequence(sequence_id)
+        last_32_bases_local = local_data['bases'][-32:] if local_data and len(local_data['bases']) >= 32 else ''
+        
+        # Получаем удаленные базисы для сравнения
+        remote_data = key_postprocessing_module.get_remote_sequence(sequence_id)
+        if not remote_data:
+            # Для тестовых последовательностей получаем из БД
+            if sequence_id.startswith('testA_'):
+                pair_id = sequence_id.replace('testA_', 'testB_')
+            elif sequence_id.startswith('testB_'):
+                pair_id = sequence_id.replace('testB_', 'testA_')
+            else:
+                pair_id = sequence_id
+            query = "SELECT bases FROM raw_data WHERE sequence_id = ?"
+            result = db_manager.execute_query(query, (pair_id,), fetch=True, sync=False)
+            if result:
+                remote_bases = result[0]['bases']
+            else:
+                remote_bases = local_data['bases'] if local_data else ''  # Fallback
+        else:
+            remote_bases = remote_data['bases']
+        
+        last_32_bases_remote = remote_bases[-32:] if len(remote_bases) >= 32 else remote_bases
+        
         # Проверяем порог QBER (11%)
         if needs_regeneration:
             return jsonify({
@@ -368,8 +398,37 @@ def select_sequence():
                 'message': f'QBER ({qber_value}%) превышает порог 11%. Рекомендуется повторная генерация.',
                 'mismatches': mismatches,
                 'qber': qber_value,
-                'needs_regeneration': True
+                'needs_regeneration': True,
+                'last_32_bits_local': comparison_result.get('last_32_bits_local', ''),
+                'last_32_bits_remote': comparison_result.get('last_32_bits_remote', ''),
+                'last_32_bases_local': last_32_bases_local,
+                'last_32_bases_remote': last_32_bases_remote
             })
+        
+        # Отправляем данные через WebSocket для синхронизации с сервером 1
+        try:
+            socketio.emit('sifting_complete', {
+                'sequence_id': sequence_id,
+                'station': 'B',
+                'last_32_bits': comparison_result.get('last_32_bits_local', ''),
+                'last_32_bits_local': comparison_result.get('last_32_bits_local', ''),
+                'last_32_bases': last_32_bases_local,
+                'last_32_bases_local': last_32_bases_local,
+                'last_32_bits_remote': comparison_result.get('last_32_bits_remote', ''),
+                'last_32_bases_remote': last_32_bases_remote,
+                'mismatches': mismatches,
+                'qber': qber_value,
+                'timestamp': moscow_now_str('%Y-%m-%d %H:%M:%S')
+            }, namespace='/')
+            log_to_file(f"Отправлены данные просеивания через WebSocket для {sequence_id}", level="INFO")
+        except Exception as e:
+            log_to_file(f"Ошибка отправки данных просеивания через WebSocket: {e}", level="ERROR")
+            # Логируем в журнал
+            try:
+                from utils.logging_utils import log_to_db
+                log_to_db(db_path, None, 'QKDModule', 'ERROR', f"Ошибка WebSocket синхронизации: {e}")
+            except:
+                pass
         
         return jsonify({
             'status': 'success', 
@@ -378,7 +437,9 @@ def select_sequence():
             'sifted_length': comparison_result.get('sifted_length', 0),
             'matching_bases': comparison_result.get('matching_bases', 0),
             'last_32_bits_local': comparison_result.get('last_32_bits_local', ''),
-            'last_32_bits_remote': comparison_result.get('last_32_bits_remote', '')
+            'last_32_bits_remote': comparison_result.get('last_32_bits_remote', ''),
+            'last_32_bases_local': last_32_bases_local,
+            'last_32_bases_remote': last_32_bases_remote
         })
     else:
         return jsonify({'status': 'error', 'message': 'Не удалось выбрать последовательность'}), 500
@@ -441,6 +502,28 @@ def recover_key():
     if not sequence_id:
         return jsonify({'status': 'error', 'message': 'Не указан ID последовательности'}), 400
 
+    # Получаем значение mismatches (N) из результата просеивания
+    # Сначала проверяем, есть ли уже сохраненный sifted_key (значит просеивание уже было выполнено)
+    mismatches = 0
+    try:
+        # Получаем данные последовательности
+        query = "SELECT sifted_key FROM raw_data WHERE sequence_id = ?"
+        result = db_manager.execute_query(query, (sequence_id,), fetch=True, sync=False)
+        
+        # Если есть sifted_key, значит просеивание было выполнено, получаем mismatches
+        if result and result[0].get('sifted_key'):
+            # Выполняем compare_bases для получения mismatches
+            comparison_result = key_postprocessing_module.compare_bases(sequence_id)
+            if 'error' not in comparison_result:
+                mismatches = comparison_result.get('mismatches', 0)
+                log_to_file(f"Получено mismatches={mismatches} для {sequence_id} из compare_bases", level="INFO")
+        else:
+            log_to_file(f"Для {sequence_id} нет sifted_key, mismatches будет 0", level="WARNING")
+    except Exception as e:
+        log_to_file(f"Не удалось получить mismatches для {sequence_id}: {e}", level="WARNING")
+        import traceback
+        log_to_file(f"Traceback: {traceback.format_exc()}", level="ERROR")
+    
     # Используем новый модуль восстановления с полной диагностикой
     try:
         recovery_result = key_recovery_module.recover_key(sequence_id)
@@ -471,13 +554,14 @@ def recover_key():
         except Exception as e:
             log_to_file(f"Не удалось синхронизировать восстановленный ключ: {e}", level="WARNING")
         
+        log_to_file(f"Восстановление ключа {sequence_id}: mismatches={mismatches}, errors_corrected={mismatches}", level="INFO")
         return jsonify({
             'status': 'success', 
             'key_id': key_id,
             'recovery_percentage': recovery_result.get('recovery_percentage', 0),
             'recovery_time_ms': recovery_result.get('recovery_time_ms', 0),
             'hash_verified': recovery_result.get('hash_verified', False),
-            'errors_corrected': recovery_result.get('errors_corrected', 0),
+            'errors_corrected': mismatches,  # Используем mismatches (N) вместо errors_corrected
             'blocks_info': recovery_result.get('blocks_info', []),
             'blocks_total': recovery_result.get('blocks_total', 0)
         })
@@ -515,6 +599,16 @@ def init_qkd_socket_client():
                 log_to_file(f"Получена последовательность от сервера 1: {data.get('sequence_id')}", level="INFO")
             except Exception as e:
                 log_to_file(f"Ошибка обработки последовательности от сервера 1: {e}", level="ERROR")
+        
+        @qkd_socket_client.on('sifting_complete')
+        def on_sifting_complete(data):
+            """Обработчик получения данных просеивания от сервера 1"""
+            try:
+                # Отправляем данные всем подключенным клиентам сервера 2
+                socketio.emit('sifting_complete', data, namespace='/')
+                log_to_file(f"Получены данные просеивания от сервера 1: {data.get('sequence_id')}", level="INFO")
+            except Exception as e:
+                log_to_file(f"Ошибка обработки данных просеивания от сервера 1: {e}", level="ERROR")
         
         @qkd_socket_client.on('connect')
         def on_connect():

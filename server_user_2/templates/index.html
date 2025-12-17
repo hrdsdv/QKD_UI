@@ -239,6 +239,37 @@
       color: #6b7280;
       margin-bottom: 0.25rem;
     }
+    
+    /* Визуализация просеивания ключа */
+    #step-2-viz {
+      background: #f9fafb;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      border: 1px solid #e5e7eb;
+    }
+    
+    #step-2-bases-container {
+      font-family: 'Courier New', monospace;
+      font-size: 0.875rem;
+      line-height: 1.8;
+    }
+    
+    .sifting-char {
+      display: inline-block;
+      padding: 0 1px;
+      opacity: 0;
+      animation: fadeInChar 0.1s ease-in forwards;
+    }
+    
+    .sifting-char.match {
+      color: #16a34a;
+      font-weight: 600;
+    }
+    
+    .sifting-char.mismatch {
+      color: #dc2626;
+      font-weight: 600;
+    }
 
     /* Визуализация "Шифрование и отправка" */
     .send-viz {
@@ -371,7 +402,7 @@
     }
   </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100" data-is-admin="{% if session.get('role') == 'admin' %}true{% else %}false{% endif %}">
   <div class="flex flex-col h-screen">
   <!-- Верхняя панель -->
 <header class="bg-white shadow p-4 flex justify-between items-center">
@@ -847,8 +878,10 @@
       </div>
       <div id="step-2" class="step">
         Просеивание ключа
-        <div id="step-2-details" class="text-xs mt-1" style="display:none;"></div>
-        <div id="step-2-bits-comparison" class="text-xs mt-2 font-mono" style="display:none;"></div>
+        <div id="step-2-viz" class="mt-2" style="display:none;">
+          <div id="step-2-bases-container" class="mb-2"></div>
+          <div id="step-2-mismatches" class="text-xs text-gray-600"></div>
+        </div>
       </div>
       <div id="step-3" class="step">
         Восстановление ключа
@@ -869,7 +902,7 @@
           <div id="recovery-current-stage" class="text-xs text-gray-700 mb-2 italic"></div>
           
           <div id="recovery-stats" class="text-xs space-y-1">
-            <div>• Исправлено ошибок: <span id="recovery-total-errors">0</span></div>
+            <div>• Ошибок восстановлено (N): <span id="recovery-total-errors">0</span></div>
             <div>• Общее время: <span id="recovery-total-time">0 мс</span></div>
             <div>• Хэш: <span id="recovery-hash-status">Ожидание...</span></div>
           </div>
@@ -906,7 +939,7 @@
 
   <script>
     // Глобальные переменные из Jinja2
-    window.isAdmin = {% if session.get('role') == 'admin' %}true{% else %}false{% endif %};
+    window.isAdmin = document.body.getAttribute('data-is-admin') === 'true';
     
     // ------------------------------
     // WebSocket подключение и анимация генерации последовательностей
@@ -1005,6 +1038,84 @@
     
     socket.on('disconnect', () => {
       console.log('WebSocket отключен');
+    });
+    
+    // ------------------------------
+    // Просеивание ключа - новая реализация
+    // ------------------------------
+    
+    // Функция отображения просеивания (сервер 2: только базисы)
+    window.displaySifting = function(data) {
+      console.log('displaySifting вызвана с данными:', data);
+      const viz = document.getElementById('step-2-viz');
+      const basesContainer = document.getElementById('step-2-bases-container');
+      const mismatchesDiv = document.getElementById('step-2-mismatches');
+      
+      console.log('Элементы:', { viz, basesContainer, mismatchesDiv });
+      
+      if (!viz || !basesContainer) {
+        console.error('Не найдены необходимые элементы DOM!');
+        return;
+      }
+      
+      // Показываем визуализацию
+      viz.style.display = 'block';
+      document.getElementById('step-2').classList.add('active-step');
+      
+      // Получаем свои данные (сервер 2)
+      // Для сервера 2: last_32_bases - это наши данные
+      const myBases = data.last_32_bases || data.last_32_bases_local || '';
+      const remoteBases = data.last_32_bases_remote || '';
+      
+      console.log('Данные для отображения:', { myBases, remoteBases });
+      
+      // Функция анимации символов с цветовой индикацией
+      const animateSiftingChars = (container, myText, remoteText, label, delayPerChar = 100) => {
+        container.innerHTML = `<div class="text-xs text-gray-600 mb-1">${label}</div>`;
+        const textDiv = document.createElement('div');
+        textDiv.className = 'font-mono';
+        container.appendChild(textDiv);
+        
+        const chars = myText.split('');
+        chars.forEach((char, index) => {
+          setTimeout(() => {
+            const span = document.createElement('span');
+            const isMatch = char === remoteText[index];
+            span.className = `sifting-char ${isMatch ? 'match' : 'mismatch'}`;
+            span.textContent = char;
+            span.style.animationDelay = `${index * (delayPerChar / 1000)}s`;
+            textDiv.appendChild(span);
+          }, index * delayPerChar);
+        });
+      };
+      
+      // Отображаем базисы с анимацией
+      if (myBases && myBases.length > 0) {
+        const animationDuration = 3500; // 3.5 секунды
+        const delayPerChar = animationDuration / myBases.length;
+        animateSiftingChars(
+          basesContainer,
+          myBases,
+          remoteBases,
+          'Базисная последовательность (32 последних базиса):',
+          delayPerChar
+        );
+      } else {
+        basesContainer.innerHTML = '<div class="text-xs text-gray-500">Нет данных о базисах</div>';
+      }
+      
+      // Отображаем количество несовпадений
+      if (mismatchesDiv) {
+        mismatchesDiv.textContent = `N = ${data.mismatches || 0} несовпадений`;
+      }
+    };
+    
+    // Обработчик WebSocket для синхронизации
+    socket.on('sifting_complete', (data) => {
+      console.log('Получены данные просеивания:', data);
+      if (window.displaySifting) {
+        window.displaySifting(data);
+      }
     });
     
     // Переключение вкладок
@@ -1689,8 +1800,6 @@
 
         // Подсвечиваем этап "Просеивание ключа"
         document.getElementById('step-2').classList.add('active-step');
-        document.getElementById('step-2-details').style.display = 'block';
-        document.getElementById('step-2-details').textContent = 'Обработка...';
 
         fetch('/select_sequence', {
           method: 'POST',
@@ -1702,57 +1811,55 @@
         .then(response => response.json())
         .then(data => {
           if (data.status === 'success') {
-            // Обновляем детали этапа - показываем N = количество несовпадений
-            document.getElementById('step-2-details').textContent = `N = ${data.mismatches}`;
-            
-            // Отображаем последние 32 бита обеих последовательностей с цветовой индикацией
-            const bitsComparisonDiv = document.getElementById('step-2-bits-comparison');
-            if (data.last_32_bits_local && data.last_32_bits_remote) {
-              bitsComparisonDiv.style.display = 'block';
-              
-              // Функция для создания HTML с цветовой индикацией
-              const createColoredBits = (bits1, bits2) => {
-                let html = '';
-                for (let i = 0; i < Math.min(bits1.length, bits2.length); i++) {
-                  const color = bits1[i] === bits2[i] ? 'text-green-600' : 'text-red-600';
-                  html += `<span class="${color}">${bits1[i]}</span>`;
-                }
-                return html;
+            // Отображаем данные просеивания
+            console.log('Данные от сервера для просеивания:', data);
+            if (window.displaySifting) {
+              const siftingData = {
+                sequence_id: sequenceId,
+                last_32_bits: data.last_32_bits_local || data.last_32_bits || '',
+                last_32_bits_local: data.last_32_bits_local || data.last_32_bits || '',
+                last_32_bases: data.last_32_bases_local || data.last_32_bases || '',
+                last_32_bases_local: data.last_32_bases_local || data.last_32_bases || '',
+                last_32_bits_remote: data.last_32_bits_remote || '',
+                last_32_bases_remote: data.last_32_bases_remote || '',
+                mismatches: data.mismatches,
+                qber: data.qber
               };
-              
-              bitsComparisonDiv.innerHTML = `
-                <div class="mt-2">
-                  <div class="text-xs text-gray-600 mb-1">Последние 32 бита последовательности А:</div>
-                  <div class="text-sm">${createColoredBits(data.last_32_bits_local, data.last_32_bits_remote)}</div>
-                  <div class="text-xs text-gray-600 mb-1 mt-2">Последние 32 бита последовательности Б:</div>
-                  <div class="text-sm">${createColoredBits(data.last_32_bits_remote, data.last_32_bits_local)}</div>
-                </div>
-              `;
+              console.log('Вызываем displaySifting с данными:', siftingData);
+              window.displaySifting(siftingData);
             } else {
-              bitsComparisonDiv.style.display = 'none';
+              console.error('Функция displaySifting не найдена!');
             }
-            
-            // Обновляем QBER в header
-            // QBER элемент удален из интерфейса
-            
-            alert(`Последовательность выбрана.\nКоличество несовпадений: ${data.mismatches}\nQBER: ${data.qber.toFixed(2)}%`);
-            document.getElementById('raw-key-modal').classList.remove('open');
-            
-            // Перезагружаем страницу для обновления таблицы
-            setTimeout(() => location.reload(), 1000);
+        
+        alert(`Последовательность выбрана.\nКоличество несовпадений: ${data.mismatches}\nQBER: ${data.qber.toFixed(2)}%`);
+        document.getElementById('raw-key-modal').classList.remove('open');
+        
+        // Обновляем таблицу без перезагрузки страницы
+        setTimeout(() => {
+          fetch('/raw_keys')
+            .then(response => response.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const doc = parser.parseFromString(html, 'text/html');
+              const newTable = doc.querySelector('#raw-keys-table');
+              if (newTable) {
+                const oldTable = document.querySelector('#raw-keys-table');
+                if (oldTable) {
+                  oldTable.innerHTML = newTable.innerHTML;
+                }
+              }
+            })
+            .catch(err => console.error('Ошибка обновления таблицы:', err));
+        }, 500);
           } else {
             alert(data.message);
-            document.getElementById('step-2').classList.remove('active-step');
-            document.getElementById('step-2-details').style.display = 'none';
-            document.getElementById('step-2-bits-comparison').style.display = 'none';
+            // При ошибке можно скрыть данные, но при успехе они должны оставаться
           }
         })
         .catch(error => {
           console.error('Ошибка:', error);
           alert('Ошибка при выборе последовательности');
-          document.getElementById('step-2').classList.remove('active-step');
-          document.getElementById('step-2-details').style.display = 'none';
-          document.getElementById('step-2-bits-comparison').style.display = 'none';
+          // При ошибке можно скрыть данные
         });
       });
     });
@@ -1769,10 +1876,11 @@
       document.getElementById('step-3-details').textContent = 'Восстановление...';
       document.getElementById('step-3-recovery-viz').style.display = 'block';
       
-      // Убираем зеленый цвет с "Просеивание ключа"
-      document.getElementById('step-2').classList.remove('active-step');
-      document.getElementById('step-2-details').style.display = 'none';
-      document.getElementById('step-2-bits-comparison').style.display = 'none';
+      // Данные просеивания должны оставаться видимыми
+      const step2Viz = document.getElementById('step-2-viz');
+      if (step2Viz) {
+        step2Viz.style.display = 'block';
+      }
       
       fetch('/recover_key', {
         method: 'POST',
@@ -1789,10 +1897,17 @@
         if (data.status === 'success') {
           document.getElementById('step-3-details').textContent = 'Ключ восстановлен';
           
-          // Запускаем анимацию
-          const blocksInfo = data.blocks_info || [];
-          const totalBlocks = data.blocks_total || blocksInfo.length;
-          const totalErrors = data.errors_corrected || 0;
+            // Запускаем анимацию
+            const blocksInfo = data.blocks_info || [];
+            const totalBlocks = data.blocks_total || blocksInfo.length;
+            // Используем mismatches (N) вместо errors_corrected - это значение N из просеивания
+            const totalErrors = data.errors_corrected || 0; // Это уже mismatches (N) из сервера
+            
+            // Убеждаемся, что данные просеивания остаются видимыми
+            const step2Viz = document.getElementById('step-2-viz');
+            if (step2Viz) {
+              step2Viz.style.display = 'block';
+            }
           const totalTime = data.recovery_time_ms || 0;
           const hashVerified = data.hash_verified || false;
           
@@ -1956,37 +2071,17 @@ generateTestSequenceButton.addEventListener('click', () => {
           // Убираем зеленый цвет с step-1 после завершения генерации
           setTimeout(() => {
             document.getElementById('step-1').classList.remove('active-step');
-            // Активируем step-2 после генерации и показываем N = количество несовпадений
-            document.getElementById('step-2').classList.add('active-step');
-            document.getElementById('step-2-details').style.display = 'block';
-            if (data.mismatches !== undefined) {
-              document.getElementById('step-2-details').textContent = `N = ${data.mismatches}`;
-              
-              // Отображаем последние 32 бита, если они есть
-              const bitsComparisonDiv = document.getElementById('step-2-bits-comparison');
-              if (data.last_32_bits_local && data.last_32_bits_remote) {
-                bitsComparisonDiv.style.display = 'block';
-                
-                const createColoredBits = (bits1, bits2) => {
-                  let html = '';
-                  for (let i = 0; i < Math.min(bits1.length, bits2.length); i++) {
-                    const color = bits1[i] === bits2[i] ? 'text-green-600' : 'text-red-600';
-                    html += `<span class="${color}">${bits1[i]}</span>`;
-                  }
-                  return html;
-                };
-                
-                bitsComparisonDiv.innerHTML = `
-                  <div class="mt-2">
-                    <div class="text-xs text-gray-600 mb-1">Последние 32 бита последовательности А:</div>
-                    <div class="text-sm">${createColoredBits(data.last_32_bits_local, data.last_32_bits_remote)}</div>
-                    <div class="text-xs text-gray-600 mb-1 mt-2">Последние 32 бита последовательности Б:</div>
-                    <div class="text-sm">${createColoredBits(data.last_32_bits_remote, data.last_32_bits_local)}</div>
-                  </div>
-                `;
-              } else {
-                bitsComparisonDiv.style.display = 'none';
-              }
+            // Отображаем данные просеивания с новой визуализацией
+            if (data.last_32_bits_local && data.last_32_bases_local) {
+              displaySifting({
+                sequence_id: data.sequence_id || 'unknown',
+                last_32_bits: data.last_32_bits_local,
+                last_32_bases: data.last_32_bases_local,
+                last_32_bits_remote: data.last_32_bits_remote || '',
+                last_32_bases_remote: data.last_32_bases_remote || '',
+                mismatches: data.mismatches || 0,
+                qber: data.qber || 0
+              });
             }
           }, 2000);
         } else {
