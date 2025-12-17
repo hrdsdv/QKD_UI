@@ -619,37 +619,155 @@
       <!-- Вкладка "База данных" -->
 {% if session.get('role') == 'admin' %}
   <div id="database" class="tab-content hidden">
-    <div class="overflow-x-auto">
-      <h2 class="text-xl font-bold mb-4">Ключи шифрования</h2>
-      <table class="min-w-full bg-white border border-gray-200 mb-8">
-        <thead>
-          <tr>
-            <th class="py-2 px-4 border-b">ID ключа</th>
-            <th class="py-2 px-4 border-b">Дата генерации</th>
-            <th class="py-2 px-4 border-b">Статус</th>
-            <th class="py-2 px-4 border-b">Длина</th>
-            <th class="py-2 px-4 border-b">Дата использования</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Пусто, данные будут загружаться из базы данных -->
-        </tbody>
-      </table>
-      <h2 class="text-xl font-bold mb-4">Пользователи</h2>
-      <table class="min-w-full bg-white border border-gray-200">
-        <thead>
-          <tr>
-            <th class="py-2 px-4 border-b">Имя</th>
-            <th class="py-2 px-4 border-b">Роль</th>
-            <th class="py-2 px-4 border-b">Статус</th>
-            <th class="py-2 px-4 border-b">Последняя активность</th>
-            <th class="py-2 px-4 border-b">Данные</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Пусто, данные будут загружаться из базы данных -->
-        </tbody>
-      </table>
+    <div class="overflow-x-auto space-y-8">
+      <!-- Таблица: Ключи шифрования -->
+      <div>
+        <h2 class="text-xl font-bold mb-4">Ключи шифрования (keys)</h2>
+        <table class="min-w-full bg-white border border-gray-200" data-table="keys">
+          <thead>
+            <tr>
+              <th class="py-2 px-4 border-b">ID ключа</th>
+              <th class="py-2 px-4 border-b">Дата генерации</th>
+              <th class="py-2 px-4 border-b">Статус</th>
+              <th class="py-2 px-4 border-b">Длина</th>
+              <th class="py-2 px-4 border-b">Дата использования</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Данные загружаются динамически -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Таблица: Пользователи -->
+      <div>
+        <h2 class="text-xl font-bold mb-4">Пользователи (users)</h2>
+        <table class="min-w-full bg-white border border-gray-200" data-table="users">
+          <thead>
+            <tr>
+              <th class="py-2 px-4 border-b">ID</th>
+              <th class="py-2 px-4 border-b">Имя</th>
+              <th class="py-2 px-4 border-b">Роль</th>
+              <th class="py-2 px-4 border-b">Username</th>
+              <th class="py-2 px-4 border-b">Последняя активность</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Данные загружаются динамически -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Таблица: Сырые данные -->
+      <div>
+        <h2 class="text-xl font-bold mb-4">Сырые данные (raw_data)</h2>
+        <table class="min-w-full bg-white border border-gray-200" data-table="raw_data">
+          <thead>
+            <tr>
+              <th class="py-2 px-4 border-b">ID</th>
+              <th class="py-2 px-4 border-b">Sequence ID</th>
+              <th class="py-2 px-4 border-b">Станция</th>
+              <th class="py-2 px-4 border-b">Тестовая</th>
+              <th class="py-2 px-4 border-b">Дата генерации</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Данные загружаются динамически -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Таблица: Сообщения -->
+      <div>
+        <h2 class="text-xl font-bold mb-4">Сообщения (messages)</h2>
+        <table class="min-w-full bg-white border border-gray-200" data-table="messages">
+          <thead>
+            <tr>
+              <th class="py-2 px-4 border-b">ID</th>
+              <th class="py-2 px-4 border-b">Отправитель</th>
+              <th class="py-2 px-4 border-b">Получатель</th>
+              <th class="py-2 px-4 border-b">Тип</th>
+              <th class="py-2 px-4 border-b">Дата отправки</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Данные загружаются динамически -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Таблица: Логи -->
+      <div>
+        <h2 class="text-xl font-bold mb-4">Логи (logs)</h2>
+        <table class="min-w-full bg-white border border-gray-200" data-table="logs">
+          <thead>
+            <tr>
+              <th class="py-2 px-4 border-b">ID</th>
+              <th class="py-2 px-4 border-b">Модуль</th>
+              <th class="py-2 px-4 border-b">Уровень</th>
+              <th class="py-2 px-4 border-b">Сообщение</th>
+              <th class="py-2 px-4 border-b">Дата</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Данные загружаются динамически -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Таблица: Сессии -->
+      <div>
+        <h2 class="text-xl font-bold mb-4">Сессии (sessions)</h2>
+        <table class="min-w-full bg-white border border-gray-200" data-table="sessions">
+          <thead>
+            <tr>
+              <th class="py-2 px-4 border-b">Session ID</th>
+              <th class="py-2 px-4 border-b">User ID</th>
+              <th class="py-2 px-4 border-b">Создана</th>
+              <th class="py-2 px-4 border-b">Истекает</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Данные загружаются динамически -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Таблица: Настройки -->
+      <div>
+        <h2 class="text-xl font-bold mb-4">Настройки (settings)</h2>
+        <table class="min-w-full bg-white border border-gray-200" data-table="settings">
+          <thead>
+            <tr>
+              <th class="py-2 px-4 border-b">Ключ</th>
+              <th class="py-2 px-4 border-b">Значение</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Данные загружаются динамически -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Таблица: Тестовые сообщения -->
+      <div>
+        <h2 class="text-xl font-bold mb-4">Тестовые сообщения (test_messages)</h2>
+        <table class="min-w-full bg-white border border-gray-200" data-table="test_messages">
+          <thead>
+            <tr>
+              <th class="py-2 px-4 border-b">ID</th>
+              <th class="py-2 px-4 border-b">Отправитель</th>
+              <th class="py-2 px-4 border-b">Получатель</th>
+              <th class="py-2 px-4 border-b">Сообщение</th>
+              <th class="py-2 px-4 border-b">Направление</th>
+              <th class="py-2 px-4 border-b">Дата</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Данные загружаются динамически -->
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 {% endif %}
@@ -1058,6 +1176,22 @@
       if (isTest) {
         container.innerHTML = '';
         displayedSequences = [];
+        
+        // Очищаем старое просеивание при генерации новой последовательности
+        // Но контейнер остается видимым до появления нового просеивания
+        const step2Viz = document.getElementById('step-2-viz');
+        if (step2Viz) {
+          const bitsContainer = document.getElementById('step-2-bits-container');
+          const basesContainer = document.getElementById('step-2-bases-container');
+          const mismatchesDiv = document.getElementById('step-2-mismatches');
+          
+          if (bitsContainer) bitsContainer.innerHTML = '';
+          if (basesContainer) basesContainer.innerHTML = '';
+          if (mismatchesDiv) mismatchesDiv.innerHTML = '';
+          
+          // Контейнер остается видимым, но пустым до появления нового просеивания
+          step2Viz.style.display = 'block'; // Гарантируем, что контейнер видим
+        }
       }
       
       // Создаем элемент последовательности
@@ -1117,6 +1251,50 @@
           displayedSequences = displayedSequences.filter(s => s.sequence_id !== oldest.sequence_id);
         }
       }
+      
+      // Автоматически запускаем просеивание после завершения анимации генерации
+      // Ждем завершения анимации (3.5 секунды) + небольшая задержка
+      setTimeout(() => {
+        console.log('Автоматически запускаем просеивание для:', data.sequence_id);
+        // Автоматически выбираем последовательность для просеивания
+        fetch('/select_sequence', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: `sequence_id=${data.sequence_id}`
+        })
+        .then(response => response.json())
+        .then(siftingData => {
+          if (siftingData.status === 'success') {
+            console.log('Данные просеивания получены автоматически:', siftingData);
+            if (window.displaySifting) {
+              const siftingDisplayData = {
+                sequence_id: data.sequence_id,
+                last_32_bits: siftingData.last_32_bits_local || siftingData.last_32_bits || '',
+                last_32_bits_local: siftingData.last_32_bits_local || siftingData.last_32_bits || '',
+                last_32_bases: siftingData.last_32_bases_local || siftingData.last_32_bases || '',
+                last_32_bases_local: siftingData.last_32_bases_local || siftingData.last_32_bases || '',
+                last_32_bits_remote: siftingData.last_32_bits_remote || '',
+                last_32_bases_remote: siftingData.last_32_bases_remote || '',
+                mismatches: siftingData.mismatches || 0,
+                qber: siftingData.qber || 0
+              };
+              console.log('Автоматически вызываем displaySifting с данными:', siftingDisplayData);
+              try {
+                window.displaySifting(siftingDisplayData);
+              } catch (error) {
+                console.error('Ошибка при автоматическом вызове displaySifting:', error);
+              }
+            }
+          } else {
+            console.warn('Не удалось автоматически получить данные просеивания:', siftingData);
+          }
+        })
+        .catch(error => {
+          console.error('Ошибка при автоматическом вызове просеивания:', error);
+        });
+      }, 4000); // 3.5 секунды анимации + 0.5 секунды задержка
     }
     
     // Обработчик получения новой последовательности через WebSocket
@@ -1169,12 +1347,19 @@
         return;
       }
       
-      // Показываем визуализацию
+      // Показываем визуализацию (всегда видима до генерации новой последовательности)
       console.log('Показываем визуализацию...');
       viz.style.display = 'block';
       const step2 = document.getElementById('step-2');
       if (step2) {
         step2.classList.add('active-step');
+      }
+      
+      // Просеивание должно оставаться видимым - не скрываем его никогда
+      // Оно будет очищено только при генерации новой последовательности
+      // Гарантируем, что контейнер всегда видим после первого отображения
+      if (viz.style.display === 'none') {
+        viz.style.display = 'block';
       }
       
       // Получаем свои данные (сервер 1)
@@ -2090,7 +2275,26 @@
             setTimeout(() => {
               alert(`Ключ успешно восстановлен!\nID ключа: ${data.key_id}`);
               document.getElementById('raw-key-modal').classList.remove('open');
-              setTimeout(() => location.reload(), 1000);
+              // Просеивание остается видимым - не перезагружаем страницу
+              // Обновляем только таблицу ключей
+              setTimeout(() => {
+                fetch('/raw_keys')
+                  .then(response => response.text())
+                  .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const newTable = doc.querySelector('#raw-keys-table');
+                    if (newTable) {
+                      const oldTable = document.querySelector('#raw-keys-table');
+                      if (oldTable) {
+                        oldTable.innerHTML = newTable.innerHTML;
+                        // Перепривязываем обработчики
+                        bindSequenceButtons();
+                      }
+                    }
+                  })
+                  .catch(err => console.error('Ошибка обновления таблицы:', err));
+              }, 500);
             }, 13500);
           } else {
             alert(data.message);
@@ -2272,9 +2476,8 @@ document.addEventListener('click', (e) => {
     document.getElementById('step-3-details').textContent = 'Восстановление...';
     document.getElementById('step-3-recovery-viz').style.display = 'block';
     
-    // Убираем зеленый цвет с "Просеивание ключа"
-    document.getElementById('step-2').classList.remove('active-step');
-    // Данные просеивания должны оставаться видимыми
+    // Просеивание ключа остается видимым - не скрываем и не убираем активный статус
+    // Данные просеивания должны оставаться видимыми до генерации новой последовательности
     const step2Viz = document.getElementById('step-2-viz');
     if (step2Viz) {
       step2Viz.style.display = 'block';
@@ -2315,7 +2518,26 @@ document.addEventListener('click', (e) => {
         setTimeout(() => {
           alert(`Ключ успешно восстановлен!\nID ключа: ${data.key_id}`);
           document.getElementById('raw-key-modal').classList.remove('open');
-          setTimeout(() => location.reload(), 1000);
+          // Просеивание остается видимым - не перезагружаем страницу
+          // Обновляем только таблицу ключей
+          setTimeout(() => {
+            fetch('/raw_keys')
+              .then(response => response.text())
+              .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const newTable = doc.querySelector('#raw-keys-table');
+                if (newTable) {
+                  const oldTable = document.querySelector('#raw-keys-table');
+                  if (oldTable) {
+                    oldTable.innerHTML = newTable.innerHTML;
+                    // Перепривязываем обработчики
+                    bindSequenceButtons();
+                  }
+                }
+              })
+              .catch(err => console.error('Ошибка обновления таблицы:', err));
+          }, 500);
         }, 13500);
       } else {
         alert(data.message);
@@ -2355,7 +2577,24 @@ document.addEventListener('click', (e) => {
       .then(data => {
         if (data.status === 'success') {
           alert('Последовательность удалена');
-          location.reload();
+          // Просеивание остается видимым - не перезагружаем страницу
+          // Обновляем только таблицу ключей
+          fetch('/raw_keys')
+            .then(response => response.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const doc = parser.parseFromString(html, 'text/html');
+              const newTable = doc.querySelector('#raw-keys-table');
+              if (newTable) {
+                const oldTable = document.querySelector('#raw-keys-table');
+                if (oldTable) {
+                  oldTable.innerHTML = newTable.innerHTML;
+                  // Перепривязываем обработчики
+                  bindSequenceButtons();
+                }
+              }
+            })
+            .catch(err => console.error('Ошибка обновления таблицы:', err));
         } else {
           alert('Ошибка: ' + data.message);
         }
@@ -2377,16 +2616,27 @@ if (window.isAdmin) {
         if (data.status === 'success') {
           updateKeysTable(data.tables.keys);
           updateUsersTable(data.tables.users);
+          updateRawDataTable(data.tables.raw_data);
+          updateMessagesTable(data.tables.messages);
+          updateLogsTable(data.tables.logs);
+          updateSessionsTable(data.tables.sessions);
+          updateSettingsTable(data.tables.settings);
+          updateTestMessagesTable(data.tables.test_messages);
         }
       })
       .catch(error => console.error('Ошибка обновления таблиц:', error));
   }
 
   function updateKeysTable(keys) {
-    const tbody = document.querySelector('#database table:first-of-type tbody');
+    const tbody = document.querySelector('#database table[data-table="keys"] tbody');
     if (!tbody) return;
     
     tbody.innerHTML = '';
+    if (keys.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="5" class="py-2 px-4 text-center text-gray-500">Нет данных</td></tr>';
+      return;
+    }
+    
     keys.forEach(key => {
       const row = document.createElement('tr');
       row.innerHTML = `
@@ -2409,24 +2659,163 @@ if (window.isAdmin) {
   }
 
   function updateUsersTable(users) {
-    const tbody = document.querySelector('#database table:last-of-type tbody');
+    const tbody = document.querySelector('#database table[data-table="users"] tbody');
     if (!tbody) return;
     
     tbody.innerHTML = '';
+    if (users.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="5" class="py-2 px-4 text-center text-gray-500">Нет данных</td></tr>';
+      return;
+    }
+    
     users.forEach(user => {
       const row = document.createElement('tr');
       row.innerHTML = `
+        <td class="py-2 px-4 border-b">${user.user_id || ''}</td>
         <td class="py-2 px-4 border-b">${user.first_name || ''} ${user.last_name || ''}</td>
         <td class="py-2 px-4 border-b">${user.role || ''}</td>
-        <td class="py-2 px-4 border-b">
-          <span class="px-2 py-1 rounded text-xs ${
-            user.is_active ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
-          }">
-            ${user.is_active ? 'Активен' : 'Неактивен'}
-          </span>
-        </td>
+        <td class="py-2 px-4 border-b">${user.username || ''}</td>
         <td class="py-2 px-4 border-b">${user.last_login || '—'}</td>
-        <td class="py-2 px-4 border-b text-xs">${user.username || ''} (${user.email || ''})</td>
+      `;
+      tbody.appendChild(row);
+    });
+  }
+
+  function updateRawDataTable(rawData) {
+    const tbody = document.querySelector('#database table[data-table="raw_data"] tbody');
+    if (!tbody) return;
+    
+    tbody.innerHTML = '';
+    if (rawData.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="5" class="py-2 px-4 text-center text-gray-500">Нет данных</td></tr>';
+      return;
+    }
+    
+    rawData.forEach(item => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td class="py-2 px-4 border-b">${item.raw_data_id || ''}</td>
+        <td class="py-2 px-4 border-b text-xs">${(item.sequence_id || '').substring(0, 30)}${(item.sequence_id || '').length > 30 ? '...' : ''}</td>
+        <td class="py-2 px-4 border-b">${item.station || ''}</td>
+        <td class="py-2 px-4 border-b">${item.is_test ? 'Да' : 'Нет'}</td>
+        <td class="py-2 px-4 border-b">${item.generated_at || ''}</td>
+      `;
+      tbody.appendChild(row);
+    });
+  }
+
+  function updateMessagesTable(messages) {
+    const tbody = document.querySelector('#database table[data-table="messages"] tbody');
+    if (!tbody) return;
+    
+    tbody.innerHTML = '';
+    if (messages.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="5" class="py-2 px-4 text-center text-gray-500">Нет данных</td></tr>';
+      return;
+    }
+    
+    messages.forEach(msg => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td class="py-2 px-4 border-b">${msg.message_id || ''}</td>
+        <td class="py-2 px-4 border-b">${msg.sender_name || msg.sender_id || ''}</td>
+        <td class="py-2 px-4 border-b">${msg.receiver_id || ''}</td>
+        <td class="py-2 px-4 border-b">${msg.message_type || ''}</td>
+        <td class="py-2 px-4 border-b">${msg.sent_at || ''}</td>
+      `;
+      tbody.appendChild(row);
+    });
+  }
+
+  function updateLogsTable(logs) {
+    const tbody = document.querySelector('#database table[data-table="logs"] tbody');
+    if (!tbody) return;
+    
+    tbody.innerHTML = '';
+    if (logs.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="5" class="py-2 px-4 text-center text-gray-500">Нет данных</td></tr>';
+      return;
+    }
+    
+    logs.forEach(log => {
+      const row = document.createElement('tr');
+      const levelClass = log.level === 'ERROR' ? 'bg-red-100 text-red-800' :
+                        log.level === 'WARNING' ? 'bg-yellow-100 text-yellow-800' :
+                        'bg-blue-100 text-blue-800';
+      row.innerHTML = `
+        <td class="py-2 px-4 border-b">${log.log_id || ''}</td>
+        <td class="py-2 px-4 border-b">${log.module || ''}</td>
+        <td class="py-2 px-4 border-b">
+          <span class="px-2 py-1 rounded text-xs ${levelClass}">${log.level || ''}</span>
+        </td>
+        <td class="py-2 px-4 border-b text-xs max-w-xs truncate">${(log.message || '').substring(0, 50)}${(log.message || '').length > 50 ? '...' : ''}</td>
+        <td class="py-2 px-4 border-b">${log.created_at || ''}</td>
+      `;
+      tbody.appendChild(row);
+    });
+  }
+
+  function updateSessionsTable(sessions) {
+    const tbody = document.querySelector('#database table[data-table="sessions"] tbody');
+    if (!tbody) return;
+    
+    tbody.innerHTML = '';
+    if (sessions.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="4" class="py-2 px-4 text-center text-gray-500">Нет данных</td></tr>';
+      return;
+    }
+    
+    sessions.forEach(session => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td class="py-2 px-4 border-b text-xs">${(session.session_id || '').substring(0, 20)}${(session.session_id || '').length > 20 ? '...' : ''}</td>
+        <td class="py-2 px-4 border-b">${session.user_id || ''}</td>
+        <td class="py-2 px-4 border-b">${session.created_at || ''}</td>
+        <td class="py-2 px-4 border-b">${session.expires_at || '—'}</td>
+      `;
+      tbody.appendChild(row);
+    });
+  }
+
+  function updateSettingsTable(settings) {
+    const tbody = document.querySelector('#database table[data-table="settings"] tbody');
+    if (!tbody) return;
+    
+    tbody.innerHTML = '';
+    if (settings.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="2" class="py-2 px-4 text-center text-gray-500">Нет данных</td></tr>';
+      return;
+    }
+    
+    settings.forEach(setting => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td class="py-2 px-4 border-b">${setting.setting_key || ''}</td>
+        <td class="py-2 px-4 border-b text-xs">${(setting.setting_value || '').substring(0, 50)}${(setting.setting_value || '').length > 50 ? '...' : ''}</td>
+      `;
+      tbody.appendChild(row);
+    });
+  }
+
+  function updateTestMessagesTable(testMessages) {
+    const tbody = document.querySelector('#database table[data-table="test_messages"] tbody');
+    if (!tbody) return;
+    
+    tbody.innerHTML = '';
+    if (testMessages.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="6" class="py-2 px-4 text-center text-gray-500">Нет данных</td></tr>';
+      return;
+    }
+    
+    testMessages.forEach(msg => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td class="py-2 px-4 border-b">${msg.message_id || ''}</td>
+        <td class="py-2 px-4 border-b">${msg.sender || ''}</td>
+        <td class="py-2 px-4 border-b">${msg.receiver || ''}</td>
+        <td class="py-2 px-4 border-b text-xs max-w-xs truncate">${(msg.message_text || '').substring(0, 30)}${(msg.message_text || '').length > 30 ? '...' : ''}</td>
+        <td class="py-2 px-4 border-b">${msg.direction || ''}</td>
+        <td class="py-2 px-4 border-b">${msg.created_at || ''}</td>
       `;
       tbody.appendChild(row);
     });

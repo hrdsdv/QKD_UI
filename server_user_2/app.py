@@ -1453,6 +1453,18 @@ def get_all_tables():
         logs = db_manager.execute_query("SELECT * FROM logs ORDER BY created_at DESC LIMIT 100", fetch=True, sync=False) or []
         sessions_data = db_manager.execute_query("SELECT * FROM sessions ORDER BY created_at DESC", fetch=True, sync=False) or []
         
+        # Получаем данные из таблицы settings
+        try:
+            settings = db_manager.execute_query("SELECT * FROM settings", fetch=True, sync=False) or []
+        except:
+            settings = []
+        
+        # Получаем данные из таблицы test_messages
+        try:
+            test_messages = db_manager.execute_query("SELECT * FROM test_messages ORDER BY created_at DESC LIMIT 100", fetch=True, sync=False) or []
+        except:
+            test_messages = []
+        
         return jsonify({
             'status': 'success',
             'tables': {
@@ -1461,7 +1473,9 @@ def get_all_tables():
                 'keys': keys,
                 'messages': messages,
                 'logs': logs,
-                'sessions': sessions_data
+                'sessions': sessions_data,
+                'settings': settings,
+                'test_messages': test_messages
             }
         })
     except Exception as e:

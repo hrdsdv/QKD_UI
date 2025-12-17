@@ -68,11 +68,12 @@ def format_datetime_for_display(dt_string: str) -> str:
             # Если не удалось распарсить, возвращаем как есть
             return dt_string
         
-        # Если время без timezone, считаем что оно уже в московском времени (т.к. сохраняли с +3 часами)
-        # Просто форматируем для отображения
+        # Если время без timezone, считаем что это UTC и добавляем +3 часа для московского времени
         if dt.tzinfo is None:
-            # Время уже в московском (сохранено с +3 часами), просто форматируем
-            return dt.strftime('%Y-%m-%d %H:%M:%S')
+            # Предполагаем, что время в UTC, добавляем +3 часа для московского времени
+            utc_dt = dt.replace(tzinfo=timezone.utc)
+            moscow_dt = utc_dt.astimezone(MOSCOW_TZ)
+            return moscow_dt.strftime('%Y-%m-%d %H:%M:%S')
         else:
             # Если есть timezone, конвертируем в московское
             moscow_dt = dt.astimezone(MOSCOW_TZ)
