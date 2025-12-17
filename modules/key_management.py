@@ -301,13 +301,17 @@ class KeyManagementModule:
         # Преобразуем данные в формат для шаблона
         formatted_messages = []
         for msg in messages:
-            # Получаем username отправителя из таблицы users
+            # Получаем username отправителя
+            # Сначала используем sender_name из таблицы messages (сохраненное при получении)
             sender_username = msg.get('sender_name')
             if not sender_username:
-                # Если JOIN не нашел пользователя, пытаемся получить username напрямую
+                # Если sender_name не сохранено, пытаемся получить username из таблицы users
                 sender_query = "SELECT username FROM users WHERE user_id = ?"
                 sender_result = self.db_manager.execute_query(sender_query, (msg.get('sender_id'),), fetch=True, sync=False)
                 sender_username = sender_result[0]['username'] if sender_result else 'Неизвестно'
+            # Если sender_username все еще пустое или 'Unknown', заменяем на 'Неизвестно'
+            if not sender_username or sender_username == 'Unknown':
+                sender_username = 'Неизвестно'
             
             message_type = msg.get('message_type', 'text')
             formatted_msg = {

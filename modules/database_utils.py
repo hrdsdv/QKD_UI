@@ -144,9 +144,10 @@ class DatabaseManager:
             log_to_file(f"DEBUG: message_id={msg.get('message_id')}, sender_id={msg.get('sender_id')}, receiver_id={msg.get('receiver_id')}, is_encrypted={msg.get('is_encrypted')}", level="INFO")
         
         # Получаем все зашифрованные сообщения для получателя
-        # Используем COALESCE для обработки NULL значений is_encrypted
+        # Используем COALESCE для получения sender_name: сначала из JOIN с users, затем из сохраненного m.sender_name
         query = '''
-        SELECT m.*, u.username as sender_name
+        SELECT m.*, 
+               COALESCE(u.username, m.sender_name, 'Неизвестно') as sender_name
         FROM messages m
         LEFT JOIN users u ON m.sender_id = u.user_id
         WHERE m.receiver_id = ? AND (m.is_encrypted = 1 OR m.is_encrypted = '1')

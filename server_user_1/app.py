@@ -1069,14 +1069,25 @@ def decrypt_message():
     # Получаем сообщение из БД
     message = message_crypto.get_encrypted_message(message_id)
     if not message:
+        log_to_file(f"Ошибка дешифрования: сообщение {message_id} не найдено для user_id={session['user_id']}", level="ERROR")
         return jsonify({'status': 'error', 'message': 'Сообщение не найдено'}), 404
     
     # Проверяем, что сообщение адресовано текущему пользователю
     if message['receiver_id'] != session['user_id']:
+        log_to_file(f"Ошибка доступа: сообщение {message_id} адресовано receiver_id={message['receiver_id']}, но запрос от user_id={session['user_id']}", level="WARNING")
         return jsonify({'status': 'error', 'message': 'Нет доступа к этому сообщению'}), 403
     
+    # Проверяем наличие key_id
+    key_id = message.get('key_id')
+    if not key_id:
+        log_to_file(f"Ошибка дешифрования: у сообщения {message_id} отсутствует key_id", level="ERROR")
+        return jsonify({'status': 'error', 'message': 'У сообщения отсутствует ключ шифрования'}), 400
+    
     message_type = message.get('message_type', 'text')
-    result = {'status': 'success', 'sender_name': message.get('sender_name', 'Unknown')}
+    sender_name = message.get('sender_name', 'Неизвестно')
+    result = {'status': 'success', 'sender_name': sender_name}
+    
+    log_to_file(f"Начало дешифрования сообщения {message_id} от {sender_name} для user_id={session['user_id']}, key_id={key_id}", level="INFO")
     
     try:
         # Дешифруем текст если есть
@@ -1092,6 +1103,7 @@ def decrypt_message():
             )
             
             if text_result['status'] != 'success':
+                log_to_file(f"Ошибка дешифрования текста сообщения {message_id}: {text_result.get('message', 'Unknown error')}", level="ERROR")
                 return jsonify(text_result)
             
             result['plaintext'] = text_result['plaintext']
@@ -1113,6 +1125,7 @@ def decrypt_message():
             )
             
             if file_result['status'] != 'success':
+                log_to_file(f"Ошибка дешифрования файла сообщения {message_id}: {file_result.get('message', 'Unknown error')}", level="ERROR")
                 return jsonify(file_result)
             
             # Сохраняем файл для скачивания
@@ -1208,6 +1221,9 @@ def receive_encrypted_message():
         sender_name = data.get('sender_name', 'Unknown')
         # receiver_id из запроса игнорируем - определяем на стороне получателя
         key_id = data.get('key_id')
+        if not key_id:
+            log_to_file(f"ОШИБКА: receive_encrypted_message получил сообщение без key_id от sender_name={sender_name}, sender_id={sender_id}", level="ERROR")
+            return jsonify({'status': 'error', 'message': 'Отсутствует key_id в сообщении'}), 400
         message_type = data.get('message_type', 'text')
         
         # Текстовое сообщение
@@ -1282,19 +1298,22 @@ def receive_encrypted_message():
         """
         
         for rec_id in receiver_ids_to_save:
-            db_manager.execute_query(
-                query,
-                (sender_id, sender_name, rec_id, key_id, message_type, ciphertext,
-                 content_hash, file_ciphertext, file_name, file_size),
-                sync=False
-            )
-            # Проверяем, что сообщение действительно сохранено
-            check_query = "SELECT message_id, receiver_id, is_encrypted FROM messages WHERE receiver_id = ? AND sender_id = ? AND key_id = ? ORDER BY sent_at DESC LIMIT 1"
-            check_result = db_manager.execute_query(check_query, (rec_id, sender_id, key_id), fetch=True, sync=False)
-            if check_result:
-                log_to_file(f"DEBUG: Проверка сохранения: message_id={check_result[0].get('message_id')}, receiver_id={check_result[0].get('receiver_id')}, is_encrypted={check_result[0].get('is_encrypted')}", level="INFO")
-            else:
-                log_to_file(f"DEBUG: ОШИБКА: Сообщение НЕ найдено в БД после сохранения для receiver_id={rec_id}", level="ERROR")
+            try:
+                db_manager.execute_query(
+                    query,
+                    (sender_id, sender_name, rec_id, key_id, message_type, ciphertext,
+                     content_hash, file_ciphertext, file_name, file_size),
+                    sync=False
+                )
+                # Проверяем, что сообщение действительно сохранено
+                check_query = "SELECT message_id, receiver_id, is_encrypted, key_id FROM messages WHERE receiver_id = ? AND sender_id = ? AND key_id = ? ORDER BY sent_at DESC LIMIT 1"
+                check_result = db_manager.execute_query(check_query, (rec_id, sender_id, key_id), fetch=True, sync=False)
+                if check_result:
+                    log_to_file(f"✓ Сообщение сохранено: message_id={check_result[0].get('message_id')}, receiver_id={check_result[0].get('receiver_id')}, key_id={check_result[0].get('key_id')}, is_encrypted={check_result[0].get('is_encrypted')}", level="INFO")
+                else:
+                    log_to_file(f"✗ ОШИБКА: Сообщение НЕ найдено в БД после сохранения для receiver_id={rec_id}, sender_id={sender_id}, key_id={key_id}", level="ERROR")
+            except Exception as e:
+                log_to_file(f"✗ ОШИБКА при сохранении сообщения для receiver_id={rec_id}: {e}", level="ERROR")
         
         log_to_file(f"Сохранено сообщение от {sender_name} (sender_id={sender_id}) для receiver_ids={receiver_ids_to_save}, is_encrypted=1", level="INFO")
         print(f"DEBUG: Сохранено сообщение от {sender_name} для receiver_ids={receiver_ids_to_save}")

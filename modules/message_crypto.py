@@ -408,10 +408,14 @@ class MessageCrypto:
         :param message_id: ID сообщения
         :return: Данные сообщения или None
         """
+        # Используем LEFT JOIN и COALESCE для получения sender_name
+        # Если пользователь не найден в локальной БД (отправитель с другого сервера),
+        # используем сохраненное sender_name из таблицы messages
         query = """
-            SELECT m.*, u.username as sender_name
+            SELECT m.*, 
+                   COALESCE(u.username, m.sender_name, 'Неизвестно') as sender_name
             FROM messages m
-            JOIN users u ON m.sender_id = u.user_id
+            LEFT JOIN users u ON m.sender_id = u.user_id
             WHERE m.message_id = ?
         """
         result = self.db_manager.execute_query(query, (message_id,), fetch=True, sync=False)
