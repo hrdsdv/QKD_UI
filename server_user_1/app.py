@@ -8,6 +8,7 @@ if _root_dir not in sys.path:
 
 from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
 from flask_cors import CORS
+from flask_socketio import SocketIO, emit
 from modules.qkd_interaction import QKDModule
 from modules.key_postprocessing import KeyPostprocessingModule
 from modules.key_recovery import KeyRecoveryModule, encode_reed_solomon, decode_reed_solomon
@@ -42,6 +43,7 @@ import time
 app = Flask(__name__)
 CORS(app)  # Разрешаем кросс-доменные запросы для работы между разными ПК
 app.secret_key = FLASK_SECRET_KEY
+socketio = SocketIO(app, cors_allowed_origins="*", async_mode='threading')
 
 db_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'databases', 'user_1_db.db'))
 print(f"Путь к базе данных: {db_path}")
@@ -74,6 +76,14 @@ except Exception as e:
 
 # Инициализация модулей
 qkd_module = QKDModule(db_path)
+
+# Глобальная переменная для хранения callback функции отправки через WebSocket
+qkd_sequence_callback = None
+
+def set_qkd_sequence_callback(callback):
+    """Устанавливает callback функцию для отправки данных последовательности через WebSocket"""
+    global qkd_sequence_callback
+    qkd_sequence_callback = callback
 key_recovery_module = KeyRecoveryModule(db_path)
 key_management_module = KeyManagementModule(db_path)
 message_crypto = MessageCrypto(db_path)
@@ -150,6 +160,26 @@ def start_qkd_automatically():
             # Небольшая задержка перед запуском потока
             import time
             time.sleep(0.5)
+            
+            # Устанавливаем callback для отправки данных через WebSocket
+            def send_sequence_to_client(sequence_id, bits, bases, is_test):
+                """Callback функция для отправки данных последовательности через WebSocket"""
+                try:
+                    last_32_bits = bits[-32:] if len(bits) >= 32 else bits
+                    last_32_bases = bases[-32:] if len(bases) >= 32 else bases
+                    
+                    socketio.emit('new_sequence', {
+                        'sequence_id': sequence_id,
+                        'last_32_bits': last_32_bits,
+                        'last_32_bases': last_32_bases,
+                        'is_test': is_test,
+                        'timestamp': moscow_now_str('%Y-%m-%d %H:%M:%S')
+                    }, namespace='/')
+                except Exception as e:
+                    log_to_file(f"Ошибка отправки через WebSocket: {e}", level="ERROR")
+            
+            # Устанавливаем callback в QKD модуль
+            qkd_module.set_sequence_callback(send_sequence_to_client)
             
             # Запускаем генерацию в отдельном потоке
             log_to_file("[AUTO-START] Создание потока для start_generation...", level="INFO")
@@ -330,6 +360,26 @@ def start_qkd():
     log_to_file("[APP] Запуск потока start_generation...", level="INFO")
     print("[APP] Запуск потока start_generation...")
     
+    # Устанавливаем callback для отправки данных через WebSocket
+    def send_sequence_to_client(sequence_id, bits, bases, is_test):
+        """Callback функция для отправки данных последовательности через WebSocket"""
+        try:
+            last_32_bits = bits[-32:] if len(bits) >= 32 else bits
+            last_32_bases = bases[-32:] if len(bases) >= 32 else bases
+            
+            socketio.emit('new_sequence', {
+                'sequence_id': sequence_id,
+                'last_32_bits': last_32_bits,
+                'last_32_bases': last_32_bases,
+                'is_test': is_test,
+                'timestamp': moscow_now_str('%Y-%m-%d %H:%M:%S')
+            }, namespace='/')
+        except Exception as e:
+            log_to_file(f"Ошибка отправки через WebSocket: {e}", level="ERROR")
+    
+    # Устанавливаем callback в QKD модуль
+    qkd_module.set_sequence_callback(send_sequence_to_client)
+    
     thread = threading.Thread(target=qkd_module.start_generation, daemon=True)
     thread.start()
     
@@ -494,6 +544,18 @@ def recover_key():
     else:
         return jsonify({'status': 'error', 'message': 'Не удалось сохранить восстановленный ключ'}), 500
 
+# WebSocket события
+@socketio.on('connect')
+def handle_connect():
+    """Обработчик подключения клиента через WebSocket"""
+    log_to_file("WebSocket клиент подключен", level="INFO")
+    emit('connected', {'status': 'connected'})
+
+@socketio.on('disconnect')
+def handle_disconnect():
+    """Обработчик отключения клиента через WebSocket"""
+    log_to_file("WebSocket клиент отключен", level="INFO")
+
 @app.route('/api/sync_recovered_key', methods=['POST'])
 def sync_recovered_key():
     """API endpoint для синхронизации восстановленного ключа"""
@@ -603,6 +665,20 @@ def generate_test_sequence():
         "INSERT INTO raw_data (sequence_id, bits, bases, station, selected_by, is_test) VALUES (?, ?, ?, ?, ?, ?)",
         (seq_id_a, bits_a, bases_a, 'A', 'Тестовая', True), sync=False
     )
+    
+    # Отправляем данные через WebSocket для анимации
+    try:
+        last_32_bits_a = bits_a[-32:] if len(bits_a) >= 32 else bits_a
+        last_32_bases_a = bases_a[-32:] if len(bases_a) >= 32 else bases_a
+        socketio.emit('new_sequence', {
+            'sequence_id': seq_id_a,
+            'last_32_bits': last_32_bits_a,
+            'last_32_bases': last_32_bases_a,
+            'is_test': True,
+            'timestamp': moscow_now_str('%Y-%m-%d %H:%M:%S')
+        }, namespace='/')
+    except Exception as e:
+        log_to_file(f"Ошибка отправки тестовой последовательности через WebSocket: {e}", level="WARNING")
     
     # Отправляем последовательность Б на сервер Б через REST API
     import requests
@@ -1604,4 +1680,4 @@ if __name__ == '__main__':
         log_to_file("[AUTO-START] QKD уже запущен, пропускаем повторный запуск", level="INFO")
         print("[AUTO-START] QKD уже запущен, пропускаем повторный запуск")
     
-    app.run(host=SERVER_A_HOST, port=SERVER_A_PORT, debug=True)
+    socketio.run(app, host=SERVER_A_HOST, port=SERVER_A_PORT, debug=True, allow_unsafe_werkzeug=True)

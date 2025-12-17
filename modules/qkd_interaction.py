@@ -23,6 +23,12 @@ class QKDModule:
         self.other_station_port = 5001 if self.station_name == "A" else 5000
         # Буфер для накопления данных до 256 бит
         self.data_buffer = bytearray()
+        # Callback функция для отправки данных последовательности через WebSocket
+        self.sequence_callback = None
+    
+    def set_sequence_callback(self, callback):
+        """Устанавливает callback функцию для отправки данных последовательности"""
+        self.sequence_callback = callback
 
     def connect_serial(self, port, baudrate=9600, retry_count=3, retry_delay=2):
         """

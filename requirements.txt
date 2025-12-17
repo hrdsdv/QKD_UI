@@ -1,6 +1,8 @@
 # Основные зависимости
 Flask>=2.0.0
 flask-cors>=4.0.0
+flask-socketio>=5.3.0
+python-socketio>=5.9.0
 
 # Криптография
 pycryptodome>=3.15.0    # AES-256-GCM для хранилища ключей

@@ -9,6 +9,7 @@ if _root_dir not in sys.path:
 
 from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
 from flask_cors import CORS
+from flask_socketio import SocketIO, emit
 from modules.qkd_interaction import QKDModule
 from modules.key_postprocessing import KeyPostprocessingModule
 from modules.key_recovery import KeyRecoveryModule, encode_reed_solomon, decode_reed_solomon
@@ -40,9 +41,17 @@ import requests
 from datetime import datetime
 from utils.timezone_utils import moscow_now, moscow_now_str, moscow_datetime_sql
 
+# Импорт для WebSocket клиента
+try:
+    import socketio as sio_client
+except ImportError:
+    sio_client = None
+    log_to_file("socketio не установлен, WebSocket клиент недоступен", level="WARNING")
+
 app = Flask(__name__)
 CORS(app)  # Разрешаем кросс-доменные запросы для работы между разными ПК
 app.secret_key = FLASK_SECRET_KEY
+socketio = SocketIO(app, cors_allowed_origins="*", async_mode='threading')
 
 db_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'databases', 'user_2_db.db'))
 print(f"Путь к базе данных: {db_path}")
@@ -475,6 +484,72 @@ def recover_key():
     else:
         return jsonify({'status': 'error', 'message': 'Не удалось сохранить восстановленный ключ'}), 500
 
+# WebSocket события для приема данных от сервера 1
+# Создаем клиент для подключения к серверу 1
+qkd_socket_client = None
+
+def init_qkd_socket_client():
+    """Инициализирует WebSocket клиент для подключения к серверу 1"""
+    global qkd_socket_client
+    if sio_client is None:
+        log_to_file("socketio не установлен, WebSocket клиент недоступен", level="WARNING")
+        return
+    
+    try:
+        remote_url = get_remote_server_url()
+        # Извлекаем хост и порт из URL
+        if remote_url.startswith('http://'):
+            remote_url = remote_url[7:]
+        elif remote_url.startswith('https://'):
+            remote_url = remote_url[8:]
+        
+        # Создаем клиент для подключения к серверу 1
+        qkd_socket_client = sio_client.Client()
+        
+        @qkd_socket_client.on('new_sequence')
+        def on_new_sequence(data):
+            """Обработчик получения новой последовательности от сервера 1"""
+            try:
+                # Отправляем данные всем подключенным клиентам сервера 2
+                socketio.emit('new_sequence', data, namespace='/')
+                log_to_file(f"Получена последовательность от сервера 1: {data.get('sequence_id')}", level="INFO")
+            except Exception as e:
+                log_to_file(f"Ошибка обработки последовательности от сервера 1: {e}", level="ERROR")
+        
+        @qkd_socket_client.on('connect')
+        def on_connect():
+            log_to_file("Подключен к серверу 1 через WebSocket", level="INFO")
+        
+        @qkd_socket_client.on('disconnect')
+        def on_disconnect():
+            log_to_file("Отключен от сервера 1 через WebSocket", level="WARNING")
+        
+        # Подключаемся к серверу 1
+        ws_url = f"http://{remote_url}"
+        qkd_socket_client.connect(ws_url, wait_timeout=5)
+        log_to_file(f"WebSocket клиент подключен к {ws_url}", level="INFO")
+    except Exception as e:
+        error_msg = f"Ошибка инициализации WebSocket клиента: {e}"
+        log_to_file(error_msg, level="ERROR")
+        # Логируем в журнал
+        try:
+            from utils.logging_utils import log_to_db
+            log_to_db(db_path, None, 'QKDModule', 'ERROR', error_msg)
+        except:
+            pass
+        qkd_socket_client = None
+
+@socketio.on('connect')
+def handle_connect():
+    """Обработчик подключения клиента через WebSocket на сервере 2"""
+    log_to_file("WebSocket клиент подключен к серверу 2", level="INFO")
+    emit('connected', {'status': 'connected'})
+
+@socketio.on('disconnect')
+def handle_disconnect():
+    """Обработчик отключения клиента через WebSocket на сервере 2"""
+    log_to_file("WebSocket клиент отключен от сервера 2", level="INFO")
+
 @app.route('/api/sync_recovered_key', methods=['POST'])
 def sync_recovered_key():
     """API endpoint для синхронизации восстановленного ключа"""
@@ -513,6 +588,21 @@ def save_test_sequence():
             "INSERT INTO raw_data (sequence_id, bits, bases, station, selected_by, is_test) VALUES (?, ?, ?, ?, ?, ?)",
             (sequence_id, bits, bases, station, 'Тестовая', True), sync=False
         )
+        
+        # Отправляем данные через WebSocket для анимации на сервере 2
+        try:
+            last_32_bits = bits[-32:] if len(bits) >= 32 else bits
+            last_32_bases = bases[-32:] if len(bases) >= 32 else bases
+            socketio.emit('new_sequence', {
+                'sequence_id': sequence_id,
+                'last_32_bits': last_32_bits,
+                'last_32_bases': last_32_bases,
+                'is_test': True,
+                'timestamp': moscow_now_str('%Y-%m-%d %H:%M:%S')
+            }, namespace='/')
+        except Exception as e:
+            log_to_file(f"Ошибка отправки тестовой последовательности через WebSocket: {e}", level="WARNING")
+        
         return jsonify({'status': 'success', 'message': 'Тестовая последовательность сохранена'})
     except Exception as e:
         return jsonify({'status': 'error', 'message': str(e)}), 500
@@ -1566,7 +1656,14 @@ if __name__ == '__main__':
     print(f"Удалённый сервер А: {get_remote_server_url()}")
     print(f"Сервер запущен на {SERVER_B_HOST}:{SERVER_B_PORT}")
     print(f"Удалённый сервер А: {get_remote_server_url()}")
-    print("Режим: REST API (HTTP)")
+    print("Режим: REST API (HTTP) + WebSocket")
+    
+    # Инициализируем WebSocket клиент для подключения к серверу 1
+    try:
+        init_qkd_socket_client()
+    except Exception as e:
+        log_to_file(f"Не удалось инициализировать WebSocket клиент: {e}", level="WARNING")
+        print(f"Предупреждение: WebSocket клиент не инициализирован: {e}")
     
     # Автоматически запускаем чтение данных с QKD устройства
     # ВАЖНО: В debug режиме Flask перезагружает модуль, поэтому функция может вызваться дважды
@@ -1578,4 +1675,4 @@ if __name__ == '__main__':
         log_to_file("[AUTO-START] QKD уже запущен, пропускаем повторный запуск", level="INFO")
         print("[AUTO-START] QKD уже запущен, пропускаем повторный запуск")
     
-    app.run(host=SERVER_B_HOST, port=SERVER_B_PORT, debug=True)
+    socketio.run(app, host=SERVER_B_HOST, port=SERVER_B_PORT, debug=True, allow_unsafe_werkzeug=True)
