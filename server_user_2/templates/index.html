@@ -1046,32 +1046,62 @@
     
     // Функция отображения просеивания (сервер 2: только базисы)
     window.displaySifting = function(data) {
-      console.log('displaySifting вызвана с данными:', data);
+      console.log('=== displaySifting вызвана ===');
+      console.log('Данные:', data);
+      
       const viz = document.getElementById('step-2-viz');
       const basesContainer = document.getElementById('step-2-bases-container');
       const mismatchesDiv = document.getElementById('step-2-mismatches');
       
-      console.log('Элементы:', { viz, basesContainer, mismatchesDiv });
+      console.log('Элементы DOM:', { 
+        viz: !!viz, 
+        basesContainer: !!basesContainer, 
+        mismatchesDiv: !!mismatchesDiv 
+      });
       
-      if (!viz || !basesContainer) {
-        console.error('Не найдены необходимые элементы DOM!');
+      if (!viz) {
+        console.error('Элемент step-2-viz не найден!');
+        return;
+      }
+      
+      if (!basesContainer) {
+        console.error('Элемент step-2-bases-container не найден!');
         return;
       }
       
       // Показываем визуализацию
+      console.log('Показываем визуализацию...');
       viz.style.display = 'block';
-      document.getElementById('step-2').classList.add('active-step');
+      const step2 = document.getElementById('step-2');
+      if (step2) {
+        step2.classList.add('active-step');
+      }
       
       // Получаем свои данные (сервер 2)
       // Для сервера 2: last_32_bases - это наши данные
-      const myBases = data.last_32_bases || data.last_32_bases_local || '';
-      const remoteBases = data.last_32_bases_remote || '';
+      const myBases = (data.last_32_bases || data.last_32_bases_local || '').toString();
+      const remoteBases = (data.last_32_bases_remote || '').toString();
       
-      console.log('Данные для отображения:', { myBases, remoteBases });
+      console.log('Данные для отображения:', { 
+        myBases: myBases.substring(0, 10) + '...',
+        myBases_length: myBases.length,
+        remoteBases_length: remoteBases.length
+      });
       
       // Функция анимации символов с цветовой индикацией
       const animateSiftingChars = (container, myText, remoteText, label, delayPerChar = 100) => {
-        container.innerHTML = `<div class="text-xs text-gray-600 mb-1">${label}</div>`;
+        console.log(`Анимация для ${label}:`, { myText_length: myText.length, remoteText_length: remoteText.length });
+        
+        // Очищаем контейнер
+        container.innerHTML = '';
+        
+        // Добавляем заголовок
+        const labelDiv = document.createElement('div');
+        labelDiv.className = 'text-xs text-gray-600 mb-1';
+        labelDiv.textContent = label;
+        container.appendChild(labelDiv);
+        
+        // Создаем контейнер для символов
         const textDiv = document.createElement('div');
         textDiv.className = 'font-mono';
         container.appendChild(textDiv);
@@ -1090,7 +1120,9 @@
       };
       
       // Отображаем базисы с анимацией
+      console.log('Проверка данных для базисов:', { myBases_length: myBases.length, has_myBases: !!myBases });
       if (myBases && myBases.length > 0) {
+        console.log('Запускаем анимацию базисов...');
         const animationDuration = 3500; // 3.5 секунды
         const delayPerChar = animationDuration / myBases.length;
         animateSiftingChars(
@@ -1101,6 +1133,7 @@
           delayPerChar
         );
       } else {
+        console.warn('Нет данных о базисах, отображаем сообщение');
         basesContainer.innerHTML = '<div class="text-xs text-gray-500">Нет данных о базисах</div>';
       }
       
@@ -1813,22 +1846,38 @@
           if (data.status === 'success') {
             // Отображаем данные просеивания
             console.log('Данные от сервера для просеивания:', data);
-            if (window.displaySifting) {
-              const siftingData = {
-                sequence_id: sequenceId,
-                last_32_bits: data.last_32_bits_local || data.last_32_bits || '',
-                last_32_bits_local: data.last_32_bits_local || data.last_32_bits || '',
-                last_32_bases: data.last_32_bases_local || data.last_32_bases || '',
-                last_32_bases_local: data.last_32_bases_local || data.last_32_bases || '',
-                last_32_bits_remote: data.last_32_bits_remote || '',
-                last_32_bases_remote: data.last_32_bases_remote || '',
-                mismatches: data.mismatches,
-                qber: data.qber
-              };
-              console.log('Вызываем displaySifting с данными:', siftingData);
-              window.displaySifting(siftingData);
-            } else {
+            
+            // Убеждаемся, что функция существует
+            if (typeof window.displaySifting !== 'function') {
               console.error('Функция displaySifting не найдена!');
+              alert('Ошибка: функция отображения не найдена. Проверьте консоль браузера.');
+              return;
+            }
+            
+            const siftingData = {
+              sequence_id: sequenceId,
+              last_32_bits: data.last_32_bits_local || data.last_32_bits || '',
+              last_32_bits_local: data.last_32_bits_local || data.last_32_bits || '',
+              last_32_bases: data.last_32_bases_local || data.last_32_bases || '',
+              last_32_bases_local: data.last_32_bases_local || data.last_32_bases || '',
+              last_32_bits_remote: data.last_32_bits_remote || '',
+              last_32_bases_remote: data.last_32_bases_remote || '',
+              mismatches: data.mismatches || 0,
+              qber: data.qber || 0
+            };
+            
+            console.log('Вызываем displaySifting с данными:', siftingData);
+            console.log('Проверка данных:', {
+              has_bases: !!siftingData.last_32_bases_local,
+              bases_length: siftingData.last_32_bases_local.length
+            });
+            
+            // Вызываем функцию отображения
+            try {
+              window.displaySifting(siftingData);
+            } catch (error) {
+              console.error('Ошибка при вызове displaySifting:', error);
+              alert('Ошибка при отображении просеивания: ' + error.message);
             }
         
         alert(`Последовательность выбрана.\nКоличество несовпадений: ${data.mismatches}\nQBER: ${data.qber.toFixed(2)}%`);
