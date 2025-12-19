@@ -998,6 +998,7 @@
         Просеивание ключа
         <div id="step-2-viz" class="mt-2" style="display:none;">
           <div id="step-2-bases-container" class="mb-2"></div>
+          <div id="step-2-bits-container" class="mb-2"></div>
           <div id="step-2-mismatches" class="text-xs text-gray-600"></div>
         </div>
       </div>
@@ -1063,18 +1064,19 @@
     // WebSocket подключение и анимация генерации последовательностей
     // ------------------------------
     const socket = io();
-    const isServer1 = false; // Сервер 2 показывает только базисы
+    const isServer1 = false; // Сервер 2 показывает базисы + биты (в обратном порядке)
     let displayedSequences = []; // Массив отображаемых последовательностей
     const MAX_REAL_SEQUENCES = 4; // Максимум последовательностей от реального QKD
+    let displayedSequenceIds = new Set(); // Множество отображенных sequence_id (для избежания дублирования)
     
     // Функция анимации появления символов слева направо
-    function animateSequenceChars(container, text, delayPerChar = 100) {
+    function animateSequenceChars(container, text, delayPerChar = 100, isBits = false) {
       container.innerHTML = '';
       const chars = text.split('');
       chars.forEach((char, index) => {
         setTimeout(() => {
           const span = document.createElement('span');
-          span.className = 'base-char';
+          span.className = isBits ? 'bit-char' : 'base-char';
           span.textContent = char;
           span.style.animationDelay = `${index * (delayPerChar / 1000)}s`;
           container.appendChild(span);
@@ -1090,6 +1092,24 @@
       const placeholder = document.getElementById('qkd-status-placeholder');
       
       if (!container || !viz) return;
+      
+      // Для реальных последовательностей проверяем, не была ли уже отображена
+      if (!isTest && displayedSequenceIds.has(data.sequence_id)) {
+        console.log('Последовательность уже отображена, пропускаем:', data.sequence_id);
+        return;
+      }
+      
+      // Добавляем в множество отображенных последовательностей
+      if (!isTest) {
+        displayedSequenceIds.add(data.sequence_id);
+      }
+      
+      console.log('addSequence вызвана:', { 
+        sequence_id: data.sequence_id, 
+        isTest: isTest, 
+        has_bits: !!data.last_32_bits, 
+        has_bases: !!data.last_32_bases 
+      });
       
       // Показываем визуализацию
       viz.style.display = 'block';
@@ -1108,9 +1128,11 @@
         const step2Viz = document.getElementById('step-2-viz');
         if (step2Viz) {
           const basesContainer = document.getElementById('step-2-bases-container');
+          const bitsContainer = document.getElementById('step-2-bits-container');
           const mismatchesDiv = document.getElementById('step-2-mismatches');
           
           if (basesContainer) basesContainer.innerHTML = '';
+          if (bitsContainer) bitsContainer.innerHTML = '';
           if (mismatchesDiv) mismatchesDiv.innerHTML = '';
           
           // Контейнер остается видимым, но пустым до появления нового просеивания
@@ -1123,21 +1145,31 @@
       sequenceDiv.className = `qkd-sequence-item ${isTest ? 'test' : 'real'}`;
       sequenceDiv.setAttribute('data-sequence-id', data.sequence_id);
       
-      // Сервер 2: показываем только базисы
+      // Сервер 2: показываем базисы + биты (в обратном порядке относительно сервера 1)
       const html = `
         <div class="qkd-sequence-label">Базисная последовательность (32 последних базиса):</div>
         <div class="qkd-sequence-bases" id="bases-${data.sequence_id}"></div>
+        <div class="qkd-sequence-label mt-2">Битовая последовательность (32 последних бита):</div>
+        <div class="qkd-sequence-bits" id="bits-${data.sequence_id}"></div>
       `;
       
       sequenceDiv.innerHTML = html;
       container.appendChild(sequenceDiv);
       
-      // Запускаем анимацию
+      // Запускаем анимацию (такая же, как в тестовом режиме)
       const animationDuration = 3500; // 3.5 секунды
       const delayPerChar = animationDuration / 32; // ~109 мс на символ
       
+      console.log('Запуск анимации для последовательности:', data.sequence_id, 'isTest:', isTest);
+      
       const basesContainer = document.getElementById(`bases-${data.sequence_id}`);
-      animateSequenceChars(basesContainer, data.last_32_bases, delayPerChar);
+      const bitsContainer = document.getElementById(`bits-${data.sequence_id}`);
+      if (basesContainer && data.last_32_bases) {
+        animateSequenceChars(basesContainer, data.last_32_bases, delayPerChar, false);
+      }
+      if (bitsContainer && data.last_32_bits) {
+        animateSequenceChars(bitsContainer, data.last_32_bits, delayPerChar, true);
+      }
       
       // Добавляем в массив
       displayedSequences.push({
@@ -1205,6 +1237,11 @@
     // Обработчик получения новой последовательности через WebSocket
     socket.on('new_sequence', (data) => {
       console.log('Получена новая последовательность:', data);
+      console.log('is_test:', data.is_test, 'sequence_id:', data.sequence_id);
+      // Для реальных последовательностей убеждаемся, что анимация проигрывается
+      if (!data.is_test || data.is_test === false || data.is_test === 0) {
+        console.log('Реальная последовательность от QKD, запускаем анимацию');
+      }
       addSequence(data);
     });
     
@@ -1217,21 +1254,80 @@
     });
     
     // ------------------------------
+    // Периодическая проверка БД на новые реальные последовательности
+    // ------------------------------
+    let pollingInterval = null;
+    
+    // Функция проверки новых последовательностей из БД
+    function checkNewSequencesFromDB() {
+      fetch('/api/get_new_real_sequences')
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === 'success' && data.sequences) {
+            // Обрабатываем последовательности в порядке их создания (старые сначала)
+            const sortedSequences = data.sequences.reverse();
+            
+            sortedSequences.forEach(seq => {
+              // Проверяем, не была ли уже отображена эта последовательность
+              if (!displayedSequenceIds.has(seq.sequence_id)) {
+                console.log('Найдена новая последовательность в БД:', seq.sequence_id);
+                displayedSequenceIds.add(seq.sequence_id);
+                
+                // Воспроизводим анимацию для новой последовательности
+                addSequence(seq);
+              }
+            });
+          }
+        })
+        .catch(error => {
+          console.error('Ошибка при проверке новых последовательностей:', error);
+        });
+    }
+    
+    // Запускаем периодическую проверку каждые 2 секунды
+    // Останавливаем при отключении страницы
+    function startPolling() {
+      if (pollingInterval) {
+        clearInterval(pollingInterval);
+      }
+      pollingInterval = setInterval(checkNewSequencesFromDB, 2000); // Проверка каждые 2 секунды
+      console.log('Запущена периодическая проверка БД на новые последовательности');
+    }
+    
+    function stopPolling() {
+      if (pollingInterval) {
+        clearInterval(pollingInterval);
+        pollingInterval = null;
+        console.log('Остановлена периодическая проверка БД');
+      }
+    }
+    
+    // Запускаем проверку при загрузке страницы
+    startPolling();
+    
+    // Останавливаем при выгрузке страницы
+    window.addEventListener('beforeunload', () => {
+      stopPolling();
+    });
+    
+    // ------------------------------
     // Просеивание ключа - новая реализация
     // ------------------------------
     
-    // Функция отображения просеивания (сервер 2: только базисы)
+    // Функция отображения просеивания (сервер 2: базисы + биты в обратном порядке)
     window.displaySifting = function(data) {
       console.log('=== displaySifting вызвана ===');
       console.log('Данные:', data);
       
       const viz = document.getElementById('step-2-viz');
       const basesContainer = document.getElementById('step-2-bases-container');
+      const bitsContainer = document.getElementById('step-2-bits-container');
       const mismatchesDiv = document.getElementById('step-2-mismatches');
       
       console.log('Элементы DOM:', { 
         viz: !!viz, 
-        basesContainer: !!basesContainer, 
+        basesContainer: !!basesContainer,
+        bitsContainer: !!bitsContainer,
         mismatchesDiv: !!mismatchesDiv 
       });
       
@@ -1242,6 +1338,11 @@
       
       if (!basesContainer) {
         console.error('Элемент step-2-bases-container не найден!');
+        return;
+      }
+      
+      if (!bitsContainer) {
+        console.error('Элемент step-2-bits-container не найден!');
         return;
       }
       
@@ -1261,14 +1362,19 @@
       }
       
       // Получаем свои данные (сервер 2)
-      // Для сервера 2: last_32_bases - это наши данные
+      // Для сервера 2: last_32_bases и last_32_bits - это наши данные
       const myBases = (data.last_32_bases || data.last_32_bases_local || '').toString();
+      const myBits = (data.last_32_bits || data.last_32_bits_local || '').toString();
       const remoteBases = (data.last_32_bases_remote || '').toString();
+      const remoteBits = (data.last_32_bits_remote || '').toString();
       
       console.log('Данные для отображения:', { 
         myBases: myBases.substring(0, 10) + '...',
+        myBits: myBits.substring(0, 10) + '...',
         myBases_length: myBases.length,
-        remoteBases_length: remoteBases.length
+        myBits_length: myBits.length,
+        remoteBases_length: remoteBases.length,
+        remoteBits_length: remoteBits.length
       });
       
       // Функция анимации символов с цветовой индикацией
@@ -1302,7 +1408,7 @@
         });
       };
       
-      // Отображаем базисы с анимацией
+      // Отображаем базисы с анимацией (первыми)
       console.log('Проверка данных для базисов:', { myBases_length: myBases.length, has_myBases: !!myBases });
       if (myBases && myBases.length > 0) {
         console.log('Запускаем анимацию базисов...');
@@ -1318,6 +1424,24 @@
       } else {
         console.warn('Нет данных о базисах, отображаем сообщение');
         basesContainer.innerHTML = '<div class="text-xs text-gray-500">Нет данных о базисах</div>';
+      }
+      
+      // Отображаем биты с анимацией (после базисов)
+      console.log('Проверка данных для битов:', { myBits_length: myBits.length, has_myBits: !!myBits });
+      if (myBits && myBits.length > 0) {
+        console.log('Запускаем анимацию битов...');
+        const animationDuration = 3500; // 3.5 секунды
+        const delayPerChar = animationDuration / myBits.length;
+        animateSiftingChars(
+          bitsContainer,
+          myBits,
+          remoteBits,
+          'Битовая последовательность (32 последних бита):',
+          delayPerChar
+        );
+      } else {
+        console.warn('Нет данных о битах, отображаем сообщение');
+        bitsContainer.innerHTML = '<div class="text-xs text-gray-500">Нет данных о битах</div>';
       }
       
       // Отображаем количество несовпадений

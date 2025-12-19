@@ -559,6 +559,24 @@ class QKDModule:
                         print(f"[QKD] ========== УСПЕШНО СОХРАНЕНА ПОСЛЕДОВАТЕЛЬНОСТЬ #{sequence_counter-1} ==========")
                         log_to_file(f"[QKD] sequence_id: {sequence_id}", level="INFO")
                         print(f"[QKD] sequence_id: {sequence_id}")
+                        
+                        # КРИТИЧНО: Вызываем callback для отправки данных через WebSocket
+                        if self.sequence_callback:
+                            try:
+                                log_to_file(f"[QKD] Вызов callback для отправки через WebSocket: sequence_id={sequence_id}", level="INFO")
+                                print(f"[QKD] Вызов callback для отправки через WebSocket: sequence_id={sequence_id}")
+                                self.sequence_callback(sequence_id, bits, bases, is_test=False)
+                                log_to_file(f"[QKD] Callback успешно выполнен", level="INFO")
+                                print(f"[QKD] Callback успешно выполнен")
+                            except Exception as callback_error:
+                                error_msg = f"[QKD ERROR] Ошибка в callback: {callback_error}"
+                                log_to_file(error_msg, level="ERROR")
+                                print(error_msg)
+                                import traceback
+                                print(traceback.format_exc())
+                        else:
+                            log_to_file(f"[QKD WARNING] Callback не установлен! Анимация не будет отображаться.", level="WARNING")
+                            print(f"[QKD WARNING] Callback не установлен! Анимация не будет отображаться.")
                     except ValueError as val_error:
                         # Ошибка валидации - логируем детально
                         error_msg = f"[QKD ERROR] Ошибка валидации при сохранении последовательности #{sequence_counter}: {val_error}"

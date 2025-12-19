@@ -492,6 +492,45 @@ def get_raw_data_api():
         log_to_file(f"Ошибка получения raw_data: {e}", level="ERROR")
         return jsonify({'status': 'error', 'message': str(e)}), 500
 
+@app.route('/api/get_new_real_sequences', methods=['GET'])
+def get_new_real_sequences():
+    """API endpoint для получения новых реальных последовательностей из БД (для анимации)"""
+    try:
+        # Получаем последние реальные последовательности (is_test = 0 или False)
+        query = """
+            SELECT sequence_id, bits, bases, generated_at 
+            FROM raw_data 
+            WHERE is_test = 0 
+            ORDER BY generated_at DESC 
+            LIMIT 10
+        """
+        result = db_manager.execute_query(query, fetch=True, sync=False)
+        
+        if not result:
+            return jsonify({'status': 'success', 'sequences': []})
+        
+        # Форматируем данные для отправки
+        sequences = []
+        for item in result:
+            bits = item.get('bits', '')
+            bases = item.get('bases', '')
+            last_32_bits = bits[-32:] if len(bits) >= 32 else bits
+            last_32_bases = bases[-32:] if len(bases) >= 32 else bases
+            
+            sequences.append({
+                'sequence_id': item.get('sequence_id'),
+                'last_32_bits': last_32_bits,
+                'last_32_bases': last_32_bases,
+                'is_test': False,
+                'generated_at': item.get('generated_at'),
+                'timestamp': moscow_now_str('%Y-%m-%d %H:%M:%S')
+            })
+        
+        return jsonify({'status': 'success', 'sequences': sequences})
+    except Exception as e:
+        log_to_file(f"Ошибка получения новых последовательностей: {e}", level="ERROR")
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
 @app.route('/recover_key', methods=['POST'])
 def recover_key():
     """
