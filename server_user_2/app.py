@@ -458,27 +458,36 @@ def select_sequence():
             if qkd_socket_client:
                 try:
                     # Проверяем подключение и отправляем данные
-                    qkd_socket_client.emit('sifting_complete', sifting_data)
-                    log_to_file(f"Отправлены данные просеивания на server_1 через WebSocket клиент для {sequence_id}, mismatches={mismatches}, qber={qber_value}%", level="INFO")
+                    # Используем wait=True для синхронной отправки
+                    qkd_socket_client.emit('sifting_complete', sifting_data, wait=True)
+                    log_to_file(f"[WebSocket Client] Отправлены данные просеивания на server_1 для {sequence_id}, mismatches={mismatches}, qber={qber_value}%", level="INFO")
+                    print(f"[WebSocket Client] Отправлены данные просеивания на server_1 для {sequence_id}")
                 except Exception as emit_error:
-                    log_to_file(f"Ошибка отправки через WebSocket клиент (возможно не подключен): {emit_error}", level="WARNING")
+                    log_to_file(f"[WebSocket Client] Ошибка отправки через WebSocket клиент (возможно не подключен): {emit_error}", level="WARNING")
+                    print(f"[WebSocket Client] Ошибка отправки: {emit_error}")
                     # Пытаемся переподключиться
                     try:
+                        log_to_file(f"[WebSocket Client] Пытаемся переподключиться к server_1...", level="INFO")
                         init_qkd_socket_client()
                         if qkd_socket_client:
-                            qkd_socket_client.emit('sifting_complete', sifting_data)
-                            log_to_file(f"Переподключен и отправлены данные просеивания на server_1 для {sequence_id}", level="INFO")
+                            qkd_socket_client.emit('sifting_complete', sifting_data, wait=True)
+                            log_to_file(f"[WebSocket Client] Переподключен и отправлены данные просеивания на server_1 для {sequence_id}", level="INFO")
+                            print(f"[WebSocket Client] Переподключен и отправлены данные")
                     except Exception as reconnect_error:
-                        log_to_file(f"Не удалось переподключиться к server_1: {reconnect_error}", level="ERROR")
+                        log_to_file(f"[WebSocket Client] Не удалось переподключиться к server_1: {reconnect_error}", level="ERROR")
+                        print(f"[WebSocket Client] Ошибка переподключения: {reconnect_error}")
             else:
-                log_to_file(f"WebSocket клиент не инициализирован, пытаемся инициализировать...", level="WARNING")
+                log_to_file(f"[WebSocket Client] WebSocket клиент не инициализирован, пытаемся инициализировать...", level="WARNING")
+                print(f"[WebSocket Client] WebSocket клиент не инициализирован")
                 try:
                     init_qkd_socket_client()
                     if qkd_socket_client:
-                        qkd_socket_client.emit('sifting_complete', sifting_data)
-                        log_to_file(f"Инициализирован и отправлены данные просеивания на server_1 для {sequence_id}", level="INFO")
+                        qkd_socket_client.emit('sifting_complete', sifting_data, wait=True)
+                        log_to_file(f"[WebSocket Client] Инициализирован и отправлены данные просеивания на server_1 для {sequence_id}", level="INFO")
+                        print(f"[WebSocket Client] Инициализирован и отправлены данные")
                 except Exception as init_error:
-                    log_to_file(f"Не удалось инициализировать WebSocket клиент: {init_error}", level="ERROR")
+                    log_to_file(f"[WebSocket Client] Не удалось инициализировать WebSocket клиент: {init_error}", level="ERROR")
+                    print(f"[WebSocket Client] Ошибка инициализации: {init_error}")
         except Exception as e:
             log_to_file(f"Ошибка отправки данных просеивания на server_1 через WebSocket клиент: {e}", level="ERROR")
             import traceback
@@ -490,7 +499,7 @@ def select_sequence():
             except:
                 pass
         
-        return jsonify({
+        response_data = {
             'status': 'success', 
             'mismatches': mismatches, 
             'qber': qber_value,
@@ -501,7 +510,9 @@ def select_sequence():
             'last_32_bits_remote': comparison_result.get('last_32_bits_remote', ''),
             'last_32_bases_local': last_32_bases_local,
             'last_32_bases_remote': last_32_bases_remote
-        })
+        }
+        log_to_file(f"[SELECT] Возвращаем данные клиенту для {sequence_id}: mismatches={mismatches}, bits_local_len={len(response_data['last_32_bits_local'])}, bases_local_len={len(response_data['last_32_bases_local'])}", level="INFO")
+        return jsonify(response_data)
     else:
         error_msg = f'Не удалось выбрать последовательность {sequence_id}. Проверьте логи сервера.'
         log_to_file(f"[SELECT] Ошибка выбора последовательности {sequence_id}: select_sequence вернул False", level="ERROR")

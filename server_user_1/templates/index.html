@@ -1577,8 +1577,9 @@
     
     // Функция отображения просеивания (сервер 1: биты + базисы)
     window.displaySifting = function(data) {
-      console.log('=== displaySifting вызвана ===');
-      console.log('Данные:', data);
+      console.log('[displaySifting] === ФУНКЦИЯ ВЫЗВАНА ===');
+      console.log('[displaySifting] Данные:', data);
+      console.log('[displaySifting] sequence_id:', data.sequence_id, 'mismatches:', data.mismatches);
       
       const viz = document.getElementById('step-2-viz');
       const bitsContainer = document.getElementById('step-2-bits-container');
@@ -1593,23 +1594,24 @@
       });
       
       if (!viz) {
-        console.error('Элемент step-2-viz не найден!');
+        console.error('[displaySifting] Элемент step-2-viz не найден!');
         return;
       }
       
       if (!bitsContainer) {
-        console.error('Элемент step-2-bits-container не найден!');
+        console.error('[displaySifting] Элемент step-2-bits-container не найден!');
         return;
       }
       
       if (!basesContainer) {
-        console.error('Элемент step-2-bases-container не найден!');
+        console.error('[displaySifting] Элемент step-2-bases-container не найден!');
         return;
       }
       
       // Показываем визуализацию (всегда видима до генерации новой последовательности)
-      console.log('Показываем визуализацию...');
+      console.log('[displaySifting] Показываем визуализацию...');
       viz.style.display = 'block';
+      console.log('[displaySifting] step-2-viz отображен');
       const step2 = document.getElementById('step-2');
       if (step2) {
         step2.classList.add('active-step');
@@ -1728,9 +1730,15 @@
       });
       
       // Отображаем биты с анимацией (только для сервера 1)
-      console.log('Проверка данных для битов:', { myBits_length: myBits.length, has_myBits: !!myBits });
+      console.log('[displaySifting] Проверка данных для битов:', { 
+        myBits_length: myBits.length, 
+        has_myBits: !!myBits,
+        myBits_preview: myBits.substring(0, 10) + '...',
+        remoteBits_length: remoteBits.length,
+        remoteBits_preview: remoteBits.substring(0, 10) + '...'
+      });
       if (myBits && myBits.length > 0) {
-        console.log('Запускаем анимацию битов...');
+        console.log('[displaySifting] Запускаем анимацию битов...');
         const animationDuration = 3500; // 3.5 секунды
         const delayPerChar = animationDuration / myBits.length;
         animateSiftingChars(
@@ -1741,15 +1749,22 @@
           delayPerChar,
           bitsMismatchPositions
         );
+        console.log('[displaySifting] Анимация битов запущена');
       } else {
-        console.warn('Нет данных о битах, отображаем сообщение');
+        console.warn('[displaySifting] Нет данных о битах, отображаем сообщение');
         bitsContainer.innerHTML = '<div class="text-xs text-gray-500">Нет данных о битах</div>';
       }
       
       // Отображаем базисы с анимацией
-      console.log('Проверка данных для базисов:', { myBases_length: myBases.length, has_myBases: !!myBases });
+      console.log('[displaySifting] Проверка данных для базисов:', { 
+        myBases_length: myBases.length, 
+        has_myBases: !!myBases,
+        myBases_preview: myBases.substring(0, 10) + '...',
+        remoteBases_length: remoteBases.length,
+        remoteBases_preview: remoteBases.substring(0, 10) + '...'
+      });
       if (myBases && myBases.length > 0) {
-        console.log('Запускаем анимацию базисов...');
+        console.log('[displaySifting] Запускаем анимацию базисов...');
         const animationDuration = 3500; // 3.5 секунды
         const delayPerChar = animationDuration / myBases.length;
         animateSiftingChars(
@@ -1760,8 +1775,9 @@
           delayPerChar,
           basesMismatchPositions
         );
+        console.log('[displaySifting] Анимация базисов запущена');
       } else {
-        console.warn('Нет данных о базисах, отображаем сообщение');
+        console.warn('[displaySifting] Нет данных о базисах, отображаем сообщение');
         basesContainer.innerHTML = '<div class="text-xs text-gray-500">Нет данных о базисах</div>';
       }
       
@@ -2301,11 +2317,15 @@
       },
       body: `sequence_id=${sequenceId}`
     })
-    .then(response => response.json())
+    .then(response => {
+      console.log('[SELECT] Ответ от сервера получен, статус:', response.status);
+      return response.json();
+    })
     .then(data => {
+      console.log('[SELECT] Данные от сервера:', data);
       if (data.status === 'success') {
         // Отображаем данные просеивания
-        console.log('Данные от сервера для просеивания:', data);
+        console.log('[SELECT] Статус success, данные для просеивания:', data);
         
         // Убеждаемся, что функция существует
         if (typeof window.displaySifting !== 'function') {
@@ -2324,22 +2344,32 @@
           last_32_bases_remote: data.last_32_bases_remote || '',
           mismatches: data.mismatches || 0,
           qber: data.qber || 0,
-          is_test: data.is_test || false
+          is_test: data.is_test || false,
+          station: 'A' // Добавляем station для правильной интерпретации данных
         };
         
-        console.log('Вызываем displaySifting с данными:', siftingData);
-        console.log('Проверка данных:', {
+        console.log('[SELECT] Вызываем displaySifting с данными:', siftingData);
+        console.log('[SELECT] Проверка данных:', {
           has_bits: !!siftingData.last_32_bits_local,
           has_bases: !!siftingData.last_32_bases_local,
           bits_length: siftingData.last_32_bits_local.length,
-          bases_length: siftingData.last_32_bases_local.length
+          bases_length: siftingData.last_32_bases_local.length,
+          mismatches: siftingData.mismatches,
+          sequence_id: siftingData.sequence_id
         });
         
         // Вызываем функцию отображения (запускает анимацию просеивания)
         try {
-          window.displaySifting(siftingData);
+          console.log('[SELECT] Вызываем window.displaySifting...');
+          if (window.displaySifting) {
+            window.displaySifting(siftingData);
+            console.log('[SELECT] displaySifting вызвана успешно');
+          } else {
+            console.error('[SELECT] window.displaySifting не найдена!');
+            alert('Ошибка: функция отображения не найдена. Проверьте консоль браузера.');
+          }
         } catch (error) {
-          console.error('Ошибка при вызове displaySifting:', error);
+          console.error('[SELECT] Ошибка при вызове displaySifting:', error);
           alert('Ошибка при отображении просеивания: ' + error.message);
           return;
         }
