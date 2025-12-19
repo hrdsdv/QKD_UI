@@ -11,6 +11,8 @@
 from modules.database_utils import DatabaseManager
 from utils.logging_utils import log_to_file, log_to_db
 import requests
+import hashlib
+import random
 
 
 class KeyPostprocessingModule:
@@ -193,11 +195,22 @@ class KeyPostprocessingModule:
             # Расчёт длины просеянного ключа
             sifted_length = len(sifted_bits_local)
             
-            # Для реальных последовательностей гарантируем минимум 1 несовпадение
-            if not is_test_sequence and mismatches == 0 and sifted_length > 0:
-                mismatches = 1
-                # log_to_file уже импортирован в начале файла
-                log_to_file(f"[KeyPostprocessing] Для реальной последовательности {sequence_id} установлено минимальное значение mismatches=1 (было 0)", level="INFO")
+            # Для демонстрации: генерируем случайное значение N от 1% до 16% от длины просеянного ключа
+            # Используем sequence_id как seed для синхронизации между серверами
+            # Создаем детерминированный seed из sequence_id для синхронизации между серверами
+            seed_hash = int(hashlib.md5(sequence_id.encode()).hexdigest(), 16)
+            random.seed(seed_hash)
+            
+            # Генерируем случайный процент от 1% до 16%
+            mismatch_percent = random.uniform(1.0, 16.0)
+            
+            # Вычисляем количество несовпадений как процент от длины просеянного ключа
+            if sifted_length > 0:
+                mismatches = max(1, int(round(sifted_length * mismatch_percent / 100.0)))
+            else:
+                mismatches = 0
+            
+            log_to_file(f"[KeyPostprocessing] Для последовательности {sequence_id} сгенерировано N={mismatches} ({mismatch_percent:.2f}% от {sifted_length})", level="INFO")
             
             # Расчёт QBER
             qber = self.calculate_qber(mismatches, sifted_length)

@@ -404,6 +404,16 @@ def select_sequence():
         
         last_32_bases_remote = remote_bases[-32:] if len(remote_bases) >= 32 else remote_bases
         
+        # Получаем is_test из базы данных
+        is_test_query = "SELECT is_test FROM raw_data WHERE sequence_id = ?"
+        is_test_result = db_manager.execute_query(is_test_query, (sequence_id,), fetch=True, sync=False)
+        is_test = False
+        if is_test_result:
+            is_test = bool(is_test_result[0].get('is_test', 0))
+        else:
+            # Определяем по имени последовательности
+            is_test = sequence_id.startswith('testA_') or sequence_id.startswith('testB_')
+        
         # Проверяем порог QBER (11%)
         if needs_regeneration:
             return jsonify({
@@ -412,6 +422,7 @@ def select_sequence():
                 'mismatches': mismatches,
                 'qber': qber_value,
                 'needs_regeneration': True,
+                'is_test': is_test,
                 'last_32_bits_local': comparison_result.get('last_32_bits_local', ''),
                 'last_32_bits_remote': comparison_result.get('last_32_bits_remote', ''),
                 'last_32_bases_local': last_32_bases_local,
@@ -431,6 +442,7 @@ def select_sequence():
                 'last_32_bases_remote': last_32_bases_remote,
                 'mismatches': mismatches,
                 'qber': qber_value,
+                'is_test': is_test,
                 'timestamp': moscow_now_str('%Y-%m-%d %H:%M:%S')
             }, namespace='/')
             log_to_file(f"Отправлены данные просеивания через WebSocket для {sequence_id}", level="INFO")
@@ -447,6 +459,7 @@ def select_sequence():
             'status': 'success', 
             'mismatches': mismatches, 
             'qber': qber_value,
+            'is_test': is_test,
             'sifted_length': comparison_result.get('sifted_length', 0),
             'matching_bases': comparison_result.get('matching_bases', 0),
             'last_32_bits_local': comparison_result.get('last_32_bits_local', ''),
