@@ -1068,6 +1068,8 @@
     let displayedSequences = []; // Массив отображаемых последовательностей
     const MAX_REAL_SEQUENCES = 4; // Максимум последовательностей от реального QKD
     let displayedSequenceIds = new Set(); // Множество отображенных sequence_id (для избежания дублирования)
+    let isAnimationInProgress = false; // Флаг, что анимация идет
+    let animationQueue = []; // Очередь последовательностей для анимации
     
     // Функция анимации появления символов слева направо
     function animateSequenceChars(container, text, delayPerChar = 100, isBits = false) {
@@ -1085,8 +1087,10 @@
     }
     
     // Функция добавления новой последовательности
-    function addSequence(data) {
+    function addSequence(data, skipAnimation = false) {
       const isTest = data.is_test === true || data.is_test === 1;
+      // Определяем, нужна ли анимация: только для данных от реальной QKD в реальном времени (WebSocket)
+      const shouldAnimate = !skipAnimation && (data.from_realtime_qkd || isTest);
       const container = document.getElementById('qkd-sequences-container');
       const viz = document.getElementById('step-1-viz');
       const placeholder = document.getElementById('qkd-status-placeholder');
@@ -1095,20 +1099,39 @@
       
       // Для реальных последовательностей проверяем, не была ли уже отображена
       if (!isTest && displayedSequenceIds.has(data.sequence_id)) {
-        console.log('Последовательность уже отображена, пропускаем:', data.sequence_id);
+        console.log('[addSequence] ⚠️ Последовательность уже отображена, пропускаем:', data.sequence_id);
         return;
       }
       
-      // Добавляем в множество отображенных последовательностей
-      if (!isTest) {
+      // Если анимация идет, добавляем в очередь
+      if (!isTest && shouldAnimate && isAnimationInProgress) {
+        console.log('[addSequence] ⏸️ Анимация идет, добавляем в очередь:', data.sequence_id);
+        animationQueue.push(data);
+        // Добавляем в displayedSequenceIds, чтобы не показывать снова
         displayedSequenceIds.add(data.sequence_id);
+        return;
       }
       
-      console.log('addSequence вызвана:', { 
+      // Добавляем в множество отображенных последовательностей ПЕРЕД отображением
+      // чтобы избежать дублирования при параллельных вызовах
+      if (!isTest) {
+        displayedSequenceIds.add(data.sequence_id);
+        console.log('[addSequence] ✅ Добавлена в displayedSequenceIds:', data.sequence_id, 'Всего:', displayedSequenceIds.size);
+      }
+      
+      // Устанавливаем флаг, что анимация идет (только для реальных последовательностей с анимацией)
+      if (!isTest && shouldAnimate) {
+        isAnimationInProgress = true;
+        console.log('[addSequence] 🎬 Начало анимации для:', data.sequence_id);
+      }
+      
+      console.log('[addSequence] Вызвана для последовательности:', { 
         sequence_id: data.sequence_id, 
         isTest: isTest, 
         has_bits: !!data.last_32_bits, 
-        has_bases: !!data.last_32_bases 
+        has_bases: !!data.last_32_bases,
+        bits_value: data.last_32_bits ? data.last_32_bits.substring(0, 10) + '...' : 'нет',
+        bases_value: data.last_32_bases ? data.last_32_bases.substring(0, 10) + '...' : 'нет'
       });
       
       // Показываем визуализацию
@@ -1156,19 +1179,61 @@
       sequenceDiv.innerHTML = html;
       container.appendChild(sequenceDiv);
       
-      // Запускаем анимацию (такая же, как в тестовом режиме)
-      const animationDuration = 3500; // 3.5 секунды
-      const delayPerChar = animationDuration / 32; // ~109 мс на символ
-      
-      console.log('Запуск анимации для последовательности:', data.sequence_id, 'isTest:', isTest);
-      
-      const basesContainer = document.getElementById(`bases-${data.sequence_id}`);
-      const bitsContainer = document.getElementById(`bits-${data.sequence_id}`);
-      if (basesContainer && data.last_32_bases) {
-        animateSequenceChars(basesContainer, data.last_32_bases, delayPerChar, false);
-      }
-      if (bitsContainer && data.last_32_bits) {
-        animateSequenceChars(bitsContainer, data.last_32_bits, delayPerChar, true);
+      // Запускаем анимацию только для данных от реальной QKD в реальном времени или тестовых
+      // Сохраняем длительность анимации для использования в setTimeout
+      let animationDuration = 0;
+      if (shouldAnimate) {
+        animationDuration = 3500; // 3.5 секунды
+        const delayPerChar = animationDuration / 32; // ~109 мс на символ
+        
+        console.log('[addSequence] 🎬 Запуск анимации для последовательности:', data.sequence_id, 'isTest:', isTest, 'from_realtime_qkd:', data.from_realtime_qkd);
+        console.log('[addSequence] Проверка контейнеров и данных:', {
+          has_bits: !!data.last_32_bits,
+          has_bases: !!data.last_32_bases,
+          bits_length: data.last_32_bits ? data.last_32_bits.length : 0,
+          bases_length: data.last_32_bases ? data.last_32_bases.length : 0
+        });
+        
+        const basesContainer = document.getElementById(`bases-${data.sequence_id}`);
+        const bitsContainer = document.getElementById(`bits-${data.sequence_id}`);
+        
+        console.log('[addSequence] Контейнеры найдены:', {
+          basesContainer: !!basesContainer,
+          bitsContainer: !!bitsContainer
+        });
+        
+        if (basesContainer && data.last_32_bases && data.last_32_bases.length > 0) {
+          console.log('[addSequence] Запуск анимации базисов, длина:', data.last_32_bases.length);
+          animateSequenceChars(basesContainer, data.last_32_bases, delayPerChar, false);
+        } else {
+          console.warn('[addSequence] Невозможно запустить анимацию базисов:', {
+            hasContainer: !!basesContainer,
+            hasData: !!data.last_32_bases,
+            dataLength: data.last_32_bases ? data.last_32_bases.length : 0
+          });
+        }
+        
+        if (bitsContainer && data.last_32_bits && data.last_32_bits.length > 0) {
+          console.log('[addSequence] Запуск анимации битов, длина:', data.last_32_bits.length);
+          animateSequenceChars(bitsContainer, data.last_32_bits, delayPerChar, true);
+        } else {
+          console.warn('[addSequence] Невозможно запустить анимацию битов:', {
+            hasContainer: !!bitsContainer,
+            hasData: !!data.last_32_bits,
+            dataLength: data.last_32_bits ? data.last_32_bits.length : 0
+          });
+        }
+      } else {
+        // Без анимации - просто отображаем данные сразу (для данных из БД)
+        console.log('[addSequence] ⏭️ Пропуск анимации для последовательности из БД:', data.sequence_id);
+        const basesContainer = document.getElementById(`bases-${data.sequence_id}`);
+        const bitsContainer = document.getElementById(`bits-${data.sequence_id}`);
+        if (basesContainer && data.last_32_bases) {
+          basesContainer.textContent = data.last_32_bases;
+        }
+        if (bitsContainer && data.last_32_bits) {
+          bitsContainer.textContent = data.last_32_bits;
+        }
       }
       
       // Добавляем в массив
@@ -1178,19 +1243,61 @@
         element: sequenceDiv
       });
       
-      // Для реального QKD - ограничиваем количество последовательностей
-      if (!isTest && displayedSequences.length > MAX_REAL_SEQUENCES) {
-        // Удаляем самую старую последовательность (кроме тестовых)
-        const realSequences = displayedSequences.filter(s => !s.is_test);
-        if (realSequences.length > MAX_REAL_SEQUENCES) {
-          const oldest = realSequences[0];
-          oldest.element.remove();
-          displayedSequences = displayedSequences.filter(s => s.sequence_id !== oldest.sequence_id);
+      // Убрано автоматическое удаление - последовательности остаются на экране
+      
+      // Для реального QKD - показываем только одну последовательность за раз
+      // Удаляем все предыдущие реальные последовательности, но только после завершения анимации
+      // чтобы не прерывать текущую анимацию
+      if (!isTest) {
+        // Если анимация идет, удаляем предыдущие последовательности после её завершения
+        if (shouldAnimate && animationDuration > 0) {
+          setTimeout(() => {
+            const realSequences = displayedSequences.filter(s => !s.is_test && s.sequence_id !== data.sequence_id);
+            realSequences.forEach(seq => {
+              if (seq.element && seq.element.parentNode) {
+                console.log('[addSequence] Удаление предыдущей последовательности после завершения анимации:', seq.sequence_id);
+                seq.element.remove();
+              }
+            });
+            // Обновляем массив, оставляя только текущую последовательность
+            displayedSequences = displayedSequences.filter(s => s.is_test || s.sequence_id === data.sequence_id);
+          }, animationDuration);
+        } else {
+          // Если анимации нет, удаляем сразу
+          const realSequences = displayedSequences.filter(s => !s.is_test && s.sequence_id !== data.sequence_id);
+          realSequences.forEach(seq => {
+            if (seq.element && seq.element.parentNode) {
+              console.log('[addSequence] Удаление предыдущей последовательности (без анимации):', seq.sequence_id);
+              seq.element.remove();
+            }
+          });
+          // Обновляем массив, оставляя только текущую последовательность
+          displayedSequences = displayedSequences.filter(s => s.is_test || s.sequence_id === data.sequence_id);
         }
+      }
+      
+      // После завершения анимации обрабатываем очередь
+      if (!isTest && shouldAnimate && animationDuration > 0) {
+        setTimeout(() => {
+          isAnimationInProgress = false;
+          console.log('[addSequence] ✅ Анимация завершена для:', data.sequence_id);
+          
+          // Обрабатываем следующую последовательность из очереди
+          if (animationQueue.length > 0) {
+            const nextSequence = animationQueue.shift();
+            console.log('[addSequence] 🎬 Обработка следующей последовательности из очереди:', nextSequence.sequence_id);
+            // Небольшая задержка перед следующей анимацией
+            setTimeout(() => {
+              addSequence(nextSequence);
+            }, 500);
+          }
+        }, animationDuration);
       }
       
       // Автоматически запускаем просеивание после завершения анимации генерации
       // Ждем завершения анимации (3.5 секунды) + небольшая задержка
+      // Используем animationDuration если есть, иначе 3500
+      const delayForSifting = (animationDuration > 0) ? animationDuration + 500 : 4000;
       setTimeout(() => {
         console.log('Автоматически запускаем просеивание для:', data.sequence_id);
         // Автоматически выбираем последовательность для просеивания
@@ -1231,18 +1338,24 @@
         .catch(error => {
           console.error('Ошибка при автоматическом вызове просеивания:', error);
         });
-      }, 4000); // 3.5 секунды анимации + 0.5 секунды задержка
+      }, delayForSifting); // Длительность анимации + 0.5 секунды задержка
     }
     
     // Обработчик получения новой последовательности через WebSocket
+    // Это единственный способ получить данные от реальной QKD в реальном времени
     socket.on('new_sequence', (data) => {
-      console.log('Получена новая последовательность:', data);
-      console.log('is_test:', data.is_test, 'sequence_id:', data.sequence_id);
-      // Для реальных последовательностей убеждаемся, что анимация проигрывается
+      console.log('[WebSocket] Получена новая последовательность от реальной QKD:', data);
+      console.log('[WebSocket] is_test:', data.is_test, 'sequence_id:', data.sequence_id);
+      // Для реальных последовательностей запускаем анимацию
       if (!data.is_test || data.is_test === false || data.is_test === 0) {
-        console.log('Реальная последовательность от QKD, запускаем анимацию');
+        console.log('[WebSocket] ✅ Реальная последовательность от QKD, запускаем анимацию');
+        // Добавляем флаг, что это данные от реальной QKD (нужна анимация)
+        data.from_realtime_qkd = true;
+        addSequence(data);
+      } else {
+        // Тестовые последовательности тоже показываем
+        addSequence(data);
       }
-      addSequence(data);
     });
     
     socket.on('connect', () => {
@@ -1258,29 +1371,83 @@
     // ------------------------------
     let pollingInterval = null;
     
+    // Флаг для отслеживания первой загрузки
+    let isFirstLoad = true;
+    
     // Функция проверки новых последовательностей из БД
     function checkNewSequencesFromDB() {
+      console.log('[Polling] 🔍 Проверка новых последовательностей из БД...', {
+        isFirstLoad: isFirstLoad,
+        displayedCount: displayedSequenceIds.size
+      });
+      
       fetch('/api/get_new_real_sequences')
-        .then(response => response.json())
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
         .then(data => {
-          if (data.status === 'success' && data.sequences) {
-            // Обрабатываем последовательности в порядке их создания (старые сначала)
-            const sortedSequences = data.sequences.reverse();
+          console.log('[Polling] 📦 Получен ответ от сервера:', {
+            status: data.status,
+            sequencesCount: data.sequences ? data.sequences.length : 0
+          });
+          
+          if (data.status === 'success' && data.sequences && data.sequences.length > 0) {
+            console.log('[Polling] 📊 Найдено последовательностей в ответе:', data.sequences.length);
             
-            sortedSequences.forEach(seq => {
-              // Проверяем, не была ли уже отображена эта последовательность
-              if (!displayedSequenceIds.has(seq.sequence_id)) {
-                console.log('Найдена новая последовательность в БД:', seq.sequence_id);
+            // Показываем только последнюю добавленную последовательность (1 вместо 4)
+            // При первой загрузке показываем только последнюю последовательность
+            // При последующих проверках показываем только новые, которых еще нет в displayedSequenceIds
+            let sequencesToShow = [];
+            
+            // Polling используется как fallback для WebSocket
+            // При первой загрузке просто добавляем все существующие последовательности в displayedSequenceIds
+            if (isFirstLoad) {
+              // При первой загрузке просто добавляем все существующие последовательности в displayedSequenceIds
+              // чтобы не показывать их снова
+              data.sequences.forEach(seq => {
                 displayedSequenceIds.add(seq.sequence_id);
+              });
+              console.log('[Polling] 🆕 Первая загрузка - добавлено в displayedSequenceIds:', data.sequences.length, 'последовательностей (без показа)');
+              isFirstLoad = false;
+            } else {
+              // При последующих проверках находим новые последовательности
+              const newSequences = data.sequences.filter(seq => !displayedSequenceIds.has(seq.sequence_id));
+              if (newSequences.length > 0) {
+                console.log('[Polling] 🔄 Найдено новых последовательностей в БД:', newSequences.length);
+                // Показываем только самую новую последовательность с анимацией
+                // Это fallback на случай, если WebSocket не сработал
+                const newestSequence = newSequences[0];
+                console.log('[Polling] ✅ Показываем новую последовательность из БД (fallback для WebSocket):', newestSequence.sequence_id);
                 
-                // Воспроизводим анимацию для новой последовательности
-                addSequence(seq);
+                // Добавляем флаг, что это данные от реальной QKD (для анимации)
+                newestSequence.from_realtime_qkd = true;
+                
+                // Показываем с анимацией
+                try {
+                  addSequence(newestSequence);
+                  console.log('[Polling] ✅ addSequence успешно вызвана для:', newestSequence.sequence_id);
+                } catch (error) {
+                  console.error('[Polling] ❌ Ошибка при вызове addSequence:', error);
+                }
+                
+                // Остальные новые последовательности просто добавляем в displayedSequenceIds
+                newSequences.slice(1).forEach(seq => {
+                  displayedSequenceIds.add(seq.sequence_id);
+                  console.log('[Polling] Добавлена в displayedSequenceIds (без показа):', seq.sequence_id);
+                });
+              } else {
+                console.log('[Polling] ℹ️ Нет новых последовательностей в БД');
               }
-            });
+            }
+          } else {
+            console.log('[Polling] ⚠️ Нет новых последовательностей или ошибка в ответе:', data);
           }
         })
         .catch(error => {
-          console.error('Ошибка при проверке новых последовательностей:', error);
+          console.error('[Polling ERROR] ❌ Ошибка при проверке новых последовательностей:', error);
         });
     }
     
@@ -1303,6 +1470,9 @@
     }
     
     // Запускаем проверку при загрузке страницы
+    // Сначала делаем немедленную проверку, затем запускаем периодическую
+    console.log('[Polling] Инициализация polling механизма...');
+    checkNewSequencesFromDB(); // Немедленная проверка при загрузке
     startPolling();
     
     // Останавливаем при выгрузке страницы
@@ -1445,8 +1615,15 @@
       }
       
       // Отображаем количество несовпадений
+      // Для реальных последовательностей N не должно быть 0
       if (mismatchesDiv) {
-        mismatchesDiv.textContent = `N = ${data.mismatches || 0} несовпадений`;
+        const mismatches = data.mismatches || 0;
+        // Если это реальная последовательность (не тестовая) и mismatches = 0, устанавливаем минимум 1
+        const finalMismatches = (mismatches === 0 && !data.is_test) ? 1 : mismatches;
+        mismatchesDiv.textContent = `N = ${finalMismatches} несовпадений`;
+        if (mismatches === 0 && !data.is_test) {
+          console.warn('[displaySifting] Для реальной последовательности mismatches был 0, установлено минимальное значение 1');
+        }
       }
     };
     

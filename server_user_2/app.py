@@ -496,15 +496,18 @@ def get_raw_data_api():
 def get_new_real_sequences():
     """API endpoint для получения новых реальных последовательностей из БД (для анимации)"""
     try:
-        # Получаем последние реальные последовательности (is_test = 0 или False)
+        # Всегда получаем последние 20 последовательностей (для надежности)
+        # Фильтрация по новым будет на клиенте по sequence_id
         query = """
             SELECT sequence_id, bits, bases, generated_at 
             FROM raw_data 
             WHERE is_test = 0 
             ORDER BY generated_at DESC 
-            LIMIT 10
+            LIMIT 20
         """
         result = db_manager.execute_query(query, fetch=True, sync=False)
+        
+        log_to_file(f"[API] Получено последовательностей из БД: {len(result) if result else 0}", level="INFO")
         
         if not result:
             return jsonify({'status': 'success', 'sequences': []})
@@ -514,6 +517,17 @@ def get_new_real_sequences():
         for item in result:
             bits = item.get('bits', '')
             bases = item.get('bases', '')
+            
+            # Проверяем, что данные не пустые
+            if not bits or not bases:
+                log_to_file(f"[API WARNING] Пропущена последовательность {item.get('sequence_id')} - пустые данные", level="WARNING")
+                continue
+            
+            # Проверяем длину данных
+            if len(bits) < 32 or len(bases) < 32:
+                log_to_file(f"[API WARNING] Последовательность {item.get('sequence_id')} слишком короткая: bits={len(bits)}, bases={len(bases)}", level="WARNING")
+                # Пропускаем, но логируем
+            
             last_32_bits = bits[-32:] if len(bits) >= 32 else bits
             last_32_bases = bases[-32:] if len(bases) >= 32 else bases
             
@@ -526,9 +540,15 @@ def get_new_real_sequences():
                 'timestamp': moscow_now_str('%Y-%m-%d %H:%M:%S')
             })
         
+        log_to_file(f"[API] Отправлено последовательностей: {len(sequences)}", level="INFO")
+        if sequences:
+            log_to_file(f"[API] Первая последовательность: {sequences[0].get('sequence_id')}, bits_len={len(sequences[0].get('last_32_bits', ''))}, bases_len={len(sequences[0].get('last_32_bases', ''))}", level="INFO")
         return jsonify({'status': 'success', 'sequences': sequences})
     except Exception as e:
-        log_to_file(f"Ошибка получения новых последовательностей: {e}", level="ERROR")
+        import traceback
+        error_trace = traceback.format_exc()
+        log_to_file(f"[API ERROR] Ошибка получения новых последовательностей: {e}", level="ERROR")
+        log_to_file(f"[API ERROR] Traceback: {error_trace}", level="ERROR")
         return jsonify({'status': 'error', 'message': str(e)}), 500
 
 @app.route('/recover_key', methods=['POST'])
