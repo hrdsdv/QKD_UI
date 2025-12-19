@@ -190,14 +190,16 @@ class KeyPostprocessingModule:
             except:
                 pass
             
+            # Расчёт длины просеянного ключа
+            sifted_length = len(sifted_bits_local)
+            
             # Для реальных последовательностей гарантируем минимум 1 несовпадение
             if not is_test_sequence and mismatches == 0 and sifted_length > 0:
                 mismatches = 1
-                from utils.logging_utils import log_to_file
+                # log_to_file уже импортирован в начале файла
                 log_to_file(f"[KeyPostprocessing] Для реальной последовательности {sequence_id} установлено минимальное значение mismatches=1 (было 0)", level="INFO")
             
             # Расчёт QBER
-            sifted_length = len(sifted_bits_local)
             qber = self.calculate_qber(mismatches, sifted_length)
             
             # Формируем просеянные ключи

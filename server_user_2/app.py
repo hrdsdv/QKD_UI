@@ -339,6 +339,10 @@ def select_sequence():
         return jsonify({'status': 'error', 'message': 'Не указан ID последовательности'}), 400
     
     username = session.get('username', 'Unknown')
+    
+    # Логируем попытку выбора
+    log_to_file(f"[SELECT] Попытка выбора последовательности {sequence_id} пользователем {username}", level="INFO")
+    
     if qkd_module.select_sequence(sequence_id, username):
         # Уведомляем первый сервер о выборе последовательности
         import requests
@@ -352,10 +356,19 @@ def select_sequence():
             log_to_file(f"Не удалось синхронизировать выбор последовательности: {e}", level="WARNING")
         
         # Используем новый модуль постобработки с реальным сравнением базисов
-        comparison_result = key_postprocessing_module.compare_bases(sequence_id)
-        
-        if 'error' in comparison_result:
-            return jsonify({'status': 'error', 'message': comparison_result['error']}), 400
+        try:
+            comparison_result = key_postprocessing_module.compare_bases(sequence_id)
+            
+            if 'error' in comparison_result:
+                error_msg = comparison_result['error']
+                log_to_file(f"[SELECT] Ошибка compare_bases для {sequence_id}: {error_msg}", level="ERROR")
+                return jsonify({'status': 'error', 'message': error_msg}), 400
+        except Exception as e:
+            error_msg = f'Ошибка при сравнении базисов: {str(e)}'
+            log_to_file(f"[SELECT] Исключение в compare_bases для {sequence_id}: {e}", level="ERROR")
+            import traceback
+            log_to_file(f"[SELECT] Traceback: {traceback.format_exc()}", level="ERROR")
+            return jsonify({'status': 'error', 'message': error_msg}), 500
         
         mismatches = comparison_result.get('mismatches', 0)
         qber_value = comparison_result.get('qber', 0)
@@ -368,7 +381,7 @@ def select_sequence():
         
         # Получаем локальные данные для базисов
         local_data = key_postprocessing_module.get_local_sequence(sequence_id)
-        last_32_bases_local = local_data['bases'][-32:] if local_data and len(local_data['bases']) >= 32 else ''
+        last_32_bases_local = local_data['bases'][-32:] if local_data and len(local_data.get('bases', '')) >= 32 else (local_data['bases'] if local_data else '')
         
         # Получаем удаленные базисы для сравнения
         remote_data = key_postprocessing_module.get_remote_sequence(sequence_id)
@@ -442,7 +455,9 @@ def select_sequence():
             'last_32_bases_remote': last_32_bases_remote
         })
     else:
-        return jsonify({'status': 'error', 'message': 'Не удалось выбрать последовательность'}), 500
+        error_msg = f'Не удалось выбрать последовательность {sequence_id}. Проверьте логи сервера.'
+        log_to_file(f"[SELECT] Ошибка выбора последовательности {sequence_id}: select_sequence вернул False", level="ERROR")
+        return jsonify({'status': 'error', 'message': error_msg}), 500
 
 @app.route('/api/sync_sequence_selection', methods=['POST'])
 def sync_sequence_selection():

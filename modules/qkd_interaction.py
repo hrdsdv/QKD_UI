@@ -700,6 +700,16 @@ class QKDModule:
                 # Форматируем время для отображения
                 if item.get('generated_at'):
                     item['generated_at'] = format_datetime_for_display(item['generated_at'])
+                
+                # Преобразуем is_test из SQLite формата (0/1) в булево значение
+                is_test_value = item.get('is_test')
+                if is_test_value is not None:
+                    # Преобразуем 0/1 в False/True
+                    item['is_test'] = bool(is_test_value) if is_test_value != 0 else False
+                else:
+                    # Если is_test отсутствует, определяем по sequence_id (тестовые начинаются с testA_ или testB_)
+                    item['is_test'] = sequence_id.startswith('testA_') or sequence_id.startswith('testB_')
+                
                 if sequence_id:
                     key_id = f"key_{sequence_id}"
                     # Проверяем наличие ключа в таблице keys
@@ -716,12 +726,44 @@ class QKDModule:
             return []
 
     def select_sequence(self, sequence_id: str, username: str) -> bool:
+        """
+        Выбирает последовательность для просеивания.
+        Разрешает повторный выбор (обновляет selected_by даже если уже выбрано).
+        
+        :param sequence_id: ID последовательности
+        :param username: Имя пользователя
+        :return: True если успешно, False если ошибка
+        """
         try:
+            # Сначала проверяем, существует ли последовательность
+            check_query = "SELECT sequence_id FROM raw_data WHERE sequence_id = ?"
+            check_result = self.db_manager.execute_query(check_query, (sequence_id,), fetch=True, sync=False)
+            
+            if not check_result:
+                error_msg = f"Последовательность {sequence_id} не найдена в БД"
+                from utils.logging_utils import log_to_file
+                log_to_file(error_msg, level="ERROR")
+                print(f"[QKD] {error_msg}")
+                return False
+            
+            # Обновляем selected_by (разрешаем повторный выбор)
+            selected_by_value = f"{self.station_name}_{username}"
             query = "UPDATE raw_data SET selected_by = ? WHERE sequence_id = ?"
-            self.db_manager.execute_query(query, (f"{self.station_name}_{username}", sequence_id), sync=True)
+            self.db_manager.execute_query(query, (selected_by_value, sequence_id), sync=True)
+            
+            from utils.logging_utils import log_to_file
+            log_to_file(f"[QKD] Последовательность {sequence_id} выбрана пользователем {selected_by_value}", level="INFO")
+            print(f"[QKD] Последовательность {sequence_id} выбрана пользователем {selected_by_value}")
+            
             return True
         except Exception as e:
-            print(f"Ошибка выбора последовательности: {e}")
+            from utils.logging_utils import log_to_file
+            error_msg = f"Ошибка выбора последовательности {sequence_id}: {e}"
+            log_to_file(error_msg, level="ERROR")
+            print(f"[QKD] {error_msg}")
+            import traceback
+            log_to_file(f"[QKD] Traceback: {traceback.format_exc()}", level="ERROR")
+            print(f"[QKD] Traceback: {traceback.format_exc()}")
             return False
 
     def get_test_data(self) -> list:

@@ -976,13 +976,9 @@
             <td class="py-2 px-4 border-b text-sm">{{ data.selected_by | default('Нет') }}</td>
             <td class="py-2 px-4 border-b">
               <div class="flex items-center gap-2">
-                {% if not data.selected_by %}
-                <button class="select-sequence-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded text-sm"
-                        data-sequence-id="{{ data.sequence_id }}">
-                  Выбрать
-                </button>
-                {% elif data.selected_by %}
-                  {% if data.is_recovered %}
+                {% if data.is_test %}
+                  {# Для тестовых последовательностей: зеленая "Восстановить" или серая "Восстановлено" #}
+                  {% if data.is_recovered and data.is_recovered != 0 and data.is_recovered != '0' and data.is_recovered != False %}
                 <button class="recover-key-button bg-gray-400 cursor-not-allowed text-white font-bold py-1 px-3 rounded text-sm"
                         data-sequence-id="{{ data.sequence_id }}" disabled>
                   Восстановлено
@@ -991,6 +987,26 @@
                 <button class="recover-key-button bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded text-sm"
                         data-sequence-id="{{ data.sequence_id }}">
                   Восстановить
+                </button>
+                  {% endif %}
+                {% else %}
+                  {# Для QKD ключей: если не выбрано - синяя "Выбрать", если выбрано - зеленая "Восстановить" или серая "Восстановлено" #}
+                  {% if data.selected_by and data.selected_by != '' and data.selected_by != 'Нет' %}
+                    {% if data.is_recovered and data.is_recovered != 0 and data.is_recovered != '0' and data.is_recovered != False %}
+                <button class="recover-key-button bg-gray-400 cursor-not-allowed text-white font-bold py-1 px-3 rounded text-sm"
+                        data-sequence-id="{{ data.sequence_id }}" disabled>
+                  Восстановлено
+                </button>
+                    {% else %}
+                <button class="recover-key-button bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded text-sm"
+                        data-sequence-id="{{ data.sequence_id }}">
+                  Восстановить
+                </button>
+                    {% endif %}
+                  {% else %}
+                <button class="select-sequence-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded text-sm"
+                        data-sequence-id="{{ data.sequence_id }}">
+                  Выбрать
                 </button>
                   {% endif %}
                 {% endif %}
@@ -1401,51 +1417,9 @@
         }, animationDuration);
       }
       
-      // Автоматически запускаем просеивание после завершения анимации генерации
-      // Ждем завершения анимации (3.5 секунды) + небольшая задержка
-      // Используем animationDuration если есть, иначе 3500
-      const delayForSifting = (animationDuration > 0) ? animationDuration + 500 : 4000;
-      setTimeout(() => {
-        console.log('Автоматически запускаем просеивание для:', data.sequence_id);
-        // Автоматически выбираем последовательность для просеивания
-        fetch('/select_sequence', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          body: `sequence_id=${data.sequence_id}`
-        })
-        .then(response => response.json())
-        .then(siftingData => {
-          if (siftingData.status === 'success') {
-            console.log('Данные просеивания получены автоматически:', siftingData);
-            if (window.displaySifting) {
-              const siftingDisplayData = {
-                sequence_id: data.sequence_id,
-                last_32_bits: siftingData.last_32_bits_local || siftingData.last_32_bits || '',
-                last_32_bits_local: siftingData.last_32_bits_local || siftingData.last_32_bits || '',
-                last_32_bases: siftingData.last_32_bases_local || siftingData.last_32_bases || '',
-                last_32_bases_local: siftingData.last_32_bases_local || siftingData.last_32_bases || '',
-                last_32_bits_remote: siftingData.last_32_bits_remote || '',
-                last_32_bases_remote: siftingData.last_32_bases_remote || '',
-                mismatches: siftingData.mismatches || 0,
-                qber: siftingData.qber || 0
-              };
-              console.log('Автоматически вызываем displaySifting с данными:', siftingDisplayData);
-              try {
-                window.displaySifting(siftingDisplayData);
-              } catch (error) {
-                console.error('Ошибка при автоматическом вызове displaySifting:', error);
-              }
-            }
-          } else {
-            console.warn('Не удалось автоматически получить данные просеивания:', siftingData);
-          }
-        })
-        .catch(error => {
-          console.error('Ошибка при автоматическом вызове просеивания:', error);
-        });
-      }, delayForSifting); // Длительность анимации + 0.5 секунды задержка
+      // УБРАНО: Автоматический вызов просеивания после анимации
+      // Просеивание теперь запускается только вручную через интерфейс "Выбор сырого ключа"
+      // Это предотвращает автоматическую установку selected_by для новых последовательностей
     }
     
     // Обработчик получения новой последовательности через WebSocket
@@ -2132,7 +2106,8 @@
         button.disabled = false;
       });
     });
-        // Управление модальным окном выбора сырого ключа
+
+    // Управление модальным окном выбора сырого ключа
     const selectRawKeyButton = document.getElementById('select-raw-key-button');
     const rawKeyModal = document.getElementById('raw-key-modal');
     const closeRawKeyModal = document.getElementById('close-raw-key-modal');
@@ -2154,19 +2129,60 @@
               
               const lastBits = item.bits ? item.bits.slice(-8) : '';
               const selectedBy = item.selected_by || 'Нет';
-              const isTest = item.is_test ? ' (тест)' : '';
+              
+              // Отладочная информация
+              console.log('[refreshRawDataTable] Обработка последовательности:', {
+                sequence_id: item.sequence_id,
+                selected_by: item.selected_by,
+                selected_by_type: typeof item.selected_by,
+                is_test: item.is_test,
+                is_test_type: typeof item.is_test,
+                is_recovered: item.is_recovered,
+                is_recovered_type: typeof item.is_recovered
+              });
+              
+              // Явно преобразуем is_test в булево значение (может прийти как 0/1 из SQLite)
+              const isTest = (item.is_test === true || item.is_test === 1 || item.is_test === '1' || 
+                             (typeof item.is_test === 'string' && item.is_test.toLowerCase() === 'true') ||
+                             (item.sequence_id && (item.sequence_id.startsWith('testA_') || item.sequence_id.startsWith('testB_'))));
+              const isTestLabel = isTest ? ' (тест)' : '';
+              
+              // Правильная проверка selected_by: null, undefined, пустая строка, или 'Нет'
+              const isSelected = item.selected_by && item.selected_by !== '' && item.selected_by !== 'Нет';
+              
+              // Правильная проверка is_recovered: должно быть явно true
+              const isRecovered = !!(item.is_recovered === true || 
+                                     item.is_recovered === 1 || 
+                                     item.is_recovered === '1' || 
+                                     (typeof item.is_recovered === 'string' && item.is_recovered.toLowerCase() === 'true'));
+              
+              console.log('[refreshRawDataTable] Результаты проверки:', {
+                sequence_id: item.sequence_id,
+                isTest: isTest,
+                isSelected: isSelected,
+                isRecovered: isRecovered,
+                willShowButton: isTest ? (isRecovered ? 'Восстановлено (серое)' : 'Восстановить (зеленое)') : (isSelected ? 'Выбрано (серое)' : 'Выбрать (синее)')
+              });
               
               row.innerHTML = `
-                <td class="py-2 px-4 border-b">${item.sequence_id}${isTest}</td>
+                <td class="py-2 px-4 border-b">${item.sequence_id}${isTestLabel}</td>
                 <td class="py-2 px-4 border-b font-mono text-xs">${lastBits}</td>
                 <td class="py-2 px-4 border-b text-sm">${item.generated_at || ''}</td>
                 <td class="py-2 px-4 border-b text-sm">${selectedBy}</td>
                 <td class="py-2 px-4 border-b">
-                  ${!item.selected_by ? 
-                    `<button class="select-sequence-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded text-sm" data-sequence-id="${item.sequence_id}">Выбрать</button>` :
-                    (item.is_recovered ? 
+                  ${isTest ? 
+                    // Для тестовых последовательностей: зеленая "Восстановить" или серая "Восстановлено"
+                    (isRecovered ? 
                       `<button class="recover-key-button bg-gray-400 cursor-not-allowed text-white font-bold py-1 px-3 rounded text-sm" data-sequence-id="${item.sequence_id}" disabled>Восстановлено</button>` :
                       `<button class="recover-key-button bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded text-sm" data-sequence-id="${item.sequence_id}">Восстановить</button>`
+                    ) :
+                    // Для QKD ключей: если не выбрано - синяя "Выбрать", если выбрано - зеленая "Восстановить" или серая "Восстановлено"
+                    (isSelected ? 
+                      (isRecovered ? 
+                        `<button class="recover-key-button bg-gray-400 cursor-not-allowed text-white font-bold py-1 px-3 rounded text-sm" data-sequence-id="${item.sequence_id}" disabled>Восстановлено</button>` :
+                        `<button class="recover-key-button bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded text-sm" data-sequence-id="${item.sequence_id}">Восстановить</button>`
+                      ) :
+                      `<button class="select-sequence-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded text-sm" data-sequence-id="${item.sequence_id}">Выбрать</button>`
                     )
                   }
                 </td>
@@ -2176,6 +2192,7 @@
             
             // Привязываем обработчики к новым кнопкам
             bindSequenceButtons();
+            bindRecoverButtons();
           }
         })
         .catch(error => console.error('Ошибка загрузки raw_data:', error));
@@ -2239,18 +2256,24 @@
           bases_length: siftingData.last_32_bases_local.length
         });
         
-        // Вызываем функцию отображения
+        // Вызываем функцию отображения (запускает анимацию просеивания)
         try {
           window.displaySifting(siftingData);
         } catch (error) {
           console.error('Ошибка при вызове displaySifting:', error);
           alert('Ошибка при отображении просеивания: ' + error.message);
+          return;
         }
         
-        alert(`Последовательность выбрана.\nКоличество несовпадений: ${data.mismatches}\nQBER: ${data.qber.toFixed(2)}%`);
-        document.getElementById('raw-key-modal').classList.remove('open');
+        // Обновляем таблицу в модальном окне, чтобы показать зеленую кнопку "Восстановить"
+        refreshRawDataTable();
         
-        // Обновляем таблицу без перезагрузки страницы
+        // Показываем уведомление после обновления таблицы
+        setTimeout(() => {
+          alert(`Последовательность выбрана.\nКоличество несовпадений: ${data.mismatches}\nQBER: ${data.qber.toFixed(2)}%`);
+        }, 100);
+        
+        // Обновляем основную таблицу без перезагрузки страницы
         setTimeout(() => {
           fetch('/raw_keys')
             .then(response => response.text())
@@ -2277,6 +2300,7 @@
     });
       });
     });
+  };
 
     // Обработчики для кнопок восстановления
     // Функция для создания HTML блока
@@ -2508,27 +2532,33 @@
       }
     });
     
-    document.querySelectorAll('.recover-key-button').forEach(button => {
-      button.addEventListener('click', () => {
-        const sequenceId = button.getAttribute('data-sequence-id');
+    // Функция привязки обработчиков к кнопкам "Восстановить"
+    const bindRecoverButtons = () => {
+      document.querySelectorAll('.recover-key-button').forEach(button => {
+        // Удаляем старые обработчики, если они есть
+        const newButton = button.cloneNode(true);
+        button.parentNode.replaceChild(newButton, button);
         
-        document.getElementById('step-3').classList.add('active-step');
-        document.getElementById('step-3-details').style.display = 'block';
-        document.getElementById('step-3-details').textContent = 'Восстановление...';
-        document.getElementById('step-3-recovery-viz').style.display = 'block';
-        
-        // Данные просеивания должны оставаться видимыми
-        const step2Viz = document.getElementById('step-2-viz');
-        if (step2Viz) {
-          step2Viz.style.display = 'block';
-        }
-        
-        fetch('/recover_key', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: `sequence_id=${sequenceId}`
-        })
-        .then(response => {
+        newButton.addEventListener('click', () => {
+          const sequenceId = newButton.getAttribute('data-sequence-id');
+          
+          document.getElementById('step-3').classList.add('active-step');
+          document.getElementById('step-3-details').style.display = 'block';
+          document.getElementById('step-3-details').textContent = 'Восстановление...';
+          document.getElementById('step-3-recovery-viz').style.display = 'block';
+          
+          // Данные просеивания должны оставаться видимыми
+          const step2Viz = document.getElementById('step-2-viz');
+          if (step2Viz) {
+            step2Viz.style.display = 'block';
+          }
+          
+          fetch('/recover_key', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `sequence_id=${sequenceId}`
+          })
+          .then(response => {
           if (!response.ok) {
             return response.json().then(err => Promise.reject(new Error(err.message || `HTTP ${response.status}`)));
           }
@@ -2560,7 +2590,10 @@
             // После завершения анимации (через 13 секунд)
             setTimeout(() => {
               alert(`Ключ успешно восстановлен!\nID ключа: ${data.key_id}`);
-              document.getElementById('raw-key-modal').classList.remove('open');
+              
+              // Обновляем таблицу в модальном окне, чтобы показать серую кнопку "Восстановлено"
+              refreshRawDataTable();
+              
               // Просеивание остается видимым - не перезагружаем страницу
               // Обновляем только таблицу ключей
               setTimeout(() => {
@@ -2576,6 +2609,7 @@
                         oldTable.innerHTML = newTable.innerHTML;
                         // Перепривязываем обработчики
                         bindSequenceButtons();
+                        bindRecoverButtons();
                       }
                     }
                   })
@@ -2607,6 +2641,7 @@
 
   // Первоначальная привязка обработчиков
   bindSequenceButtons();
+  bindRecoverButtons();
 
 // Управление модальным окном режима тестирования
 const testModeButton = document.getElementById('test-mode-button');
