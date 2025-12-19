@@ -1615,12 +1615,22 @@
         viz.style.display = 'block';
       }
       
-      // Получаем свои данные (сервер 1)
-      // Для сервера 1: last_32_bits и last_32_bases - это наши данные
-      const myBits = (data.last_32_bits || data.last_32_bits_local || '').toString();
-      const myBases = (data.last_32_bases || data.last_32_bases_local || '').toString();
-      const remoteBits = (data.last_32_bits_remote || '').toString();
-      const remoteBases = (data.last_32_bases_remote || '').toString();
+      // Получаем данные для сравнения
+      // Если данные пришли от другого сервера (station='B'), меняем местами local и remote
+      const isFromRemoteServer = data.station === 'B';
+      
+      const myBits = isFromRemoteServer 
+        ? (data.last_32_bits_remote || '').toString()
+        : (data.last_32_bits || data.last_32_bits_local || '').toString();
+      const myBases = isFromRemoteServer
+        ? (data.last_32_bases_remote || '').toString()
+        : (data.last_32_bases || data.last_32_bases_local || '').toString();
+      const remoteBits = isFromRemoteServer
+        ? (data.last_32_bits || data.last_32_bits_local || '').toString()
+        : (data.last_32_bits_remote || '').toString();
+      const remoteBases = isFromRemoteServer
+        ? (data.last_32_bases || data.last_32_bases_local || '').toString()
+        : (data.last_32_bases_remote || '').toString();
       
       console.log('Данные для отображения:', { 
         myBits: myBits.substring(0, 10) + '...', 
@@ -1631,8 +1641,34 @@
         remoteBases_length: remoteBases.length
       });
       
+      // Функция генерации детерминированных позиций несовпадений
+      const generateMismatchPositions = (sequenceId, mismatches, totalLength) => {
+        if (mismatches <= 0 || totalLength <= 0) return new Set();
+        
+        // Используем sequence_id как seed для детерминированной генерации
+        let hash = 0;
+        for (let i = 0; i < sequenceId.length; i++) {
+          const char = sequenceId.charCodeAt(i);
+          hash = ((hash << 5) - hash) + char;
+          hash = hash & hash; // Convert to 32bit integer
+        }
+        
+        // Используем хэш как seed для генератора
+        const positions = new Set();
+        let seed = Math.abs(hash);
+        
+        // Генерируем детерминированные позиции несовпадений
+        while (positions.size < mismatches && positions.size < totalLength) {
+          seed = (seed * 9301 + 49297) % 233280; // Линейный конгруэнтный генератор
+          const position = seed % totalLength;
+          positions.add(position);
+        }
+        
+        return positions;
+      };
+      
       // Функция анимации символов с цветовой индикацией
-      const animateSiftingChars = (container, myText, remoteText, label, delayPerChar = 100) => {
+      const animateSiftingChars = (container, myText, remoteText, label, delayPerChar = 100, mismatchPositions = null) => {
         console.log(`Анимация для ${label}:`, { myText_length: myText.length, remoteText_length: remoteText.length });
         
         // Очищаем контейнер
@@ -1653,7 +1689,13 @@
         chars.forEach((char, index) => {
           setTimeout(() => {
             const span = document.createElement('span');
-            const isMatch = char === remoteText[index];
+            // Используем детерминированные позиции несовпадений, если они заданы
+            let isMatch;
+            if (mismatchPositions && mismatchPositions.has(index)) {
+              isMatch = false; // Красный цвет для детерминированных несовпадений
+            } else {
+              isMatch = char === remoteText[index];
+            }
             span.className = `sifting-char ${isMatch ? 'match' : 'mismatch'}`;
             span.textContent = char;
             span.style.animationDelay = `${index * (delayPerChar / 1000)}s`;
@@ -1661,6 +1703,22 @@
           }, index * delayPerChar);
         });
       };
+      
+      // Генерируем детерминированные позиции несовпадений для синхронизации
+      const mismatches = data.mismatches || 0;
+      const bitsLength = Math.max(myBits.length, remoteBits.length);
+      const basesLength = Math.max(myBases.length, remoteBases.length);
+      const bitsMismatchPositions = generateMismatchPositions(data.sequence_id || '', mismatches, bitsLength);
+      const basesMismatchPositions = generateMismatchPositions((data.sequence_id || '') + '_bases', mismatches, basesLength);
+      
+      console.log('[displaySifting] Детерминированные позиции несовпадений:', {
+        sequence_id: data.sequence_id,
+        mismatches: mismatches,
+        bits_mismatches: bitsMismatchPositions.size,
+        bases_mismatches: basesMismatchPositions.size,
+        bits_length: bitsLength,
+        bases_length: basesLength
+      });
       
       // Отображаем биты с анимацией (только для сервера 1)
       console.log('Проверка данных для битов:', { myBits_length: myBits.length, has_myBits: !!myBits });
@@ -1673,7 +1731,8 @@
           myBits,
           remoteBits,
           'Битовая последовательность (32 последних бита):',
-          delayPerChar
+          delayPerChar,
+          bitsMismatchPositions
         );
       } else {
         console.warn('Нет данных о битах, отображаем сообщение');
@@ -1691,7 +1750,8 @@
           myBases,
           remoteBases,
           'Базисная последовательность (32 последних базиса):',
-          delayPerChar
+          delayPerChar,
+          basesMismatchPositions
         );
       } else {
         console.warn('Нет данных о базисах, отображаем сообщение');
@@ -1708,8 +1768,9 @@
     // Обработчик WebSocket для синхронизации
     socket.on('sifting_complete', (data) => {
       console.log('[WebSocket] Получены данные просеивания:', data);
-      console.log('[WebSocket] mismatches:', data.mismatches, 'qber:', data.qber);
+      console.log('[WebSocket] mismatches:', data.mismatches, 'qber:', data.qber, 'station:', data.station);
       if (window.displaySifting) {
+        // Запускаем анимацию сразу при получении данных для синхронизации
         window.displaySifting(data);
       } else {
         console.error('[WebSocket] Функция displaySifting не найдена!');
