@@ -1658,11 +1658,24 @@
     
     // Обработчик WebSocket для синхронизации
     socket.on('sifting_complete', (data) => {
-      console.log('[WebSocket] Получены данные просеивания:', data);
-      console.log('[WebSocket] mismatches:', data.mismatches, 'qber:', data.qber, 'station:', data.station);
+      console.log('[WebSocket] Получены данные просеивания от server_1:', data);
+      console.log('[WebSocket] mismatches:', data.mismatches, 'qber:', data.qber, 'station:', data.station, 'sequence_id:', data.sequence_id);
+      
+      // Проверяем, что данные корректны
+      if (!data.sequence_id) {
+        console.error('[WebSocket] Отсутствует sequence_id в данных просеивания');
+        return;
+      }
+      
       if (window.displaySifting) {
+        console.log('[WebSocket] Запускаем анимацию просеивания на server_2...');
         // Запускаем анимацию сразу при получении данных для синхронизации
-        window.displaySifting(data);
+        try {
+          window.displaySifting(data);
+          console.log('[WebSocket] Анимация просеивания запущена на server_2');
+        } catch (error) {
+          console.error('[WebSocket] Ошибка при запуске анимации просеивания:', error);
+        }
       } else {
         console.error('[WebSocket] Функция displaySifting не найдена!');
       }

@@ -515,29 +515,64 @@ def select_sequence():
                 'last_32_bases_remote': last_32_bases_remote
             })
         
-        # Отправляем данные через WebSocket для синхронизации с сервером 2
+        # Подготавливаем данные для отправки
+        sifting_data = {
+            'sequence_id': sequence_id,
+            'station': 'A',
+            'last_32_bits': comparison_result.get('last_32_bits_local', ''),
+            'last_32_bits_local': comparison_result.get('last_32_bits_local', ''),
+            'last_32_bases': last_32_bases_local,
+            'last_32_bases_local': last_32_bases_local,
+            'last_32_bits_remote': comparison_result.get('last_32_bits_remote', ''),
+            'last_32_bases_remote': last_32_bases_remote,
+            'mismatches': mismatches,
+            'qber': qber_value,
+            'is_test': is_test,
+            'timestamp': moscow_now_str('%Y-%m-%d %H:%M:%S')
+        }
+        
+        # Отправляем данные клиентам server_1 через WebSocket
         try:
-            socketio.emit('sifting_complete', {
-                'sequence_id': sequence_id,
-                'station': 'A',
-                'last_32_bits': comparison_result.get('last_32_bits_local', ''),
-                'last_32_bits_local': comparison_result.get('last_32_bits_local', ''),
-                'last_32_bases': last_32_bases_local,
-                'last_32_bases_local': last_32_bases_local,
-                'last_32_bits_remote': comparison_result.get('last_32_bits_remote', ''),
-                'last_32_bases_remote': last_32_bases_remote,
-                'mismatches': mismatches,
-                'qber': qber_value,
-                'is_test': is_test,
-                'timestamp': moscow_now_str('%Y-%m-%d %H:%M:%S')
-            }, namespace='/')
-            log_to_file(f"Отправлены данные просеивания через WebSocket для {sequence_id}, mismatches={mismatches}, qber={qber_value}%", level="INFO")
+            socketio.emit('sifting_complete', sifting_data, namespace='/')
+            log_to_file(f"Отправлены данные просеивания клиентам server_1 для {sequence_id}, mismatches={mismatches}, qber={qber_value}%", level="INFO")
         except Exception as e:
-            log_to_file(f"Ошибка отправки данных просеивания через WebSocket: {e}", level="ERROR")
+            log_to_file(f"Ошибка отправки данных просеивания клиентам server_1: {e}", level="ERROR")
+        
+        # Отправляем данные на server_2 через WebSocket клиент
+        try:
+            global qkd_socket_client
+            if qkd_socket_client:
+                try:
+                    # Проверяем подключение и отправляем данные
+                    qkd_socket_client.emit('sifting_complete', sifting_data)
+                    log_to_file(f"Отправлены данные просеивания на server_2 через WebSocket клиент для {sequence_id}, mismatches={mismatches}, qber={qber_value}%", level="INFO")
+                except Exception as emit_error:
+                    log_to_file(f"Ошибка отправки через WebSocket клиент (возможно не подключен): {emit_error}", level="WARNING")
+                    # Пытаемся переподключиться
+                    try:
+                        init_qkd_socket_client()
+                        if qkd_socket_client:
+                            qkd_socket_client.emit('sifting_complete', sifting_data)
+                            log_to_file(f"Переподключен и отправлены данные просеивания на server_2 для {sequence_id}", level="INFO")
+                    except Exception as reconnect_error:
+                        log_to_file(f"Не удалось переподключиться к server_2: {reconnect_error}", level="ERROR")
+            else:
+                log_to_file(f"WebSocket клиент не инициализирован, пытаемся инициализировать...", level="WARNING")
+                try:
+                    init_qkd_socket_client()
+                    if qkd_socket_client:
+                        qkd_socket_client.emit('sifting_complete', sifting_data)
+                        log_to_file(f"Инициализирован и отправлены данные просеивания на server_2 для {sequence_id}", level="INFO")
+                except Exception as init_error:
+                    log_to_file(f"Не удалось инициализировать WebSocket клиент: {init_error}", level="ERROR")
+        except Exception as e:
+            log_to_file(f"Ошибка отправки данных просеивания на server_2 через WebSocket клиент: {e}", level="ERROR")
+            import traceback
+            log_to_file(f"Traceback: {traceback.format_exc()}", level="ERROR")
             # Логируем в журнал
             try:
                 from utils.logging_utils import log_to_db
-                log_to_db(db_path, None, 'QKDModule', 'ERROR', f"Ошибка WebSocket синхронизации: {e}")
+                log_to_db(db_path, None, 'QKDModule', 'ERROR', f"Ошибка WebSocket синхронизации с server_2: {e}")
             except:
                 pass
         
@@ -792,8 +827,13 @@ def init_qkd_socket_client():
         
         # Подключаемся к серверу 2
         ws_url = f"http://{remote_url}"
-        qkd_socket_client.connect(ws_url, wait_timeout=5)
-        log_to_file(f"WebSocket клиент подключен к {ws_url}", level="INFO")
+        try:
+            qkd_socket_client.connect(ws_url, wait_timeout=10)
+            log_to_file(f"WebSocket клиент подключен к {ws_url}", level="INFO")
+        except Exception as connect_error:
+            log_to_file(f"Ошибка подключения WebSocket клиента к {ws_url}: {connect_error}", level="ERROR")
+            # Не устанавливаем qkd_socket_client в None, чтобы можно было попробовать переподключиться позже
+            raise
     except Exception as e:
         error_msg = f"Ошибка инициализации WebSocket клиента: {e}"
         log_to_file(error_msg, level="ERROR")

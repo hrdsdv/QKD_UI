@@ -691,11 +691,22 @@ def init_qkd_socket_client():
         def on_sifting_complete(data):
             """Обработчик получения данных просеивания от сервера 1"""
             try:
+                sequence_id = data.get('sequence_id', 'unknown')
+                mismatches = data.get('mismatches', 0)
+                station = data.get('station', 'unknown')
+                log_to_file(f"[WebSocket Client] Получены данные просеивания от сервера 1: sequence_id={sequence_id}, mismatches={mismatches}, station={station}", level="INFO")
+                
+                # Проверяем, что данные корректны
+                if not sequence_id or sequence_id == 'unknown':
+                    log_to_file(f"[WebSocket Client] Предупреждение: некорректный sequence_id в данных просеивания", level="WARNING")
+                
                 # Отправляем данные всем подключенным клиентам сервера 2
                 socketio.emit('sifting_complete', data, namespace='/')
-                log_to_file(f"Получены данные просеивания от сервера 1: {data.get('sequence_id')}", level="INFO")
+                log_to_file(f"[WebSocket Client] Отправлены данные просеивания клиентам server_2 для {sequence_id}, mismatches={mismatches}", level="INFO")
             except Exception as e:
-                log_to_file(f"Ошибка обработки данных просеивания от сервера 1: {e}", level="ERROR")
+                log_to_file(f"[WebSocket Client] Ошибка обработки данных просеивания от сервера 1: {e}", level="ERROR")
+                import traceback
+                log_to_file(f"[WebSocket Client] Traceback: {traceback.format_exc()}", level="ERROR")
         
         @qkd_socket_client.on('connect')
         def on_connect():
