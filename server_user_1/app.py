@@ -39,6 +39,13 @@ from datetime import datetime
 from utils.timezone_utils import moscow_now, moscow_now_str, moscow_datetime_sql
 import time
 
+# Импорт для WebSocket клиента
+try:
+    import socketio as sio_client
+except ImportError:
+    sio_client = None
+    log_to_file("socketio не установлен, WebSocket клиент недоступен", level="WARNING")
+
 
 app = Flask(__name__)
 CORS(app)  # Разрешаем кросс-доменные запросы для работы между разными ПК
@@ -483,6 +490,16 @@ def select_sequence():
         
         last_32_bases_remote = remote_bases[-32:] if len(remote_bases) >= 32 else remote_bases
         
+        # Получаем is_test из базы данных
+        is_test_query = "SELECT is_test FROM raw_data WHERE sequence_id = ?"
+        is_test_result = db_manager.execute_query(is_test_query, (sequence_id,), fetch=True, sync=False)
+        is_test = False
+        if is_test_result:
+            is_test = bool(is_test_result[0].get('is_test', 0))
+        else:
+            # Определяем по имени последовательности
+            is_test = sequence_id.startswith('testA_') or sequence_id.startswith('testB_')
+        
         # Проверяем порог QBER (11%)
         if needs_regeneration:
             return jsonify({
@@ -491,6 +508,7 @@ def select_sequence():
                 'mismatches': mismatches,
                 'qber': qber_value,
                 'needs_regeneration': True,
+                'is_test': is_test,
                 'last_32_bits_local': comparison_result.get('last_32_bits_local', ''),
                 'last_32_bits_remote': comparison_result.get('last_32_bits_remote', ''),
                 'last_32_bases_local': last_32_bases_local,
@@ -510,9 +528,10 @@ def select_sequence():
                 'last_32_bases_remote': last_32_bases_remote,
                 'mismatches': mismatches,
                 'qber': qber_value,
+                'is_test': is_test,
                 'timestamp': moscow_now_str('%Y-%m-%d %H:%M:%S')
             }, namespace='/')
-            log_to_file(f"Отправлены данные просеивания через WebSocket для {sequence_id}", level="INFO")
+            log_to_file(f"Отправлены данные просеивания через WebSocket для {sequence_id}, mismatches={mismatches}, qber={qber_value}%", level="INFO")
         except Exception as e:
             log_to_file(f"Ошибка отправки данных просеивания через WebSocket: {e}", level="ERROR")
             # Логируем в журнал
@@ -526,6 +545,7 @@ def select_sequence():
             'status': 'success', 
             'mismatches': mismatches, 
             'qber': qber_value,
+            'is_test': is_test,
             'sifted_length': comparison_result.get('sifted_length', 0),
             'matching_bases': comparison_result.get('matching_bases', 0),
             'last_32_bits_local': comparison_result.get('last_32_bits_local', ''),
@@ -721,6 +741,70 @@ def recover_key():
         return jsonify({'status': 'error', 'message': 'Не удалось сохранить восстановленный ключ'}), 500
 
 # WebSocket события
+# WebSocket клиент для подключения к серверу 2
+qkd_socket_client = None
+
+def init_qkd_socket_client():
+    """Инициализирует WebSocket клиент для подключения к серверу 2"""
+    global qkd_socket_client
+    if sio_client is None:
+        log_to_file("socketio не установлен, WebSocket клиент недоступен", level="WARNING")
+        return
+    
+    try:
+        remote_url = get_remote_server_url()
+        # Извлекаем хост и порт из URL
+        if remote_url.startswith('http://'):
+            remote_url = remote_url[7:]
+        elif remote_url.startswith('https://'):
+            remote_url = remote_url[8:]
+        
+        # Создаем клиент для подключения к серверу 2
+        qkd_socket_client = sio_client.Client()
+        
+        @qkd_socket_client.on('new_sequence')
+        def on_new_sequence(data):
+            """Обработчик получения новой последовательности от сервера 2"""
+            try:
+                # Отправляем данные всем подключенным клиентам сервера 1
+                socketio.emit('new_sequence', data, namespace='/')
+                log_to_file(f"Получена последовательность от сервера 2: {data.get('sequence_id')}", level="INFO")
+            except Exception as e:
+                log_to_file(f"Ошибка обработки последовательности от сервера 2: {e}", level="ERROR")
+        
+        @qkd_socket_client.on('sifting_complete')
+        def on_sifting_complete(data):
+            """Обработчик получения данных просеивания от сервера 2"""
+            try:
+                # Отправляем данные всем подключенным клиентам сервера 1
+                socketio.emit('sifting_complete', data, namespace='/')
+                log_to_file(f"Получены данные просеивания от сервера 2: {data.get('sequence_id')}, mismatches={data.get('mismatches')}", level="INFO")
+            except Exception as e:
+                log_to_file(f"Ошибка обработки данных просеивания от сервера 2: {e}", level="ERROR")
+        
+        @qkd_socket_client.on('connect')
+        def on_connect():
+            log_to_file("Подключен к серверу 2 через WebSocket", level="INFO")
+        
+        @qkd_socket_client.on('disconnect')
+        def on_disconnect():
+            log_to_file("Отключен от сервера 2 через WebSocket", level="WARNING")
+        
+        # Подключаемся к серверу 2
+        ws_url = f"http://{remote_url}"
+        qkd_socket_client.connect(ws_url, wait_timeout=5)
+        log_to_file(f"WebSocket клиент подключен к {ws_url}", level="INFO")
+    except Exception as e:
+        error_msg = f"Ошибка инициализации WebSocket клиента: {e}"
+        log_to_file(error_msg, level="ERROR")
+        # Логируем в журнал
+        try:
+            from utils.logging_utils import log_to_db
+            log_to_db(db_path, None, 'QKDModule', 'ERROR', error_msg)
+        except:
+            pass
+        qkd_socket_client = None
+
 @socketio.on('connect')
 def handle_connect():
     """Обработчик подключения клиента через WebSocket"""
@@ -1878,6 +1962,13 @@ if __name__ == '__main__':
     print(f"Сервер запущен на {SERVER_A_HOST}:{SERVER_A_PORT}")
     print(f"Удалённый сервер Б: {REMOTE_SERVER_B}")
     print("Режим: REST API (HTTP)")
+    
+    # Инициализируем WebSocket клиент для синхронизации с сервером 2
+    try:
+        init_qkd_socket_client()
+    except Exception as e:
+        log_to_file(f"Не удалось инициализировать WebSocket клиент: {e}", level="WARNING")
+        print(f"Предупреждение: WebSocket клиент не инициализирован: {e}")
     
     # Автоматически запускаем чтение данных с QKD устройства
     # ВАЖНО: В debug режиме Flask перезагружает модуль, поэтому функция может вызваться дважды

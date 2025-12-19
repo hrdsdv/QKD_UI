@@ -1590,22 +1590,21 @@
       
       // Отображаем количество несовпадений
       // Для реальных последовательностей N не должно быть 0
+      // Отображаем количество несовпадений (показываем реальное значение)
       if (mismatchesDiv) {
         const mismatches = data.mismatches || 0;
-        // Если это реальная последовательность (не тестовая) и mismatches = 0, устанавливаем минимум 1
-        const finalMismatches = (mismatches === 0 && !data.is_test) ? 1 : mismatches;
-        mismatchesDiv.textContent = `N = ${finalMismatches} несовпадений`;
-        if (mismatches === 0 && !data.is_test) {
-          console.warn('[displaySifting] Для реальной последовательности mismatches был 0, установлено минимальное значение 1');
-        }
+        mismatchesDiv.textContent = `N = ${mismatches} несовпадений`;
       }
     };
     
     // Обработчик WebSocket для синхронизации
     socket.on('sifting_complete', (data) => {
-      console.log('Получены данные просеивания:', data);
+      console.log('[WebSocket] Получены данные просеивания:', data);
+      console.log('[WebSocket] mismatches:', data.mismatches, 'qber:', data.qber);
       if (window.displaySifting) {
         window.displaySifting(data);
+      } else {
+        console.error('[WebSocket] Функция displaySifting не найдена!');
       }
     });
     
@@ -2364,7 +2363,8 @@
               last_32_bits_remote: data.last_32_bits_remote || '',
               last_32_bases_remote: data.last_32_bases_remote || '',
               mismatches: data.mismatches || 0,
-              qber: data.qber || 0
+              qber: data.qber || 0,
+              is_test: data.is_test || false
             };
             
             console.log('Вызываем displaySifting с данными:', siftingData);
