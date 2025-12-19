@@ -1145,7 +1145,7 @@
       sequenceDiv.className = `qkd-sequence-item ${isTest ? 'test' : 'real'}`;
       sequenceDiv.setAttribute('data-sequence-id', data.sequence_id);
       
-      // Сервер 2: показываем базисы + биты (в обратном порядке относительно сервера 1)
+      // Сервер 2: показываем базисы + биты (сначала базисная последовательность, потом битовая)
       const html = `
         <div class="qkd-sequence-label">Базисная последовательность (32 последних базиса):</div>
         <div class="qkd-sequence-bases" id="bases-${data.sequence_id}"></div>
