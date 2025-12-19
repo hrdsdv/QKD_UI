@@ -811,27 +811,42 @@ def init_qkd_socket_client():
         def on_sifting_complete(data):
             """Обработчик получения данных просеивания от сервера 2"""
             try:
+                sequence_id = data.get('sequence_id', 'unknown')
+                mismatches = data.get('mismatches', 0)
+                station = data.get('station', 'unknown')
+                log_to_file(f"[WebSocket Client] Получены данные просеивания от сервера 2: sequence_id={sequence_id}, mismatches={mismatches}, station={station}", level="INFO")
+                
+                # Проверяем, что данные корректны
+                if not sequence_id or sequence_id == 'unknown':
+                    log_to_file(f"[WebSocket Client] Предупреждение: некорректный sequence_id в данных просеивания", level="WARNING")
+                
                 # Отправляем данные всем подключенным клиентам сервера 1
                 socketio.emit('sifting_complete', data, namespace='/')
-                log_to_file(f"Получены данные просеивания от сервера 2: {data.get('sequence_id')}, mismatches={data.get('mismatches')}", level="INFO")
+                log_to_file(f"[WebSocket Client] Отправлены данные просеивания клиентам server_1 для {sequence_id}, mismatches={mismatches}", level="INFO")
             except Exception as e:
-                log_to_file(f"Ошибка обработки данных просеивания от сервера 2: {e}", level="ERROR")
+                log_to_file(f"[WebSocket Client] Ошибка обработки данных просеивания от сервера 2: {e}", level="ERROR")
+                import traceback
+                log_to_file(f"[WebSocket Client] Traceback: {traceback.format_exc()}", level="ERROR")
         
         @qkd_socket_client.on('connect')
         def on_connect():
-            log_to_file("Подключен к серверу 2 через WebSocket", level="INFO")
+            log_to_file("[WebSocket Client] Подключен к серверу 2 через WebSocket", level="INFO")
+            print("[WebSocket Client] Подключен к серверу 2")
         
         @qkd_socket_client.on('disconnect')
         def on_disconnect():
-            log_to_file("Отключен от сервера 2 через WebSocket", level="WARNING")
+            log_to_file("[WebSocket Client] Отключен от сервера 2 через WebSocket", level="WARNING")
+            print("[WebSocket Client] Отключен от сервера 2")
         
         # Подключаемся к серверу 2
         ws_url = f"http://{remote_url}"
         try:
             qkd_socket_client.connect(ws_url, wait_timeout=10)
-            log_to_file(f"WebSocket клиент подключен к {ws_url}", level="INFO")
+            log_to_file(f"[WebSocket Client] WebSocket клиент подключен к {ws_url}", level="INFO")
+            print(f"[WebSocket Client] WebSocket клиент подключен к {ws_url}")
         except Exception as connect_error:
-            log_to_file(f"Ошибка подключения WebSocket клиента к {ws_url}: {connect_error}", level="ERROR")
+            log_to_file(f"[WebSocket Client] Ошибка подключения WebSocket клиента к {ws_url}: {connect_error}", level="ERROR")
+            print(f"[WebSocket Client] Ошибка подключения: {connect_error}")
             # Не устанавливаем qkd_socket_client в None, чтобы можно было попробовать переподключиться позже
             raise
     except Exception as e:

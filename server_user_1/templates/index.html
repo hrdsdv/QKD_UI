@@ -1440,12 +1440,19 @@
     });
     
     socket.on('connect', () => {
-      console.log('WebSocket подключен');
+      console.log('[WebSocket] Подключен к server_1');
     });
     
     socket.on('disconnect', () => {
-      console.log('WebSocket отключен');
+      console.log('[WebSocket] Отключен от server_1');
     });
+    
+    // Проверяем подключение при загрузке страницы
+    if (socket.connected) {
+      console.log('[WebSocket] Уже подключен к server_1');
+    } else {
+      console.log('[WebSocket] Ожидание подключения к server_1...');
+    }
     
     // ------------------------------
     // Периодическая проверка БД на новые реальные последовательности
