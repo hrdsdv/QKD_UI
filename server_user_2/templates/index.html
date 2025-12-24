@@ -2132,9 +2132,9 @@
                              (item.sequence_id && (item.sequence_id.startsWith('testA_') || item.sequence_id.startsWith('testB_'))));
               const isTestLabel = isTest ? ' (тест)' : '';
               
-              // ВАЖНО: Разрешаем повторный выбор последовательностей
-              // Кнопки всегда активны для QKD ключей (можно выбирать повторно)
-              const isSelected = false; // Всегда false, чтобы кнопки были активными
+              // Правильная проверка selected_by: null, undefined, пустая строка, 'Нет', или 'Тестовая' (для тестовых последовательностей)
+              // 'Тестовая' не считается выбранным, чтобы можно было выбрать тестовую последовательность и запустить анимацию просеивания
+              const isSelected = item.selected_by && item.selected_by !== '' && item.selected_by !== 'Нет' && item.selected_by !== 'Тестовая';
               
               // Правильная проверка is_recovered: должно быть явно true
               const isRecovered = !!(item.is_recovered === true || 
@@ -2147,7 +2147,7 @@
                 isTest: isTest,
                 isSelected: isSelected,
                 isRecovered: isRecovered,
-                willShowButton: isTest ? (isRecovered ? 'Восстановлено (серое)' : 'Восстановить (зеленое)') : (isSelected ? 'Выбрано (серое)' : 'Выбрать (синее)')
+                willShowButton: isSelected ? (isRecovered ? 'Восстановлено (серое)' : 'Восстановить (зеленое)') : 'Выбрать (синее)'
               });
               
               row.innerHTML = `
@@ -2156,13 +2156,7 @@
                 <td class="py-2 px-4 border-b text-sm">${item.generated_at || ''}</td>
                 <td class="py-2 px-4 border-b text-sm">${selectedBy}</td>
                 <td class="py-2 px-4 border-b">
-                  ${isTest ? 
-                    // Для тестовых последовательностей: зеленая "Восстановить" или серая "Восстановлено"
-                    (isRecovered ? 
-                      `<button class="recover-key-button bg-gray-400 cursor-not-allowed text-white font-bold py-1 px-3 rounded text-sm" data-sequence-id="${item.sequence_id}" disabled>Восстановлено</button>` :
-                      `<button class="recover-key-button bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded text-sm" data-sequence-id="${item.sequence_id}">Восстановить</button>`
-                    ) :
-                    // Для QKD ключей: если не выбрано - синяя "Выбрать", если выбрано - зеленая "Восстановить" или серая "Восстановлено"
+                  ${// Для всех последовательностей (тестовых и QKD): если не выбрано - синяя "Выбрать", если выбрано - зеленая "Восстановить" или серая "Восстановлено"
                     (isSelected ? 
                       (isRecovered ? 
                         `<button class="recover-key-button bg-gray-400 cursor-not-allowed text-white font-bold py-1 px-3 rounded text-sm" data-sequence-id="${item.sequence_id}" disabled>Восстановлено</button>` :
