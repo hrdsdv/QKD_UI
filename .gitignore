@@ -1,4 +1,6 @@
 logs/
 logs/system.log
 modules/__pycache__/
-.idea
+.idea/
+__pycache__/
+modules/__pycache__/
